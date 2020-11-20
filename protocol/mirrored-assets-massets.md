@@ -93,7 +93,7 @@ $$
 
 With an existing CDP, the user can deposit additional collateral $$Q_c'$$ to raise its effective C-ratio. The total amount of potential mintable mAsset tokens is then increased by the marginal value $$Q_m'$$.
 
-$$Q_c'$$ can be negative, which is equivalent to withdrawing collateral. The user can only withdraw up to however much is needed to maintain the mAsset's effective C-ratio above the mAsset's minimum.
+$$Q_c'$$ can be negative, which is equivalent to withdrawing collateral. The user can only withdraw up to however much is needed to maintain the mAsset's effective C-ratio above the mAsset's minimum. The user will receive $$Q_c' - \text{fee}_{\text{protocol}}$$ upon withdrawal due to the [protocol fee](mirrored-assets-massets.md#protocol-fee).
 
 $$
 Q_m + Q_{m}' = \frac{P_{c}(Q_{c}+Q_{c}')}{r_\text{min}P_{m}}
@@ -113,29 +113,39 @@ Anything above that amount can be withdrawn from the CDP.
 
 #### Closing a position
 
-If a user wishes to withdraw all their collateral from their CDP, they must close their position by returning the outstanding balance of minted mAssets, which the protocol will burn. The user will be then be able to collect their locked collateral.
+If a user wishes to collect all their collateral from their CDP, they must close their position by returning the outstanding balance of minted mAssets, which the protocol will burn. The user will be then be able to withdraw their locked collateral.
+
+### Protocol Fee
+
+The Mirror **protocol fee** is charged whenever a withdrawal from a CDP is made \(including closing the position\). This fee is then converted into MIR through Terraswap and distributed to MIR token stakers as a staking reward.
 
 ### Margin Call & Auction
 
 Maintaining a lower C-ratio allows you to mint more mAsset tokens for less collateral, but obviously does not come without its risks. A CDP can be **margin called** when it falls below the min. collateral ratio. At this stage, if the owner does not quickly act and deposit more collateral or burn mAssets to deleverage their position, other users may purchase their CDP's collateral at a discount.
 
-The protocol will try to raise the CDP's C-ratio by burning mAssets it recovers from liquidating its collateral. Let $$p$$ be the amount of the mAssets paid \(up to the amount minted by the CDP\) and $$d$$ be the mAsset's **auction discount rate.** The buyer can expect to receive:
+The protocol will try to raise the CDP's C-ratio by burning mAssets it recovers from liquidating its collateral. Let $$a$$ be the amount of the mAssets paid \(up to the amount minted by the CDP\) and $$d$$ be the mAsset's **auction discount rate.** The buyer can expect to receive:
 
 $$
-\min\bigg(\frac{p}{Q_m}(1-d)Q_c,Q_c\bigg)
+\min\bigg(\frac{a}{1-d}\times\frac{P_m}{P_c},Q_c\bigg)
 $$
 
 The remainder of the collateral not sold is returned to the CDP's owner.
 
 The auction process continues until either the CDP's C-ratio is restored to a level above the mAsset's minimum collateral ratio OR the quantity of minted mAssets is completely burned, which closes the position. Because this provides almost risk-free profit, participants are incentivized to liquidate the entire margin-called position when possible to maximize their profits.
 
-#### \*\*Example
+#### Example
 
-To illustrate, assume that mXXX is priced at 1 UST per token, has a min. collateral ratio of 150% and an auction discount rate of 20%. A user has opened a CDP to mint 100 mXXX at the C-ratio of 150%, depositing 150 UST as collateral. If the CDP is being liquidated, then the auction participant would gain 120 UST for 100 mXXX \(a 20% profit\), and the CDP owner would receive the remaining 30 UST.
+To illustrate, let mXXX is priced at 1 UST, and mYYY is priced at 2 UST. Assume that both assets have a min. collateral ratio of 150% and an auction discount rate of 20%. A user has opened a CDP to mint 100 mXXX at the C-ratio of 150%, depositing 75 mYYY as collateral. 
 
-![](../.gitbook/assets/image%20%2868%29.png)
+If the CDP is being liquidated with the auction participant paying 100 mXXX to totally liquidate the position, they should receive:
 
-Note that the owner would still retain his 100 mXXX, keeping around 130 UST of value of their initial 150 UST deposit.
+$$
+\min\bigg(\frac{100\text{mXXX}}{ 1-.2}\times\frac{\text{1UST/mXXX}}{2\text{UST/mYYY}},75\text{mYYY}\bigg)
+$$
+
+Working over the math, they should receive 62.5 mYYY tokens, totalling 125 UST, making a 25% profit. The CDP owner would receive the remaining 25 UST.
+
+Note that the owner would still retain his 100 mXXX, keeping around 125 UST of notional value out of their initial 150 UST deposit.
 
 To avoid liquidation, users should aim for C-ratio that factors in the known price dynamics of the reflected asset. A safety buffer of at least 50% above the mAsset's minimum is usually recommended. Users with open positions should actively monitor price activity that threaten the safety of their CDP, and respond accordingly either by burning mAssets \(or closing the position altogether\), or depositing more collateral to reduce the possibility of liquidation.
 

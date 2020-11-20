@@ -20,9 +20,9 @@ The Mirror Protocol mints new MIR tokens every block according to the `mint_per_
 This section discusses staking rewards for MIR tokens, which come from trading fees used to buy back MIR from the market. Staking LP tokens also generates MIR rewards, which come directly from new MIR tokens created every block. Learn more about it [here](lp-token.md#from-staking).
 {% endhint %}
 
-### From Withdrawing Collateral
+### From Protocol Fee
 
-All tradable mAssets on Mirror Protocol are minted by opening a CDP with UST or mAsset collateral. When the user withdraws the collateral to close or adjust the collateral ratio for the position, a **Withdraw Fee** occurs. Withdraw Fee that is collected in different denominations are sold for UST through Terraswap in order to purchase MIR from the MIR-UST market. The purhcased MIR are then distributed as rewards to MIR stakers in proportion to the percentage of total stake. This process balances the generation of new MIR by creating a buying pressure.
+MIR Token stakers receive MIR token rewards every block, which are generated from [protocol fees](mirrored-assets-massets.md#protocol-fee) from CDP withdrawals. The protocol fees are collected from CDP collateral and are sold for TerraUSD to buy MIR through Terraswap. The MIR tokens are then distributed as rewards to MIR stakers in proportion to the percentage of total stake. This process balances the generation of new MIR by creating buying pressure.
 
 ### From Poll Creation Fees
 
