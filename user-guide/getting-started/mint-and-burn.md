@@ -2,6 +2,8 @@
 
 The **Mint** page allows you to mint new tokens of an mAsset by opening a [CDP](../../protocol/mirrored-assets-massets.md#collateralized-debt-position). After creating a position, you can manage it on the [My](https://app-staging.mirrorprotocol.com/my) page.
 
+When the user withdraws collateral either to manage position's collateral ratio or to close the position, a **Withdraw Fee** of 1.5% is charged to the amount being withdrawn.
+
 Please note that all asset values are calculated based on the reported price from the [oracle feeder ](../../protocol/mirrored-assets-massets.md#oracle-feeder)instead of the Terraswap price.
 
 ## Mint \(Open Position\)
@@ -61,6 +63,7 @@ Please note that user cannot close the position if the user holds minted asset o
 Users are warned when their CDP is close to liquidation. Minted positions become vulnerable to liquidation when the collateral ratio falls below the `min_collateral_ratio`. Vice versa, minted positions can be over-collateralized when the value of collateral to minted assets increase by a large margin. To avoid liquidation or over-collateralization, user can deposit or withdraw locked collateral from the CDP.
 
 1. Navigate to [**My** **Page**](https://app-staging.mirrorprotocol.com/my)\*\*\*\*
+
 2. In the Mint section, press the "`...`"under actions
 
 ![](../../.gitbook/assets/image%20%2828%29.png)

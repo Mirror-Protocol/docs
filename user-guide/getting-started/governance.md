@@ -74,8 +74,8 @@ In order to vote on governance polls, MIR must be staked to be used as voting po
 
 For every poll to be passed, they must meet the conditions below:
 
-* Voting quorum must be greater than or equal to 10%. Without meeting this condition, no matter how much portion of the voting power has been voted Yes, the poll is ineffective.
+* Voting quorum must be greater than or equal to 10% of the total staked MIR. Without meeting this condition, no matter how much portion of the voting power has been voted Yes, the poll is ineffective.
 * Over 50% of voting power which is dedicated to the poll must be **Yes**
 * Voting period \(number of blocks corresponding to 2 weeks\) has ended
-* After the voting period is over and the poll passes, it takes 7 days \(number of blocks corresponding to 7 days\) for the poll to become effective in the protocol 
+* After the voting period is over and the poll passes, it takes 7 days \(number of blocks corresponding to a week\) for the poll to become effective in the protocol 
 

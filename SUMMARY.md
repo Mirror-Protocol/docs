@@ -22,13 +22,14 @@
 
 ## User Guide
 
-* [Web App](user-guide/getting-started/README.md)
+* [\*\*Web App](user-guide/getting-started/README.md)
   * [Trade](user-guide/getting-started/trade.md)
   * [Mint](user-guide/getting-started/mint-and-burn.md)
   * [Pool](user-guide/getting-started/pool.md)
   * [Stake](user-guide/getting-started/stake.md)
   * [Governance](user-guide/getting-started/governance.md)
-* [Staking on Ethereum](user-guide/meth-dual-yield.md)
+* [Staking on Ethereum](user-guide/meth-dual-yield/README.md)
+  * [Staking Guide](user-guide/meth-dual-yield/staking_guide.md)
 
 ---
 

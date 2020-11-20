@@ -11,29 +11,30 @@ Each staking position is unique to each type of LP tokens specified by the mAsse
 ## Stake / Unstake LP Tokens
 
 1. Navigate to the [**Stake**](https://app-staging.mirrorprotocol.com/stake) page. The Stake page shows the following data:
-2. **Market information about MIR tokens:** The top of the page displays information about current MIR supply, trading volume \(24hours\) denominated in UST, total number of MIR tokens staked, and current price of MIR token denominated in UST.
-3. **Staking Positions**: Each box below the search bar displays staking pools where users can stake their LP tokens. Each pool is identifiable based on its Mirrored Asset and associated LP token. That is why each pool shows a different expected APR \(annual percentage rate\) and total staked LP tokens.
+
+* **Market information about MIR tokens:** The top of the page displays information about current MIR supply, trading volume \(24hours\) denominated in UST, total number of MIR tokens staked, and current price of MIR token denominated in UST.
+* **Staking Positions**: Each box below the search bar displays staking pools where users can stake their LP tokens. Each pool is identifiable based on its Mirrored Asset and associated LP token. That is why each pool shows a different expected APR \(annual percentage rate\) and total staked LP tokens.
 
 ![](../../.gitbook/assets/image%20%2866%29%20%281%29.png)
 
-4. Select a staking pool.
+2. Select a staking pool.
 
-5.  Follow the following:
+3.  Follow the following:
 
 * IF STAKING, select a pool for which you have LP tokens.
 * IF UNSTAKING, select a pool for which you have LP tokens in a staked position.
 
 ![](../../.gitbook/assets/image%20%2819%29.png)
 
-6. Select **Stake** or **Unstake**
+4. Select **Stake** or **Unstake**
 
 ![](../../.gitbook/assets/image%20%2823%29.png)
 
-7. Enter amount _\*\*_to Stake / Unstake. 
+5. Enter amount _\*\*_to Stake / Unstake. 
 
 ![](../../.gitbook/assets/image%20%2842%29.png)
 
-8. Press **`Stake` / `Unstake`**. Station Extension should prompt you to sign the transaction. Confirm the details presented and input your password to sign.
+6. Press **`Stake` / `Unstake`**. Station Extension should prompt you to sign the transaction. Confirm the details presented and input your password to sign.
 
 ![](../../.gitbook/assets/image%20%2841%29.png)
 
