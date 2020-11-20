@@ -1,5 +1,7 @@
 ---
-description: 'TODO: Station Extension guide update: Send / Ledger Support'
+description: >-
+  TODO: Station Extension guide update: Send / Ledger Support (new station
+  extension will be available on Nov 23)
 ---
 
 # \*\*Web App

@@ -2,7 +2,7 @@
 
 The Mirror Token \(MIR\) is Mirror Protocol's governance token. Currently, it must be staked to vote on active polls and is required as a deposit for making new governance polls. In future iterations of Mirror, it will serve further purposes for the protocol that increase its utility and value.
 
-Users that stake MIR tokens also earn MIR rewards generated from trading fees within the protocol.
+Users that stake MIR tokens also earn MIR rewards generated from withdrawing collateral from CDP positions within the protocol.
 
 ## **\*\*Mirror Token Supply**
 

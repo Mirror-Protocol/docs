@@ -22,6 +22,10 @@ A CDP that mints the mAsset cannot have a collateral ratio below this value, les
 
 For a CDP subject to liquidation, describes the discount for which its collateral can be purchased.
 
+### Withdraw Fee
+
+A fee that is charged to collateral being withdrawn. This fee is sent to [Collector](../contracts/collector.md) to be converted into MIR and then distributed among MIR stakers based on their weight to the total staked MIR in the protocol.
+
 ### Price
 
 The current registered price as reported by its Oracle Feeder. This is mainly used for determining collateral ratio for CDP and does not affect the mAsset's trading price on Terraswap directly.
