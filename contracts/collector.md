@@ -1,6 +1,8 @@
 # Collector
 
-The Collector accumulates fee rewards generated from closing CDPs within the protocol, and converts them into UST in order to purchase MIR from the MIR-UST Terraswap pool. The MIR is then sent to the [Gov Contract](gov.md) to supply trading fee rewards for MIR stakers.
+The Collector accumulates fee rewards generated from CDP withdrawal  within the protocol, and  converts them into UST in order to purchase MIR from the MIR-UST Terraswap pool. The MIR is then sent to the [Gov Contract](gov.md) to supply trading fee rewards for MIR stakers.
+
+![](../.gitbook/assets/image.png)
 
 ## InitMsg
 
@@ -38,9 +40,12 @@ pub struct InitMsg {
 
 ## HandleMsg
 
-### `**Convert`
+### `Convert`
 
-Converts the contract's balance of the specified asset token into `base_denom` through its Terraswap pool. However, if the given asset token is the Mirror Token \(MIR\), converts the contract's entire balance of `base_denom` into MIR.
+Depending on `asset_token`, performs one of the following:
+
+* if `asset_token` is an mAsset, sells the contract's balance of that mAsset for UST on Terraswap
+* if `asset_token` is the MIR token, buys MIR off the MIR/UST Terraswap pool with the contract's UST balance
 
 {% tabs %}
 {% tab title="Rust" %}
@@ -96,7 +101,9 @@ pub enum HandleMsg {
 
 ## QueryMsg
 
-### `**Config`
+### `Config`
+
+Get the Mirror Collector contract configuration.
 
 {% tabs %}
 {% tab title="Rust" %}

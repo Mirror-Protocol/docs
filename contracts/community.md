@@ -1,5 +1,7 @@
 # Community
 
+The Community Contract holds the funds of the [Community Pool](../protocol/governance.md#community-pool), which can be spent through a governance poll. 
+
 ## InitMsg
 
 {% tabs %}
@@ -17,10 +19,9 @@ pub struct InitMsg {
 {% tab title="JSON" %}
 ```javascript
 {
-  "update_config": {
-    "owner": "terra1...",
-    "spend_limit": "10000000"
-  }
+  "owner": "terra1...",
+  "mirror_token": "terra1...",
+  "spend_limit": "123456",
 }
 ```
 {% endtab %}
@@ -28,13 +29,15 @@ pub struct InitMsg {
 
 | Key | Type | Description |
 | :--- | :--- | :--- |
-| `owner` | HumanAddr | TO BE ADDED |
-| `mirror_token` | HumanAddr | TO BE ADDED |
-| `spend_limit` | Uint128 |  |
+| `owner` | HumanAddr | Owner address |
+| `mirror_token` | HumanAddr | Contract address of the Mirror Token |
+| `spend_limit` | Uint128 | Max amount of disbursement |
 
 ## HandleMsg
 
 ### `UpdateConfig`
+
+Can only be issued by the owner. Updates the Community Contract's configuration.
 
 {% tabs %}
 {% tab title="Rust" %}
@@ -64,12 +67,14 @@ pub enum HandleMsg {
 
 | Key | Type | Description |
 | :--- | :--- | :--- |
-| `owner`\* | HumanAddr | TO BE ADDED |
-| `spend_limit`\* | Uint128 | TO BE ADDED |
+| `owner`\* | HumanAddr | New contract owner |
+| `spend_limit`\* | Uint128 | New spending limit |
 
 \* = optional
 
 ### `Spend`
+
+Can only be issued by the owner. Sends the amount of MIR tokens to the designated recipient. 
 
 {% tabs %}
 {% tab title="Rust" %}
@@ -99,12 +104,14 @@ pub enum HandleMsg {
 
 | Key | Type | Description |
 | :--- | :--- | :--- |
-| `amount` | Uint128 | TO BE ADDED |
-| `recipient` | HumanAddr | TO BE ADDED |
+| `amount` | Uint128 | Amount of MIR in contract's balance to send |
+| `recipient` | HumanAddr | Recipient of the funds |
 
 ## QueryMsg
 
 ### `Config`
+
+Gets the Mirror Community contract's configuration.
 
 {% tabs %}
 {% tab title="Rust" %}
