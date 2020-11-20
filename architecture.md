@@ -25,6 +25,11 @@ The source code for Mirror smart contracts can be found on [GitHub](https://gith
         sends to Gov</td>
     </tr>
     <tr>
+      <td style="text-align:left"><a href="contracts/community.md">Community</a>
+      </td>
+      <td style="text-align:left">Manages the <a href="protocol/governance.md#community-pool">Community Pool</a> fund</td>
+    </tr>
+    <tr>
       <td style="text-align:left"><a href="contracts/factory.md">Factory</a>
       </td>
       <td style="text-align:left">Central directory that organizes the various component contracts of Mirror</td>

@@ -12,7 +12,7 @@
 * [\*\*Mirror Token \(MIR\)](protocol/mirror-token-mir.md)
 * [Terraswap](protocol/terraswap.md)
 * [LP Tokens](protocol/lp-token.md)
-* [\*\*Governance](protocol/governance.md)
+* [Governance](protocol/governance.md)
 
 ## Developers <a id="developer-tools"></a>
 
@@ -22,7 +22,7 @@
 
 ## User Guide
 
-* [\*\* Web App](user-guide/getting-started/README.md)
+* [Web App](user-guide/getting-started/README.md)
   * [Trade](user-guide/getting-started/trade.md)
   * [Mint](user-guide/getting-started/mint-and-burn.md)
   * [Pool](user-guide/getting-started/pool.md)
@@ -37,6 +37,7 @@
 ## Smart Contracts <a id="contracts"></a>
 
 * [Collector](contracts/collector.md)
+* [Community](contracts/community.md)
 * [\*\*Factory](contracts/factory.md)
 * [Gov](contracts/gov.md)
 * [Mint](contracts/mint.md)

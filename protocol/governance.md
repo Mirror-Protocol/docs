@@ -1,8 +1,4 @@
----
-description: 'TODO: William, add community pool use'
----
-
-# \*\*Governance
+# Governance
 
 Governance is the democratized process through which proposals for change in Mirror Protocol are introduced and accepted by the community through voting.
 
@@ -22,7 +18,7 @@ New governance proposals in Mirror are called **polls.** Any user can create a p
 
 Polls consist of a text description of the proposition \(with perhaps an external link to further resources / discussions\), and include an executable message encoding the instructions to be run if it passes. The message will be executed with the privileges of the [Mirror Gov contract](../contracts/gov.md), which has the power to invoke any function defined by the other Mirror smart contracts.
 
-Some example polls include:
+Some example poll executions can include:
 
 * **Whitelist -**  List a new mAsset to be tradeable and minteable on Mirror
 * **Asset Parameter Change** - Change CDP parameters of assets already listed \(min. C-ratio, auction discount rate,  etc.\)
@@ -41,5 +37,5 @@ The following steps outlines the governance procedure:
 
 ## Community Pool
 
-
+The **community pool** is a reserve of MIR tokens that is held by governance, meant for funding future projects and contributors to the Mirror protocol. The community pool's initial funds are minted at the start when Mirror contracts are first created. A governance poll can be created in order to spend tokens from the fund.
 
