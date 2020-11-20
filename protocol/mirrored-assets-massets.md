@@ -135,7 +135,7 @@ The auction process continues until either the CDP's C-ratio is restored to a le
 
 #### Example
 
-To illustrate, let mXXX is priced at 1 UST, and mYYY is priced at 2 UST. Assume that both assets have a min. collateral ratio of 150% and an auction discount rate of 20%. A user has opened a CDP to mint 100 mXXX at the C-ratio of 150%, depositing 75 mYYY as collateral. 
+To illustrate, let mXXX be priced at 1 UST, and mYYY at 2 UST. Assume that both assets have a min. collateral ratio of 150% and an auction discount rate of 20%. A user has opened a CDP to mint 100 mXXX at the C-ratio of 150%, depositing 75 mYYY as collateral. 
 
 If the CDP is being liquidated with the auction participant paying 100 mXXX to totally liquidate the position, they should receive:
 
