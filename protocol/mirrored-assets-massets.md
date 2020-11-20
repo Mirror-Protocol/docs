@@ -22,10 +22,6 @@ A CDP that mints the mAsset cannot have a collateral ratio below this value, les
 
 For a CDP subject to liquidation, describes the discount for which its collateral can be purchased.
 
-### Withdraw Fee
-
-A fee that is charged to collateral being withdrawn. This fee is sent to [Collector](../contracts/collector.md) to be converted into MIR and then distributed among MIR stakers based on their weight to the total staked MIR in the protocol.
-
 ### Price
 
 The current registered price as reported by its Oracle Feeder. This is mainly used for determining collateral ratio for CDP and does not affect the mAsset's trading price on Terraswap directly.
@@ -147,9 +143,9 @@ $$
 \min\bigg(\frac{100\text{mXXX}}{ 1-.2}\times\frac{\text{1UST/mXXX}}{2\text{UST/mYYY}},75\text{mYYY}\bigg)
 $$
 
-Working over the math, they should receive 62.5 mYYY tokens, totalling 125 UST, making a 25% profit. The CDP owner would receive the remaining 25 UST.
+Working over the math, they should receive 62.5 mYYY tokens, totalling 125 UST, making a 25% profit. The CDP owner would receive the remaining 12.5 mYYY.
 
-Note that the owner would still retain his 100 mXXX, keeping around 125 UST of notional value out of their initial 150 UST deposit.
+Note that the owner would still retain his 100 mXXX, meaning along with the 12.5 mYYY they would keep around 125 UST of value out of their initial 150 UST deposit.
 
 To avoid liquidation, users should aim for C-ratio that factors in the known price dynamics of the reflected asset. A safety buffer of at least 50% above the mAsset's minimum is usually recommended. Users with open positions should actively monitor price activity that threaten the safety of their CDP, and respond accordingly either by burning mAssets \(or closing the position altogether\), or depositing more collateral to reduce the possibility of liquidation.
 
