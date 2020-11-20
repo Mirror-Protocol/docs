@@ -35,9 +35,12 @@ pub struct InitMsg {
 {% tab title="JSON" %}
 ```javascript
 {
-  "mint_per_block": "10000000"
   "token_code_id": 8,
-  "base_denom": "uusd"
+  "base_denom": "uusd",
+  "distribution_schedule": [
+    [3600, 7200, "1000000"],
+    [7200, 10800, "1000000"]
+  ]
 }
 ```
 {% endtab %}
@@ -158,9 +161,12 @@ pub enum HandleMsg {
 ```javascript
 {
   "update_config": {
-    "mint_per_block": "10000000",
     "owner": "terra1...",
-    "token_code_id": 8
+    "token_code_id": 8,
+    "distribution_schedule": [
+      [3600, 7200, "1000000"],
+      [7200, 10800, "1000000"]
+    ]
   }
 }
 ```
@@ -169,7 +175,7 @@ pub enum HandleMsg {
 
 | Key | Type | Description |
 | :--- | :--- | :--- |
-| `**owner`\* | HumanAddr | Address of the owner of [Mirror Factory](factory.md) |
+| `owner`\* | HumanAddr | Address of the owner of [Mirror Factory](factory.md) |
 | `token_code_id`\* | u64 | Code ID for CW20 contract for generating new mAssets |
 | `**distribution_schedule`\* | Vec&lt;\(u64, u64, Uint128\)&gt; | New distribution schedule |
 
@@ -216,10 +222,7 @@ pub struct Params {
     "oracle_feeder": "terra1...",
     "params": {
       "auction_discount": "0.2",
-      "lp_commission": "0.0025",
       "min_collateral_ratio": "1.5",
-      "owner_commission": "0.0005",
-      "weight": "1"
     },
     "symbol": "mAAPL"
   }
@@ -365,9 +368,7 @@ pub enum HandleMsg {
 {% tab title="JSON" %}
 ```javascript
 {
-  "mint": {
-    "asset_token": "terra1..."
-  }
+  "distribute": {}
 }
 ```
 {% endtab %}
@@ -418,6 +419,8 @@ pub enum HandleMsg {
 
 ### `Config`
 
+Get the Mirror Factory configuration.
+
 {% tabs %}
 {% tab title="Rust" %}
 ```rust
@@ -444,6 +447,8 @@ pub enum QueryMsg {
 
 ### `DistributionInfo`
 
+Get the distribution schedules for MIR token.
+
 {% tabs %}
 {% tab title="Rust" %}
 ```rust
@@ -458,9 +463,7 @@ pub enum QueryMsg {
 {% tab title="JSON" %}
 ```javascript
 {
-  "distribution_info": {
-    "asset_token": "terra1..."
-  }
+  "distribution_info": {}
 }
 ```
 {% endtab %}
