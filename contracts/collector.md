@@ -6,7 +6,6 @@ The Collector accumulates fee rewards generated from closing CDPs within the pro
 
 {% tabs %}
 {% tab title="Rust" %}
-
 ```rust
 #[derive(Serialize, Deserialize, Clone, Debug, PartialEq, JsonSchema)]
 pub struct InitMsg {
@@ -16,11 +15,9 @@ pub struct InitMsg {
     pub base_denom: String,
 }
 ```
-
 {% endtab %}
 
 {% tab title="JSON" %}
-
 ```javascript
 {
   "distribution_contract": "terra1...",
@@ -29,16 +26,15 @@ pub struct InitMsg {
   "base_denom": "uusd" // native Terra token
 }
 ```
-
 {% endtab %}
 {% endtabs %}
 
-| Key                     | Type      | Description                                     |
-| :---------------------- | :-------- | :---------------------------------------------- |
+| Key | Type | Description |
+| :--- | :--- | :--- |
 | `distribution_contract` | HumanAddr | Contract address of [Mirror Governance](gov.md) |
-| `terraswap_factory`     | HumanAddr | Contract address of Terraswap Factory           |
-| `mirror_token`          | HumanAddr | Contract address of Mirror Token \(MIR\)        |
-| `base_denom`            | String    | Base denomination \(native Terra token denom\)  |
+| `terraswap_factory` | HumanAddr | Contract address of Terraswap Factory |
+| `mirror_token` | HumanAddr | Contract address of Mirror Token \(MIR\) |
+| `base_denom` | String | Base denomination \(native Terra token denom\) |
 
 ## HandleMsg
 
@@ -48,7 +44,6 @@ Converts the contract's balance of the specified asset token into `base_denom` t
 
 {% tabs %}
 {% tab title="Rust" %}
-
 ```rust
 #[derive(Serialize, Deserialize, Clone, Debug, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
@@ -58,11 +53,9 @@ pub enum HandleMsg {
     }
 }
 ```
-
 {% endtab %}
 
 {% tab title="JSON" %}
-
 ```javascript
 {
   "convert": {
@@ -70,12 +63,11 @@ pub enum HandleMsg {
   }
 }
 ```
-
 {% endtab %}
 {% endtabs %}
 
-| Key           | Type      | Description                          |
-| :------------ | :-------- | :----------------------------------- |
+| Key | Type | Description |
+| :--- | :--- | :--- |
 | `asset_token` | HumanAddr | Contract address of asset to convert |
 
 ### `Send`
@@ -84,7 +76,6 @@ Sends to entire balance of collector's Mirror Tokens \(MIR\) to `distribution_co
 
 {% tabs %}
 {% tab title="Rust" %}
-
 ```rust
 #[derive(Serialize, Deserialize, Clone, Debug, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
@@ -92,17 +83,14 @@ pub enum HandleMsg {
     Send {}
 }
 ```
-
 {% endtab %}
 
 {% tab title="JSON" %}
-
 ```javascript
 {
   "send": {}
 }
 ```
-
 {% endtab %}
 {% endtabs %}
 
@@ -112,7 +100,6 @@ pub enum HandleMsg {
 
 {% tabs %}
 {% tab title="Rust" %}
-
 ```rust
 #[derive(Serialize, Deserialize, Clone, Debug, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
@@ -120,20 +107,18 @@ pub enum QueryMsg {
     Config {}
 }
 ```
-
 {% endtab %}
 
 {% tab title="JSON" %}
-
 ```javascript
 {
   "config": {}
 }
 ```
-
 {% endtab %}
 {% endtabs %}
 
 | Key | Type | Description |
-| :-- | :--- | :---------- |
+| :--- | :--- | :--- |
+
 

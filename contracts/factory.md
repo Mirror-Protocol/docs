@@ -1,4 +1,4 @@
-# \*\*Factory
+# Factory
 
 The Factory contract is Mirror Protocol's central directory and organizes information related to mAssets and the Mirror Token \(MIR\). It is also responsible for minting new MIR tokens each block and distributing them to the [Staking Contract](staking.md) for rewarding LP Token stakers.
 
@@ -6,36 +6,33 @@ After the initial bootstrapping of Mirror Protocol contracts, the Factory is ass
 
 ## Config
 
-| Name                   | Type      | Description                                          |
-| :--------------------- | :-------- | :--------------------------------------------------- |
-| `mirror_token`         | HumanAddr | Contract address of Mirror Token \(MIR\)             |
-| `mint_contract`        | HumanAddr | Contract address of [Mirror Mint](mint.md)           |
-| `oracle_contract`      | HumanAddr | Contract address of [Mirror Oracle](oracle.md)       |
-| `terraswap_factory`    | HumanAddr | Contract address of Terraswap Factory                |
-| `staking_contract`     | HumanAddr | Contract address of [Mirror Staking](staking.md)     |
+| Name | Type | Description |
+| :--- | :--- | :--- |
+| `mirror_token` | HumanAddr | Contract address of Mirror Token \(MIR\) |
+| `mint_contract` | HumanAddr | Contract address of [Mirror Mint](mint.md) |
+| `oracle_contract` | HumanAddr | Contract address of [Mirror Oracle](oracle.md) |
+| `terraswap_factory` | HumanAddr | Contract address of Terraswap Factory |
+| `staking_contract` | HumanAddr | Contract address of [Mirror Staking](staking.md) |
 | `commission_collector` | HumanAddr | Contract address of [Mirror Collector](collector.md) |
-| `mint_per_block`       | Uint128   | Amount of new MIR tokens to mint per block           |
-| `token_code_id`        | u64       | Code ID for CW20 contract for generating new mAssets |
-| `base_denom`           | String    | Native token denom for Terraswap pairs \(TerraUSD\)  |
+| `mint_per_block` | Uint128 | Amount of new MIR tokens to mint per block |
+| `token_code_id` | u64 | Code ID for CW20 contract for generating new mAssets |
+| `base_denom` | String | Native token denom for Terraswap pairs \(TerraUSD\) |
 
 ## InitMsg
 
 {% tabs %}
 {% tab title="Rust" %}
-
 ```rust
 #[derive(Serialize, Deserialize, Clone, Debug, PartialEq, JsonSchema)]
 pub struct InitMsg {
-    pub mint_per_block: Uint128,
     pub token_code_id: u64,
     pub base_denom: String,
+    pub distribution_schedule: Vec<(u64, u64, Uint128)>, // [[start_time, end_time, distribution_amount], [], ...]
 }
 ```
-
 {% endtab %}
 
 {% tab title="JSON" %}
-
 ```javascript
 {
   "mint_per_block": "10000000"
@@ -43,15 +40,48 @@ pub struct InitMsg {
   "base_denom": "uusd"
 }
 ```
-
 {% endtab %}
 {% endtabs %}
 
-| Key                | Type    | Description                                          |
-| :----------------- | :------ | :--------------------------------------------------- |
-| `**mint_per_block` | Uint128 | Amount of new MIR tokens to mint per block           |
-| `token_code_id`    | u64     | Code ID for CW20 contract for generating new mAssets |
-| `base_denom`       | String  | Native token denom for Terraswap pairs \(TerraUSD\)  |
+<table>
+  <thead>
+    <tr>
+      <th style="text-align:left">Key</th>
+      <th style="text-align:left">Type</th>
+      <th style="text-align:left">Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align:left"><code>token_code_id</code>
+      </td>
+      <td style="text-align:left">u64</td>
+      <td style="text-align:left">Code ID for CW20 contract for generating new mAssets</td>
+    </tr>
+    <tr>
+      <td style="text-align:left"><code>base_denom</code>
+      </td>
+      <td style="text-align:left">String</td>
+      <td style="text-align:left">Native token denom for Terraswap pairs (TerraUSD)</td>
+    </tr>
+    <tr>
+      <td style="text-align:left"><code>distribution_schedule</code>
+      </td>
+      <td style="text-align:left">Vec</td>
+      <td style="text-align:left">
+        <p>Distribution schedule for the minting of new MIR tokens. Each entry consists
+          of:</p>
+        <ul>
+          <li>start time (seconds)</li>
+          <li>end time (seconds)</li>
+          <li>distribution amount for the interval</li>
+        </ul>
+        <p>Determines the total amount of new MIR tokens minted as rewards for LP
+          stakers over the interval [start time, end time].</p>
+      </td>
+    </tr>
+  </tbody>
+</table>
 
 ## HandleMsg
 
@@ -61,7 +91,6 @@ Issued by the Factory contract's owner after bootstrapping to initialize the con
 
 {% tabs %}
 {% tab title="Rust" %}
-
 ```rust
 #[derive(Serialize, Deserialize, Clone, Debug, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
@@ -77,11 +106,9 @@ pub enum HandleMsg {
     }
 }
 ```
-
 {% endtab %}
 
 {% tab title="JSON" %}
-
 ```javascript
 {
   "post_initialize": {
@@ -95,19 +122,18 @@ pub enum HandleMsg {
   }
 }
 ```
-
 {% endtab %}
 {% endtabs %}
 
-| Key                    | Type      | Description                                          |
-| :--------------------- | :-------- | :--------------------------------------------------- |
+| Key | Type | Description |
+| :--- | :--- | :--- |
 | `commission_collector` | HumanAddr | Contract address of [Mirror Collector](collector.md) |
-| `mint_contract`        | HumanAddr | Contract address of [Mirror Mint](mint.md)           |
-| `mirror_token`         | HumanAddr | Contract address of Mirror Token \(MIR\)             |
-| `oracle_contract`      | HumanAddr | Contract address of [Mirror Oracle](oracle.md)       |
-| `**owner`              | HumanAddr | Address of the owner of [Mirror Factory](factory.md) |
-| `staking_contract`     | HumanAddr | Contract address of [Mirror Staking](staking.md)     |
-| `terraswap_factory`    | HumanAddr | Contract address of Terraswap Factory                |
+| `mint_contract` | HumanAddr | Contract address of [Mirror Mint](mint.md) |
+| `mirror_token` | HumanAddr | Contract address of Mirror Token \(MIR\) |
+| `oracle_contract` | HumanAddr | Contract address of [Mirror Oracle](oracle.md) |
+| `**owner` | HumanAddr | Address of the owner of [Mirror Factory](factory.md) |
+| `staking_contract` | HumanAddr | Contract address of [Mirror Staking](staking.md) |
+| `terraswap_factory` | HumanAddr | Contract address of Terraswap Factory |
 
 ### `UpdateConfig`
 
@@ -115,7 +141,6 @@ Updates the configuration for the contract. Can only be issued by the owner.
 
 {% tabs %}
 {% tab title="Rust" %}
-
 ```rust
 #[derive(Serialize, Deserialize, Clone, Debug, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
@@ -127,11 +152,9 @@ pub enum HandleMsg {
     }
 }
 ```
-
 {% endtab %}
 
 {% tab title="JSON" %}
-
 ```javascript
 {
   "update_config": {
@@ -141,15 +164,14 @@ pub enum HandleMsg {
   }
 }
 ```
-
 {% endtab %}
 {% endtabs %}
 
-| Key                         | Type                     | Description                                          |
-| :-------------------------- | :----------------------- | :--------------------------------------------------- |
-| `**owner`\*                 | HumanAddr                | Address of the owner of [Mirror Factory](factory.md) |
-| `token_code_id`\*           | u64                      | Code ID for CW20 contract for generating new mAssets |
-| `**distribution_schedule`\* | Vec<(u64, u64, Uint128)> | MIR distribution schedule: [start (sec.), ]          |
+| Key | Type | Description |
+| :--- | :--- | :--- |
+| `**owner`\* | HumanAddr | Address of the owner of [Mirror Factory](factory.md) |
+| `token_code_id`\* | u64 | Code ID for CW20 contract for generating new mAssets |
+| `**distribution_schedule`\* | Vec&lt;\(u64, u64, Uint128\)&gt; | New distribution schedule |
 
 \* = optional
 
@@ -157,15 +179,14 @@ pub enum HandleMsg {
 
 Introduces a new mAsset to the protocol and creates markets on Terraswap. This process will:
 
-- Instantiate the mAsset contract as a new Terraswap CW20 token
-- Register the mAsset with [Mirror Oracle](oracle.md) and [Mirror Mint](mint.md)
-- Create a new Terraswap Pair for the new mAsset against TerraUSD
-- Instantiate the LP Token contract associated with the pool as a new Terraswap CW20 token
-- Register the LP token with the [Mirror Staking](staking.md) contract
+* Instantiate the mAsset contract as a new Terraswap CW20 token
+* Register the mAsset with [Mirror Oracle](oracle.md) and [Mirror Mint](mint.md)
+* Create a new Terraswap Pair for the new mAsset against TerraUSD
+* Instantiate the LP Token contract associated with the pool as a new Terraswap CW20 token
+* Register the LP token with the [Mirror Staking](staking.md) contract
 
 {% tabs %}
 {% tab title="Rust" %}
-
 ```rust
 #[derive(Serialize, Deserialize, Clone, Debug, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
@@ -181,18 +202,13 @@ pub enum HandleMsg {
 #[derive(Serialize, Deserialize, Clone, Debug, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub struct Params {
-    pub weight: Decimal,
-    pub lp_commission: Decimal,
-    pub owner_commission: Decimal,
     pub auction_discount: Decimal,
     pub min_collateral_ratio: Decimal,
 }
 ```
-
 {% endtab %}
 
 {% tab title="JSON" %}
-
 ```javascript
 {
   "whitelist": {
@@ -209,26 +225,22 @@ pub struct Params {
   }
 }
 ```
-
 {% endtab %}
 {% endtabs %}
 
-| Key             | Type      | Description                         |
-| :-------------- | :-------- | :---------------------------------- |
-| `name`          | String    | Name of new asset to be whitelisted |
+| Key | Type | Description |
+| :--- | :--- | :--- |
+| `name` | String | Name of new asset to be whitelisted |
 | `oracle_feeder` | HumanAddr | Address of Oracle Feeder for mAsset |
-| `params`        | Params    | mAsset parameters                   |
-| `symbol`        | String    | mAsset symbol \(ex: `mAAPL`\)       |
+| `params` | Params | mAsset parameters |
+| `symbol` | String | mAsset symbol \(ex: `mAAPL`\) |
 
 #### mAsset Params
 
-| Key                    | Type    | Description                                                                 |
-| :--------------------- | :------ | :-------------------------------------------------------------------------- |
-| `weight`               | Decimal | Staking pool reward weight for LP token                                     |
-| `lp_commission`        | Decimal | % of trading fees for [LP commission](../protocol/lp-token.md#from-holding) |
-| `owner_commission`     | Decimal | % of trading fees sent to [Mirror Collector](collector.md)                  |
-| `auction_discount`     | Decimal | Liquidation discount for purchasing CDP's collateral                        |
-| `min_collateral_ratio` | Decimal | Minimum C-ratio for CDPs that mint the mAsset                               |
+| Key | Type | Description |
+| :--- | :--- | :--- |
+| `auction_discount` | Decimal | Liquidation discount for purchasing CDP's collateral |
+| `min_collateral_ratio` | Decimal | Minimum C-ratio for CDPs that mint the mAsset |
 
 ### `TokenCreationHook`
 
@@ -238,7 +250,6 @@ Called after mAsset token contract is created in the [Whitelist](factory.md#whit
 
 {% tabs %}
 {% tab title="Rust" %}
-
 ```rust
 #[derive(Serialize, Deserialize, Clone, Debug, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
@@ -248,11 +259,9 @@ pub enum HandleMsg {
     }
 }
 ```
-
 {% endtab %}
 
 {% tab title="JSON" %}
-
 ```javascript
 {
   "token_creation_hook": {
@@ -260,12 +269,11 @@ pub enum HandleMsg {
   }
 }
 ```
-
 {% endtab %}
 {% endtabs %}
 
-| Key             | Type      | Description                         |
-| :-------------- | :-------- | :---------------------------------- |
+| Key | Type | Description |
+| :--- | :--- | :--- |
 | `oracle_feeder` | HumanAddr | Address of Oracle Feeder for mAsset |
 
 ### `TerraswapCreationHook`
@@ -276,7 +284,6 @@ Called after mAsset token contract is created in the [Whitelist](factory.md#whit
 
 {% tabs %}
 {% tab title="Rust" %}
-
 ```rust
 #[derive(Serialize, Deserialize, Clone, Debug, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
@@ -286,11 +293,9 @@ pub struct enum HandleMsg {
     }
 }
 ```
-
 {% endtab %}
 
 {% tab title="JSON" %}
-
 ```javascript
 {
   "terraswap_creation_hook": {
@@ -298,12 +303,11 @@ pub struct enum HandleMsg {
   }
 }
 ```
-
 {% endtab %}
 {% endtabs %}
 
-| Key           | Type      | Description                      |
-| :------------ | :-------- | :------------------------------- |
+| Key | Type | Description |
+| :--- | :--- | :--- |
 | `asset_token` | HumanAddr | Contract address of mAsset token |
 
 ### `PassCommand`
@@ -312,7 +316,6 @@ Calls the contract specified with the message to execute. Used for invoking func
 
 {% tabs %}
 {% tab title="Rust" %}
-
 ```rust
 #[derive(Serialize, Deserialize, Clone, Debug, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
@@ -323,11 +326,9 @@ pub enum HandleMsg {
     }
 }
 ```
-
 {% endtab %}
 
 {% tab title="JSON" %}
-
 ```javascript
 {
   "pass_command": {
@@ -336,42 +337,32 @@ pub enum HandleMsg {
   }
 }
 ```
-
 {% endtab %}
 {% endtabs %}
 
-| Key             | Type      | Description                          |
-| :-------------- | :-------- | :----------------------------------- |
+| Key | Type | Description |
+| :--- | :--- | :--- |
 | `contract_addr` | HumanAddr | Contract address of contract to call |
-| `msg`           | Binary    | Base64-encoded JSON of ExecuteMsg    |
+| `msg` | Binary | Base64-encoded JSON of ExecuteMsg |
 
-### `Mint`
+### `Distribute`
 
-Mints the appropriate amount of new MIR tokens as reward for LP stakers of the specified asset and sends the newly minted tokens to the Mirror Staking contract to be distributed to its stakers. Can be called by anyone at any time to trigger block reward distribution for LP stakers of any particular asset.
+Mints the appropriate amount of new MIR tokens as reward for LP stakers by sends the newly minted tokens to the Mirror Staking contract to be distributed to its stakers. Can be called by anyone at any time to trigger block reward distribution for LP stakers.
 
-The contract keeps track of the last height at which `Mint` was called for a specific asset, and uses it to calculate the amount of new assets to mint for the blocks occurred in the interval between invocations.
-
-```rust
-let minted = (current_height - last_updated_height) * mint_per_block * asset.weight / total_weight;
-```
+The contract keeps track of the last height at which `Distribute` was called for a specific asset, and uses it to calculate the amount of new assets to mint for the blocks occurred in the interval between.
 
 {% tabs %}
 {% tab title="Rust" %}
-
 ```rust
 #[derive(Serialize, Deserialize, Clone, Debug, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum HandleMsg {
-    Mint {
-        asset_token: HumanAddr,
-    }
+    Distribute {}
 }
 ```
-
 {% endtab %}
 
 {% tab title="JSON" %}
-
 ```javascript
 {
   "mint": {
@@ -379,36 +370,30 @@ pub enum HandleMsg {
   }
 }
 ```
-
 {% endtab %}
 {% endtabs %}
 
-| Key           | Type      | Description                     |
-| :------------ | :-------- | :------------------------------ |
-| `asset_token` | HumanAddr | Contract address of asset token |
-
 ### `MigrateAsset`
+
+Can be issued by the oracle feeder of an mAsset to trigger the [mAsset migration procedure](../protocol/mirrored-assets-massets.md#deprecation-and-migration).
 
 {% tabs %}
 {% tab title="Rust" %}
-
 ```rust
 #[derive(Serialize, Deserialize, Clone, Debug, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum HandleMsg {
     MigrateAsset {
         end_price: Decimal,
-        asset_token: HumanAddr,
-        name: string,
-        symbol: string,
+        from_token: HumanAddr,
+        name: String,
+        symbol: String,
     }
 }
 ```
-
 {% endtab %}
 
 {% tab title="JSON" %}
-
 ```javascript
 {
   "migrate_asset": {
@@ -419,16 +404,15 @@ pub enum HandleMsg {
   }
 }
 ```
-
 {% endtab %}
 {% endtabs %}
 
-| Key           | Type      | Description |
-| :------------ | :-------- | :---------- |
-| `end_price`   | Decimal   | TO BE ADDED |
-| `asset_token` | HumanAddr | TO BE ADDED |
-| `name`        | string    | TO BE ADDED |
-| `symbol`      | string    | TO BE ADDED |
+| Key | Type | Description |
+| :--- | :--- | :--- |
+| `end_price` | Decimal | Freezes the oracle price of mAsset at this value |
+| `from_token` | HumanAddr | Contract address of mAsset to migrate |
+| `name` | String | Name of the new asset post-migration |
+| `symbol` | String | Symbol for the new asset post-migration |
 
 ## QueryMsg
 
@@ -436,7 +420,6 @@ pub enum HandleMsg {
 
 {% tabs %}
 {% tab title="Rust" %}
-
 ```rust
 #[derive(Serialize, Deserialize, Clone, Debug, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
@@ -444,43 +427,35 @@ pub enum QueryMsg {
     Config {}
 }
 ```
-
 {% endtab %}
 
 {% tab title="JSON" %}
-
 ```javascript
 {
   "config": {}
 }
 ```
-
 {% endtab %}
 {% endtabs %}
 
 | Key | Type | Description |
-| :-- | :--- | :---------- |
+| :--- | :--- | :--- |
 
 
 ### `DistributionInfo`
 
 {% tabs %}
 {% tab title="Rust" %}
-
 ```rust
 #[derive(Serialize, Deserialize, Clone, Debug, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum QueryMsg {
-    DistributionInfo {
-        asset_token: HumanAddr,
-    }
+    DistributionInfo {}
 }
 ```
-
 {% endtab %}
 
 {% tab title="JSON" %}
-
 ```javascript
 {
   "distribution_info": {
@@ -488,10 +463,10 @@ pub enum QueryMsg {
   }
 }
 ```
-
 {% endtab %}
 {% endtabs %}
 
-| Key           | Type      | Description                     |
-| :------------ | :-------- | :------------------------------ |
+| Key | Type | Description |
+| :--- | :--- | :--- |
 | `asset_token` | HumanAddr | Contract address of asset token |
+

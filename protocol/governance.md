@@ -33,7 +33,7 @@ The following steps outlines the governance procedure:
 2. The poll enters the voting phase, where it can voted for by anybody with a staked MIR position. Users can vote `yes` or `no`, and can assign how many of their staked MIR to use for voting.
 3. The voting period ends after `voting_period` blocks have passed.
 4. The poll's votes are tallied and **passes** if both quorum \(minimum participation of all staked MIR\) and threshold \(minimum ratio of `yes` to `no` votes\) are met.
-5. If the poll passes, its contents will be executed after `effective_delay` blocks have ended.
+5. If the poll passes, its contents will be executed after `effective_delay` blocks have ended. The poll must be executed prior to `expiration_period,` otherwise it will automatically expire and no longer be considered valid.
 
 ## Community Pool
 

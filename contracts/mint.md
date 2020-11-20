@@ -11,14 +11,10 @@ The Mint Contract implements the logic for [Collateralized Debt Positions ](../p
 pub struct InitMsg {
     pub owner: HumanAddr,
     pub oracle: HumanAddr,
-    pub base_asset_info: AssetInfo,
+    pub collector: HumanAddr,
+    pub base_denom: String,
     pub token_code_id: u64,
-}
-
-#[serde(rename_all = "snake_case")]
-pub enum AssetInfo {
-    Token { contract_addr: HumanAddr },
-    NativeToken { denom: String },
+    pub protocol_fee_rate: Decimal,
 }
 ```
 {% endtab %}
@@ -43,10 +39,12 @@ pub enum AssetInfo {
 
 | Key | Type | Description |
 | :--- | :--- | :--- |
-| `owner` | HumanAddr | Account that is permitted to change contract config |
+| `owner` | HumanAddr | Owner of contract |
 | `oracle` | HumanAddr | Contract address of [Mirror Oracle](oracle.md) |
-| `base_asset_info` | AssetInfo | Asset used for denomination \(TerraUSD\) |
-| `token_code_id` | u64 | Code ID for asset token contract |
+| `collector` | HumanAddr | Contract address of [Mirror Collector](collector.md) |
+| `base_denom` | String | Native token denomination for stablecoin \(TerraUSD\) |
+| `token_code_id` | u64 | Code ID for Terraswap CW20 Token |
+| `protocol_fee_rate` | Decimal | Protocol fee |
 
 ## HandleMsg
 
@@ -102,7 +100,10 @@ Updates the configuration of the Mint contract. Can only be issued by the owner 
 pub enum HandleMsg {
     UpdateConfig {
         owner: Option<HumanAddr>,
+        oracle: Option<HumanAddr>,
+        collector: Option<HumanAddr>,
         token_code_id: Option<u64>,
+        protocol_fee_rate: Option<Decimal>,
     }
 }
 ```
@@ -122,8 +123,11 @@ pub enum HandleMsg {
 
 | Key | Type | Description |
 | :--- | :--- | :--- |
-| `owner`\* | HumanAddr | Address of new owner for mint contract |
-| `token_code_id`\* | u64 | Code ID of new token contract |
+| `owner`\* | HumanAddr | New owner |
+| `oracle`\* | u64 | New oracle contract address |
+| `collector`\* | HumanAddr | New collector contract address |
+| `token_code_id`\* | u64 | New token code ID |
+| `protocol_fee_rate`\* | Decimal | New protocol fee rate |
 
 \* = optional
 
@@ -239,8 +243,8 @@ pub enum HandleMsg {
 
 | Key | Type | Description |
 | :--- | :--- | :--- |
-| `asset_token` | HumanAddr | TO BE ADDED |
-| `end_price` | Decimal | TO BE ADDED |
+| `asset_token` | HumanAddr | Contract address of asset to be migrated |
+| `end_price` | Decimal | Final price to freeze old mAsset |
 
 ### `OpenPosition`
 
@@ -639,7 +643,7 @@ pub enum QueryMsg {
 #[serde(rename_all = "snake_case")]
 pub enum QueryMsg {
     AssetConfig {
-        asset_info: AssetInfo,
+        asset_token: HumanAddr,
     }
 }
 ```
@@ -662,7 +666,7 @@ pub enum QueryMsg {
 
 | Key | Type | Description |
 | :--- | :--- | :--- |
-| `asset_info` | AssetInfo | Asset to query |
+| `asset_token` | HumanAddr | Contract address of asset to query |
 
 ### `Position`
 
@@ -703,8 +707,9 @@ pub enum QueryMsg {
 #[serde(rename_all = "snake_case")]
 pub enum QueryMsg {
     Positions {
-        limit: Option<integer>,
-        owner_addr: HumanAddr,
+        limit: Option<u32>,
+        owner_addr: Option<HumanAddr>,
+        asset_token: Option<HumanAddr>,
         start_after: Option<Uint128>,
     }
 }
@@ -726,8 +731,9 @@ pub enum QueryMsg {
 
 | Key | Type | Description |
 | :--- | :--- | :--- |
-| `limit`\* | integer | Upper bound of number of entries to query |
-| `owner_addr` | HumanAddr | Owner of positions |
+| `limit`\* | u32 | Upper bound of number of entries to query |
+| `owner_addr*` | HumanAddr | Owner of positions |
+| `asset_token`\* | HumanAddr | Contract address of asset token |
 | `start_after`\* | Uint128 | Position index to start at |
 
 \* = optional

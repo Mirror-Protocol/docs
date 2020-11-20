@@ -1,4 +1,4 @@
-# \*\* Staking on Ethereum
+# Staking on Ethereum
 
 ### Mirror Protocol Asset support on Ethereum
 

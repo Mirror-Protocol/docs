@@ -8,7 +8,7 @@ The Gov Contract contains logic for holding polls and Mirror Token \(MIR\) staki
 
 New proposals for change are submitted as polls, and are voted on by MIR stakers through the [voting procedure](../protocol/governance.md). Polls can contain messages that can be executed directly without changing the Mirror Protocol code.
 
-The Gov Contract keeps a balance of MIR tokens, which it uses to reward stakers with funds it receives from trading fees sent by the [Mirror Collector](collector.md) and user deposits from creating new governance polls.
+The Gov Contract keeps a balance of MIR tokens, which it uses to reward stakers with funds it receives from trading fees sent by the [Mirror Collector](collector.md) and user deposits from creating new governance polls. This balance is separate from the [Community Pool](../protocol/governance.md#community-pool), which is held by the [Community](community.md) contract \(owned by the Gov contract\).
 
 ## Config
 
@@ -20,6 +20,7 @@ The Gov Contract keeps a balance of MIR tokens, which it uses to reward stakers 
 | `voting_period` | u64 | Number of blocks during which votes can be cast |
 | `proposal_deposit` | Uint128 | Minimum MIR deposit required for a new poll to be submitted |
 | `effective_delay` | u64 | Number of blocks after a poll passes to apply changes |
+| `expiration_period` | u64 | Number of blocks after a poll's voting period during which the poll can be executed. |
 
 ## InitMsg
 
@@ -119,6 +120,7 @@ pub enum HandleMsg {
         quorum: Option<Decimal>,
         threshold: Option<Decimal>,
         voting_period: Option<u64>,
+        expiration_period: Option<u64>,
     }
 }
 ```
@@ -148,6 +150,7 @@ pub enum HandleMsg {
 | `quorum`\* | Decimal | Percentage of participation \(of total staked MIR\) required for a poll to pass |
 | `threshold`\* | Decimal | Percentage of `yes` votes needed for a poll to pass |
 | `voting_period`\* | u64 | Number of blocks during which votes for a poll can be cast after it has finished its deposit |
+| `expiration_period`\* | u64 | Number of blocks after a poll's voting period during which the poll can be executed. |
 
 \* = optional
 
@@ -318,10 +321,6 @@ pub enum Cw20HookMsg {
 ```
 {% endtab %}
 {% endtabs %}
-
-| Key | Type | Description |
-| :--- | :--- | :--- |
-
 
 ### `CreatePoll`
 

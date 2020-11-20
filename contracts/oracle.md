@@ -14,14 +14,14 @@ Prices are only considered valid for 60 seconds. If no new prices are published 
 #[derive(Serialize, Deserialize, Clone, Debug, PartialEq, JsonSchema)]
 pub struct InitMsg {
     pub owner: HumanAddr,
-    pub base_asset_info: AssetInfo,
+    pub base_asset: String,
 }
 ```
 
 | Key | Type | Description |
 | :--- | :--- | :--- |
 | `owner` | HumanAddr | Address of the owner who can register new assets |
-| `base_asset_info` | AssetInfo | Asset in which prices will be denominated \(default TerraUSD\) |
+| `base_asset` | String | Asset in which prices will be denominated \(default TerraUSD\) |
 
 ## HandleMsg
 
@@ -133,6 +133,8 @@ pub enum HandleMsg {
 
 ### `Config`
 
+Get Mirror Oracle contract configuration
+
 {% tabs %}
 {% tab title="Rust" %}
 ```rust
@@ -157,7 +159,7 @@ pub enum QueryMsg {
 | :--- | :--- | :--- |
 
 
-### `Asset`
+### `Feeder`
 
 Get asset token details, such as designated oracle feeder.
 
@@ -167,7 +169,7 @@ Get asset token details, such as designated oracle feeder.
 #[derive(Serialize, Deserialize, Clone, Debug, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum QueryMsg {
-    Asset {
+    Feeder {
         asset_token: HumanAddr,
     }
 }
@@ -200,7 +202,8 @@ Get price information for the specified mAsset.
 #[serde(rename_all = "snake_case")]
 pub enum QueryMsg {
     Price {
-        asset_token: HumanAddr,
+        base_asset: String,
+        quote_asset: String
     }
 }
 ```
@@ -219,7 +222,8 @@ pub enum QueryMsg {
 
 | Key | Type | Description |
 | :--- | :--- | :--- |
-| `asset_token` | HumanAddr | Contract address of asset token to query |
+| `base_asset` | HumanAddr | Asset for which to get price |
+| `quote_asset` | HumanAddr / `'uusd'` | Asset in which price will be denominated |
 
 ### `Prices`
 
@@ -231,7 +235,10 @@ Get price information for all registered mAssets.
 #[derive(Serialize, Deserialize, Clone, Debug, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum QueryMsg {
-    Prices {}
+    Prices {
+        start_after: Option<HumanAddr>,
+        limit: Option<u32>
+    }
 }
 ```
 {% endtab %}
@@ -247,5 +254,6 @@ pub enum QueryMsg {
 
 | Key | Type | Description |
 | :--- | :--- | :--- |
-
+| `start_after`\* | HumanAddr | Contract address to start query from |
+| `limit` | u32 | Max number of results to report |
 

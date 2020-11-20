@@ -28,7 +28,7 @@
   * [Pool](user-guide/getting-started/pool.md)
   * [Stake](user-guide/getting-started/stake.md)
   * [Governance](user-guide/getting-started/governance.md)
-* [\*\* Staking on Ethereum](user-guide/meth-dual-yield.md)
+* [Staking on Ethereum](user-guide/meth-dual-yield.md)
 
 ---
 
@@ -38,7 +38,7 @@
 
 * [Collector](contracts/collector.md)
 * [Community](contracts/community.md)
-* [\*\*Factory](contracts/factory.md)
+* [Factory](contracts/factory.md)
 * [Gov](contracts/gov.md)
 * [Mint](contracts/mint.md)
 * [Oracle](contracts/oracle.md)
