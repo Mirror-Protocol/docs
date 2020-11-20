@@ -47,6 +47,7 @@ pub struct InitMsg {
   "threshold": "0.5",
   "voting_period": 8,
   "proposal_deposit": "1000000"
+  "effective_delay": 8
 }
 ```
 {% endtab %}
@@ -135,7 +136,8 @@ pub enum HandleMsg {
     "proposal_deposit": "10000000",
     "quorum": "123.456789",
     "threshold": "123.456789",
-    "voting_period": 8
+    "voting_period": 8,
+    "expiration_period": 8
   }
 }
 ```

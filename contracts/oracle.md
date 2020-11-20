@@ -133,7 +133,7 @@ pub enum HandleMsg {
 
 ### `Config`
 
-Get Mirror Oracle contract configuration
+Get the Mirror Oracle contract configuration.
 
 {% tabs %}
 {% tab title="Rust" %}
@@ -213,7 +213,8 @@ pub enum QueryMsg {
 ```javascript
 {
   "price": {
-    "asset_token": "terra1..."
+    "base_asset": "terra1...",
+    "quote_asset": "uusd"
   }
 }
 ```
@@ -246,7 +247,10 @@ pub enum QueryMsg {
 {% tab title="JSON" %}
 ```javascript
 {
-  "prices": {}
+  "prices": {
+    "start_after": "terra1...",
+    "limit": 8
+  }
 }
 ```
 {% endtab %}

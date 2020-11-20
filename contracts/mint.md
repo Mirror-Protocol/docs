@@ -24,14 +24,9 @@ pub struct InitMsg {
 {
   "owner": "terra1...",
   "oracle": "terra1...",
-  "base_asset_info": {
-    "asset": {
-      "native_token": {
-        "denom": "uusd"
-      }
-    }
-  },
+  "collector": "terra1...",
   "token_code_id": 8,
+  "protocol_fee_rate": "0.123",
 }
 ```
 {% endtab %}
@@ -114,7 +109,10 @@ pub enum HandleMsg {
 {
   "update_config": {
     "owner": "terra1...",
-    "token_code_id": 8
+    "oracle": "terra1...",
+    "collector": "terra1...",
+    "token_code_id": 8,
+    "protocol_fee_rate": "0.123",
   }
 }
 ```
