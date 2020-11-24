@@ -57,7 +57,7 @@ Inflation rate of MIR tokens are designed to gradually decrease every year, unti
 This section discusses staking rewards for MIR tokens, which come from trading fees used to buy back MIR from the market. Staking LP tokens also generates MIR rewards, which come directly from new MIR tokens created every block. Learn more about it [here](lp-token.md#from-staking).
 {% endhint %}
 
-### From Protocol Fee
+### From Protocol Fees
 
 MIR Token stakers receive MIR token rewards every block, which are generated from [protocol fees](mirrored-assets-massets.md#protocol-fee) from CDP withdrawals. The protocol fees are collected from CDP collateral and are sold for TerraUSD to buy MIR through Terraswap. The MIR tokens are then distributed as rewards to MIR stakers in proportion to the percentage of total stake. This process balances the generation of new MIR by creating buying pressure.
 
