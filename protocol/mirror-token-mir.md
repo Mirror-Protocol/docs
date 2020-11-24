@@ -21,7 +21,7 @@ There are planned to be a total of 370,580,000 MIR tokens to be distributed over
 | MIR LP staking | 0 | 20.5875 | 30.88125 | 36.028125 | 38.6015625 |
 | Community pool | 36.6 | 36.6 | 54.9 | 91.5 | 128.1 |
 | **Token supply** | **54.90** | **183.00** | **256.20** | **320.25** | **370.58** |
-| Annual inflation \(%\) | 0 | 233.33% | 40.00% | 25.00% | 15.71% |
+| Annual inflation \(%\) | - | 233.33% | 40.00% | 25.00% | 15.71% |
 
 #### **Genesis Token supply**
 
