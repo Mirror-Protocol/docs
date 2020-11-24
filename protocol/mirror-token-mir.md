@@ -10,7 +10,7 @@ MIR is also used to incentivize users to farm yields by staking LP tokens which 
 
 There are planned to be a total of 370,580,000 MIR tokens to be distributed over 4 years. Beyond that, there will be no more new MIR tokens introduced to the supply.
 
-### Distribution Schedule \(in millions\)
+### Cumulative Distribution Schedule \(in millions\)
 
 |  | Genesis | Y1 | Y2 | Y3 | Y4 |
 | :--- | :--- | :--- | :--- | :--- | :--- |
