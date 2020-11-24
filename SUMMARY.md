@@ -9,7 +9,7 @@
 
 * [Overview](protocol/synopsis.md)
 * [Mirrored Assets \(mAssets\)](protocol/mirrored-assets-massets.md)
-* [\*\*Mirror Token \(MIR\)](protocol/mirror-token-mir.md)
+* [Mirror Token \(MIR\)](protocol/mirror-token-mir.md)
 * [Terraswap](protocol/terraswap.md)
 * [LP Tokens](protocol/lp-token.md)
 * [Governance](protocol/governance.md)
@@ -22,7 +22,7 @@
 
 ## User Guide
 
-* [\*\*Web App](user-guide/getting-started/README.md)
+* [Web App](user-guide/getting-started/README.md)
   * [Trade](user-guide/getting-started/trade.md)
   * [Mint](user-guide/getting-started/mint-and-burn.md)
   * [Pool](user-guide/getting-started/pool.md)
