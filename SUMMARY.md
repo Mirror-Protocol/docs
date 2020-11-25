@@ -48,6 +48,6 @@
 ## External Resources
 
 * [Mirror Protocol GitHub](https://github.com/Mirror-Protocol)
-* [Terraswap App](https://terraswap.io)
+* [Terraswap App](https://app.terraswap.io)
 * [Terra Blockchain](https://terra.money)
 
