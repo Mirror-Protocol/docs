@@ -9,22 +9,24 @@ MIR tokens are distributed as reward for staked LP tokens, which are generated w
 In order to vote on governance polls, MIR must be staked to be used as voting power.
 
 1. Navigate to the [**Governance**](https://app-staging.mirrorprotocol.com/gov) page. The Governance page displays the following data:
-2. **Market information about MIR Staking**: Information about current staked MIR in the market, and staking ratio are displayed
-3. **MIR Staking Position:** MIR staking pool box displays expected APR \(annual percentage rate\) from staking MIR tokens, user's staked and unstaked MIR balances.
-4. **Poll History**: Each poll has a unique poll ID, poll type \(whitelist or parameter change\), poll result, voting ratio and end time.
-5. Click **`STAKE`**
+
+* **Market information about MIR Staking**: Information about current staked MIR in the market, and staking ratio are displayed
+* **MIR Staking Position:** MIR staking pool box displays expected APR \(annual percentage rate\) from staking MIR tokens, user's staked and unstaked MIR balances.
+* **Poll History**: Each poll has a unique poll ID, poll type \(whitelist or parameter change\), poll result, voting ratio and end time.
+
+2. Click **`STAKE`**
 
 ![](../../.gitbook/assets/image%20%2840%29.png)
 
-6. Select either **Stake** / **Unstake**
+3. Select either **Stake** / **Unstake**
 
 ![](../../.gitbook/assets/image%20%2838%29.png)
 
-7. Enter amount to Stake or Unstake
+4. Enter amount to Stake or Unstake
 
 ![](../../.gitbook/assets/image%20%2830%29.png)
 
-8. Click **`STAKE`** / **`UNSTAKE`**. _\*\*_Station Extension should prompt you to sign the transaction. Confirm the details presented and input your password to sign.
+5. Click **`STAKE`** / **`UNSTAKE`**. Station Extension should prompt you to sign the transaction. Confirm the details presented and input your password to sign.
 
 ![](../../.gitbook/assets/image%20%2867%29.png)
 
