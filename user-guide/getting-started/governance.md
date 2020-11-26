@@ -40,11 +40,15 @@ In order to vote on governance polls, MIR must be staked to be used as voting po
 
 ![](../../.gitbook/assets/image%20%2843%29.png)
 
-3. Select either **Whitelist** or **Parameter Change**
+3. Select one of the below:
+
+* **Whitelist:** Poll to list new mAsset on Mirror Protocol
+* **Parameter Change:** Poll to change parameter of a listed mAsset
+* **Community Pool:** Poll to request MIR funds from Community Pool
 
 ![](../../.gitbook/assets/image%20%2820%29.png)
 
-4. After entering desired values, click activated button to confirm. 
+4. After entering desired inputs, click activated button to confirm. 
 
 ![](../../.gitbook/assets/image%20%2839%29.png)
 
@@ -79,5 +83,5 @@ For every poll to be passed, they must meet the conditions below:
 * Voting quorum must be greater than or equal to 10% of the total staked MIR. Without meeting this condition, no matter how much portion of the voting power has been voted Yes, the poll is ineffective.
 * Over 50% of voting power which is dedicated to the poll must be **Yes**
 * Voting period \(number of blocks corresponding to 2 weeks\) has ended
-* After the voting period is over and the poll passes, it takes 7 days \(number of blocks corresponding to a week\) for the poll to become effective in the protocol 
+* After the voting period is over and the poll passes, it takes 7 days \(number of blocks corresponding to a week\) for the poll to become effective in the protocol.
 
