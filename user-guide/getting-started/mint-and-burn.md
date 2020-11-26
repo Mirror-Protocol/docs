@@ -2,7 +2,7 @@
 
 The **Mint** page allows you to mint new tokens of an mAsset by opening a [CDP](../../protocol/mirrored-assets-massets.md#collateralized-debt-position). After creating a position, you can manage it on the [My](https://app-staging.mirrorprotocol.com/my) page.
 
-When the user withdraws collateral either to manage position's collateral ratio or to close the position, a **Withdraw Fee** of 1.5% is charged to the amount being withdrawn.
+When the user withdraws collateral either to manage position's collateral ratio or to close the position, a [**Protocol Fee**](../../protocol/mirrored-assets-massets.md#protocol-fee) of 1.5% is charged to the amount being withdrawn.
 
 Please note that all asset values are calculated based on the reported price from the [oracle feeder ](../../protocol/mirrored-assets-massets.md#oracle-feeder)instead of the Terraswap price.
 
