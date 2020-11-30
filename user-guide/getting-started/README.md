@@ -47,7 +47,7 @@ Station Extension is a Chrome extension that lets you interact with smart contra
 
 ![](../../.gitbook/assets/image%20%2852%29.png)
 
-5. Confirm that your seed phrase by inputing the correct words.
+5. Confirm your seed phrase by inputting the correct words.
 
 ![](../../.gitbook/assets/image%20%2834%29.png)
 
