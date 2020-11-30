@@ -2,9 +2,9 @@
 
 ### Mirror Protocol Asset support on Ethereum
 
-MIR and mAssets pools also exist on [**Uniswap**](https://app.uniswap.org/#/swap) which runs on Ethereum. Assets from Mirror Protocol can be transferred to Ethereum chain, through a custom bridge named **Shuttle**. Shuttle provides cross-chain transfer between Terra and Ethereum, enabling Terra blockchain assets, including MIR, mAsset and UST, to be transferred to and traded on Uniswap.   
-  
-Assets transferred from Terra to Ethereum are “wrapped”, hence giving the assets names such as wUST \(wrapped UST\), or wmAsset \(wrapped mAsset\) as a result. **Wrapped** tokens are ERC-20 tokens backed 1:1 in value by its underlying asset, which in the case of mETH are Mirror Protocol assets such as MIR and mAssets. Any transfer of wrapped tokens from Ethereum to Terra will “unwrap” these tokens. This allows users to trade and provide liquidity for all types of Mirror Protocol assets on both Mirror and Uniswap. 
+MIR and mAssets pools also exist on [**Uniswap**](https://app.uniswap.org/#/swap) which runs on Ethereum. Assets from Mirror Protocol can be transferred to Ethereum chain, through a custom bridge named **Shuttle**. Shuttle provides cross-chain transfer between Terra and Ethereum, enabling Terra blockchain assets, including MIR, mAsset and UST, to be transferred to and traded on Uniswap. 
+
+Assets transferred from Terra to Ethereum are will have the same name and ticker, but these tokens will now be ERC-20 tokens, backed 1:1 in value by its underlying CW-20 assets such as MIR and mAssets.  This allows users to trade and provide liquidity for all types of Mirror Protocol assets on both Mirror Protocol and Uniswap, which runs on Ethereum. 
 
 ### mETH.mirror.finance
 
