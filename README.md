@@ -18,12 +18,12 @@ Mirror is a project developed and steered by its community: its markets are main
 
 * Read the [whitepaper](https://whitepaper.com)
 * Understand the [protocol](protocol/synopsis.md)
-* Read the[ core smart contracts](architecture.md)
+* Read the[ core smart contracts](contracts/architecture.md)
 
 ### For Developers
 
 * [Make a liquidation bot with Mirror.js](developer-tools/mirror.js.md)
-* [Read the core smart contracts](architecture.md)
+* [Read the core smart contracts](contracts/architecture.md)
 
 ## Community
 

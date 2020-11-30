@@ -2,7 +2,7 @@
 
 Governance is the democratized process through which proposals for change in Mirror Protocol are introduced and accepted by the community through voting.
 
-There are no admin keys with privileged access. After the initial bootstrapping of contracts, the [Gov contract](../contracts/gov.md) is set to be the owner of the [Mirror Protocol contracts](../architecture.md) and all changes must be made through the governance with the [procedure](governance.md#procedure) defined in this section.
+There are no admin keys with privileged access. After the initial bootstrapping of contracts, the [Gov contract](../contracts/gov.md) is set to be the owner of the [Mirror Protocol contracts](../contracts/architecture.md) and all changes must be made through the governance with the [procedure](governance.md#procedure) defined in this section.
 
 ## Mirror Token
 

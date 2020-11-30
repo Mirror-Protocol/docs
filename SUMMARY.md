@@ -31,12 +31,9 @@
 * [Staking on Ethereum](user-guide/meth-dual-yield/README.md)
   * [Staking Guide](user-guide/meth-dual-yield/staking_guide.md)
 
----
-
-* [Architecture](architecture.md)
-
 ## Smart Contracts <a id="contracts"></a>
 
+* [Architecture](contracts/architecture.md)
 * [Collector](contracts/collector.md)
 * [Community](contracts/community.md)
 * [Factory](contracts/factory.md)
