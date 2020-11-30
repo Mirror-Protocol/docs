@@ -1,4 +1,4 @@
-# Staking Guide
+# Stake
 
 {% hint style="info" %}
 This section covers staking LP tokens on mETH.mirror.finance. Staking guide for Mirror Web App is available [here](../getting-started/stake.md).
