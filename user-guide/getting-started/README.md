@@ -2,8 +2,6 @@
 
 **The Mirror Web App is the official web frontend for interacting with Mirror on the Terra network. It is located at** [**https://terra.mirror.finance**](https://terra.mirror.finance)**.**
 
-{% page-ref page="./" %}
-
 The Mirror Web App offers a graphical user interface for accessing Mirror's core user flows, such as mAsset trading, minting & burning through CDPs, liquidity provision, staking, and governance.
 
 {% hint style="warning" %}
