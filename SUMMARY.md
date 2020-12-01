@@ -23,6 +23,7 @@
 ## User Guide
 
 * [Web App](user-guide/getting-started/README.md)
+  * [Sending Tokens](user-guide/getting-started/sending-tokens.md)
   * [Trade](user-guide/getting-started/trade.md)
   * [Mint](user-guide/getting-started/mint-and-burn.md)
   * [Pool](user-guide/getting-started/pool.md)
