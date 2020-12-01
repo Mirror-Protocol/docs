@@ -1,20 +1,54 @@
-# Mirror CLI
+---
+description: Command-line interface for Mirror Protocol
+---
 
-{% hint style="danger" %}
-THIS SECTION IS UNDER CONSTRUCTION
+# mirrorcli
+
+{% hint style="info" %}
+This section provides a brief guide on how to use Mirror Protocol via `mirrorcli`. For more information, please check its source code and documentation on [GitHub](https://github.com/Mirror-Protocol/mirrorcli).
 {% endhint %}
 
-{% hint style="warning" %}
-Mirror CLI is built on top of `terracli` and can only use accounts available in its keystore. If you cannot run `terracli`, you can use the [CLI provided by Mirror.js](mirror.js.md#command-line-interface).
-{% endhint %}
+`mirrorcli` is a command-line interface for Mirror Protocol on Terra and allows more advanced users to perform operations directly from their shell or terminal without having to interact with a graphical interface. `mirrorcli` is built on top of `terracli` and allows you to use keys saved in its keychain.
 
-Mirror CLI is a command-line interface for Mirror protocol and allows more advanced users to perform operations directly from their shell or terminal without having to interact with a graphical interface. Mirror CLI is built on top of `terracli` and allows you to use keys saved in its keychain.
-
-## Getting Mirror CLI
+## Installation
 
 ### Requirements
 
-* Make sure your have `terracli` installed.
+* Make sure your have `terracli` installed. `terracli` is a binary that is shipped with [Terra Core](https://github.com/terra-project/core) and installed in your GOPATH.
+* Have Node.js v10+ installed with NPM
 
-&lt;TO BE ADDED&gt;
+You can install `mirrorcli` through NPM:
+
+```bash
+$ npm install -g mirrorcli
+```
+
+## Configuration
+
+On first launch, `mirrorcli` will generate `~/.mirrorclirc.json` in your `$HOME` directory.
+
+### Adding assets
+
+
+
+### Specifying the Network
+
+`mirrorcli` will work out-of-the-box with no configuration to access Mirror on `columbus-4`. However, you can edit the configuration to use a different network by changing the value of the `MIRRORCLI_NETWORK` environment variable.
+
+#### Example
+
+```
+MIRRORCLI_NETWORK=tequila-0004 mirrorcli x mint [deposit ...]
+```
+
+OR
+
+```bash
+export MIRRORCLI_NETWORK=tequila-0004
+mirrorcli x mint [deposit ...]
+```
+
+## Usage
+
+
 

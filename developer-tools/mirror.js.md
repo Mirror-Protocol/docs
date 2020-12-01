@@ -1,17 +1,19 @@
-# Mirror.js SDK
+# Mirror.js
 
-{% hint style="danger" %}
-THIS SECTION IS UNDER CONSTRUCTION
+{% hint style="info" %}
+This section provides a brief guide on how to get set up with Mirror.js. For more information, be sure to check out source code and documentation on [GitHub](https://github.com/Mirror-Protocol/mirror.js).
 {% endhint %}
 
 Mirror.js is a client SDK for building applications that can interact with Mirror Protocol from within JavaScript runtimes, such as web browsers, server backends, and on mobile through React Native.
 
 ## Getting Mirror.js
 
-Add the following dependency using your package manager:
+Mirror.js is available as a package on NPM.
+
+Add `@mirror-protocol/mirror.js` to your JavaScript project's `package.json` as a dependency using your preferred package manager:
 
 ```text
-yarn add @mirror.js/mirror
+$ npm install -S @mirror-protocol/mirror.js
 ```
 
 ## Broadcasting Transactions
@@ -48,8 +50,4 @@ const main = async () => {
 
 main().catch(console.error);
 ```
-
-## Command Line Interface
-
-&lt;TO BE ADDED&gt;
 

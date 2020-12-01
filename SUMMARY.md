@@ -1,7 +1,7 @@
 # Table of contents
 
 * [Home](README.md)
-* [Networks](networks.md)
+* [Interchain Access](networks.md)
 * [Security](security.md)
 * [FAQ](faq.md)
 
@@ -16,8 +16,8 @@
 
 ## Developers <a id="developer-tools"></a>
 
-* [Mirror CLI](developer-tools/mirror-cli.md)
-* [Mirror.js SDK](developer-tools/mirror.js.md)
+* [mirrorcli](developer-tools/mirror-cli.md)
+* [Mirror.js](developer-tools/mirror.js.md)
 * [Mirror API](developer-tools/mirror-api.md)
 
 ## User Guide
