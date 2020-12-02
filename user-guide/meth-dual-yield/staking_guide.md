@@ -34,11 +34,9 @@ Each staking position is unique to each type of LP tokens specified by the mAsse
 
 ## **Claim LP Staking Rewards**
 
-1 .  ****Navigate to Stake page
+1.  ****Navigate to [My Page](https://eth.mirror.finance/my)
 
-![](../../.gitbook/assets/image%20%281%29.png)
-
-2. Click `CLAIM ALL REWARDS` and confirm the amount
+2. Select ... on the right end 
 
 ![](../../.gitbook/assets/image%20%286%29.png)
 

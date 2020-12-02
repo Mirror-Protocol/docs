@@ -1,12 +1,12 @@
 # Sending Tokens
 
-Users can **Send** MIR, mAsset and UST tokens to a different wallet. Tokens can be transferred between Terra blockchain wallets and also to Ethereum wallets using a custom bridge which enables cross-chain transfers. 
+Users can send ****MIR, mAsset and UST tokens to a different wallet. Tokens can be transferred between Terra blockchain wallets and also to Ethereum wallets using a custom bridge which enables cross-chain transfers. 
 
 ## Send
 
 1. User can navigate to **Send** page by
 
-* Selecting `Send` from the action button provided by the Holdings list on **My Page**
+* Selecting `Send` from the action button provided by the Holdings list on [**My Page**](https://terra.mirror.finance/my)\*\*\*\*
 
 ![](../../.gitbook/assets/image%20%2886%29.png)
 
