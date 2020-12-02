@@ -102,5 +102,7 @@ mirrorcli x mint [deposit ...]
 
 ## Usage
 
+Usage information can be found on [GitHub](https://github.com/mirror-protocol/mirrorcli).
+
 
 

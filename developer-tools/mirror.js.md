@@ -30,10 +30,6 @@ Mirror.js provides facilities for 2 main use cases:
 * query: runs smart contract queries through LCD
 * execute: creates proper `MsgExecuteContract` objects to be used in transactions
 
-### Querying
-
-
-
 ### Executing
 
 Mirror.js is intended to be used in tandem with Terra.js to produce transactions.
