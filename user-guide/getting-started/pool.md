@@ -4,7 +4,7 @@ The **Pool** page displays operations related to liquidity provision for mAsset 
 
 ## Provide Liquidity
 
-1. Navigate to the [**Pool**](https://app-staging.mirrorprotocol.com/pool) page.
+1. Navigate to the [**Pool**](https://terra.mirror.finance/pool) page.
 
 ![](../../.gitbook/assets/image%20%2847%29.png)
 
@@ -22,7 +22,7 @@ The App will calculate the amount of UST you will need to deposit as well.
 
 ## Withdraw Liquidity
 
-1. Navigate to the [**Pool**](https://app-staging.mirrorprotocol.com/pool) page and select **Withdraw**
+1. Navigate to the [**Pool**](https://terra.mirror.finance/pool#withdraw) page and select **Withdraw**
 
 ![](../../.gitbook/assets/image%20%2853%29.png)
 
@@ -34,7 +34,7 @@ The App will calculate the amount of UST you will need to deposit as well.
 
 ![](../../.gitbook/assets/image%20%2829%29.png)
 
-4. Press **`Withdraw`**. _\*\*_Station Extension should prompt you to sign the transaction. Confirm the details presented and input your password to sign.
+4. Press **`Withdraw`**. Station Extension should prompt you to sign the transaction. Confirm the details presented and input your password to sign.
 
 ![](../../.gitbook/assets/image%20%2837%29.png)
 
