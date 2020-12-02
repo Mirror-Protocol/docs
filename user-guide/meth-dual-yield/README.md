@@ -25,7 +25,7 @@ Below are the key differences between Mirror Web App and mETH:
 | **Pool** | O | Uniswap |
 | **Stake** | O | O |
 | **Governance** | O | X |
-| **Staking Reward Token** | MIR | wMIR |
+| **Staking Reward Token** | MIR | MIR \(ERC-20\) |
 | **Tx fee token** | UST | ETH |
 
 mETH only provides interface for [**My Page**](https://app-staging.mirror.finance/my), where the user can view their asset holdings and staking positions, and [**Stake**](https://app-staging.mirror.finance/stake) page to earn MIR reward by staking LP tokens. From My Page of mETH, user can send their ERC-20 Mirror tokens to other Ethereum addresses or to Terra addresses. Tokens transferred from mETH to Terra can be used on Mirror Web App.   
