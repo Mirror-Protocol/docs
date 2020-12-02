@@ -6,19 +6,37 @@ This section provides a brief guide on how to get set up with Mirror.js. For mor
 
 Mirror.js is a client SDK for building applications that can interact with Mirror Protocol from within JavaScript runtimes, such as web browsers, server backends, and on mobile through React Native.
 
+You can find a reference of the Mirror.js API [here](https://mirror-protocol.github.io/mirror.js/).
+
 ## Getting Mirror.js
 
-Mirror.js is available as a package on NPM.
+Mirror.js is available as a package on [NPM](https://www.npmjs.com/package/@mirror-project/mirror.js) and is intended to be used alongside [Terra.js](https://www.npmjs.com/package/@terra-money/terra.js). 
 
-Add `@mirror-protocol/mirror.js` to your JavaScript project's `package.json` as a dependency using your preferred package manager:
+Add both:
+
+* `@terra-money/terra.js`
+* `@mirror-protocol/mirror.js`
+
+To your JavaScript project's `package.json` as dependencies using your preferred package manager:
 
 ```text
-$ npm install -S @mirror-protocol/mirror.js
+$ npm install -S @terra-money/terra.js @mirror-protocol/mirror.js
 ```
 
-## Broadcasting Transactions
+## Usage
 
-Mirror.js is intended to be used in tandem with Terra.js to product and sign transactions.
+Mirror.js provides facilities for 2 main use cases:
+
+* query: runs smart contract queries through LCD
+* execute: creates proper `MsgExecuteContract` objects to be used in transactions
+
+### Querying
+
+
+
+### Executing
+
+Mirror.js is intended to be used in tandem with Terra.js to produce transactions.
 
 ```typescript
 import { Mirror } from '@mirror.js/mirror';

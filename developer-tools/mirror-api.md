@@ -67,85 +67,8 @@ https://tequila-graph.mirror.finance/graphql
           "price":"1766.556244"
         }
       },
-      {
-        "symbol":"mTSLA",
-        "name":"Tesla",
-        "prices":{
-          "price":"589.509999"
-        }
-      },
-      {
-        "symbol":"mNFLX",
-        "name":"Netflix",
-        "prices":{
-          "price":"491.360000"
-        }
-      },
-      {
-        "symbol":"mQQQ",
-        "name":"Invesco QQQ Trust",
-        "prices":{
-          "price":"301.690000"
-        }
-      },
-      {
-        "symbol":"mTWTR",
-        "name":"Twitter",
-        "prices":{
-          "price":"46.849999"
-        }
-      },
-      {
-        "symbol":"mMSFT",
-        "name":"Microsoft Corporation",
-        "prices":{
-          "price":"214.610000"
-        }
-      },
-      {
-        "symbol":"mAMZN",
-        "name":"Amazon.com",
-        "prices":{
-          "price":"3190.000000"
-        }
-      },
-      {
-        "symbol":"mBABA",
-        "name":"Alibaba Group Holdings Ltd ADR",
-        "prices":{
-          "price":"265.489999"
-        }
-      },
-      {
-        "symbol":"mIAU",
-        "name":"iShares Gold Trust",
-        "prices":{
-          "price":"17.119999"
-        }
-      },
-      {
-        "symbol":"mSLV",
-        "name":"iShares Silver Trust",
-        "prices":{
-          "price":"21.519999"
-        }
-      },
-      {
-        "symbol":"mUSO",
-        "name":"United States Oil Fund, LP",
-        "prices":{
-          "price":"31.050000"
-        }
-      },
-      {
-        "symbol":"mVIXY",
-        "name":"ProShares VIX",
-        "prices":{
-          "price":"14.049999"
-        }
-      }
+      ...
     ]
-  }
 }
 ```
 

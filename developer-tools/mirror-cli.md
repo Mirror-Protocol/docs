@@ -27,9 +27,9 @@ $ npm install -g mirrorcli
 
 On first launch, `mirrorcli` will generate `~/.mirrorclirc.json` in your `$HOME` directory.
 
-### Adding assets
+### Specifying assets
 
-
+`mirrorcli` will
 
 ### Specifying the Network
 
