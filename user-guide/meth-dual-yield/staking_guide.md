@@ -36,9 +36,15 @@ Each staking position is unique to each type of LP tokens specified by the mAsse
 
 1.  ****Navigate to [My Page](https://eth.mirror.finance/my)
 
-2. Select ... on the right end 
+2. In the Stake section, select "`...`" under Actions and select `Claim`.
 
-![](../../.gitbook/assets/image%20%286%29.png)
+![](../../.gitbook/assets/image%20%2895%29.png)
 
-3. Click `CLAIM`. Metamask should pop-up and ask you to approve and sign the transaction. Select `Allow` to sign.
+3. User will be directed to a new page to confirm the amount being claimed.
+
+![](../../.gitbook/assets/image%20%2893%29.png)
+
+4. Select `CLAIM`. Metamask will prompt you to confirm and sign the transaction. 
+
+![](../../.gitbook/assets/image%20%2894%29.png)
 
