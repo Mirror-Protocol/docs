@@ -16,7 +16,7 @@ Mirror is a project developed and steered by its community: its markets are main
 
 ## Learn More
 
-* Read the [whitepaper](https://whitepaper.com)
+* Read the [whitepaper](https://docsend.com/view/kcsm42mqiyu5t6ej)
 * Understand the [protocol](protocol/synopsis.md)
 * Read the[ core smart contracts](contracts/architecture.md)
 
