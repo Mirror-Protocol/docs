@@ -10,7 +10,7 @@ Each staking position is unique to each type of LP tokens specified by the mAsse
 
 ## Stake / Unstake LP Tokens
 
-1. Navigate to the [**Stake**](https://app-staging.mirrorprotocol.com/stake) page. The Stake page shows the following data:
+1. Navigate to the [**Stake**](https://terra.mirror.finance/stake) page. The Stake page shows the following data:
 
 * **Market information about MIR tokens:** The top of the page displays information about current MIR supply, trading volume \(24hours\) denominated in UST, total number of MIR tokens staked, and current price of MIR token denominated in UST.
 * **Staking Positions**: Each box below the search bar displays staking pools where users can stake their LP tokens. Each pool is identifiable based on its Mirrored Asset and associated LP token. That is why each pool shows a different expected APR \(annual percentage rate\) and total staked LP tokens.
@@ -30,7 +30,7 @@ Each staking position is unique to each type of LP tokens specified by the mAsse
 
 ![](../../.gitbook/assets/image%20%2823%29.png)
 
-5. Enter amount _\*\*_to Stake / Unstake. 
+5. Enter amount to Stake / Unstake. 
 
 ![](../../.gitbook/assets/image%20%2842%29.png)
 
@@ -40,7 +40,7 @@ Each staking position is unique to each type of LP tokens specified by the mAsse
 
 ## Claim LP Staking Rewards
 
-1. Navigate to the [**Stake**](https://app-staging.mirrorprotocol.com/stake) page
+1. Navigate to the [**Stake**](https://terra.mirror.finance/stake) page
 
 ![](../../.gitbook/assets/image%20%2866%29.png)
 
