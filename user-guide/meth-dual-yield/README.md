@@ -1,6 +1,6 @@
-# Staking on Ethereum
+# Mirror on Ethereum
 
-### Mirror Protocol Asset support on Ethereum
+### Mirror Protocol Asset Support on Ethereum
 
 MIR and mAssets pools also exist on [**Uniswap**](https://app.uniswap.org/#/swap) which runs on Ethereum. Assets from Mirror Protocol can be transferred to Ethereum chain, through a custom bridge named [**Shuttle**](https://github.com/terra-project/shuttle). Shuttle provides cross-chain transfer between Terra and Ethereum, enabling Terra blockchain assets, including MIR, mAsset and UST, to be transferred to and traded on Uniswap. 
 
@@ -16,10 +16,11 @@ Assets transferred from Terra to Ethereum are will have the same name and ticker
 
 Below are the key differences between Mirror Web App and mETH:  
 
-| Features | **Mirror Web App** | **mETH** |
+| Features | **Mirror \(Terra\)** | **mETH \(Ethereum\)** |
 | :--- | :--- | :--- |
 | **Wallet used to sign Tx** | \*\*\*\*[Station Extension](../getting-started/#terra-station-extension) | [Metamask](https://metamask.io/) |
 | **Asset type** | CW-20 | ERC-20 |
+| **Average Block Time** | 6 seconds | 15 seconds |
 | **Trade** | O | Uniswap |
 | **Mint** | O | X |
 | **Pool** | O | Uniswap |

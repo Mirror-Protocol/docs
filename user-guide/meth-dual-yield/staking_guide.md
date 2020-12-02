@@ -1,19 +1,17 @@
 # Stake
 
 {% hint style="info" %}
-This section covers staking LP tokens on mETH.mirror.finance. Staking guide for Mirror Web App is available [here](../getting-started/stake.md).
+This section covers staking LP tokens on [mETH](https://eth.mirror.finance).   
+Staking guide for Mirror Web App is available [here](../getting-started/stake.md).
 {% endhint %}
 
-Users who hold mAsset / MIR-UST LP tokens from providing liquidity on Uniswap may stake them to earn MIR reward. 
+Users can stake mAsset-UST LP or MIR-UST LP tokens to earn MIR reward. 
 
-Each staking position is unique to each type of LP tokens specified by the mAsset-UST pair. Also, due to different `weight` and pool price of each mAsset, each farming position has a different Annual Percentage Rate \(APR\), which represents the yearly wMIR reward from staking LP tokens.
+Each staking position is unique to each type of LP tokens specified by the mAsset-UST pair. Also, due to different `weight` and pool price of each mAsset, each farming position has a different Annual Percentage Rate \(APR\), which represents the yearly MIR reward from staking LP tokens.
 
 ## Stake / Unstake LP Tokens
 
-1. Navigate to Stake page. The Stake page shows the following data:
-
-* **Market information about MIR tokens:** Information about MIR price, 24 hour trading volume and supply are provided. 
-* **Staking Positions**: Each LP staking pool is displayed in boxes below the market information. Each pool is identifiable based on the name of the associated mAsset. 
+1. Navigate to the [main page](https://eth.mirror.finance) of mETH.
 
 ![](../../.gitbook/assets/image%20%2810%29.png)
 
