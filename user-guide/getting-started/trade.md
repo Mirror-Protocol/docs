@@ -4,7 +4,7 @@ The **Trade** page provides an interface for buying and selling mAsset / MIR tok
 
 ## Buy/Sell
 
-1 . Navigate to the [Trade](https://app-staging.mirrorprotocol.com/trade) page. Select whether to **Buy** or **Sell**.
+1 . Navigate to the [Trade](https://terra.mirror.finance/trade) page. Select whether to **Buy** or **Sell**.
 
 ![](../../.gitbook/assets/image%20%2813%29.png)
 
