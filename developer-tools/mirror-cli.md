@@ -25,15 +25,67 @@ $ npm install -g mirrorcli
 
 ## Configuration
 
-On first launch, `mirrorcli` will generate `~/.mirrorclirc.json` in your `$HOME` directory.
+On first launch, `mirrorcli` will generate a `~/.mirrorclirc.json` in your `$HOME` directory, which will be used in subsequent sessions to specify settings such as LCD provider, gas prices for fee estimation, as well as contract addresses. It will come pre-configured with the official contracts for the mainnet version of Mirror on its `columbus-4` setting.
 
-### Specifying assets
+The following instructions show you how to modify settings using the `tequila-0004` network by default:
 
-`mirrorcli` will
+### Specifying LCD settings
+
+Each network config should define how to connect to the Terra blockchain via LCD parameters.
+
+```javascript
+{
+  "networks": {
+    "tequila-0004": {
+      "lcd": {
+        "chainId": "tequila-0004",
+        "url": "https://tequila-lcd.terra.dev",
+        "gasPrices": {
+          "uluna": 0.15,
+          "usdr": 0.1018,
+          "uusd": 0.15,
+          "ukrw": 178.05,
+          "umnt": 431.6259
+        },
+        "gasAdjustment": 1.2
+      },
+      ...
+    }
+  }
+}
+```
+
+### Specifying Contracts
+
+Each network configuration should point to the correct Mirror core contract addresses.
+
+```javascript
+{
+  "networks": {
+    "tequila-0004": {
+      ...
+      "contracts": {
+        "collector": "terra1v046ktavwzlyct5gh8ls767fh7hc4gxc95grxy",
+        "community": "terra10qm80sfht0zhh3gaeej7sd4f92tswc44fn000q",
+        "factory": "terra10l9xc9eyrpxd5tqjgy6uxrw7dd9cv897cw8wdr",
+        "gov": "terra12r5ghc6ppewcdcs3hkewrz24ey6xl7mmpk478s",
+        "mint": "terra1s9ehcjv0dqj2gsl72xrpp0ga5fql7fj7y3kq3w",
+        "oracle": "terra1uvxhec74deupp47enh7z5pk55f3cvcz8nj4ww9",
+        "staking": "terra1a06dgl27rhujjphsn4drl242ufws267qxypptx",
+        "terraswap": "terra18qpjm4zkvqnpjpw0zn0tdr8gdzvt8au35v45xf"
+      },
+    ...
+    }
+  }
+```
+
+### Specifying the Assets
+
+`mirrorcli` takes in the assets defined th
 
 ### Specifying the Network
 
-`mirrorcli` will work out-of-the-box with no configuration to access Mirror on `columbus-4`. However, you can edit the configuration to use a different network by changing the value of the `MIRRORCLI_NETWORK` environment variable.
+By default, `mirrorcli` will use the network setting for `columbus-4` configured in `~/.mirrorclirc.json`. You can direct `mirrorcli` to use a different network configuration by changing the value of the `MIRRORCLI_NETWORK` environment variable.
 
 #### Example
 

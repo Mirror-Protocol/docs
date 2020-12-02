@@ -40,7 +40,7 @@ Network chain ID: `tequila-0004`
 
 ## Ethereum
 
-Mirror on Ethereum is available via a bridge
+Mirror on Ethereum is available via a bridge called [Shuttle](https://github.com/terra-project/shuttle), which facilitates cross-chain transfers of assets between Terra and Ethereum networks \(mainnets and testnets supported\).
 
 ### Mainnet
 
