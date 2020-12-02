@@ -8,7 +8,7 @@ MIR tokens are distributed as reward for staked LP tokens, which are generated w
 
 In order to vote on governance polls, MIR must be staked to be used as voting power.
 
-1. Navigate to the [**Governance**](https://app-staging.mirrorprotocol.com/gov) page. The Governance page displays the following data:
+1. Navigate to the [**Governance**](https://terra.mirror.finance/gov) page. The Governance page displays the following data:
 
 * **Market information about MIR Staking**: Information about current staked MIR in the market, and staking ratio are displayed
 * **MIR Staking Position:** MIR staking pool box displays expected APR \(annual percentage rate\) from staking MIR tokens, user's staked and unstaked MIR balances.
@@ -32,7 +32,7 @@ In order to vote on governance polls, MIR must be staked to be used as voting po
 
 ## Create Poll
 
-1. Navigate to the [**Governance**](https://app-staging.mirrorprotocol.com/gov) page
+1. Navigate to the [**Governance**](https://terra.mirror.finance/gov) page
 
 ![](../../.gitbook/assets/image%20%2851%29.png)
 
@@ -58,7 +58,7 @@ In order to vote on governance polls, MIR must be staked to be used as voting po
 
 ## Vote on Poll
 
-1. Navigate to the [**Governance**](https://app-staging.mirrorprotocol.com/gov) page
+1. Navigate to the [**Governance**](https://terra.mirror.finance/gov) page
 
 ![](../../.gitbook/assets/image%20%2854%29.png)
 
