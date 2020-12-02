@@ -11,7 +11,8 @@ Assets transferred from Terra to Ethereum are will have the same name and ticker
 \*\*\*\*[**ETH.mirror.finance**](https://eth.mirror.finance/) **or mETH** is a web interface which supports staking of LP tokens generated from liquidity provision of Mirror Protocol assets on Ethereum-side. It resembles the interface of Mirror Web Application but only supports staking and viewing of assets and positions. All trading and liquidity provision transactions for MIR and mAssets can be executed on Uniswap. Similar to Mirror Web App, MIR tokens are distributed to mETH users as staking reward once everyday. 
 
 {% hint style="warning" %}
-[Metamask](https://metamask.io) is required for signing transactions on mETH. 
+[Metamask](https://metamask.io) is required for signing transactions on mETH.   
+User must hold ETH in order to pay transaction fees for mETH.
 {% endhint %}
 
 Below are the key differences between Mirror Web App and mETH:  
@@ -29,9 +30,15 @@ Below are the key differences between Mirror Web App and mETH:
 | **Staking Reward Token** | MIR | MIR \(ERC-20\) |
 | **Tx fee token** | UST | ETH |
 
-mETH only provides interface for [**My Page**](https://app-staging.mirror.finance/my), where the user can view their asset holdings and staking positions, and [**Stake**](https://app-staging.mirror.finance/stake) page to earn MIR reward by staking LP tokens. From My Page of mETH, user can send their ERC-20 Mirror tokens to other Ethereum addresses or to Terra addresses. Tokens transferred from mETH to Terra can be used on Mirror Web App.   
-  
-To learn how to trade or get LP tokens to use on mETH, please refer to [Uniswap docs](https://uniswap.org/docs/v2/).   
-  
+mETH only provides interface for [**My Page**](https://app-staging.mirror.finance/my), where the user can view their asset holdings and staking positions, and [**Stake**](https://app-staging.mirror.finance/stake) page to earn MIR reward by staking LP tokens. 
 
+### Sending Tokens to Terra / Ethereum Address
+
+From My Page of mETH, user can navigate to Send page and transfer ERC-20 Mirror tokens to other Ethereum or Terra addresses. Tokens transferred from mETH to Terra are converted back to CW-20 and  be used on Mirror Web App. 
+
+![](../../.gitbook/assets/image%20%2892%29.png)
+
+Once the user enters the recipient's address, the app will automatically determine which network this address belongs. Once, the user selects `SEND` and confirms on Metamask, the transaction will be submitted to the network for confirmation.   
+  
+To learn how to buy or get LP tokens to use on mETH, please refer to [Uniswap docs](https://uniswap.org/docs/v2/). 
 
