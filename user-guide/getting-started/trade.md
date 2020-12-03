@@ -1,6 +1,10 @@
 # Trade
 
-The **Trade** page provides an interface for buying and selling mAsset / MIR tokens against UST. Trades are made against the asset's Terraswap pool and are priced algorithmically by its [automated market making algorithm](../../protocol/terraswap.md#pricing).
+The **Trade** page provides an interface for buying and selling mAsset / MIR tokens against UST. Trades are made against the asset's Terraswap pool and are priced algorithmically by its [automated market making algorithm](../../protocol/terraswap.md#pricing). 
+
+{% hint style="info" %}
+The Trade interface is directly connected to [Terraswap](https://terraswap.io/).
+{% endhint %}
 
 ## Buy/Sell
 

@@ -2,6 +2,10 @@
 
 The **Pool** page displays operations related to liquidity provision for mAsset and MIR markets. In order to provide liquidity for Mirror assets, you need to supply equal value of the asset and UST. After depositing your assets into the pool, you receive [LP tokens](../../protocol/lp-token.md) which will allow you to reclaim your share of the pool. For more information about Terraswap pools, [click here](../../protocol/terraswap.md).
 
+{% hint style="info" %}
+The Pool interface is directly connected to [Terraswap](https://terraswap.io/).
+{% endhint %}
+
 ## Provide Liquidity
 
 1. Navigate to the [**Pool**](https://terra.mirror.finance/pool) page.
