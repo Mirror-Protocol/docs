@@ -1,0 +1,7 @@
+{
+  "plugins": ["gtag"],
+  "pluginsConfig": {
+    "gtag": {
+      "token": "G-1D642JE1R2"
+    }
+}
