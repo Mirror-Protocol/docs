@@ -30,6 +30,7 @@
   * [Stake](user-guide/getting-started/stake.md)
   * [Governance](user-guide/getting-started/governance.md)
 * [Mirror on Ethereum](user-guide/meth-dual-yield/README.md)
+  * [Trade](user-guide/meth-dual-yield/trade.md)
   * [Stake](user-guide/meth-dual-yield/staking_guide.md)
 
 ## Smart Contracts <a id="contracts"></a>
