@@ -20,7 +20,9 @@ The Trade interface is directly connected to [Terraswap](../../protocol/terraswa
 
 ![](../../.gitbook/assets/image%20%287%29.png)
 
-_The amount shown on the page is an estimate based on the observed pool ratio at time of order. You may actually receive a different amount of tokens due to changes in pool ratio between signing and broadcasting the transaction._
+{% hint style="warning" %}
+The amount shown on the page is an estimate based on the observed pool ratio at time of order. You may actually receive a different amount of tokens due to changes in pool ratio between signing and broadcasting the transaction.
+{% endhint %}
 
 4. Station Extension should prompt you to sign the transaction. Confirm the details presented and input your password to sign.
 

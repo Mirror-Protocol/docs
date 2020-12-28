@@ -1,7 +1,3 @@
----
-description: 'TODO: Band Protocol information'
----
-
 # Oracle
 
 The Oracle Contract exposes an interface for accessing the latest reported price for mAssets. Price quotes are kept up-to-date by oracle feeders that are tasked with periodically fetching exchange rates from reputable sources and reporting them to the Oracle contract.

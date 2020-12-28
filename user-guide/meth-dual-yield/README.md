@@ -34,7 +34,11 @@ mETH only provides interfaces for the [My Page](https://eth.mirror.finance/my) t
 
 ### Sending Tokens between Terra / Ethereum Addresses
 
-From My Page of mETH, user can navigate to Send page and transfer ERC-20 Mirror tokens to other Ethereum or Terra addresses. Tokens transferred from mETH to Terra are converted back to CW-20 and  can be used on Mirror Web App. 
+From My Page of mETH, user can navigate to Send page and transfer ERC-20 Mirror tokens to other Ethereum or Terra addresses. 
+
+![](../../.gitbook/assets/image%20%28103%29.png)
+
+Tokens transferred from mETH to Terra are converted back to CW-20 and can be used on Mirror Web App. 
 
 ![](../../.gitbook/assets/image%20%2892%29.png)
 

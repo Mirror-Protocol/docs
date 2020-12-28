@@ -79,10 +79,6 @@ Each network configuration should point to the correct Mirror core contract addr
   }
 ```
 
-### Specifying the Assets
-
-`mirrorcli` takes in the assets defined th
-
 ### Specifying the Network
 
 By default, `mirrorcli` will use the network setting for `columbus-4` configured in `~/.mirrorclirc.json`. You can direct `mirrorcli` to use a different network configuration by changing the value of the `MIRRORCLI_NETWORK` environment variable.

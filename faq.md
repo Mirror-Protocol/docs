@@ -22,20 +22,19 @@ Corporate actions are handled through an asset migration process discussed [here
 
 There is a fixed fee called the LP commission is 0.30% which serves as a reward for liquidity providers for Mirror-related pools on Terraswap. More detailed information can be found [here](protocol/terraswap.md#trading-fees).
 
-
 ### 6. What does it mean to mint an mAsset?
 
 All mAssets that are purchased or sold on Mirror were, at one point, minted. Minting is the process of providing collateral to issue a “synthetic” mAsset.
 
 Price oracles play an important role in the minting process and are used for two key functions: First, they help determine the amount of collateral required for minting an mAsset. Second, they help determine whether sufficient collateral is backing existing mAssets.
 
-In the below example (Figure 1), assume that a minter provided $150 worth of stablecoin to issue an mAsset worth $90 and that the minimum collateral ratio (MCR) is 150%. If at time T=2, the asset’s value increases to $101, then the collateral ratio would be 149% ($101/$150) and would fall below the MCR. 
+In the below example \(Figure 1\), assume that a minter provided $150 worth of stablecoin to issue an mAsset worth $90 and that the minimum collateral ratio \(MCR\) is 150%. If at time T=2, the asset’s value increases to $101, then the collateral ratio would be 149% \($101/$150\) and would fall below the MCR.
 
 When this happens, the Mirror protocol will seize a portion of the collateral and initiate an auction for anyone willing to sell the mAsset in exchange. To incentivize this liquidation, the Mirror protocol allows anyone to purchase this seized collateral at a discount until the collateral ratio reaches the MCR again. In the example, using the collateral supplied at T=0, users will be able to send mAsset tokens in exchange for discounted collateral until the collateral ratio reaches 150% again at T=2.01. If, for instance, the asset price increases again at T=3, then the process repeats itself until the collateral ratio reaches 150%.
 
-<img src="images/faq_minting_example.png" alt="minting_example" width="600" />
+![minting\_example](.gitbook/assets/faq_minting_example.png)
 
-_Figure 1: When the minted asset’s price rises and the collateral ratio falls below the minimum collateral ratio, the protocol will sell collateral to buy back shares of the minted asset to burn. ([Link to calculations](https://docs.google.com/spreadsheets/d/1RUlBliHX-AnigSieF4jC15xhG_gGSnfTNz7g4mkHV7w/edit#gid=0))_
+_Figure 1: When the minted asset’s price rises and the collateral ratio falls below the minimum collateral ratio, the protocol will sell collateral to buy back shares of the minted asset to burn. \(_[_Link to calculations_](https://docs.google.com/spreadsheets/d/1RUlBliHX-AnigSieF4jC15xhG_gGSnfTNz7g4mkHV7w/edit#gid=0)_\)_
 
 ### 7. What hours can I trade and mint mAssets?
 
@@ -44,19 +43,20 @@ mAsset liquidity is provided directly through the Terraswap liquidity pools, and
 Unlike trading, the oracle feeder is used to price the value of mAsset for minting. The oracle feeder stops operating when real-world market hours are closed, so minting transactions on Mirror Protocol will fail.
 
 ### 8. How do mAssets keep their peg to real assets?
+
 mAssets are soft pegged to the oracle price, which means that the Mirror protocol does not directly rely on price oracles to determine the trading prices of mAssets. Instead, Mirror relies on a combination of the minting liquidation process, arbitrageurs, and governance changes to keep mAsset prices close to oracle prices.
 
 #### Minting Liquidation
-As the price of an asset XXX rises on the NASDAQ, minted mXXX may fall below the minimum collateral ratio (MCR) and trigger a liquidation event. When that happens, the Mirror protocol will automatically sell collateral to buy mXXX until the collateral ratio reaches the MCR again. This buying pressure created for mXXX will drive prices higher and will help the price of mXXX converge with the price on the NASDAQ.
+
+As the price of an asset XXX rises on the NASDAQ, minted mXXX may fall below the minimum collateral ratio \(MCR\) and trigger a liquidation event. When that happens, the Mirror protocol will automatically sell collateral to buy mXXX until the collateral ratio reaches the MCR again. This buying pressure created for mXXX will drive prices higher and will help the price of mXXX converge with the price on the NASDAQ.
 
 #### Arbitrageurs
-If the price of XXX on the NASDAQ were $1000, but the price of mXXX on Mirror were $900, an arbitrageur would buy the asset with the assumption that in the near future, with enough buying pressure, the mXXX price would eventually converge to the NASDAQ price of $1000. At that point, the arbitrageur would then sell mXXX at $1000, taking a profit of $100 per share.
-Similarly, if the price of XXX on the NASDAQ were $1000, but the price of mXXX on Mirror were $1100, an arbitrageur would provide collateral, mint the mXXX asset, and sell it at $1100 with the assumption that in the near future, with enough selling pressure, the mXXX price would eventually converge to the NASDAQ price of $1000. At that point, the arbitrageur would then repurchase mXXX at $1000 and then burn it to regain their collateral, taking a profit of $100 per share.
+
+If the price of XXX on the NASDAQ were $1000, but the price of mXXX on Mirror were $900, an arbitrageur would buy the asset with the assumption that in the near future, with enough buying pressure, the mXXX price would eventually converge to the NASDAQ price of $1000. At that point, the arbitrageur would then sell mXXX at $1000, taking a profit of $100 per share. Similarly, if the price of XXX on the NASDAQ were $1000, but the price of mXXX on Mirror were $1100, an arbitrageur would provide collateral, mint the mXXX asset, and sell it at $1100 with the assumption that in the near future, with enough selling pressure, the mXXX price would eventually converge to the NASDAQ price of $1000. At that point, the arbitrageur would then repurchase mXXX at $1000 and then burn it to regain their collateral, taking a profit of $100 per share.
 
 #### Governance
-Without the trust that mAssets should be pegged to oracle prices, mAsset prices could theoretically diverge from oracle prices. Unlike minting liquidation which can create buying pressure to drive prices upwards, the Mirror protocol can only drive downward pressure to the minimum collateral price of an mAsset. For instance, if the MCR of an asset is 150% and the oracle price of XXX is $100, then the price of an mXXX could, in theory, reach $150. However, once the price of mXXX is greater than $150, then arbitrageurs can simply mint mXXX with $150 worth of collateral, sell the mXXX for $160, and forego the collateral. Therefore, the theoretical maximum price of mXXX would be $150.
-If, in practice, mAsset prices did drift significantly higher than oracle prices, governance could be used to solve this by creating incentives to mint and sell assets. For instance, the MCR could be lowered in order to reign in mAsset prices or negative selling fees could be used to incentivize users to mint assets and sell them in the market. Changing governance, however, would require a proposal and the collective agreement of MIR stakers.
 
+Without the trust that mAssets should be pegged to oracle prices, mAsset prices could theoretically diverge from oracle prices. Unlike minting liquidation which can create buying pressure to drive prices upwards, the Mirror protocol can only drive downward pressure to the minimum collateral price of an mAsset. For instance, if the MCR of an asset is 150% and the oracle price of XXX is $100, then the price of an mXXX could, in theory, reach $150. However, once the price of mXXX is greater than $150, then arbitrageurs can simply mint mXXX with $150 worth of collateral, sell the mXXX for $160, and forego the collateral. Therefore, the theoretical maximum price of mXXX would be $150. If, in practice, mAsset prices did drift significantly higher than oracle prices, governance could be used to solve this by creating incentives to mint and sell assets. For instance, the MCR could be lowered in order to reign in mAsset prices or negative selling fees could be used to incentivize users to mint assets and sell them in the market. Changing governance, however, would require a proposal and the collective agreement of MIR stakers.
 
 ### 9. What are the benefits of providing liquidity?
 

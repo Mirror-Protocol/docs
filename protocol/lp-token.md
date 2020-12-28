@@ -16,7 +16,7 @@ A user can provide liquidity by depositing tokens to both sides of a Mirror-rela
 
 #### Creating a new pool
 
-For a new pool with starting quantities of UST and mAsset/MIR $$x_0,y_0$$, the number of LP tokens is:
+For a new pool with starting quantities of UST and mAsset / MIR $$x_0,y_0$$, the number of LP tokens is:
 
 $$
 \text{LP} = \sqrt{x_0 y_0}

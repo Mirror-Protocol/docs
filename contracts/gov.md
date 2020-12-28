@@ -1,7 +1,3 @@
----
-description: 'TODO: Add Community Pool'
----
-
 # Gov
 
 The Gov Contract contains logic for holding polls and Mirror Token \(MIR\) staking, and allows the Mirror Protocol to be governed by its users in a decentralized manner. After the initial bootstrapping of Mirror Protocol contracts, the Gov Contract is assigned to be the owner of itself and [Mirror Factory.](factory.md)

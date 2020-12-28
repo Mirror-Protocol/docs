@@ -26,9 +26,11 @@ For a CDP subject to liquidation, describes the discount for which its collatera
 
 The current registered price as reported by its Oracle Feeder. This is mainly used for determining collateral ratio for CDP and does not affect the mAsset's trading price on Terraswap directly.
 
-Prices are only considered valid for 60 seconds. If no new prices are published after the data has expired, Mirror will disable CDP operations like mint, burn, deposit and withdraw until the price feed resumes. This does not affect the ability to trade on the asset's Terraswap pool.
+Prices are only considered valid for 60 seconds. If no new prices are published after the data has expired, Mirror will disable CDP operations like mint, burn, deposit and withdraw until the price feed resumes. 
 
-For instance, the price feed is halted when real-world markets for the asset are closed.
+For instance, the price feed is halted when real-world markets for the asset are closed. The market hour used to track the price of mAssets is based on [Nasdaq trading hours](https://www.nasdaq.com/stock-market-trading-hours-for-nasdaq). This does not affect the ability to trade on the asset's Terraswap pool.
+
+
 
 ### Oracle Feeder
 
@@ -137,15 +139,15 @@ The auction process continues until either the CDP's C-ratio is restored to a le
 
 To illustrate, let mXXX be priced at 1 UST, and mYYY at 2 UST. Assume that both assets have a min. collateral ratio of 150% and an auction discount rate of 20%. A user has opened a CDP to mint 100 mXXX at the C-ratio of 150%, depositing 75 mYYY as collateral. 
 
-If the CDP is being liquidated with the auction participant paying 100 mXXX to totally liquidate the position, they should receive:
+If the CDP is being liquidated with the auction participant paying 100 mXXX to totally liquidate the position, one should receive:
 
 $$
-\min\bigg(\frac{100\text{mXXX}}{ 1-.2}\times\frac{\text{1UST/mXXX}}{2\text{UST/mYYY}},75\text{mYYY}\bigg)
+\min\bigg(\frac{100\text{mXXX}}{ 1-0.2}\times\frac{\text{1UST/mXXX}}{2\text{UST/mYYY}},75\text{mYYY}\bigg)
 $$
 
-Working over the math, they should receive 62.5 mYYY tokens, totalling 125 UST, making a 25% profit. The CDP owner would receive the remaining 12.5 mYYY.
+Working over the math, one should receive 62.5 mYYY tokens, totaling 125 UST, making a 25% profit. The CDP owner would receive the remaining 12.5 mYYY.
 
 Note that the owner would still retain his 100 mXXX, meaning along with the 12.5 mYYY they would keep around 125 UST of value out of their initial 150 UST deposit.
 
-To avoid liquidation, users should aim for C-ratio that factors in the known price dynamics of the reflected asset. A safety buffer of at least 50% above the mAsset's minimum is usually recommended. Users with open positions should actively monitor price activity that threaten the safety of their CDP, and respond accordingly either by burning mAssets \(or closing the position altogether\), or depositing more collateral to reduce the possibility of liquidation.
+To avoid liquidation, users should aim for a C-ratio that factors in the known price dynamics of the reflected asset. A safety buffer of at least 50% above the mAsset's minimum is usually recommended. Users with open positions should actively monitor price activity that threaten the safety of their CDP and respond accordingly either by burning mAssets \(or closing the position altogether\), or deposit more collateral to reduce the possibility of liquidation.
 

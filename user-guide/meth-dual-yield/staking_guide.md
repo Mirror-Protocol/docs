@@ -11,22 +11,18 @@ Each staking position is unique to each type of LP tokens specified by the mAsse
 
 ## Stake / Unstake LP Tokens
 
-1. Navigate to the [main page](https://eth.mirror.finance) of mETH.
-
-![](../../.gitbook/assets/image%20%2810%29.png)
-
-2. Select a staking pool by clicking a box. 
+1. From the [Stake \(Main\)](https://eth.mirror.finance) page, select `Stake LP` from the pool which you hold LP for. 
 
 * A staking pool where the user has LP tokens already staked will show a `Staked` label on top of the box.
 * A staking pool where the user has LP to stake will show a `Stakable` label on top of the box.
 
-![](../../.gitbook/assets/image%20%288%29.png)
+![](../../.gitbook/assets/image%20%28102%29.png)
 
-3. Select **Stake** or **Unstake**
+2. Select **Stake** or **Unstake**
 
 ![](../../.gitbook/assets/image%20%284%29.png)
 
-4. Enter amount of LP tokens to Stake / Unstake. 
+3. Enter amount of LP tokens to Stake / Unstake. 
 
 ![](../../.gitbook/assets/image%20%283%29.png)
 

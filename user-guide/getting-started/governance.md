@@ -34,7 +34,7 @@ In order to vote on governance polls, MIR must be staked to be used as voting po
 
 1. Navigate to the [**Governance**](https://terra.mirror.finance/gov) page
 
-![](../../.gitbook/assets/image%20%2851%29.png)
+![](../../.gitbook/assets/image%20%2854%29.png)
 
 2. Click **`CREATE POLL`**
 
@@ -60,7 +60,7 @@ In order to vote on governance polls, MIR must be staked to be used as voting po
 
 1. Navigate to the [**Governance**](https://terra.mirror.finance/gov) page
 
-![](../../.gitbook/assets/image%20%2854%29.png)
+![](../../.gitbook/assets/image%20%2854%29%20%281%29.png)
 
 2. Select poll that is `IN PROGRESS`
 

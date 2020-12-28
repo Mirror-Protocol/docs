@@ -1,8 +1,8 @@
 # Mint
 
-The **Mint** page allows you to mint new tokens of an mAsset by opening a [CDP](../../protocol/mirrored-assets-massets.md#collateralized-debt-position). After creating a position, you can manage it on the [My](https://terra.mirror.finance/my) page.
+The **Mint** page allows you to mint new tokens of an mAsset by opening a [CDP](../../protocol/mirrored-assets-massets.md#collateralized-debt-position). After creating a position, you can manage it on the [My page](https://terra.mirror.finance/my).
 
-When the user withdraws collateral either to manage position's collateral ratio or to close the position, a [**Protocol Fee**](../../protocol/mirrored-assets-massets.md#protocol-fee) of 1.5% is charged to the amount being withdrawn.
+When the user withdraws collateral either to manage position's collateral ratio or to close the position, a [Protocol Fee](../../protocol/mirrored-assets-massets.md#protocol-fee) of 1.5% is charged to the amount being withdrawn.
 
 Please note that all asset values are calculated based on the reported price from the [oracle feeder ](../../protocol/mirrored-assets-massets.md#oracle-feeder)instead of the Terraswap price.
 
@@ -44,13 +44,13 @@ Please note that user cannot close the position if the user holds minted asset o
 
 1. Navigate to [**My** **Page**](https://terra.mirror.finance/my)
 
-![](../../.gitbook/assets/image%20%2815%29.png)
+![](../../.gitbook/assets/image%20%2828%29%20%281%29.png)
 
 2. In the Mint section, press the "`...`" under actions
 
-![](../../.gitbook/assets/image%20%2824%29.png)
+![](../../.gitbook/assets/image%20%2859%29%20%281%29.png)
 
-3. Select "Close Position" and confirm details
+3. Select `Close Position` and confirm details
 
 ![](../../.gitbook/assets/image%20%2848%29.png)
 
@@ -68,7 +68,7 @@ Users are warned when their CDP is close to liquidation. Minted positions become
 
 ![](../../.gitbook/assets/image%20%2828%29.png)
 
-3. Select "Deposit / Withdraw"
+3. Select "`Deposit` / `Withdraw`"
 
 ![](../../.gitbook/assets/image%20%2859%29.png)
 

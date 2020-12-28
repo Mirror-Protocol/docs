@@ -2,7 +2,7 @@
 
 A short primer on [Terraswap](https://terraswap.io) is provided here for convenience. For more details regarding Terraswap, you can refer to its official documentation [here](https://docs.terraswap.io).
 
-Terraswap is a [Uniswap](https://uniswap.org)-inspired automated market-market \(AMM\) protocol implemented with smart contracts on the Terra blockchain. Mirror relies on Terraswap to establish UST trading pairs for mAssets and for the MIR token. This enables a decentralized on-chain exchange for the various assets involved in Mirror Protocol.
+Terraswap is a [Uniswap](https://uniswap.org)-inspired automated market marker \(AMM\) protocol implemented with smart contracts on the Terra blockchain. Mirror relies on Terraswap to establish UST trading pairs for mAssets and for the MIR token. This enables a decentralized on-chain exchange for the various assets involved in Mirror Protocol.
 
 ## Mechanism
 
