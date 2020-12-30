@@ -44,11 +44,11 @@ Please note that user cannot close the position if the user holds minted asset o
 
 1. Navigate to [**My** **Page**](https://terra.mirror.finance/my)
 
-![](../../.gitbook/assets/image%20%2828%29%20%281%29.png)
+![](../../.gitbook/assets/image%20%2815%29.png)
 
 2. In the Mint section, press the "`...`" under actions
 
-![](../../.gitbook/assets/image%20%2859%29%20%281%29.png)
+![](../../.gitbook/assets/image%20%2824%29.png)
 
 3. Select `Close Position` and confirm details
 

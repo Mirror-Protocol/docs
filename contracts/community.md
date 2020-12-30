@@ -1,6 +1,6 @@
 # Community
 
-The Community Contract holds the funds of the [Community Pool](../protocol/governance.md#community-pool), which can be spent through a governance poll. 
+The Community Contract holds the funds of the [Community Pool](../protocol/governance/#community-pool), which can be spent through a governance poll. 
 
 ## InitMsg
 

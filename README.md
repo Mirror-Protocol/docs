@@ -12,7 +12,7 @@ The minting of mAssets is decentralized and is undertaken by users throughout th
 
 The [Mirror Token \(MIR\)](protocol/mirror-token-mir.md) is minted by the protocol and distributed as a reward to reinforce behavior that secures the ecosystem. With it, Mirror ensures liquid mAsset markets by rewarding MIR to users who stake [LP Tokens](protocol/lp-token.md) obtained through providing liquidity. MIR is valuable as it is can be staked to receive voting privileges and to earn a share of the protocol's CDP withdrawal fees.
 
-Mirror is a project developed and steered by its community: its markets are maintained by its own users through MIR incentives, and the protocol evolves with new ideas through democratic [governance](protocol/governance.md).
+Mirror is a project developed and steered by its community: its markets are maintained by its own users through MIR incentives, and the protocol evolves with new ideas through democratic [governance](protocol/governance/).
 
 ## Learn More
 

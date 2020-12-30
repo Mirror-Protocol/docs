@@ -12,7 +12,13 @@
 * [Mirror Token \(MIR\)](protocol/mirror-token-mir.md)
 * [Terraswap](protocol/terraswap.md)
 * [LP Tokens](protocol/lp-token.md)
-* [Governance](protocol/governance.md)
+* [Governance](protocol/governance/README.md)
+  * [Proposal Types](protocol/governance/proposal-types.md)
+  * [Whitelist Procedure](protocol/governance/whitelist-procedure.md)
+  * [Modify Mint Parameters](protocol/governance/modify-mint-parameters.md)
+  * [Modify Gov Parameters](protocol/governance/modify-gov-parameters.md)
+  * [Community Grants](protocol/governance/community-grants.md)
+  * [Other Proposals](protocol/governance/other-proposals.md)
 
 ## Developers <a id="developer-tools"></a>
 

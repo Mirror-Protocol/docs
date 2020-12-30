@@ -31,7 +31,7 @@ A **liquidity provider** adds equal amounts of an mAsset and UST to the correspo
 
 A **staker** is a user that stakes either LP Tokens \(with the Staking contract\) or [MIR tokens](mirror-token-mir.md) \(with the Gov contract\) in order to earn staking rewards as MIR tokens. Whereas LP token stakers earn rewards from new MIR tokens from inflation, MIR token earn staking rewards from CDP withdrawal fees.
 
-If the user has staked MIR tokens, they are eligible to participate in governance and receive voting power weighted by the amount of their total staked MIR. [Governance](governance.md) is the process through which new mAssets get whitelisted and protocol parameters can be altered.
+If the user has staked MIR tokens, they are eligible to participate in governance and receive voting power weighted by the amount of their total staked MIR. [Governance](governance/) is the process through which new mAssets get whitelisted and protocol parameters can be altered.
 
 LP Tokens can be unstaked at any time, but MIR tokens can only be unstaked when they are not used to represent a vote on a pending governance poll.
 
