@@ -78,5 +78,5 @@ Yes, you can find the audits reports [here](security.md#audits).
 
 
 
-_Special thanks to_ [_wengzilla_](https://github.com/wengzilla) _for edits to the FAQ._
+_Special thanks to_ [_wengzilla_](https://github.com/wengzilla) _for edits and improvements to the FAQ._
 
