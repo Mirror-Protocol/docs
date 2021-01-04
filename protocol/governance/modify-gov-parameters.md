@@ -13,5 +13,5 @@ At the onset of the Mirror Protocol, the `Quorum`, `Threshold`, `Voting Period`,
 
 For more specific information about each parameter, please refer to [**Modify Gov Parameters**](proposal-types.md#5-modify-governance-parameters).
 
-When submitting a poll to change a governance parameter, at least one field must be entered. Note that multiple parameters may be changed in one poll as well. In the case that only one parameter is being proposed to be modified, all the other parameter fields should be kept blank.
+When submitting a poll to change a governance parameter, at least one field must be entered. Note that only one optional parameter may be requested to be changed per poll.
 
