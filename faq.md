@@ -76,3 +76,7 @@ See [here](protocol/mirror-token-mir.md#cumulative-distribution-schedule-in-mill
 
 Yes, you can find the audits reports [here](security.md#audits).
 
+
+
+_Special thanks to_ [_wengzilla_](https://github.com/wengzilla) _for edits to the FAQ._
+
