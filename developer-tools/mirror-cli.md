@@ -20,7 +20,7 @@ This section provides a brief guide on how to use Mirror Protocol via `mirrorcli
 You can install `mirrorcli` through NPM:
 
 ```bash
-$ npm install -g mirrorcli
+$ npm install -g @mirror-protocol/mirrorcli
 ```
 
 ## Configuration
