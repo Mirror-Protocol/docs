@@ -1,7 +1,7 @@
 # Mirror API
 
 {% hint style="info" %}
-This section provides a brief guide on how to get set up with Mirror API. For more information, be sure to check out source code and documentation on [GitHub](https://github.com/Mirror-Protocol/mirror.js).
+This section provides a brief guide on how to get set up with Mirror API. For more information, be sure to check out source code and documentation on [GitHub](https://github.com/Mirror-Protocol/mirror-graph).
 {% endhint %}
 
 The **Mirror API** \(also known as **Mirror Graph**\) is an GraphQL-based data service that allows anybody to query data regarding the current and aggregate application state of the Mirror Protocol. Potential consumers of data include: dashboards, mAsset arbitrage trading bots, dApp activity trackers, etc.
