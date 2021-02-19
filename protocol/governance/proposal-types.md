@@ -72,14 +72,11 @@ Through this poll, the existing Mirror Protocol parameters for a specific indivi
 | Field | Description | Type |
 | :--- | :--- | :--- |
 | Title | Title of the poll | Required |
-| Reason for modifying governance parameter | Short description of the poll | Required |
+| Reasons for modifying mint parameters | Short description of the poll | Required |
 | Information Link | External URL for further information | Optional |
-| Quorum | Minimum quorum required for accepting a poll \(in percentage\) | Optional |
-| Threshold | Minimum percentage of `YES` votes to pass a poll \(in percentage\) | Optional |
-| Voting Period | Length of poll \(in units of blocks\) | Optional |
-| Effective Delay | Length of delay before protocol integration for a passed poll \(in units of blocks\) | Optional |
-| Expiration Period | Length of expiration period for a failed poll \(in units of blocks\) | Optional |
-| Proposal Deposit | Minimum deposit to start a poll \(in units of MIR\) | Optional |
+| Asset | Name of the asset to modify parameters | Required |
+| Auction Discount | Discount ratio applied during CDP liquidation auction | Required |
+| Minimum Collateral Ratio | Minimum collateral ratio applied when opening a mint position | Required |
 
 ### 5. Modify Governance Parameters 
 

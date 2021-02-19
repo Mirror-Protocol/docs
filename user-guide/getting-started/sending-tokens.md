@@ -1,6 +1,6 @@
 # Sending Tokens
 
-Users can send ****MIR, mAsset and UST tokens to a different wallet. Tokens can be transferred between Terra blockchain wallets and also to Ethereum wallets using a custom bridge which enables cross-chain transfers. 
+Users can send ****MIR, mAsset and UST tokens to a different wallet. Tokens can be transferred between Terra blockchain wallets and also to Ethereum or Binance Smart Chain \(BSC\) wallets using a custom bridge which enables cross-chain transfers. 
 
 ## Send
 
@@ -14,13 +14,13 @@ Users can send ****MIR, mAsset and UST tokens to a different wallet. Tokens can 
 
 ![](../../.gitbook/assets/image%20%2891%29.png)
 
-2. Enter Terra or Ethereum address of the recipient. Once the address is entered, the application will check the if the address is valid, and to which network it belongs in.
+2. Choose a network to send your tokens to. Currently, supported networks are Terra, Ethereum and Binance Smart Chain.
 
-![](../../.gitbook/assets/image%20%2889%29.png)
+![](../../.gitbook/assets/image%20%28110%29.png)
 
 3. Select the type of token to send by selecting the dropdown list. Then, enter the amount to send.
 
-![](../../.gitbook/assets/image%20%2888%29.png)
+![](../../.gitbook/assets/image%20%28106%29.png)
 
 4. Once all inputs entered correctly, click the button to proceed. Station Extension should prompt you to sign the transaction. Confirm the details presented and input your password to sign.
 

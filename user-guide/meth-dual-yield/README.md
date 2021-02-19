@@ -19,7 +19,7 @@ Below are the key differences between Mirror Web App and mETH:
 
 | Features | **Mirror \(Terra\)** | **mETH \(Ethereum\)** |
 | :--- | :--- | :--- |
-| **Wallet used to sign Tx** | \*\*\*\*[Station Extension](../getting-started/#terra-station-extension) | [Metamask](https://metamask.io/) |
+| **Wallet Support** | \*\*\*\*[Station Extension](../getting-started/#terra-station-extension) | [Metamask](https://metamask.io/) |
 | **Asset type** | CW-20 | ERC-20 |
 | **Average Block Time** | 6 seconds | 15 seconds |
 | **Trade** | O \(connected to Terraswap\) | Uniswap |
@@ -31,18 +31,4 @@ Below are the key differences between Mirror Web App and mETH:
 | **Tx fee token** | UST | ETH |
 
 mETH only provides interfaces for the [My Page](https://eth.mirror.finance/my) to view asset holdings and staking positions, and the [Stake](https://eth.mirror.finance) page to earn MIR reward by staking LP tokens. 
-
-### Sending Tokens between Terra / Ethereum Addresses
-
-From My Page of mETH, user can navigate to Send page and transfer ERC-20 Mirror tokens to other Ethereum or Terra addresses. 
-
-![](../../.gitbook/assets/image%20%28103%29.png)
-
-Tokens transferred from mETH to Terra are converted back to CW-20 and can be used on Mirror Web App. 
-
-![](../../.gitbook/assets/image%20%2892%29.png)
-
-Once the user enters the recipient's address, the app will automatically determine the network for the given address. Once `SEND` is pressed, Metamask will pop-up, prompting the user to sign the transaction. The signed transaction will be subsequently submitted to the Ethereum network for confirmation.   
-  
-To learn how to buy or get LP tokens to use on mETH, please refer to [Uniswap docs](https://uniswap.org/docs/v2/). 
 

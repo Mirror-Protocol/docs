@@ -12,7 +12,7 @@ Since Mirror API is a GraphQL-based data service, it is not accessed like a trad
 
 |  | Chain ID | URL |
 | :--- | :--- | :--- |
-| Mainnet | `columbus-4` | [https://graph.mirror.finance/graphql](https://tequila-graph.mirror.finance/graphql) |
+| Mainnet | `columbus-4` | [https://graph.mirror.finance/graphql](https://graph.mirror.finance/graphql) |
 | Testnet | `tequila-0004` | [https://tequila-graph.mirror.finance/graphql](https://tequila-graph.mirror.finance/graphql) |
 
 ## Usage

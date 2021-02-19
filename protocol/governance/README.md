@@ -18,7 +18,7 @@ Although a user receives 1 vote per staked MIR for every poll, voting in polls d
 
 ## Polls
 
-New governance proposals in Mirror are called **polls.** Any user can create a poll by paying an initial deposit of MIR tokens. The MIR deposit is given to MIR stakers and distributed proportionately according to their relative stake.
+New governance proposals in Mirror are called **polls.** Any user can create a poll by paying an initial deposit of MIR tokens. If the poll fails to pass the minimum voting quorum, the MIR deposit is given to MIR stakers and distributed proportionately according to their relative stake.
 
 Polls consist of a text description of the proposition \(with perhaps an external link to further resources / discussions\), and include an executable message encoding the instructions to be run if it passes. The message will be executed with the privileges of the [Mirror Gov contract](../../contracts/gov.md), which has the power to invoke any function defined by the other Mirror smart contracts.
 

@@ -59,5 +59,5 @@ MIR Token stakers receive MIR token rewards every block, which are generated fro
 
 ### From Poll Creation Fees
 
-Whenever a new governance poll is created, an initial deposit of MIR tokens must be paid. This deposit is distributed to all MIR stakers proportionately.
+Whenever a new governance poll is created, an initial deposit of MIR tokens must be paid. If the poll does not reach voting quorum, this deposit is distributed to all MIR stakers proportionately.
 
