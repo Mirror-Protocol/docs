@@ -22,6 +22,7 @@ Network chain ID: `columbus-4`
 | Oracle | [terra1t6xe0txzywdg85n6k8c960cuwgh6l8esw6lau9](https://finder.terra.money/columbus-4/account/terra1t6xe0txzywdg85n6k8c960cuwgh6l8esw6lau9) |
 | Staking | [terra17f7zu97865jmknk7p2glqvxzhduk78772ezac5](https://finder.terra.money/columbus-4/account/terra17f7zu97865jmknk7p2glqvxzhduk78772ezac5) |
 | Airdrop | [terra1kalp2knjm4cs3f59ukr4hdhuuncp648eqrgshw](https://finder.terra.money/columbus-4/account/terra1kalp2knjm4cs3f59ukr4hdhuuncp648eqrgshw) |
+| Limit Order | [terra1zpr8tq3ts96mthcdkukmqq4y9lhw0ycevsnw89](https://finder.terra.money/columbus-4/address/terra1zpr8tq3ts96mthcdkukmqq4y9lhw0ycevsnw89) |
 
 #### Asset Contracts
 
@@ -41,6 +42,7 @@ Network chain ID: `columbus-4`
 | mSLV | [terra1kscs6uhrqwy6rx5kuw5lwpuqvm3t6j2d6uf2lp](https://finder.terra.money/columbus-4/account/terra1kscs6uhrqwy6rx5kuw5lwpuqvm3t6j2d6uf2lp) |
 | mUSO | [terra1lvmx8fsagy70tv0fhmfzdw9h6s3sy4prz38ugf](https://finder.terra.money/columbus-4/account/terra1lvmx8fsagy70tv0fhmfzdw9h6s3sy4prz38ugf) |
 | mVIXY | [terra1zp3a6q6q4953cz376906g5qfmxnlg77hx3te45](https://finder.terra.money/columbus-4/account/terra1zp3a6q6q4953cz376906g5qfmxnlg77hx3te45) |
+| mFB | [terra1mqsjugsugfprn3cvgxsrr8akkvdxv2pzc74us7](https://finder.terra.money/columbus-4/account/terra1mqsjugsugfprn3cvgxsrr8akkvdxv2pzc74us7) |
 
 ### Testnet
 
@@ -58,6 +60,7 @@ Network chain ID: `tequila-0004`
 | Oracle | [terra1uvxhec74deupp47enh7z5pk55f3cvcz8nj4ww9](https://finder.terra.money/tequila-0004/account/terra1uvxhec74deupp47enh7z5pk55f3cvcz8nj4ww9) |
 | Staking | [terra1a06dgl27rhujjphsn4drl242ufws267qxypptx](https://finder.terra.money/tequila-0004/account/terra1a06dgl27rhujjphsn4drl242ufws267qxypptx) |
 | Airdrop | [terra1p6nvyw7vz3fgpy4nyh3q3vc09e65sr97ejxn2p](https://finder.terra.money/tequila-0004/account/terra1p6nvyw7vz3fgpy4nyh3q3vc09e65sr97ejxn2p) |
+| Limit Order | [terra1vc4ch0z3n6c23f9uywzy5yqaj2gmpnam8qgge7](https://finder.terra.money/tequila-0004/address/terra1vc4ch0z3n6c23f9uywzy5yqaj2gmpnam8qgge7) |
 
 #### Asset Contracts
 
@@ -77,6 +80,7 @@ Network chain ID: `tequila-0004`
 | mSLV | [terra1fdkfhgk433tar72t4edh6p6y9rmjulzc83ljuw](https://finder.terra.money/tequila-0004/account/terra1fdkfhgk433tar72t4edh6p6y9rmjulzc83ljuw) |
 | mUSO | [terra1fucmfp8x4mpzsydjaxyv26hrkdg4vpdzdvf647](https://finder.terra.money/tequila-0004/account/terra1fucmfp8x4mpzsydjaxyv26hrkdg4vpdzdvf647) |
 | mVIXY | [terra1z0k7nx0vl85hwpv3e3hu2cyfkwq07fl7nqchvd](https://finder.terra.money/tequila-0004/account/terra1z0k7nx0vl85hwpv3e3hu2cyfkwq07fl7nqchvd) |
+| mFB | [terra14gq9wj0tt6vu0m4ec2tkkv4ln3qrtl58lgdl2c](https://finder.terra.money/tequila-0004/account/terra14gq9wj0tt6vu0m4ec2tkkv4ln3qrtl58lgdl2c) |
 
 ## Ethereum
 
@@ -86,7 +90,7 @@ Mirror on Ethereum is available via a bridge called [Shuttle](https://github.com
 
 Ethereum Mirror contracts are available at the following addresses:
 
-| Asset | Address |
+| Asset | Token Address |
 | :--- | :--- |
 | LUNA | [0xd2877702675e6cEb975b4A1dFf9fb7BAF4C91ea9](https://etherscan.io/token/0xd2877702675e6cEb975b4A1dFf9fb7BAF4C91ea9) |
 | UST | [0xa47c8bf37f92aBed4A126BDA807A7b7498661acD](https://etherscan.io/token/0xa47c8bf37f92aBed4A126BDA807A7b7498661acD) |
@@ -107,6 +111,7 @@ Ethereum Mirror contracts are available at the following addresses:
 | mSLV | [0x9d1555d8cB3C846Bb4f7D5B1B1080872c3166676](https://etherscan.io/token/0x9d1555d8cB3C846Bb4f7D5B1B1080872c3166676) |
 | mUSO | [0x31c63146a635EB7465e5853020b39713AC356991](https://etherscan.io/token/0x31c63146a635EB7465e5853020b39713AC356991) |
 | mVIXY | [0xf72FCd9DCF0190923Fadd44811E240Ef4533fc86](https://etherscan.io/token/0xf72FCd9DCF0190923Fadd44811E240Ef4533fc86) |
+| mFB | [0x0e99cC0535BB6251F6679Fa6E65d6d3b430e840B](https://etherscan.io/token/0x0e99cC0535BB6251F6679Fa6E65d6d3b430e840B) |
 
 ### Testnet
 
@@ -133,6 +138,7 @@ Ethereum Mirror contracts are available on the Ropsten \(PoW\) testnet.
 | mSLV | [0xECBe84E79bb26a7FF2474AA1b58d2696A9b5F58F](https://ropsten.etherscan.io/token/0xECBe84E79bb26a7FF2474AA1b58d2696A9b5F58F) |
 | mUSO | [0xDF00833C87bEfA3aF5634d81BE18E9DEf2F9C7c0](https://ropsten.etherscan.io/token/0xDF00833C87bEfA3aF5634d81BE18E9DEf2F9C7c0) |
 | mVIXY | [0xC1629641Cdb2D636Ae220fb759264306902c4AC0](https://ropsten.etherscan.io/token/0xC1629641Cdb2D636Ae220fb759264306902c4AC0) |
+| mFB | [0x0Add4875eBcbD2306921e12133feB562E1cc82b4](https://ropsten.etherscan.io/address/0x0Add4875eBcbD2306921e12133feB562E1cc82b4) |
 
 ## Binance Smart Chain \(BSC\)
 
@@ -163,6 +169,7 @@ Binance Smart Chain Mirror contracts are available at the following addresses:
 | mSLV | [0x211e763d0b9311c08EC92D72DdC20AB024b6572A](https://bscscan.com/address/0x211e763d0b9311c08EC92D72DdC20AB024b6572A) |
 | mUSO | [0x9cDDF33466cE007676C827C76E799F5109f1843C](https://bscscan.com/address/0x9cDDF33466cE007676C827C76E799F5109f1843C) |
 | mVIXY | [0x92E744307694Ece235cd02E82680ec37c657D23E](https://bscscan.com/address/0x92E744307694Ece235cd02E82680ec37c657D23E) |
+| mFB | [0x5501F4713020cf299C3C5929da549Aab3592E451](https://bscscan.com/address/0x5501F4713020cf299C3C5929da549Aab3592E451) |
 
 ### Testnet
 
@@ -191,4 +198,5 @@ Binance Smart Chain Mirror contracts are available on BSC Testnet.
 | mSLV | [0x662DDF725F5BDE9b31BBD16793Fd0c234F67979B](https://testnet.bscscan.com/address/0x662DDF725F5BDE9b31BBD16793Fd0c234F67979B) |
 | mUSO | [0x5D428492846bd05D8137e56Fe806D28606453cbf](https://testnet.bscscan.com/address/0x5D428492846bd05D8137e56Fe806D28606453cbf) |
 | mVIXY | [0x57986628daaDC418E09A2917D6c8b793B7dC1ACD](https://testnet.bscscan.com/address/0x57986628daaDC418E09A2917D6c8b793B7dC1ACD) |
+| mFB | [0x354CA25cf8eB08537f6047e9daF02Eb02222C1D5](https://testnet.bscscan.com/address/0x354CA25cf8eB08537f6047e9daF02Eb02222C1D5) |
 

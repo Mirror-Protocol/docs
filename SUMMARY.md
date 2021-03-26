@@ -50,6 +50,7 @@
 * [Mint](contracts/mint.md)
 * [Oracle](contracts/oracle.md)
 * [Staking](contracts/staking.md)
+* [Limit Order](contracts/limit-order.md)
 
 ## External Resources
 
