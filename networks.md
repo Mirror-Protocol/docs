@@ -2,6 +2,10 @@
 
 Mirror Protocol is an **interchain** DeFi protocol, meaning that it can be accessed and interact with other decentralized applications across multiple blockchains.
 
+Terra blockchain, which Mirror Protocol is built on uses [Shuttle](https://github.com/terra-project/shuttle) bridge to enable interchain transfers between Terra, Ethereum, and Binance Smart Chain. 
+
+A web application called [Terra Bridge](user-guide/terra-bridge.md) provides web interface to transfer tokens between different blockchains. 
+
 ## Terra
 
 Mirror's core contracts are implemented on the [Terra blockchain](https://terra.money).
@@ -199,4 +203,17 @@ Binance Smart Chain Mirror contracts are available on BSC Testnet.
 | mUSO | [0x5D428492846bd05D8137e56Fe806D28606453cbf](https://testnet.bscscan.com/address/0x5D428492846bd05D8137e56Fe806D28606453cbf) |
 | mVIXY | [0x57986628daaDC418E09A2917D6c8b793B7dC1ACD](https://testnet.bscscan.com/address/0x57986628daaDC418E09A2917D6c8b793B7dC1ACD) |
 | mFB | [0x354CA25cf8eB08537f6047e9daF02Eb02222C1D5](https://testnet.bscscan.com/address/0x354CA25cf8eB08537f6047e9daF02Eb02222C1D5) |
+
+##  Related Links
+
+### User Guides
+
+* [Terra Bridge User Guide](user-guide/terra-bridge.md)
+* [Sending from Mirror on Terra](user-guide/getting-started/sending-tokens.md)
+* [Sending from Mirror on ETH & Binance Smart Chain](user-guide/meth-dual-yield/sending-tokens.md)
+
+### For Developers
+
+* [Terra Shuttle Github](https://github.com/terra-project/shuttle)
+* [Terra Bridge Web App Github](https://github.com/terra-project/bridge-web-app)
 

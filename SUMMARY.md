@@ -39,6 +39,7 @@
   * [Sending Tokens](user-guide/meth-dual-yield/sending-tokens.md)
   * [Trade](user-guide/meth-dual-yield/trade.md)
   * [Stake](user-guide/meth-dual-yield/staking_guide.md)
+* [Terra Bridge](user-guide/terra-bridge.md)
 
 ## Smart Contracts <a id="contracts"></a>
 

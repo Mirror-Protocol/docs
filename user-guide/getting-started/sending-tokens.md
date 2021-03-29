@@ -4,6 +4,11 @@ Users can send ****MIR, mAsset and UST tokens to a different wallet. Tokens can 
 
 ## Send
 
+{% hint style="danger" %}
+$1 or 0.1% fee \(which ever is greater\) from the transfer amount is charge on cross-chain transfer using the Shuttle bridge.   
+**A transaction with amount smaller than $1 value will be ignored.**
+{% endhint %}
+
 1. User can navigate to **Send** page by
 
 * Selecting `Send` from the action button provided by the Holdings list on [**My Page**](https://terra.mirror.finance/my)\*\*\*\*

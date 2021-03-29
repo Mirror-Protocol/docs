@@ -4,6 +4,11 @@ description: Transfer of Mirror Protocol Assets from Ethereum or Binance Smart C
 
 # Sending Tokens
 
+{% hint style="danger" %}
+$1 or 0.1% fee \(which ever is greater\) from the transfer amount is charge on cross-chain transfer using the Shuttle bridge.   
+**A transaction with amount smaller than $1 value will be ignored.**
+{% endhint %}
+
 ### From Ethereum
 
 From My Page of mETH, user can navigate to Send page and transfer ERC-20 Mirror tokens to other Ethereum or Terra addresses. 

@@ -19,7 +19,7 @@ Below are the key differences between Mirror Web App and mETH:
 
 | Features | **Mirror \(Terra\)** | **mETH \(Ethereum\)** |
 | :--- | :--- | :--- |
-| **Wallet Support** | \*\*\*\*[Station Extension](../getting-started/#terra-station-extension) | [Metamask](https://metamask.io/) |
+| **Wallet Support** | \*\*\*\*[Station Extension](../getting-started/#terra-station-extension) | [Metamask](https://metamask.io/), [WalletConnect](https://walletconnect.org/), [Coinbase](https://wallet.coinbase.com) |
 | **Asset type** | CW-20 | ERC-20 |
 | **Average Block Time** | 6 seconds | 15 seconds |
 | **Trade** | O \(connected to Terraswap\) | Uniswap |

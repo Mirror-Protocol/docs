@@ -24,7 +24,7 @@ The primary scope of the bug bounty program is for vulnerabilities affecting the
 
 Vulnerabilities in contracts built on top of the protocol by third-party developers \(such as smart contract wallets\) are not in-scope, nor are vulnerabilities that require ownership of an admin key.
 
-The secondary scope of the bug bounty program is for vulnerabilities affecting the Mirror interface hosted at [https://app.mirror.finance](https://app.mirror.finance) that could conceivably result in exploitation of user accounts.
+The secondary scope of the bug bounty program is for vulnerabilities affecting the Mirror interface hosted at [https://terra.mirror.finance](https://terra.mirror.finance) that could conceivably result in exploitation of user accounts.
 
 Finally, test contracts \(Tequila and other testnets\) and staging servers are out of scope, unless the discovered vulnerability also affects the Mirror Protocol or Interface, or could otherwise be exploited in a way that risks user funds.
 
