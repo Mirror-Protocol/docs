@@ -4,7 +4,7 @@ description: Web application to transfer Terra's tokens to other blockchain netw
 
 # Terra Bridge
 
-[Terra Bridge](https://bridge.terra.money) enables cross-chain transfer of all tokens supported by [Shuttle](https://github.com/terra-project/shuttle), including Terra native tokens, and most mAssets. 
+[Terra Bridge](https://bridge.terra.money) enables cross-chain transfer of all tokens supported by [Shuttle](https://github.com/terra-project/shuttle), including Terra native tokens, most mAssets and also other token types from Terra ecosystem. 
 
 The list of transferable Mirror Protocol assets can be found on [Interchain Access](../networks.md) page. 
 
