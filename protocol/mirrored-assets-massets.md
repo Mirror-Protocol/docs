@@ -48,9 +48,9 @@ To **whitelist** an mAsset is to register it with Mirror Protocol, which involve
 
 Whitelisting is approved by governance and is automatically implemented if the whitelisting poll receives enough votes. Once an mAsset has been whitelisted, it will be mintable through opening a CDP and tradeable on Terraswap. In addition, LP tokens for the corresponding Terraswap pool will begin to earn MIR inflation rewards when staked.
 
-### Deprecation & Migration
+### Delisting & Migration
 
-In situations where the tracked asset undergoes a corporate event such as a stock split, merger, bankruptcy, etc. and becomes difficult to reflect properly due to inconsistencies, an mAsset can be **deprecated**, or discontinued, with the following migration procedure initiated by the oracle feeder:
+In situations where the tracked asset undergoes a corporate event such as a stock split, merger, bankruptcy, etc. and becomes difficult to reflect properly due to inconsistencies, an mAsset can be **delisted**, or discontinued, with the following migration procedure initiated by the oracle feeder:
 
 1. New replacement mAsset token, Terraswap pair, and LP tokens contracts are created, and the present values of properties of mAsset will be transferred over
 2. The oracle feeder sets the "end price" for the mAsset to the latest valid price
