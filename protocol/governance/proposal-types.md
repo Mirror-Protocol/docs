@@ -12,7 +12,7 @@ Governance proposals on the Mirror Protocol can come in a variety of formats. Th
 The full process of getting a new asset to be fully operational on the Mirror Protocol is described [here](whitelist-procedure.md).
 {% endhint %}
 
-The function of this proposal is to start a poll to whitelist a new asset. Given that this is a simple text proposal, there are a few fields that need to be filled. The `Asset Name`, `Ticker`, `Listed Exchange`, and `Reason for listing` are required. Due to the limitations on the length of the description field of the underlying smart contracts, the current maximum length is 64 bytes \(will be increased to 1024 bytes on December 31, 2020\). It is suggested that additional information be added on a separate web page and linked to using the `Information Link` field.
+The function of this proposal is to start a poll to whitelist a new asset. Given that this is a simple text proposal, there are a few fields that need to be filled. The `Asset Name`, `Ticker`, `Listed Exchange`, and `Reason for listing` are required. The length of the description field is limited to 1024 bytes. It is suggested that additional information be added on a separate web page and linked to using the `Information Link` field.
 
 ![](../../.gitbook/assets/image%20%28138%29.png)
 
