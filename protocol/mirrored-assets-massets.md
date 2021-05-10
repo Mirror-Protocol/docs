@@ -30,8 +30,6 @@ Prices are only considered valid for 60 seconds. If no new prices are published 
 
 For instance, the price feed is halted when real-world markets for the asset are closed. The market hour used to track the price of mAssets is based on [Nasdaq trading hours](https://www.nasdaq.com/stock-market-trading-hours-for-nasdaq). This does not affect the ability to trade on the asset's Terraswap pool.
 
-
-
 ### Oracle Feeder
 
 The **Oracle Feeder** is a Terra account that can change the registered on-chain price for an mAsset. They are responsible for reporting an accurate and up-to-date price, so that the mAsset's trading value is kept in sync with its reflected asset. Each mAsset has its own dedicated feeder, which can be reassigned through governance. The oracle feeders for the genesis mirrored assets are owned by [Band Protocol](https://www.bandprotocol.com), but the community can assign oracle feeders to other providers to newly whitelisted assets through governance. 
@@ -60,10 +58,12 @@ At this stage:
 
 * CDPs may no longer mint new tokens of the mAsset
 * Liquidation auctions are disabled for the mAsset
-* Burns will take effect at the fixed "end price" for withdrawing collateral deposits
+* Burns will take effect at the fixed "end price" for withdrawing collateral from any existing mint position. 
 * LP tokens for the mAsset will stop counting for staking rewards
 
-Deprecation will not directly affect the functionality of the mAsset's Terraswap pool and users will still be able to make trades against it, although price is likely to be very unstable. Users are urged to burn the mAsset to recover their collateral if they have an open position, and are free to open a new CDP / engage in liquidity provision for the new, replacement mAsset. The old mAsset will be retired and marked as "deprecated" on front-end interfaces.
+Deprecation will not directly affect the functionality of the mAsset's Terraswap pool and users will still be able to make trades against it, although price is likely to be very unstable. Users are urged to burn the mAsset to recover collateral _from any open positions_ on Mirror Protocol, including their own. Opening a new CDP / engaging in liquidity provision can be done with the new, replacement mAsset.   
+The old mAsset will be retired and marked as "**delisted**", only allowing burn, close CDP, withdraw collateral and liquidity, and unstake LP transactions on front-end interfaces.  
+
 
 ## Collateralized Debt Position
 
