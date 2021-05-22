@@ -61,9 +61,11 @@ At this stage:
 * Burns will take effect at the fixed "end price" for withdrawing collateral from any existing mint position. 
 * LP tokens for the mAsset will stop counting for staking rewards
 
-Deprecation will not directly affect the functionality of the mAsset's Terraswap pool and users will still be able to make trades against it, although price is likely to be very unstable. Users are urged to burn the mAsset to recover collateral _from any open positions_ on Mirror Protocol, including their own. Opening a new CDP / engaging in liquidity provision can be done with the new, replacement mAsset.   
-The old mAsset will be retired and marked as "**delisted**", only allowing burn, close CDP, withdraw collateral and liquidity, and unstake LP transactions on front-end interfaces.  
+Delisting will not directly affect the functionality of the mAsset's Terraswap pool and users will still be able to make trades against it, although price is likely to be very unstable. Due to the possible price instability, trading against the Terraswap pool will be blocked from the web frontend interface. 
 
+Users are urged to burn the mAsset to recover collateral _from any open positions_ on Mirror Protocol, including their own. Since anyone can burn against any open position, CDP holders may end up having none or less amount of "minted assets" within their position, but they will still be able to withdraw remaining amount of collateral by only burning the remaining amount of delisted mAsset. Opening a new CDP / engaging in liquidity provision can be done with the new, replacement mAsset. 
+
+The old mAsset will be retired and marked as "**delisted**", only allowing burn, close CDP, withdraw collateral and liquidity, and unstake LP transactions on front-end interfaces.
 
 ## Collateralized Debt Position
 
