@@ -57,17 +57,17 @@ Mainnet parameters will be announced at the official launch of Mirror v2.
         <p>(Luna, MIR, ANC)</p>
       </td>
       <td style="text-align:left">1.3333334</td>
-      <td style="text-align:left">Not available</td>
+      <td style="text-align:left">-</td>
     </tr>
     <tr>
       <td style="text-align:left">aUST Collateral Ratio Multiplier</td>
       <td style="text-align:left">1</td>
-      <td style="text-align:left">Not available</td>
+      <td style="text-align:left">-</td>
     </tr>
     <tr>
       <td style="text-align:left">UST Lock-up Period</td>
       <td style="text-align:left">600 seconds</td>
-      <td style="text-align:left">Not available</td>
+      <td style="text-align:left">-</td>
     </tr>
     <tr>
       <td style="text-align:left">Protocol Fee Rate</td>
@@ -84,13 +84,13 @@ Mainnet parameters will be announced at the official launch of Mirror v2.
 | Proposal Deposit | 1 MIR | 100 MIR |
 | Quorum | 5% | 10% |
 | Voting Period | 318 seconds | 100,000 Blocks |
-| Snapshot Period | 100 seconds | Not available |
+| Snapshot Period | 100 seconds | - |
 | Effective Delay | 331 seconds | 13,000 Blocks |
-| Voter Weight | 50% | Not available |
+| Voter Weight | 50% | - |
 
 ### Farming \(Staking\)
 
 | Parameter | Testnet \(v2\) | Mainnet \(v1\) |
 | :--- | :--- | :--- |
-| Premium Update Interval | 600 seconds | Not available |
+| Premium Update Interval | 600 seconds | - |
 
