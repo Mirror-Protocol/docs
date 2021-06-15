@@ -6,7 +6,8 @@ The security of the Mirror protocol is our highest priority; our development tea
 
 ## Audits
 
-* [Mirror Smart Contract Audit](https://docsend.com/view/p4es2dgvwadamgqg) by Cyber Unit
+* [Mirror v1 Smart Contract Audit](https://docsend.com/view/p4es2dgvwadamgqg) by **Cyber Unit**
+* Mirror v2 Smart Contract Audit by **Cryptonics \(TBD\)**
 
 ## Bug Bounty Program
 
@@ -24,13 +25,13 @@ The primary scope of the bug bounty program is for vulnerabilities affecting the
 
 Vulnerabilities in contracts built on top of the protocol by third-party developers \(such as smart contract wallets\) are not in-scope, nor are vulnerabilities that require ownership of an admin key.
 
-The secondary scope of the bug bounty program is for vulnerabilities affecting the Mirror interface hosted at [https://terra.mirror.finance](https://terra.mirror.finance) that could conceivably result in exploitation of user accounts.
+The secondary scope of the bug bounty program is for vulnerabilities affecting the Mirror interface hosted at [https://terra.mirror.finance](https://terra.mirror.finance) that could conceivably result in the exploitation of user accounts.
 
 Finally, test contracts \(Tequila and other testnets\) and staging servers are out of scope, unless the discovered vulnerability also affects the Mirror Protocol or Interface, or could otherwise be exploited in a way that risks user funds.
 
 **Disclosure**
 
-Submit all bug bounty disclosures to [security@mirror.finance](mailto:security@Mirror.finance). The disclosure must include clear and concise steps to reproduce the discovered vulnerability in either written or video format. Mirror will follow up promptly with acknowledgement of the disclosure.
+Submit all bug bounty disclosures to [security@mirror.finance](mailto:security@Mirror.finance). The disclosure must include clear and concise steps to reproduce the discovered vulnerability in either written or video format. Mirror will follow up promptly with acknowledgment of the disclosure.
 
 **Terms and Conditions**
 

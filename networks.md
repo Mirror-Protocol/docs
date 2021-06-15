@@ -10,7 +10,7 @@ A web application called [Terra Bridge](user-guide/terra-bridge.md) provides web
 
 Mirror's core contracts are implemented on the [Terra blockchain](https://terra.money).
 
-### Mainnet
+### Mainnet \(v1\)
 
 Network chain ID: `columbus-4`
 
@@ -49,7 +49,7 @@ Network chain ID: `columbus-4`
 | mFB | [terra1mqsjugsugfprn3cvgxsrr8akkvdxv2pzc74us7](https://finder.terra.money/columbus-4/account/terra1mqsjugsugfprn3cvgxsrr8akkvdxv2pzc74us7) |
 | mCOIN | [terra18wayjpyq28gd970qzgjfmsjj7dmgdk039duhph](https://finder.terra.money/columbus-4/address/terra18wayjpyq28gd970qzgjfmsjj7dmgdk039duhph) |
 
-### Testnet
+### Testnet \(v2\)
 
 Network chain ID: `tequila-0004`
 
@@ -57,7 +57,7 @@ Network chain ID: `tequila-0004`
 
 | Contract | Address |
 | :--- | :--- |
-| Collector | [terra1v046ktavwzlyct5gh8ls767fh7hc4gxc95grxy](https://finder.terra.money/tequila-0004/account/terra12r5ghc6ppewcdcs3hkewrz24ey6xl7mmpk478s) |
+| Collector | [terra1v046ktavwzlyct5gh8ls767fh7hc4gxc95grxy](https://finder.terra.money/tequila-0004/account/terra1v046ktavwzlyct5gh8ls767fh7hc4gxc95grxy) |
 | Community | [terra10qm80sfht0zhh3gaeej7sd4f92tswc44fn000q](https://finder.terra.money/tequila-0004/account/terra10qm80sfht0zhh3gaeej7sd4f92tswc44fn000q) |
 | Factory | [terra10l9xc9eyrpxd5tqjgy6uxrw7dd9cv897cw8wdr](https://finder.terra.money/tequila-0004/account/terra10l9xc9eyrpxd5tqjgy6uxrw7dd9cv897cw8wdr) |
 | Gov | [terra12r5ghc6ppewcdcs3hkewrz24ey6xl7mmpk478s](https://finder.terra.money/tequila-0004/account/terra12r5ghc6ppewcdcs3hkewrz24ey6xl7mmpk478s) |
@@ -65,7 +65,9 @@ Network chain ID: `tequila-0004`
 | Oracle | [terra1uvxhec74deupp47enh7z5pk55f3cvcz8nj4ww9](https://finder.terra.money/tequila-0004/account/terra1uvxhec74deupp47enh7z5pk55f3cvcz8nj4ww9) |
 | Staking | [terra1a06dgl27rhujjphsn4drl242ufws267qxypptx](https://finder.terra.money/tequila-0004/account/terra1a06dgl27rhujjphsn4drl242ufws267qxypptx) |
 | Airdrop | [terra1p6nvyw7vz3fgpy4nyh3q3vc09e65sr97ejxn2p](https://finder.terra.money/tequila-0004/account/terra1p6nvyw7vz3fgpy4nyh3q3vc09e65sr97ejxn2p) |
-| Limit Order | [terra1vc4ch0z3n6c23f9uywzy5yqaj2gmpnam8qgge7](https://finder.terra.money/tequila-0004/address/terra1vc4ch0z3n6c23f9uywzy5yqaj2gmpnam8qgge7) |
+| Limit Order | [terra1vc4ch0z3n6c23f9uywzy5yqaj2gmpnam8qgge7](https://finder.terra.money/tequila-0004/account/terra1vc4ch0z3n6c23f9uywzy5yqaj2gmpnam8qgge7) |
+| Collateral Oracle | [terra1q3ls6u2glsazdeu7dxggk8d04elnvmsg0ung6n](https://finder.terra.money/tequila-0004/account/terra1q3ls6u2glsazdeu7dxggk8d04elnvmsg0ung6n) |
+| Lock | [terra1pcxghd4dyf950mcs0kmlp7lvnrjsnl6qlfldwj](https://finder.terra.money/tequila-0004/account/terra1pcxghd4dyf950mcs0kmlp7lvnrjsnl6qlfldwj) |
 
 #### Asset Contracts
 

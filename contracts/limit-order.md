@@ -1,8 +1,8 @@
 # Limit Order
 
-Limit Order allows submission, updates and execution of buy and sell orders at a limit price specified by the users. Once the limit order is submitted and the limit price is reached, market making agents can read the orders from the Limit Order contract and execute them when it provides an arbitrage opportunity.  
+Limit Order allows submission, updates, and execution of buy and sell orders at a limit price specified by the users. Once the limit order is submitted and the limit price is reached, market-making agents can read the orders from the Limit Order contract and execute them when it provides an arbitrage opportunity.  
   
-To create a market making bot for arbitrage opportunity, refer to this [Github link](https://github.com/Mirror-Protocol/mirror-contracts/tree/master/contracts/mirror_limit_order).
+To create a market-making bot for arbitrage opportunity, refer to this [Github link](https://github.com/Mirror-Protocol/mirror-contracts/tree/master/contracts/mirror_limit_order).
 
 ## InitMsg
 
@@ -277,27 +277,13 @@ pub enum QueryMsg {
     }
 }
 ```
-{% endtab %}
-
-{% tab title="JSON" %}
-```javascript
-{
-    "order": {
-        "order_id": 10
-    }
-}
-```
-{% endtab %}
-{% endtabs %}
 
 | Key | Type | Description |
 | :--- | :--- | :--- |
 | `order_id` | u64 | Order ID |
 
-### `OrderResponse`
+#### Response
 
-{% tabs %}
-{% tab title="Rust" %}
 ```rust
 #[derive(Serialize, Deserialize, Clone, Debug, PartialEq, JsonSchema)]
 pub struct OrderResponse {
@@ -308,9 +294,32 @@ pub struct OrderResponse {
     pub filled_offer_amount: Uint128,
     pub filled_ask_amount: Uint128,
 ```
+
+| Key | Type | Description |
+| :--- | :--- | :--- |
+| `order_id` | u64 | Order ID |
+| `bidder_addr` | HumanAddr | Address of bidder |
+| `offer_asset` | Asset | Amount of asset offered in order |
+| `ask_asset` | Asset | Amount of asset asked in order |
+| `filled_offer_amount` | Uint128 | Amount of offer asset already executed |
+| `filled_ask_amount` | Uint128 | Amount of ask asset already executed |
 {% endtab %}
 
 {% tab title="JSON" %}
+```javascript
+{
+    "order": {
+        "order_id": 10
+    }
+}
+```
+
+| Key | Type | Description |
+| :--- | :--- | :--- |
+| `order_id` | u64 | Order ID |
+
+#### Response
+
 ```javascript
 {
     "OrderResponse": {
@@ -337,8 +346,6 @@ pub struct OrderResponse {
     }
 }
 ```
-{% endtab %}
-{% endtabs %}
 
 | Key | Type | Description |
 | :--- | :--- | :--- |
@@ -348,6 +355,8 @@ pub struct OrderResponse {
 | `ask_asset` | Asset | Amount of asset asked in order |
 | `filled_offer_amount` | Uint128 | Amount of offer asset already executed |
 | `filled_ask_amount` | Uint128 | Amount of ask asset already executed |
+{% endtab %}
+{% endtabs %}
 
 ### `Orders`
 
@@ -366,10 +375,39 @@ pub enum QueryMsg {
     }
 }
 ```
+
+| Key | Type | Description |
+| :--- | :--- | :--- |
+| `bidder_addr`\* | HumanAddr | Address of the order bidder |
+| `start_after`\* | u64 | Begins search query at specific Order ID |
+| `limit`\* | u32 | Limit of results to fetch |
+| `order_by`\* | OrderBy | Can be ASC or DESC |
+
+#### Response
+
+```rust
+#[derive(Serialize, Deserialize, Clone, Debug, PartialEq, JsonSchema)]
+pub struct OrdersResponse {
+    pub orders: Vec<OrderResponse>,
+}
+```
+
+| Key | Type | Description |
+| :--- | :--- | :--- |
+| `orders` | Vec&lt;OrderResponse&gt; | Vector of user's order information |
+
+| Key | Type | Description |
+| :--- | :--- | :--- |
+| `order_id` | u64 | Order ID |
+| `bidder_addr` | HumanAddr | Address of bidder |
+| `offer_asset` | Asset | Amount of asset offered in order |
+| `ask_asset` | Asset | Amount of asset asked in order |
+| `filled_offer_amount` | Uint128 | Amount of offer asset already executed |
+| `filled_ask_amount` | Uint128 | Amount of ask asset already executed |
 {% endtab %}
 
 {% tab title="JSON" %}
-```
+```javascript
 {
   "orders": {
     "bidder_addr": "terra1...",
@@ -379,8 +417,6 @@ pub enum QueryMsg {
     }
 }
 ```
-{% endtab %}
-{% endtabs %}
 
 | Key | Type | Description |
 | :--- | :--- | :--- |
@@ -389,22 +425,8 @@ pub enum QueryMsg {
 | `limit`\* | u32 | Limit of results to fetch |
 | `order_by`\* | OrderBy | Can be ASC or DESC |
 
-\*=optional  
+#### Response
 
-
-### `OrdersResponse`
-
-{% tabs %}
-{% tab title="Rust" %}
-```rust
-#[derive(Serialize, Deserialize, Clone, Debug, PartialEq, JsonSchema)]
-pub struct OrdersResponse {
-    pub orders: Vec<OrderResponse>,
-}
-```
-{% endtab %}
-
-{% tab title="JSON" %}
 ```javascript
 {
   "OrdersResponse": [
@@ -456,12 +478,6 @@ pub struct OrdersResponse {
     ]
 }
 ```
-{% endtab %}
-{% endtabs %}
-
-| Key | Type | Description |
-| :--- | :--- | :--- |
-| `orders` | Vec&lt;OrderResponse&gt; | Vector of user's order information |
 
 | Key | Type | Description |
 | :--- | :--- | :--- |
@@ -471,6 +487,10 @@ pub struct OrdersResponse {
 | `ask_asset` | Asset | Amount of asset asked in order |
 | `filled_offer_amount` | Uint128 | Amount of offer asset already executed |
 | `filled_ask_amount` | Uint128 | Amount of ask asset already executed |
+{% endtab %}
+{% endtabs %}
+
+\*=optional
 
 ### `LastOrderID`
 
@@ -485,6 +505,19 @@ pub enum QueryMsg {
     LastOrderID: {}
 }
 ```
+
+#### Response
+
+```rust
+#[derive(Serialize, Deserialize, Clone, Debug, PartialEq, JsonSchema)]
+pub struct LastOrderIDResponse {
+    pub last_order_id:u64
+}
+```
+
+| Key | Type | Description |
+| :--- | :--- | :--- |
+| `last_order_id` | u64 | Index of the most recent order |
 {% endtab %}
 
 {% tab title="JSON" %}
@@ -493,36 +526,19 @@ pub enum QueryMsg {
     "last_order_id": {}
 }
 ```
-{% endtab %}
-{% endtabs %}
 
-| Key | Type | Description |
-| :--- | :--- | :--- |
-|  |  |  |
+#### Response
 
-### `LastOrderIDResponse`
-
-{% tabs %}
-{% tab title="Rust" %}
-```rust
-#[derive(Serialize, Deserialize, Clone, Debug, PartialEq, JsonSchema)]
-pub struct LastOrderIDResponse {
-    pub last_order_id:u64
-}
-```
-{% endtab %}
-
-{% tab title="JSON" %}
 ```javascript
 {
-    "LastOrderIDResponse": {
+    "last_order_id_response": {
         "last_order_id": 10
 }
 ```
-{% endtab %}
-{% endtabs %}
 
 | Key | Type | Description |
 | :--- | :--- | :--- |
 | `last_order_id` | u64 | Index of the most recent order |
+{% endtab %}
+{% endtabs %}
 

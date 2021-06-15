@@ -1,6 +1,10 @@
 # Mint
 
-The Mint Contract implements the logic for [Collateralized Debt Positions ](../protocol/mirrored-assets-massets.md#collateralized-debt-position)\(CDPs\), through which users can mint new mAsset tokens against their deposited collateral \(UST or mAssets\). Current prices of collateral and minted mAssets are read from the [Oracle Contract](oracle.md) determine the C-ratio of each CDP. The Mint Contract also contains the logic for liquidating CDPs with C-ratios below the minimum for their minted mAsset through auction.
+The Mint Contract implements the logic for [Collateralized Debt Positions ](../protocol/mirrored-assets-massets.md#collateralized-debt-position)\(CDPs\), through which users can mint or short new mAsset tokens against their deposited collateral \(UST or mAssets\). 
+
+Current prices of collateral and minted mAssets are read from the [Collateral Oracle](collateral-oracle.md) and [Oracle Contract](oracle.md) to determine the C-ratio of each CDP. Depending on which the type of asset used as the collateral, the minimum collateral ratio of each CDP may change. Collateral Oracle is responsible for feeding prices and collateral ratio `multiplier` of each collateral asset type. 
+
+The Mint Contract also contains the logic for liquidating CDPs with C-ratios below the minimum for their minted mAsset through auction.
 
 ## InitMsg
 
@@ -12,6 +16,10 @@ pub struct InitMsg {
     pub owner: HumanAddr,
     pub oracle: HumanAddr,
     pub collector: HumanAddr,
+    pub collateral_oracle: HumanAddr,
+    pub staking: HumanAddr,
+    pub terraswap_factory: HumanAddr,
+    pub lock: HumanAddr,
     pub base_denom: String,
     pub token_code_id: u64,
     pub protocol_fee_rate: Decimal,
@@ -25,8 +33,13 @@ pub struct InitMsg {
   "owner": "terra1...",
   "oracle": "terra1...",
   "collector": "terra1...",
+  "collateral_oracle": "terra1...",
+  "staking": "terra1...",
+  "terraswap_factory": "terra1...",
+  "lock": "terra1...",
+  "base_denom": "uusd",
   "token_code_id": 8,
-  "protocol_fee_rate": "0.123",
+  "protocol_fee_rate": "0.123
 }
 ```
 {% endtab %}
@@ -37,6 +50,10 @@ pub struct InitMsg {
 | `owner` | HumanAddr | Owner of contract |
 | `oracle` | HumanAddr | Contract address of [Mirror Oracle](oracle.md) |
 | `collector` | HumanAddr | Contract address of [Mirror Collector](collector.md) |
+| `collateral_oracle` | HumanAddr | Contract address of [Mirror Collateral Oracle](collateral-oracle.md) |
+| `staking` | HumanAddr | Contract address of [Mirror Staking](staking.md) |
+| `terraswap_factory` | HumanAddr | Contract address of Terraswap Factory |
+| `lock` | HumanAddr | Contract address of [Mirror Lock](lock.md) |
 | `base_denom` | String | Native token denomination for stablecoin \(TerraUSD\) |
 | `token_code_id` | u64 | Code ID for Terraswap CW20 Token |
 | `protocol_fee_rate` | Decimal | Protocol fee |
@@ -97,6 +114,9 @@ pub enum HandleMsg {
         owner: Option<HumanAddr>,
         oracle: Option<HumanAddr>,
         collector: Option<HumanAddr>,
+        collateral_oracle: Option<HumanAddr>,
+        terraswap_factory: Option<HumanAddr>,
+        lock: Option<HumanAddr>,
         token_code_id: Option<u64>,
         protocol_fee_rate: Option<Decimal>,
     }
@@ -111,6 +131,10 @@ pub enum HandleMsg {
     "owner": "terra1...",
     "oracle": "terra1...",
     "collector": "terra1...",
+    "collateral_oracle": "terra1...",
+    "staking": "terra1...",
+    "terraswap_factory": "terra1...",
+    "lock": "terra1...",
     "token_code_id": 8,
     "protocol_fee_rate": "0.123",
   }
@@ -124,6 +148,8 @@ pub enum HandleMsg {
 | `owner`\* | HumanAddr | New owner |
 | `oracle`\* | u64 | New oracle contract address |
 | `collector`\* | HumanAddr | New collector contract address |
+| `terraswap_factory`\* | HumanAddr | Contract address of Terraswap Factory |
+| `lock`\* | HumanAddr | Contract address of Mirror Lock |
 | `token_code_id`\* | u64 | New token code ID |
 | `protocol_fee_rate`\* | Decimal | New protocol fee rate |
 
@@ -143,7 +169,15 @@ pub enum HandleMsg {
         asset_info: AssetInfo,
         auction_discount: Option<Decimal>,
         min_collateral_ratio: Option<Decimal>,
+        ipo_params: Option<IPOParams>
     }
+}
+
+#[derive(Serialize, Deserialize, Clone, Debug, PartialEq, JsonSchema)]
+pub struct IPOParams {
+    pub mint_end: u64,
+    pub pre_ipo_price: Decimal,
+    pub min_collateral_ratio_after_ipo: Decimal,
 }
 ```
 {% endtab %}
@@ -158,7 +192,12 @@ pub enum HandleMsg {
       }
     },
     "auction_discount": "123.456789",
-    "min_collateral_ratio": "123.456789"
+    "min_collateral_ratio": "123.456789",
+    "ipo_params": {
+      "mint_end": "10000000",
+      "pre_ipo_price": "7.77",
+      "min_collateral_ratio_after_ipo": "1.5"
+    }
   }
 }
 ```
@@ -170,8 +209,17 @@ pub enum HandleMsg {
 | `asset_info` | AssetInfo | Asset to be updated |
 | `auction_discount`\* | Decimal | New auction discount rate |
 | `min_collateral_ratio`\* | Decimal | New minimum collateralization ratio |
+| `ipo_params`\* | IPOParams | Parameters to be used for Pre-IPO asset |
 
 \* = optional
+
+#### IPOParams
+
+| Key | Type | Description |
+| :--- | :--- | :--- |
+| `mint_end` | u64 | Time which `mint_period` ends |
+| `pre_ipo_price` | Decimal | Fixed price to be used to mint during `mint_period` |
+| `min_collateral_ratio_after_ipo` | Decimal | Minimum collateralization ratio to be used after IPO is triggered \(Used for pre-IPO\) |
 
 ### `RegisterAsset`
 
@@ -182,24 +230,28 @@ Registers a new mAsset to be mintable.
 ```rust
 #[derive(Serialize, Deserialize, Clone, Debug, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
-pub enum HandleMsg {
+pub enum HandleMsg {    
     RegisterAsset {
         asset_token: HumanAddr,
         auction_discount: Decimal,
         min_collateral_ratio: Decimal,
-    }
-}
+        ipo_params: Option<IPOParams>
+    },
 ```
 {% endtab %}
 
 {% tab title="JSON" %}
 ```javascript
 {
-  "register_asset": {
-    "asset_token": "terra1...",
-    "auction_discount": "123.456789",
-    "min_collateral_ratio": "123.456789"
-  }
+    "register_asset": {
+        "asset_token": "terra1...",
+        "auction_discount": "0.2",
+        "min_collateral_ratio": "1.5",
+        "ipo_params": {
+            "mint_end": "10000000",
+            "pre_ipo_price": "7.77",
+            "min_collateral_ratio_after_ipo": "1.5"
+    }
 }
 ```
 {% endtab %}
@@ -207,9 +259,46 @@ pub enum HandleMsg {
 
 | Key | Type | Description |
 | :--- | :--- | :--- |
-| `asset_token` | HumanAddr | Asset to be registered |
+| `asset_token` | HumanAddr | Contract address of mAsset to be registered |
 | `auction_discount` | Decimal | Auction discount rate |
 | `min_collateral_ratio` | Decimal | Minimum collateralization ratio |
+| `ipo_params`\* | IPOParams | Parameters to be used for Pre-IPO asset |
+
+\*= optional
+
+### `TriggerIPO`
+
+Asset feeder is allowed to trigger IPO event on pre-IPO asset to have the following characters:
+
+* Oracle feeder now feeds real-time price of the underlying asset
+* The asset becomes mintable again, even after the `mint_period` has ended
+
+{% tabs %}
+{% tab title="Rust" %}
+```rust
+#[derive(Serialize, Deserialize, Clone, Debug, PartialEq, JsonSchema)]
+#[serde(rename_all = "snake_case")]
+pub enum HandleMsg {
+    TriggerIPO {
+        asset_token: HumanAddr, 
+    },
+```
+{% endtab %}
+
+{% tab title="JSON" %}
+```javascript
+{
+    "trigger_ipo": {
+        "asset_token": "terra1..."
+    }
+}
+```
+{% endtab %}
+{% endtabs %}
+
+| Key | Type | Description |
+| :--- | :--- | :--- |
+| `asset_token` | HumanAddr | Contract address of the token |
 
 ### `RegisterMigration`
 
@@ -264,11 +353,12 @@ let mint_amount = collateral.amount
 ```rust
 #[derive(Serialize, Deserialize, Clone, Debug, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
-pub enum HandleMsg {
+pub enum HandleMsg {   
     OpenPosition {
-        asset_info: AssetInfo,
         collateral: Asset,
+        asset_info: AssetInfo,
         collateral_ratio: Decimal,
+        short_params: Option<ShortParams>,
     }
 }
 
@@ -288,22 +378,26 @@ pub enum AssetInfo {
 {% tab title="JSON" %}
 ```javascript
 {
-  "open_position": {
-    "asset_info": {
-      "token": {
-        "contract_addr": "terra1..."
-      }
-    },
-    "collateral": {
-      "info": {
-        "token": {
-          "contract_address": "terra1..."
+    "open_position": {
+        "collateral": {
+            "info": {
+                "token": {
+                    "contract_addr": "terra1..."
+                    }
+                },
+                "amount": "1000000"
+            },
+        "asset_info": {
+            "token": {
+                "contract_addr": "terra1..."
+                }
+            },
+        "collateral_ratio": "1.5",
+        "short_params": {
+            "belief_price": "123.456789",
+            "max_spread": "0.1"
         }
-      },
-      "amount": "1000000"
-    },
-    "collateral_ratio": "123.456789"
-  }
+    }
 }
 ```
 {% endtab %}
@@ -314,6 +408,32 @@ pub enum AssetInfo {
 | `asset_info` | AssetInfo | Asset to be minted by CDP |
 | `collateral` | Asset | Initial collateral deposit for the CDP |
 | `collateral_ratio` | Decimal | Initial desired collateralization ratio |
+| `short_params`\* | ShortParams | Terraswap Price and spread limit to immediately short tokens after CDP creation \(used for "Short"\) |
+
+\*= optional
+
+#### `ShortParams`
+
+If optional `short_params` is added, mint contract will immediately sell the minted mAssets and`sLP` tokens will be minted and sent to the user. The UST obtained from the operation will be added to the user's lock position in [lock contract](lock.md).
+
+{% tabs %}
+{% tab title="Rust" %}
+```rust
+#[derive(Serialize, Deserialize, Clone, Debug, PartialEq, JsonSchema)]
+pub struct ShortParams {
+    pub belief_price: Option<Decimal>,
+    pub max_spread: Option<Decimal>,
+}
+```
+{% endtab %}
+{% endtabs %}
+
+| Key | Type | Description |
+| :--- | :--- | :--- |
+| `belief_price`\* | Decimal | Price submitted to the Terraswap pool |
+| `max_spread`\* | Decimal | Maximum slippage accepted during swap transaction against the Terraswap Pool |
+
+\*=optional
 
 ### `Deposit`
 
@@ -416,6 +536,7 @@ pub enum HandleMsg {
     Mint {
         asset: Asset,
         position_idx: Uint128,
+        short_params: Option<ShortParams>,
     }
 }
 ```
@@ -425,6 +546,7 @@ pub enum HandleMsg {
 ```javascript
 {
   "mint": {
+    "position_idx": "10000000",
     "asset": {
       "info": {
         "token": {
@@ -433,7 +555,10 @@ pub enum HandleMsg {
       },
       "amount": "1000000"
     },
-    "position_idx": "10000000"
+    "short_params": {
+      "belief_price": "123.456789",
+      "max_spread": "0.1"
+      }
   }
 }
 ```
@@ -442,8 +567,9 @@ pub enum HandleMsg {
 
 | Key | Type | Description |
 | :--- | :--- | :--- |
-| `asset` | Asset | mAssets to be minted |
 | `position_idx` | Uint128 | Index of position |
+| `asset` | Asset | mAssets to be minted |
+| `short_params` | ShortParams | Terraswap Price and maximum slippage tolerance to be applied for selling minted token after position creation \(used for "Short"\) |
 
 ## Receive Hooks
 
@@ -466,6 +592,7 @@ pub enum Cw20HookMsg {
     OpenPosition {
         asset_info: AssetInfo,
         collateral_ratio: Decimal,
+        short_params: Option<ShortParams>,
     }
 }
 ```
@@ -480,7 +607,11 @@ pub enum Cw20HookMsg {
         "contract_addr": "terra1..."
       }
     },
-    "collateral_ratio": "123.456789"
+    "collateral_ratio": "123.456789",
+    "short_params": {
+      "belief_price": "123.456789",
+      "max_spread": "0.1"
+      }
   }
 }
 ```
@@ -491,6 +622,7 @@ pub enum Cw20HookMsg {
 | :--- | :--- | :--- |
 | `asset_info` | AssetInfo | mAsset to be minted by CDP |
 | `collateral_ratio` | Decimal | Initial collateralization ratio to use |
+| `short_params` | ShortParams | Terraswap Price and spread limit to immediately short tokens after CDP creation \(used for "Short"\) |
 
 ### `Deposit`
 
@@ -532,7 +664,7 @@ pub enum Cw20HookMsg {
 
 ### `Burn`
 
-Issued when a user sends mAsset tokens to the Mint contract.
+Issued when a user sends mAsset tokens to the Mint contract. 
 
 Burns the sent tokens against a CDP and reduces the C-ratio. If all outstanding minted mAsset tokens are burned, the position is closed and the collateral is returned.
 
@@ -617,6 +749,37 @@ pub enum QueryMsg {
     Config {}
 }
 ```
+
+#### Response
+
+```rust
+#[derive(Serialize, Deserialize, Clone, Debug, PartialEq, JsonSchema)]
+pub struct ConfigResponse {
+    pub owner: HumanAddr,
+    pub oracle: HumanAddr,
+    pub collector: HumanAddr,
+    pub collateral_oracle: HumanAddr,
+    pub staking: HumanAddr,
+    pub terraswap_factory: HumanAddr,
+    pub lock: HumanAddr,
+    pub base_denom: String,
+    pub token_code_id: u64,
+    pub protocol_fee_rate: Decimal,
+}
+```
+
+| Key | Type | Description |
+| :--- | :--- | :--- |
+| `owner` | HumanAddr | Owner of contract |
+| `oracle` | HumanAddr | Contract address of [Mirror Oracle](oracle.md) |
+| `collector` | HumanAddr | Contract address of [Mirror Collector](collector.md) |
+| `collateral_oracle` | HumanAddr | Contract address of Mirror Collateral Oracle |
+| `staking` | HumanAddr | Contract address of Mirror Staking |
+| `terraswap_factory` | HumanAddr | Contract address of Terraswap Factory |
+| `lock` | HumanAddr | Contract address of Mirror Lock |
+| `base_denom` | String | Native token denomination for stablecoin \(TerraUSD\) |
+| `token_code_id` | u64 | Code ID for Terraswap CW20 Token |
+| `protocol_fee_rate` | Decimal | Protocol fee |
 {% endtab %}
 
 {% tab title="JSON" %}
@@ -625,12 +788,40 @@ pub enum QueryMsg {
   "config": {}
 }
 ```
-{% endtab %}
-{% endtabs %}
+
+#### Response
+
+```rust
+{
+    "config_response": {
+        "owner": "terra1...",
+        "oracle": "terra1...",
+        "collector": "terra1...",
+        "collateral_oracle": "terra1...",
+        "staking": "terra1...",
+        "terraswap_factory": "terra1...",
+        "lock": "terra1...",
+        "base_denom": "uusd",
+        "token_code_id": 8,
+        "protocol_fee_rate": "123.456789"
+    }
+}
+```
 
 | Key | Type | Description |
 | :--- | :--- | :--- |
-
+| `owner` | HumanAddr | Owner of contract |
+| `oracle` | HumanAddr | Contract address of [Mirror Oracle](oracle.md) |
+| `collector` | HumanAddr | Contract address of [Mirror Collector](collector.md) |
+| `collateral_oracle` | HumanAddr | Contract address of Mirror Collateral Oracle |
+| `staking` | HumanAddr | Contract address of Mirror Staking |
+| `terraswap_factory` | HumanAddr | Contract address of Terraswap Factory |
+| `lock` | HumanAddr | Contract address of Mirror Lock |
+| `base_denom` | String | Native token denomination for stablecoin \(TerraUSD\) |
+| `token_code_id` | u64 | Code ID for Terraswap CW20 Token |
+| `protocol_fee_rate` | Decimal | Protocol fee |
+{% endtab %}
+{% endtabs %}
 
 ### `AssetConfig`
 
@@ -645,6 +836,33 @@ pub enum QueryMsg {
     }
 }
 ```
+
+| Key | Type | Description |
+| :--- | :--- | :--- |
+| `asset_token` | HumanAddr | Contract address of asset to query |
+
+#### Response
+
+```rust
+#[derive(Serialize, Deserialize, Clone, Debug, PartialEq, JsonSchema)]
+pub struct AssetConfigResponse {
+    pub token: HumanAddr,
+    pub auction_discount: Decimal,
+    pub min_collateral_ratio: Decimal,
+    pub end_price: Option<Decimal>,
+    pub ipo_params: Option<IPOParams>,
+}
+```
+
+| Key | Type | Description |
+| :--- | :--- | :--- |
+| `token` | HumanAddr | Contract address of asset to query |
+| `auction_discount` | Decimal | Discount rate applied for liquidation auction |
+| `min_collateral_ratio` | Decimal | Lowest collateral ratio to mint this mAsset |
+| `end_price`\* | Decimal | Fixed oracle price of mAsset when migration / Pre-IPO / Delisting occurs |
+| `ipo_params`\* | u64 | Parameters to be used for Pre-IPO assets |
+
+\*= optional
 {% endtab %}
 
 {% tab title="JSON" %}
@@ -659,12 +877,40 @@ pub enum QueryMsg {
   }
 }
 ```
-{% endtab %}
-{% endtabs %}
 
 | Key | Type | Description |
 | :--- | :--- | :--- |
 | `asset_token` | HumanAddr | Contract address of asset to query |
+
+#### Response
+
+```rust
+{
+    "asset_config_response": {
+        "token": "terra1...",
+        "auction_discount": "0.2",
+        "min_collateral_ratio": "1.5",
+        "end_price": "123.456789",
+        "ipo_params": {
+            "mint_end": "10000000",
+            "pre_ipo_price": "7.77",
+            "min_collateral_ratio_after_ipo": "1.5"
+        }    
+    }
+}
+```
+
+| Key | Type | Description |
+| :--- | :--- | :--- |
+| `token` | HumanAddr | Contract address of asset to query |
+| `auction_discount` | Decimal | Discount rate applied for liquidation auction |
+| `min_collateral_ratio` | Decimal | Lowest collateral ratio to mint this mAsset |
+| `end_price`\* | Decimal | Fixed oracle price of mAsset when migration / Pre-IPO / Delisting occurs |
+| `ipo_params`\* | u64 | Parameters to be used for Pre-IPO assets |
+
+\*= optional
+{% endtab %}
+{% endtabs %}
 
 ### `Position`
 
@@ -679,6 +925,31 @@ pub enum QueryMsg {
     }
 }
 ```
+
+| Key | Type | Description |
+| :--- | :--- | :--- |
+| `position_idx` | Uint128 | Index of position to query |
+
+#### Response
+
+```rust
+#[derive(Serialize, Deserialize, Clone, Debug, PartialEq, JsonSchema)]
+pub struct PositionResponse {
+    pub idx: Uint128,
+    pub owner: HumanAddr,
+    pub collateral: Asset,
+    pub asset: Asset,
+    pub is_short: bool,
+}
+```
+
+| Name | Type | Description |
+| :--- | :--- | :--- |
+| `idx` | Uint128 | Index of CDP |
+| `owner` | HumanAddr | Address of CDP owner |
+| `collateral` | Asset | Asset used as collateral |
+| `asset` | Asset | Asset minted by CDP |
+| `is_short` | bool | Determines if CDP is short position or not |
 {% endtab %}
 
 {% tab title="JSON" %}
@@ -689,12 +960,99 @@ pub enum QueryMsg {
   }
 }
 ```
-{% endtab %}
-{% endtabs %}
 
 | Key | Type | Description |
 | :--- | :--- | :--- |
 | `position_idx` | Uint128 | Index of position to query |
+
+#### Response
+
+```rust
+{
+    "position_response": {
+        "idx": "100",
+        "owner": "terra1...",
+        "collateral": {
+            "info": {
+                "token": {
+                    "contract_addr": "terra1..."
+                }
+            },
+            "amount": "1000000"
+        },
+        "asset": {
+            "info": {
+                "token": {
+                    "contract_addr": "terra1..."
+                }
+            },
+            "amount": "1000000"
+        },
+        "is_short": true
+    }
+}
+```
+
+| Name | Type | Description |
+| :--- | :--- | :--- |
+| `idx` | Uint128 | Index of CDP |
+| `owner` | HumanAddr | Address of CDP owner |
+| `collateral` | Asset | Asset used as collateral |
+| `asset` | Asset | Asset minted by CDP |
+| `is_short` | bool | Determines if CDP is short position or not |
+{% endtab %}
+{% endtabs %}
+
+### `NextPositionIdx`
+
+Returns the most recent position ID +1.
+
+{% tabs %}
+{% tab title="Rust" %}
+```rust
+#[derive(Serialize, Deserialize, Clone, Debug, PartialEq, JsonSchema)]
+#[serde(rename_all = "snake_case")]
+pub enum QueryMsg {
+    NextPositionIdx {}
+}
+```
+
+#### Response
+
+```rust
+#[derive(Serialize, Deserialize, Clone, PartialEq, JsonSchema, Debug, Default)]
+pub struct NextPositionIdxResponse {
+    pub next_position_idx: Uint128,
+}
+```
+
+| Key | Type | Description |
+| :--- | :--- | :--- |
+| `next_position_idx` | Uint128 | Index of the next position to be created |
+{% endtab %}
+
+{% tab title="JSON" %}
+```javascript
+{
+    "next_position_idx": {}
+}
+```
+
+#### Response
+
+```rust
+{
+    "next_position_idex_response": {
+        "next_position_idx": "1000000"
+    }
+}
+```
+
+| Key | Type | Description |
+| :--- | :--- | :--- |
+| `next_position_idx` | Uint128 | Index of the next position to be created |
+{% endtab %}
+{% endtabs %}
 
 ### `Positions`
 

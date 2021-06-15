@@ -58,7 +58,7 @@ Without the trust that mAssets should be pegged to oracle prices, mAsset prices 
 
 #### 9. What are the benefits of providing liquidity?
 
-Providing liquidity for the Mirror Protocol is equivalent to locking up your liquidity in Terraswap. By doing so, you ensure that there is a sufficient supply of assets to be traded at any point in time. As compensation for providing liquidity, you will receive LP tokens which accrue trading commission charged by the protocol. In addition, staking these LP tokens provides inflationary rewards in the form of MIR tokens. To learn more about the specifics, see [here](protocol/lp-token.md#lp-commission-rewards).
+Providing liquidity for the Mirror Protocol is equivalent to locking up your liquidity in Terraswap. By doing so, you ensure that there is a sufficient supply of assets to be traded at any point in time. As compensation for providing liquidity, you will receive LP tokens which accrue trading commission charged by the protocol. In addition, staking these LP tokens provides inflationary rewards in the form of MIR tokens. To learn more about the specifics, see [here]().
 
 #### 10. Is there any risk to providing liquidity to the Terraswap pools?
 

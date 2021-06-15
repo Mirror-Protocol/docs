@@ -8,7 +8,7 @@ The Gov Contract keeps a balance of MIR tokens, which it uses to reward stakers 
 
 ## Config
 
-| Name | Type | Description |
+| Key | Type | Description |
 | :--- | :--- | :--- |
 | `mirror_token` | HumanAddr | Contract address of Mirror Token \(MIR\) |
 | `quorum` | Decimal | Minimum percentage of participation required for a poll to pass |
@@ -17,6 +17,8 @@ The Gov Contract keeps a balance of MIR tokens, which it uses to reward stakers 
 | `proposal_deposit` | Uint128 | Minimum MIR deposit required for a new poll to be submitted |
 | `effective_delay` | u64 | Number of blocks after a poll passes to apply changes |
 | `expiration_period` | u64 | Number of blocks after a poll's voting period during which the poll can be executed. |
+| `voter_weight` | Decimal | Ratio of protocol fee which will be distributed among the governance poll voters |
+| `snapshot_period` | u64 | Minimum number of blocks before the end of voting period which snapshot could be taken to lock the current quorum for a poll |
 
 ## InitMsg
 
@@ -29,8 +31,11 @@ pub struct InitMsg {
     pub quorum: Decimal,
     pub threshold: Decimal,
     pub voting_period: u64,
+    pub effective_delay: u64,
+    pub expiration_period: u64,
     pub proposal_deposit: Uint128,
-    pub effective_delay: u64
+    pub voter_weight: Decimal,
+    pub snapshot_period: u64,
 }
 ```
 {% endtab %}
@@ -38,13 +43,16 @@ pub struct InitMsg {
 {% tab title="JSON" %}
 ```javascript
 {
-  "mirror_token": "terra1...",
-  "quorum": "0.4",
-  "threshold": "0.5",
-  "voting_period": 8,
-  "proposal_deposit": "1000000"
-  "effective_delay": 8
-}
+    "mirror_token": "terra1...",
+    "quorum": "0.1",
+    "threshold": "0.5",
+    "voting_period": 8,
+    "effective_delay": 8,
+    "expiration_period": 8,
+    "proposal_deposit": "100000",
+    "voter_weight": "0.5",
+    "snapshot_period": 8
+} 
 ```
 {% endtab %}
 {% endtabs %}
@@ -57,12 +65,14 @@ pub struct InitMsg {
 | `voting_period` | u64 | Number of blocks during which votes can be cast |
 | `proposal_deposit` | Uint128 | Minimum MIR deposit required for a new poll to be submitted |
 | `effective_delay` | u64 | Number of blocks after a poll passes to apply changes |
+| `voter_weight` | Decimal | Ratio of protocol fee which will be distributed among the governance poll voters |
+| `snapshot_period` | u64 | Minimum number of blocks before the end of voting period which snapshot could be taken to lock the current quorum for a poll |
 
 ## HandleMsg
 
 ### `Receive`
 
-Can be called during a CW20 token transfer when the Mint contract is the recipient. Allows the token transfer to execute a [Receive Hook](gov.md#receive-hooks) as a subsequent action within the same transaction.
+Can be called during a CW20 token transfer when the Gov contract is the recipient. Allows the token transfer to execute a [Receive Hook](gov.md#receive-hooks) as a subsequent action within the same transaction.
 
 {% tabs %}
 {% tab title="Rust" %}
@@ -111,13 +121,15 @@ Updates the configuration for the Gov contract.
 #[serde(rename_all = "snake_case")]
 pub enum HandleMsg {
     UpdateConfig {
-        effective_delay: Option<u64>,
         owner: Option<HumanAddr>,
-        proposal_deposit: Option<Uint128>,
         quorum: Option<Decimal>,
         threshold: Option<Decimal>,
         voting_period: Option<u64>,
+        effective_delay: Option<u64>,
         expiration_period: Option<u64>,
+        proposal_deposit: Option<Uint128>,
+        voter_weight: Option<Decimal>,
+        snapshot_period: Option<u64>,
     }
 }
 ```
@@ -126,29 +138,34 @@ pub enum HandleMsg {
 {% tab title="JSON" %}
 ```javascript
 {
-  "update_config": {
-    "effective_delay": 8,
-    "owner": "terra1...",
-    "proposal_deposit": "10000000",
-    "quorum": "123.456789",
-    "threshold": "123.456789",
-    "voting_period": 8,
-    "expiration_period": 8
-  }
-}
+     "update_config": {
+        "owner": "terra...1",
+        "mirror_token": "terra1...",
+        "quorum": "0.1",
+        "threshold": "0.5",
+        "voting_period": 8,
+        "effective_delay": 8,
+        "expiration_period": 8,
+        "proposal_deposit": "100000",
+        "voter_weight": "0.5",
+        "snapshot_period": 8
+     }
+}  
 ```
 {% endtab %}
 {% endtabs %}
 
 | Key | Type | Description |
 | :--- | :--- | :--- |
-| `effective_delay`\* | u64 | Number of blocks after a poll passes to apply changes |
 | `owner`\* | HumanAddr | Address of owner of governance contract |
-| `proposal_deposit`\* | Uint128 | Minimum deposited MIR tokens for a poll to enter voting |
-| `quorum`\* | Decimal | Percentage of participation \(of total staked MIR\) required for a poll to pass |
-| `threshold`\* | Decimal | Percentage of `yes` votes needed for a poll to pass |
-| `voting_period`\* | u64 | Number of blocks during which votes for a poll can be cast after it has finished its deposit |
-| `expiration_period`\* | u64 | Number of blocks after a poll's voting period during which the poll can be executed. |
+| `quorum`\* | Decimal | Minimum percentage of participation required for a poll to pass |
+| `threshold`\* | Decimal | Minimum percentage of `yes` votes required for a poll to pass |
+| `voting_period`\* | u64 | Number of blocks during which votes can be cast |
+| `effective_delay`\* | u64 | Number of blocks after a poll passes to apply changes |
+| `expiration_period`\* | u64 | Number of blocks after a poll's voting period during which the poll can be executed |
+| `proposal_deposit`\* | Uint128 | Minimum MIR deposit required for a new poll to be submitted |
+| `voter_weight`\* | Decimal | Ratio of protocol fee which will be distributed among the governance poll voters |
+| `snapshot_period`\* | u64 | Minimum number of blocks before end of voting period which snapshot could be taken to lock the current quorum for a poll |
 
 \* = optional
 
@@ -163,10 +180,10 @@ Submits a user's vote for an active poll. Once a user has voted, they cannot cha
 #[serde(rename_all = "snake_case")]
 pub enum HandleMsg {
     CastVote {
-        amount: Uint128,
         poll_id: u64,
         vote: VoteOption,
-    }
+        amount: Uint128,
+    },
 }
 ```
 {% endtab %}
@@ -174,11 +191,11 @@ pub enum HandleMsg {
 {% tab title="JSON" %}
 ```javascript
 {
-  "cast_vote": {
-    "amount": "10000000",
-    "poll_id": 8,
-    "vote": "yes/no"
-  }
+    "cast_vote": {
+        "amount": "1000000",
+        "poll_id": 8,
+        "vote": "yes/no/abstain"
+    }
 }
 ```
 {% endtab %}
@@ -188,7 +205,7 @@ pub enum HandleMsg {
 | :--- | :--- | :--- |
 | `amount` | Uint128 | Amount of voting power \(staked MIR\) to allocate |
 | `poll_id` | u64 | Poll ID |
-| `vote` | VoteOption | Can be `yes` or `no` |
+| `vote` | VoteOption | Can be `yes`,`no` or `abstain` |
 
 ### `WithdrawVotingTokens`
 
@@ -223,6 +240,54 @@ pub enum HandleMsg {
 | `amount`\* | Uint128 | Amount of MIR tokens to withdraw. If empty, all staked MIR tokens are withdrawn. |
 
 \* = optional
+
+### `WithdrawVotingRewards`
+
+Withdraws a user’s voting reward for user’s voted governance poll after `end_poll` has happened.
+
+{% tabs %}
+{% tab title="Rust" %}
+```rust
+#[derive(Serialize, Deserialize, Clone, Debug, PartialEq, JsonSchema)]
+#[serde(rename_all = "snake_case")]
+pub enum HandleMsg {
+    WithdrawVotingRewards {},
+}
+```
+{% endtab %}
+
+{% tab title="JSON" %}
+```javascript
+{
+    "withdraw_voting_rewards": {}
+}
+```
+{% endtab %}
+{% endtabs %}
+
+### `StakeVotingRewards`
+
+Immediately re-stakes user's voting rewards to Gov Contract. 
+
+{% tabs %}
+{% tab title="Rust" %}
+```rust
+#[derive(Serialize, Deserialize, Clone, Debug, PartialEq, JsonSchema)]
+#[serde(rename_all = "snake_case")]
+pub enum HandleMsg {
+    StakeVotingRewards {},
+}
+```
+{% endtab %}
+
+{% tab title="JSON" %}
+```javascript
+{
+    "stake_voting_rewards": {}
+}
+```
+{% endtab %}
+{% endtabs %}
 
 ### `EndPoll`
 
@@ -288,6 +353,38 @@ pub enum HandleMsg {
 | :--- | :--- | :--- |
 | `poll_id` | u64 | Poll ID |
 
+### `SnapshotPoll`
+
+Snapshot of poll’s current `quorum` status is saved when the block height enters `snapshot_period`.
+
+{% tabs %}
+{% tab title="Rust" %}
+```rust
+#[derive(Serialize, Deserialize, Clone, Debug, PartialEq, JsonSchema)]
+#[serde(rename_all = "snake_case")]
+pub enum HandleMsg {
+    SnapshotPoll {
+        poll_id: u64,
+    }
+}
+```
+{% endtab %}
+
+{% tab title="JSON" %}
+```javascript
+{
+    "snapshot_poll": {
+        "poll_id": 8
+    }
+}
+```
+{% endtab %}
+{% endtabs %}
+
+| Key | Type | Description |
+| :--- | :--- | :--- |
+| `poll_id` | u64 | Poll ID |
+
 ## Receive Hooks
 
 ### `StakeVotingTokens`
@@ -322,7 +419,7 @@ pub enum Cw20HookMsg {
 
 ### `CreatePoll`
 
-Issued when sending MIR tokens to the Gov contract to create a new poll. Will only succeed if the amount of tokens sent meets the configured `proposal_deposit` amount. Contains a generic message to be issued by the Gov contract if it passes \(can invoke messages in other contracts it owns\).
+Issued when sending MIR tokens to the Gov contract to create a new poll. Will only succeed if the amount of tokens sent meets the configured`proposal_deposit`amount. Contains a generic message to be issued by the Gov contract if it passes \(can invoke messages in other contracts it owns\).
 
 {% tabs %}
 {% tab title="Rust" %}
@@ -373,6 +470,30 @@ pub struct ExecuteMsg {
 
 \* = optional
 
+### `DepositReward`
+
+Reward is distributed between MIR stakers and governance poll voters based on `voter_weight` when rewards are sent from [Mirror Collector](collector.md). 
+
+{% tabs %}
+{% tab title="Rust" %}
+```rust
+#[derive(Serialize, Deserialize, Clone, Debug, PartialEq, JsonSchema)]
+#[serde(rename_all = "snake_case")]
+pub enum Cw20HookMsg {
+    DepositReward {},
+}
+```
+{% endtab %}
+
+{% tab title="JSON" %}
+```javascript
+{
+    "deposit_reward": {}
+}
+```
+{% endtab %}
+{% endtabs %}
+
 ## QueryMsg
 
 ### `Config`
@@ -386,6 +507,36 @@ pub enum QueryMsg {
     Config {}
 }
 ```
+
+#### Response
+
+```rust
+#[derive(Serialize, Deserialize, Clone, PartialEq, JsonSchema)]
+pub struct ConfigResponse {
+    pub owner: HumanAddr,
+    pub mirror_token: HumanAddr,
+    pub quorum: Decimal,
+    pub threshold: Decimal,
+    pub voting_period: u64,
+    pub effective_delay: u64,
+    pub expiration_period: u64,
+    pub proposal_deposit: Uint128,
+    pub voter_weight: Decimal,
+    pub snapshot_period: u64,
+}
+```
+
+| Key | Type | Description |
+| :--- | :--- | :--- |
+| `mirror_token` | HumanAddr | Contract address of Mirror Token \(MIR\) |
+| `quorum` | Decimal | Minimum percentage of participation required for a poll to pass |
+| `threshold` | Decimal | Minimum percentage of `yes` votes required for a poll to pass |
+| `voting_period` | u64 | Number of blocks during which votes can be cast |
+| `effective_delay` | u64 | Number of blocks after a poll passes to apply changes |
+| `expiration_period` | u64 | Number of blocks after a poll's voting period during which the poll can be executed |
+| `proposal_deposit` | Uint128 | Minimum MIR deposit required for a new poll to be submitted |
+| `voter_weight` | Decimal | Ratio of protocol fee which will be distributed among the governance poll voters |
+| `snapshot_period` | u64 | Minimum number of blocks before end of voting period which snapshot could be taken to lock the current quorum for a poll |
 {% endtab %}
 
 {% tab title="JSON" %}
@@ -394,12 +545,39 @@ pub enum QueryMsg {
   "config": {}
 }
 ```
-{% endtab %}
-{% endtabs %}
+
+#### Response
+
+```javascript
+{
+    "config_response": {
+        "owner": "terra1...",
+        "mirror_token": "terra1...",
+        "quorum": "0.1",
+        "threshold": "0.5",
+        "voting_period": 100000,
+        "effective_delay": 13000,
+        "expiration_period": 13000,
+        "proposal_deposit": "1000000",
+        "voter_weight": "0.5",
+        "snapshot_period": 1000
+    }
+}
+```
 
 | Key | Type | Description |
 | :--- | :--- | :--- |
-
+| `mirror_token` | HumanAddr | Contract address of Mirror Token \(MIR\) |
+| `quorum` | Decimal | Minimum percentage of participation required for a poll to pass |
+| `threshold` | Decimal | Minimum percentage of `yes` votes required for a poll to pass |
+| `voting_period` | u64 | Number of blocks during which votes can be cast |
+| `effective_delay` | u64 | Number of blocks after a poll passes to apply changes |
+| `expiration_period` | u64 | Number of blocks after a poll's voting period during which the poll can be executed |
+| `proposal_deposit` | Uint128 | Minimum MIR deposit required for a new poll to be submitted |
+| `voter_weight` | Decimal | Ratio of protocol fee which will be distributed among the governance poll voters |
+| `snapshot_period` | u64 | Minimum number of blocks before end of voting period which snapshot could be taken to lock the current quorum for a poll |
+{% endtab %}
+{% endtabs %}
 
 ### `State`
 
@@ -412,6 +590,25 @@ pub enum QueryMsg {
     State {}
 }
 ```
+
+#### Response
+
+```rust
+#[derive(Serialize, Deserialize, Clone, PartialEq, JsonSchema)]
+pub struct StateResponse {
+    pub poll_count: u64,
+    pub total_share: Uint128,
+    pub total_deposit: Uint128,
+    pub pending_voting_rewards: Uint128,
+}
+```
+
+| Key | Type | Description |
+| :--- | :--- | :--- |
+| `poll_count` | u64 | Total number of polls that have been created on Mirror Protocol |
+| `total_share` | Uint128 | Amount of staked MIR to governance contract |
+| `total_deposit` | Uint128 | Amount of locked MIR to governance polls |
+| `pending_voting_rewards` | Uint128 | Amount of voting rewards that are not claimed yet |
 {% endtab %}
 
 {% tab title="JSON" %}
@@ -420,12 +617,28 @@ pub enum QueryMsg {
   "state": {}
 }
 ```
-{% endtab %}
-{% endtabs %}
+
+#### Response
+
+```javascript
+{
+    "state_response": {
+        "poll_count": 100,
+        "total_share": "1000000",
+        "total_deposit": "1000000",
+        "pending_voting_rewards": "1000000"
+    }
+}
+```
 
 | Key | Type | Description |
 | :--- | :--- | :--- |
-
+| `poll_count` | u64 | Total number of polls that have been created on Mirror Protocol |
+| `total_share` | Uint128 | Amount of staked MIR to governance contract |
+| `total_deposit` | Uint128 | Amount of locked MIR to governance polls |
+| `pending_voting_rewards` | Uint128 | Amount of voting rewards that are not claimed yet |
+{% endtab %}
+{% endtabs %}
 
 ### `Staker`
 
@@ -440,6 +653,29 @@ pub enum QueryMsg {
     }
 }
 ```
+
+| Key | Type | Description |
+| :--- | :--- | :--- |
+| `address` | HumanAddr | Address of staker |
+
+#### Response
+
+```rust
+#[derive(Serialize, Deserialize, Debug, Clone, PartialEq, JsonSchema)]
+pub struct StakerResponse {
+    pub balance: Uint128,
+    pub share: Uint128,
+    pub locked_balance: Vec<(u64, VoterInfo)>,
+    pub pending_voting_rewards: Uint128,
+}
+```
+
+| Key | Type | Description |
+| :--- | :--- | :--- |
+| `balance` | Uint128 | Amount of MIR staked by the user |
+| `share` | Uint128 | Weight of the user's staked MIR |
+| `locked_balance` | Vec&lt;\(u64, VoterInfo\)&gt; | Total number of staked MIR used as votes, and chosen vote option |
+| `pending_voting_rewards` | u64 | Amount of voting rewards that are not claimed yet |
 {% endtab %}
 
 {% tab title="JSON" %}
@@ -450,12 +686,35 @@ pub enum QueryMsg {
   }
 }
 ```
-{% endtab %}
-{% endtabs %}
 
 | Key | Type | Description |
 | :--- | :--- | :--- |
 | `address` | HumanAddr | Address of staker |
+
+#### Response
+
+```javascript
+{
+    "staker_response": {
+        "balance": "1000000",
+        "share": "1000000",
+        "locked_balance": [
+            [100, yes, "1000000"],
+            [100, abstain, "1000000"]
+        ]
+        "pending_voting_rewards": "1000000"
+    }
+}
+```
+
+| Key | Type | Description |
+| :--- | :--- | :--- |
+| `balance` | Uint128 | Amount of MIR staked by the user |
+| `share` | Uint128 | Weight of the user's staked MIR |
+| `locked_balance` | Vec&lt;\(u64, VoterInfo\)&gt; | Total number of staked MIR used as votes, and chosen vote option |
+| `pending_voting_rewards` | u64 | Amount of voting rewards that are not claimed yet |
+{% endtab %}
+{% endtabs %}
 
 ### `Poll`
 
@@ -470,6 +729,51 @@ pub enum QueryMsg {
     }
 }
 ```
+
+| Key | Type | Description |
+| :--- | :--- | :--- |
+| `poll_id` | u64 | Poll ID |
+
+#### Response
+
+```rust
+#[derive(Serialize, Deserialize, Debug, Clone, PartialEq, JsonSchema)]
+pub struct PollResponse {
+    pub id: u64,
+    pub creator: HumanAddr,
+    pub status: PollStatus,
+    pub end_height: u64,
+    pub title: String,
+    pub description: String,
+    pub link: Option<String>,
+    pub deposit_amount: Uint128,
+    pub execute_data: Option<ExecuteMsg>,
+    pub yes_votes: Uint128, // balance
+    pub no_votes: Uint128,  // balance
+    pub abstain_votes: Uint128, // balance
+    pub total_balance_at_end_poll: Option<Uint128>,
+    pub voters_reward: Uint128,
+    pub staked_amount: Option<Uint128>,
+}
+```
+
+| Key | Type | Description |
+| :--- | :--- | :--- |
+| id | u64 | Poll ID |
+| creator | HumanAddr | Address of the poll creator |
+| status | PollStatus | Could be one of "in progress", "rejected", "passed", "executed", "expired" |
+| end\_height | u64 | Amount of voting rewards that are not claimed yet |
+| title | String | Title of the poll |
+| description | String | Description submitted by the creator |
+| link\* | Uint128 | URL link |
+| deposit\_amount | binary | Initial MIR deposit at poll creation |
+| execute\_data\* | ExecuteMsg | Message to be executed by Gov contract |
+| yes\_votes | Uint128 | Amount of yes votes |
+| no\_votes | Uint128 | Amount of no votes |
+| abstain\_votes | Uint128 | Amount of abstain votes |
+| total\_balance\_at\_end\_poll\* | Uint128 | Total balanced used as yes, no, or abstain votes at the end of the poll |
+| voters\_reward | Uint128 | Amount of MIR reward accumulated to be distributed to the voters |
+| staked\_amount\* | Uint128 | Total number of MIR staked on governance contract \(used when Snapshot Poll has been taken\) |
 {% endtab %}
 
 {% tab title="JSON" %}
@@ -480,12 +784,54 @@ pub enum QueryMsg {
   }
 }
 ```
-{% endtab %}
-{% endtabs %}
 
 | Key | Type | Description |
 | :--- | :--- | :--- |
 | `poll_id` | u64 | Poll ID |
+
+#### Response
+
+```javascript
+{
+    "poll_response": {
+        "id": 8,
+        "creator": "terra1...",
+        "status": "in_progress",
+        "end_height": 1000000,
+        "title": "Register mCOIN Parameters",
+        "description": "mCOIN has been...",
+        "link": "https://mirror.finance",
+        "deposit_amount": "1000000",
+        "execute_data": "eyAiZXhlY3V0ZV9tc2ciOiAiYmxhaCBibGFoIiB9",
+        "yes_votes": "1000000",
+        "no_votes": "1000000",
+        "abstain_votes": "1000000",
+        "total_balance_at_end_poll": "1000000",
+        "voters_reward": "1000000",
+        "staked_amount": "1000000"
+    }
+}
+```
+
+| Key | Type | Description |
+| :--- | :--- | :--- |
+| id | u64 | Poll ID |
+| creator | HumanAddr | Address of the poll creator |
+| status | PollStatus | Could be one of "in progress", "rejected", "passed", "executed", "expired" |
+| end\_height | u64 | Amount of voting rewards that are not claimed yet |
+| title | String | Title of the poll |
+| description | String | Description submitted by the creator |
+| link\* | Uint128 | URL link |
+| deposit\_amount | binary | Initial MIR deposit at poll creation |
+| execute\_data\* | ExecuteMsg | Message to be executed by Gov contract |
+| yes\_votes | Uint128 | Amount of yes votes |
+| no\_votes | Uint128 | Amount of no votes |
+| abstain\_votes | Uint128 | Amount of abstain votes |
+| total\_balance\_at\_end\_poll\* | Uint128 | Total balanced used as yes, no, or abstain votes at the end of the poll |
+| voters\_reward | Uint128 | Amount of MIR reward accumulated to be distributed to the voters |
+| staked\_amount\* | Uint128 | Total number of MIR staked on governance contract \(used when Snapshot Poll has been taken\) |
+{% endtab %}
+{% endtabs %}
 
 ### `Polls`
 
@@ -502,6 +848,27 @@ pub enum QueryMsg {
     }
 }
 ```
+
+| Key | Type | Description |
+| :--- | :--- | :--- |
+| `filter`\* | PollStatus | Can be `yes` or `no` |
+| `limit`\* | u32 | Limit of results to fetch |
+| `start_after`\* | u64 | Begins search query at specific ID |
+
+\* = optional
+
+#### Response
+
+```rust
+#[derive(Serialize, Deserialize, Debug, Clone, PartialEq, JsonSchema)]
+pub struct PollsResponse {
+    pub polls: Vec<PollResponse>,
+}
+```
+
+| Key | Type | Description |
+| :--- | :--- | :--- |
+| `polls` | Vec&lt;PollResponse&gt; | Array of poll query responses |
 {% endtab %}
 
 {% tab title="JSON" %}
@@ -514,8 +881,6 @@ pub enum QueryMsg {
   }
 }
 ```
-{% endtab %}
-{% endtabs %}
 
 | Key | Type | Description |
 | :--- | :--- | :--- |
@@ -524,6 +889,43 @@ pub enum QueryMsg {
 | `start_after`\* | u64 | Begins search query at specific ID |
 
 \* = optional
+
+#### Response
+
+```javascript
+{
+    "polls_response": {
+        "polls": [
+            "poll_response": {
+                "id": 8,
+                "creator": "terra1...",
+                "status": "in_progress",
+                "end_height": 1000000,
+                "title": "Register mCOIN Parameters",
+                "description": "mCOIN has been...",
+                "link": "https://mirror.finance",
+                "deposit_amount": "1000000",
+                "execute_data": "eyAiZXhlY3V0ZV9tc2ciOiAiYmxhaCBibGFoIiB9",
+                "yes_votes": "1000000",
+                "no_votes": "1000000",
+                "abstain_votes": "1000000",
+                "total_balance_at_end_poll": "1000000",
+                "voters_reward": "1000000",
+                "staked_amount": "1000000"
+            }
+            ...
+        ]
+    }
+}
+```
+
+| Key | Type | Description |
+| :--- | :--- | :--- |
+| `polls` | Vec&lt;PollResponse&gt; | Array of poll query responses |
+{% endtab %}
+{% endtabs %}
+
+
 
 ### `Voters`
 
@@ -540,6 +942,31 @@ pub enum QueryMsg {
     }
 }
 ```
+
+| Key | Type | Description |
+| :--- | :--- | :--- |
+| `limit`\* | u32 | Limit of results to fetch |
+| `poll_id` | u64 | Poll ID |
+| `start_after`\* | HumanAddr | Begins search query with prefix |
+
+\* = optional
+
+#### Response
+
+```rust
+#[derive(Serialize, Deserialize, Debug, Clone, PartialEq, JsonSchema)]
+pub struct VotersResponseItem {
+    pub voter: HumanAddr,
+    pub vote: VoteOption,
+    pub balance: Uint128,
+}
+```
+
+| Key | Type | Description |
+| :--- | :--- | :--- |
+| `voter` | HumanAddr | Address of the voter |
+| `vote` | VoteOption | Could be one of `yes`, `no`, `abstain` |
+| `balance` | Uint128 | Amount of staked MIR used for voting |
 {% endtab %}
 
 {% tab title="JSON" %}
@@ -552,8 +979,6 @@ pub enum QueryMsg {
   }
 }
 ```
-{% endtab %}
-{% endtabs %}
 
 | Key | Type | Description |
 | :--- | :--- | :--- |
@@ -562,4 +987,24 @@ pub enum QueryMsg {
 | `start_after`\* | HumanAddr | Begins search query with prefix |
 
 \* = optional
+
+#### Response
+
+```rust
+{
+    "voter_response": {
+        "voter": "terra1...",
+        "vote": "yes",
+        "balance": "1000000"
+    }
+}
+```
+
+| Key | Type | Description |
+| :--- | :--- | :--- |
+| `voter` | HumanAddr | Address of the voter |
+| `vote` | VoteOption | Could be one of `yes`, `no`, `abstain` |
+| `balance` | Uint128 | Amount of staked MIR used for voting |
+{% endtab %}
+{% endtabs %}
 

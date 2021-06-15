@@ -2,7 +2,7 @@
 
 {% hint style="info" %}
 This section covers staking LP tokens on [mETH](https://eth.mirror.finance).   
-Staking guide for Mirror Web App is available [here](../getting-started/stake.md).
+Staking guide for Mirror Web App is available [here]().
 {% endhint %}
 
 Users can stake mAsset-UST LP or MIR-UST LP tokens to earn MIR reward. 

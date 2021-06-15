@@ -1,33 +1,30 @@
 # Sending Tokens
 
-Users can send ****MIR, mAsset and UST tokens to a different wallet. Tokens can be transferred between Terra blockchain wallets and also to Ethereum or Binance Smart Chain \(BSC\) wallets using a custom bridge which enables cross-chain transfers. 
+Users can send ****MIR, mAsset and UST tokens to a different wallet. Tokens can be transferred between Terra blockchain wallets and also to Ethereum or Binance Smart Chain \(BSC\) wallets using a custom bridge that enables cross-chain transfers. 
 
 ## Send
 
 {% hint style="danger" %}
-$1 or 0.1% fee \(which ever is greater\) from the transfer amount is charge on cross-chain transfer using the Shuttle bridge.   
+$1 or 0.1% fee \(whichever is greater\) from the transfer amount is charge on cross-chain transfer using the Shuttle bridge.   
 **A transaction with amount smaller than $1 value will be ignored.**
 {% endhint %}
 
-1. User can navigate to **Send** page by
+1. User can navigate to **Send** page by selecting `Send` from Total Value card on **My Page**
 
-* Selecting `Send` from the action button provided by the Holdings list on [**My Page**](https://terra.mirror.finance/my)\*\*\*\*
-
-![](../../.gitbook/assets/image%20%2886%29.png)
-
-* Selecting `Send` from the wallet pop-up which appears by clicking the wallet information at the top-right corner of the page
-
-![](../../.gitbook/assets/image%20%2891%29.png)
+![](../../.gitbook/assets/image%20%28195%29.png)
 
 2. Choose a network to send your tokens to. Currently, supported networks are Terra, Ethereum and Binance Smart Chain.
 
-![](../../.gitbook/assets/image%20%28110%29.png)
+{% hint style="danger" %}
+Token transfers between chains other than Terra does support "Memo" input.   
+**DO NOT** send your tokens to central exchanges that require a memo, or your tokens may be lost forever. 
+{% endhint %}
+
+![](../../.gitbook/assets/image%20%28162%29.png)
 
 3. Select the type of token to send by selecting the dropdown list. Then, enter the amount to send.
 
-![](../../.gitbook/assets/image%20%28106%29.png)
+![](../../.gitbook/assets/image%20%28183%29.png)
 
 4. Once all inputs entered correctly, click the button to proceed. Station Extension should prompt you to sign the transaction. Confirm the details presented and input your password to sign.
-
-![](../../.gitbook/assets/image%20%2887%29.png)
 

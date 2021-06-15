@@ -8,7 +8,7 @@ Terraswap is a [Uniswap](https://uniswap.org)-inspired automated market marker \
 
 ### Liquidity Pools
 
-Terraswap creates automated markets for pairs of tokens \(or native Terra coins like UST\) called **pools** which enable users to exchange one asset for the other directly on-chain. Pools maintain balances of both assets, to which users can provide liquidity in exchange for reward-bearing LP tokens. A more detailed explanation about LP tokens and their relationship with Mirror can be found [here](lp-token.md).
+Terraswap creates automated markets for pairs of tokens \(or native Terra coins like UST\) called **pools** which enable users to exchange one asset for the other directly on-chain. Pools maintain balances of both assets, to which users can provide liquidity in exchange for reward-bearing LP tokens. A more detailed explanation about LP tokens and their relationship with Mirror can be found [here]().
 
 ### Constant Product
 

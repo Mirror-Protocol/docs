@@ -1,6 +1,6 @@
 # Mirror Token \(MIR\)
 
-The Mirror Token \(MIR\) is Mirror Protocol's governance token. Currently, it must be staked to vote on active polls and is required as a deposit for making new governance polls. In future iterations of Mirror, it will serve further purposes for the protocol that increase its utility and value.
+The **Mirror Token \(MIR\)** is Mirror Protocol's governance token. Currently, it must be staked to vote on active polls and is required as a deposit for making new governance polls. In future iterations of Mirror, it will serve further purposes for the protocol that increase its utility and value.
 
 Users that stake MIR tokens also earn MIR rewards generated from withdrawing collateral from CDP positions within the protocol.
 
@@ -45,19 +45,51 @@ The distribution structure at the end of year 4 will look like the below:
 
 #### **Distribution Rate \(Inflation\)**
 
-Inflation rate of MIR tokens are designed to gradually decrease every year, until it reaches 370.575M at the end of year 4. After the end of year 4, no more MIR tokens will be minted through inflation.
+Inflation rate of MIR tokens are designed to gradually decrease every year until it reaches 370.575M at the end of year 4. After the end of year 4, no more MIR tokens will be minted through inflation.
 
-## Staking Rewards
+## MIR Staking Rewards
 
 {% hint style="info" %}
-This section discusses staking rewards for MIR tokens, which come from trading fees used to buy back MIR from the market. Staking LP tokens also generates MIR rewards, which come directly from new MIR tokens created every block. Learn more about it [here](lp-token.md#from-staking).
+This section discusses staking rewards for MIR tokens, which come from trading fees used to buy back MIR from the market. Staking LP and sLP tokens also generate MIR rewards, which come directly from new MIR tokens created every block. Learn more about it [here](staking-tokens-lp-and-slp.md#staking-rewards).
 {% endhint %}
 
 ### From Protocol Fees
 
-MIR Token stakers receive MIR token rewards every block, which are generated from [protocol fees](mirrored-assets-massets.md#protocol-fee) from CDP withdrawals. The protocol fees are collected from CDP collateral and are sold for TerraUSD to buy MIR through Terraswap. The MIR tokens are then distributed as rewards to MIR stakers in proportion to the percentage of total stake. This process balances the generation of new MIR by creating buying pressure.
+MIR Token stakers receive MIR token rewards every block which [protocol fees](mirrored-assets-massets.md#protocol-fee) are generated from CDP withdrawals. The protocol fees are collected from CDP collateral and are sold for TerraUSD to buy MIR through Terraswap after being sent to the [Collector ](../contracts/collector.md)contract. The MIR tokens are then distributed as rewards to MIR stakers and voters in proportion to the percentage of total stake. This process balances the generation of new MIR by creating buying pressure.
 
 ### From Poll Creation Fees
 
-Whenever a new governance poll is created, an initial deposit of MIR tokens must be paid. If the poll does not reach voting quorum, this deposit is distributed to all MIR stakers proportionately.
+Whenever a new governance poll is created, an initial deposit of MIR tokens must be paid. If the poll does not reach the voting quorum, this deposit is distributed to all MIR stakers proportionately.
+
+### From Voting Rewards
+
+From protocol fee and poll creation fees from polls that have not reached voting quorum,  `voter_weight` is used to determine the amount of MIR tokens that are distributed among users who voted on on-going polls. If total MIR governance reward which includes both staking and voting rewards is $$R_{\text{total}}$$ is,
+
+$$
+R_{\text{passive}}+R_{\text{vote}}
+$$
+
+where $$R_{\text{passive}}$$is the reward for MIR stakers that did not vote, and $$R_{\text{vote}}$$is the reward for users that have voted on on-going polls. If `voter_weight` is $$W_{\text{vote}}$$, and each individual and total number of MIR voted for the $$i$$th poll are $$m_{\text{i}}$$ and $$M_{\text{i}}$$,the voting reward  $$R_{\text{vote}}$$ is,
+
+$$
+\sum_{i=1}^n \frac{m_{\text{i}}}{M_{\text{i}}} \frac{W_{\text{vote}}{R_{\text{gov}}}}{n}
+$$
+
+### APR Calculation
+
+{% hint style="warning" %}
+**Note** Since protocol fees for most mAssets are only generated during trading hours of their underlying real-world asset, the actual reward distributed over the weekends and holidays will be much lower. 
+{% endhint %}
+
+Mirror Web App displays the annual percentage rate for MIR staking reward. Due to fluctuating nature of protocol fees, MIR staking APR calculation uses the **average reward per day from the last 15 days**.
+
+If reward for MIR staker on day $$i$$ is $$r_i$$, with total MIR staked amount is $$M$$, annualized percentage rate for MIR staking \(365 days\) would be,
+
+$$
+\frac{\sum_{i=1}^{15}m_i}{M}\times365
+$$
+
+where reward distribution information of the last 15 days is applied. This APR is calculated under the assumption that the users have voted on all on-going governance proposals. 
+
+
 

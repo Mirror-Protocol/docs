@@ -123,6 +123,23 @@ pub enum QueryMsg {
     }
 }
 ```
+
+#### Response
+
+```rust
+#[derive(Serialize, Deserialize, Clone, Debug, PartialEq, JsonSchema)]
+pub struct ConfigResponse {
+    pub owner: HumanAddr,
+    pub mirror_token: HumanAddr,
+    pub spend_limit: Uint128,
+}
+```
+
+| Key | Type | Description |
+| :--- | :--- | :--- |
+| `owner` | HumanAddr | Owner address |
+| `mirror_token` | HumanAddr | Contract address of the Mirror Token |
+| `spend_limit` | Uint128 | Max amount of disbursement |
 {% endtab %}
 
 {% tab title="JSON" %}
@@ -131,10 +148,23 @@ pub enum QueryMsg {
   "config": {}
 }
 ```
-{% endtab %}
-{% endtabs %}
+
+#### Response
+
+```rust
+#[derive(Serialize, Deserialize, Clone, Debug, PartialEq, JsonSchema)]
+pub struct ConfigResponse {
+    pub owner: HumanAddr,
+    pub mirror_token: HumanAddr,
+    pub spend_limit: Uint128,
+}
+```
 
 | Key | Type | Description |
 | :--- | :--- | :--- |
-
+| `owner` | HumanAddr | Owner address |
+| `mirror_token` | HumanAddr | Contract address of the Mirror Token |
+| `spend_limit` | Uint128 | Max amount of disbursement |
+{% endtab %}
+{% endtabs %}
 

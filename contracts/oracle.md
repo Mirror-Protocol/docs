@@ -57,7 +57,7 @@ pub enum HandleMsg {
 
 ### `RegisterAsset`
 
-Registers a new asset with the oracle, enabling a price feed for the asset. The feeder account responsible for reporting the price is assigned at this step.
+Registers a new asset with the oracle, enabling a price feed for the asset. The feeder account responsible for reporting the price is assigned at this step. Can also be used to update an existing asset.
 
 {% tabs %}
 {% tab title="Rust" %}
@@ -140,6 +140,21 @@ pub enum QueryMsg {
     Config {}
 }
 ```
+
+#### Response
+
+```rust
+#[derive(Serialize, Deserialize, Clone, Debug, PartialEq, JsonSchema)]
+pub struct ConfigResponse {
+    pub owner: HumanAddr,
+    pub base_asset: String,
+}
+```
+
+| Key | Type | Description |
+| :--- | :--- | :--- |
+| `owner` | HumanAddr | Owner address |
+| `base_asset` | String/`'uusd'` | Asset in which prices will be denominated \(default TerraUSD\) |
 {% endtab %}
 
 {% tab title="JSON" %}
@@ -148,12 +163,24 @@ pub enum QueryMsg {
   "config": {}
 }
 ```
-{% endtab %}
-{% endtabs %}
+
+#### Response
+
+```rust
+{
+    "config_response": {
+        "owner": "terra1...",
+        "base_asset": "uusd"
+    }
+}
+```
 
 | Key | Type | Description |
 | :--- | :--- | :--- |
-
+| `owner` | HumanAddr | Owner address |
+| `base_asset` | String/`'uusd'` | Asset in which prices will be denominated \(default TerraUSD\) |
+{% endtab %}
+{% endtabs %}
 
 ### `Feeder`
 
@@ -170,6 +197,25 @@ pub enum QueryMsg {
     }
 }
 ```
+
+| Key | Type | Description |
+| :--- | :--- | :--- |
+| `asset_token` | HumanAddr | Contract address of asset token to query |
+
+#### Response
+
+```rust
+#[derive(Serialize, Deserialize, Clone, Debug, PartialEq, JsonSchema)]
+pub struct FeederResponse {
+    pub asset_token: HumanAddr,
+    pub feeder: HumanAddr,
+}
+```
+
+| Key | Type | Description |
+| :--- | :--- | :--- |
+| `asset_token` | HumanAddr | Contract address of asset token to query |
+| `feeder` | HumanAddr | Terra address of price feeder |
 {% endtab %}
 
 {% tab title="JSON" %}
@@ -180,12 +226,28 @@ pub enum QueryMsg {
   }
 }
 ```
-{% endtab %}
-{% endtabs %}
 
 | Key | Type | Description |
 | :--- | :--- | :--- |
 | `asset_token` | HumanAddr | Contract address of asset token to query |
+
+#### Response
+
+```rust
+{
+    "feeder_response": {
+        "asset_token": "terra1...",
+        "feeder": "terra1..."
+    }
+}
+```
+
+| Key | Type | Description |
+| :--- | :--- | :--- |
+| `asset_token` | HumanAddr | Contract address of asset token to query |
+| `feeder` | HumanAddr | Terra address of price feeder |
+{% endtab %}
+{% endtabs %}
 
 ### `Price`
 
@@ -203,6 +265,28 @@ pub enum QueryMsg {
     }
 }
 ```
+
+| Key | Type | Description |
+| :--- | :--- | :--- |
+| `base_asset` | HumanAddr | Asset for which to get price |
+| `quote_asset` | HumanAddr / `'uusd'` | Asset in which price will be denominated |
+
+#### Response
+
+```rust
+#[derive(Serialize, Deserialize, Clone, Debug, PartialEq, JsonSchema)]
+pub struct PriceResponse {
+    pub rate: Decimal,
+    pub last_updated_base: u64,
+    pub last_updated_quote: u64,
+}
+```
+
+| Key | Type | Description |
+| :--- | :--- | :--- |
+| `rate` | HumanAddr | Asset for which to get price |
+| `last_updated_base` | u64 | Block height which the `base_asset` price has been updated at |
+| `last_updated_quote` | u64 | Block height which the `quote_asset` price has been updated at |
 {% endtab %}
 
 {% tab title="JSON" %}
@@ -214,13 +298,31 @@ pub enum QueryMsg {
   }
 }
 ```
-{% endtab %}
-{% endtabs %}
 
 | Key | Type | Description |
 | :--- | :--- | :--- |
 | `base_asset` | HumanAddr | Asset for which to get price |
 | `quote_asset` | HumanAddr / `'uusd'` | Asset in which price will be denominated |
+
+#### Response
+
+```rust
+{
+    "price_response": {
+        "rate": "123.456789",
+        "last_updated_base": 10
+        "last_updated_quote": 10
+    }
+}
+```
+
+| Key | Type | Description |
+| :--- | :--- | :--- |
+| `rate` | HumanAddr | Asset for which to get price |
+| `last_updated_base` | u64 | Block height which the `base_asset` price has been updated at |
+| `last_updated_quote` | u64 | Block height which the `quote_asset` price has been updated at |
+{% endtab %}
+{% endtabs %}
 
 ### `Prices`
 
@@ -238,6 +340,28 @@ pub enum QueryMsg {
     }
 }
 ```
+
+| Key | Type | Description |
+| :--- | :--- | :--- |
+| `start_after`\* | HumanAddr | Contract address to start query from |
+| `limit` | u32 | Max number of results to report |
+
+#### Response
+
+```rust
+#[derive(Serialize, Deserialize, Clone, Debug, PartialEq, JsonSchema)]
+pub struct PricesResponseElem {
+    pub asset_token: HumanAddr,
+    pub price: Decimal,
+    pub last_updated_time: u64,
+}
+```
+
+| Key | Type | Description |
+| :--- | :--- | :--- |
+| `asset_token` | HumanAddr | Contract address to start query from |
+| `price` | Decimal | Current price of the `asset_token`  |
+| `last_updated_time` | u64 | Block height which the`asset_token`price has been updated at |
 {% endtab %}
 
 {% tab title="JSON" %}
@@ -249,11 +373,30 @@ pub enum QueryMsg {
   }
 }
 ```
-{% endtab %}
-{% endtabs %}
 
 | Key | Type | Description |
 | :--- | :--- | :--- |
 | `start_after`\* | HumanAddr | Contract address to start query from |
 | `limit` | u32 | Max number of results to report |
+
+#### Response
+
+```rust
+{
+    "prices_response": {
+        "asset_token": "terra1...",
+        "price": "123.456789",
+        "last_updated_time": 10,
+    }
+    ...
+}
+```
+
+| Key | Type | Description |
+| :--- | :--- | :--- |
+| `asset_token` | HumanAddr | Contract address to start query from |
+| `price` | Decimal | Current price of the `asset_token`  |
+| `last_updated_time` | u64 | Block height which the`asset_token`price has been updated at |
+{% endtab %}
+{% endtabs %}
 
