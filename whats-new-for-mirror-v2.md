@@ -32,3 +32,63 @@ Assets scheduled to undergo an IPO can be whitelisted and traded on Mirror v2. A
 
 **Security Audit** for the underlying Mirror v2 Contracts is done by **Cryptonics** \(TBD\).
 
+## Genesis Parameters
+
+For a better testing environment, any time-related parameters are shortened for Mirror v2 Testnet. Please note that all time parameters are now counted in `seconds` instead of `blocks`.
+
+Mainnet parameters will be announced at the official launch of Mirror v2. 
+
+### Borrow \(Mint\)
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align:left">Parameter</th>
+      <th style="text-align:left">Testnet (v2)</th>
+      <th style="text-align:left">Mainnet (v1)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align:left">
+        <p>Collateral Ratio Multiplier</p>
+        <p>(Luna, MIR, ANC)</p>
+      </td>
+      <td style="text-align:left">1.3333334</td>
+      <td style="text-align:left">Not available</td>
+    </tr>
+    <tr>
+      <td style="text-align:left">aUST Collateral Ratio Multiplier</td>
+      <td style="text-align:left">1</td>
+      <td style="text-align:left">Not available</td>
+    </tr>
+    <tr>
+      <td style="text-align:left">UST Lock-up Period</td>
+      <td style="text-align:left">600 seconds</td>
+      <td style="text-align:left">Not available</td>
+    </tr>
+    <tr>
+      <td style="text-align:left">Protocol Fee Rate</td>
+      <td style="text-align:left">1%</td>
+      <td style="text-align:left">1.5%</td>
+    </tr>
+  </tbody>
+</table>
+
+### Governance 
+
+| Parameter | Testnet \(v2\) | Mainnet \(v1\) |
+| :--- | :--- | :--- |
+| Proposal Deposit | 1 MIR | 100 MIR |
+| Quorum | 5% | 10% |
+| Voting Period | 318 seconds | 100,000 Blocks |
+| Snapshot Period | 100 seconds | Not available |
+| Effective Delay | 331 seconds | 13,000 Blocks |
+| Voter Weight | 50% | Not available |
+
+### Farming \(Staking\)
+
+| Parameter | Testnet \(v2\) | Mainnet \(v1\) |
+| :--- | :--- | :--- |
+| Premium Update Interval | 600 seconds | Not available |
+
