@@ -36,7 +36,9 @@ Assets scheduled to undergo an IPO can be whitelisted and traded on Mirror v2. A
 
 For a better testing environment, any time-related parameters are shortened for Mirror v2 Testnet. Please note that all time parameters are now counted in `seconds` instead of `blocks`.
 
+{% hint style="info" %}
 Mainnet parameters will be announced at the official launch of Mirror v2. 
+{% endhint %}
 
 ### Borrow \(Mint\)
 
