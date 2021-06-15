@@ -2,7 +2,7 @@
 
 ## What’s new for Mirror v2? 
 
-_The below changes are based on_ [_Mirror v2 Whitepaper_](https://mirror.finance/Mirror_Protocol_v2.pdf)_._
+_The below changes are based on the_ [**Mirror V2 Whitepaper**](https://mirror.finance/Mirror_Protocol_v2.pdf)**.**
 
 Coming into Mirror Protocol v2, there are new feature additions which supplement existing mechanisms from v1 so that all classes of users are sufficiently incentivized for their given contributions within the protocol.
 
