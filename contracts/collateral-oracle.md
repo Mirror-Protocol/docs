@@ -1,6 +1,8 @@
 # Collateral Oracle
 
-Collateral Oracle contract is responsible for registering a new type of collateral to be used in Mirror Mint contract for CDP creation and reporting its price. Oracle feeders that are connected to the contract keep the collateral prices up-to-date with continuous price quote updates that are fetched from their reputable sources.
+Collateral Oracle contract manages a directory of whitelisted collateral assets, providing the necessary interfaces to register and revoke assets. Mint contract will fetch prices from collateral oracle to determine the C-ratio of each CDP.   
+  
+The Collateral Oracle  fetches prices from different sources on the Terra ecosystem,  acting as a proxy for Mint Contract.
 
 ## InitMsg
 
