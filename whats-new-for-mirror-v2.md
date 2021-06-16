@@ -71,7 +71,7 @@ Mainnet parameters will be announced at the official launch of Mirror v2.
     </tr>
     <tr>
       <td style="text-align:left">Protocol Fee Rate</td>
-      <td style="text-align:left">1%</td>
+      <td style="text-align:left">1.5%</td>
       <td style="text-align:left">1.5%</td>
     </tr>
   </tbody>
