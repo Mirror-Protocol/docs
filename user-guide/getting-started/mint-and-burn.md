@@ -56,9 +56,9 @@ If you do not hold an amount greater than or equal to `Burn Amount` displayed on
 
 4. Click `CLOSE`. Station Extension should prompt you to sign the transaction. Confirm the details presented and input your password to sign.
 
-## Collateral Deposit / Withdrawal
+## Manage Position
 
-Users are warned when their CDP is close to liquidation. Minted positions become vulnerable to liquidation when the collateral ratio falls below the `min_collateral_ratio`. Vice versa, minted positions can be over-collateralized when the value of collateral to minted assets increases by a large margin. To avoid liquidation or over-collateralization, the user can deposit or withdraw locked collateral from the CDP.
+Users are warned when their CDP is close to liquidation. Borrow / short positions become vulnerable to liquidation when the collateral ratio falls below the `min_collateral_ratio`. Vice versa, borrow / short positions can be over-collateralized when the value of collateral to minted assets increases by a large margin. To avoid liquidation or over-collateralization, the user can borrow more or burn assets, deposit or withdraw collateral or do change both amounts of borrowed and collateral. 
 
 1. Navigate to [**My** **Page**](https://terra.mirror.finance/my)\*\*\*\*
 
@@ -66,17 +66,22 @@ Users are warned when their CDP is close to liquidation. Minted positions become
 
 ![](../../.gitbook/assets/image%20%28145%29.png)
 
-3. Select "`Deposit` / `Withdraw`"
+3. Select "`Edit` "
 
-![](../../.gitbook/assets/image%20%28151%29.png)
+![](../../.gitbook/assets/image%20%28219%29.png)
 
-4. Enter either amount to deposit/withdraw or collateral ratio.
+4. Users may do the following actions on the page by entering a value greater or less than the default value in:
 
-![](../../.gitbook/assets/image%20%28143%29.png)
+* `Collateral` field to **deposit** or **withdraw** collateral from the position
+* `Borrowed` field to **borrow more** or **burn** mAssets from the position
+
+or change both fields to manage the position in a more flexible manner. Changing `Collateral Ratio` will only change the value in `Collateral` field.
+
+![](../../.gitbook/assets/image%20%28218%29.png)
 
 5. Click the activated button to confirm. Station Extension should prompt you to sign the transaction. Confirm the details presented and input your password to sign.
 
 6. All done!
 
-![](../../.gitbook/assets/image%20%28216%29.png)
+![](../../.gitbook/assets/image%20%28217%29.png)
 
