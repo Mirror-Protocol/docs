@@ -40,7 +40,7 @@ The distribution structure at the end of year 4 will look like the below:
 * **Airdrop**: The airdrop amount which was originally distributed to UNI holders and LUNA stakers will now account for 4.9% \(18.3M\) of the total token supply.
 * **LUNA staking reward**: 4.9% \(18.3M\) will be distributed to LUNA stakers throughout the first year since the launching of Mirror Protocol. ****MIR will be distributed every 100,000 blocks \(approximately once every week\) to Luna stakers only on the first year, starting from block height 920,000. Snapshot will be taken every 100,000 blocks to determine who is eligible for the staking reward distribution. 
 * **mAsset LP Staking**: 45.1% \(167.27M\) tokens are distributed to all mAsset and mAsset \(mETH\) staking pools by the end of year 4. Tokens are distributed daily to each staking pool \(initially 13 pairs for each Mirror and mETH\) based on their `weight` compared to other assets.
-* **MIR LP Staking**: 10.4% \(38.6M\) tokens are evenly distributed to MIR-UST and MIR-UST \(mETH\) staking pools by the end of year 4. MIR-UST pair has an initial `weight` of 300%, which is 3 times the initial `weight` of mAssets. Tokens are distributed on daily basis. 
+* **MIR LP Staking**: 10.4% \(38.6M\) tokens are evenly distributed to MIR-UST and MIR-UST \(mETH\) staking pools by the end of year 4. MIR-UST pair has an initial `weight` of 300, which is greater than  `weight` of mAssets \(First batch of mAssets have 100, and whitelisted mAssets have 30 `weight`\). 
 * **Community Pool**: 34.6% \(128.1M\) of total MIR supply will be distributed to Community Pool by the end of year 4. 
 
 #### **Distribution Rate \(Inflation\)**

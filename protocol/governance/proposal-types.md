@@ -114,7 +114,7 @@ This category allows modification of two types of MIR distribution: 1\) mAsset L
 
 ![](../../.gitbook/assets/image%20%28203%29.png)
 
-Through this poll, the ratio which newly minted MIR tokens are distributed among LP token stakers, called `weight` parameter can be changed. To learn how `weight` parameter determines the amount of MIR distributed to each mAsset pool refer to [this document](). 
+Through this poll, the ratio which newly minted MIR tokens are distributed among LP token stakers, called `weight` parameter can be changed. To learn how `weight` parameter determines the amount of MIR distributed to each mAsset pool refer to [this document](../mirror-token-mir.md#mir-staking-rewards). 
 
 | Field | Description | Type |
 | :--- | :--- | :--- |

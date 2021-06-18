@@ -88,7 +88,7 @@ Mirror allows users to additionally profit from LP tokens by staking them to rec
 
 Users can additionally profit from sLP tokens by staking them to receive Mirror Token \(MIR\) rewards. The sLP tokens can be unstaked and burned \(with the minted mAsset\) anytime to retrieve the corresponding amount of collateral. 
 
-Mirror Protocol distributes rewards to each mAsset staking pools in [Staking contract](../contracts/staking.md) based on the `weight` parameter of each mAsset.  mAsset pools as well as the MIR pool. All mAsset-UST staking pools receive a weight of 1, while the MIR pool receives a weight of 3. Therefore, there is a stronger reward incentive to stake to MIR pool as they confer 3 times the reward when staked relative to mAssets.
+Mirror Protocol distributes rewards to each mAsset staking pools in [Staking contract](../contracts/staking.md) based on the `weight` parameter of each mAsset.  mAsset pools as well as the MIR pool. All mAsset-UST staking pools receive a weight of 100 \(newly whitelisted mAssets will have weight of 30\), while the MIR pool receives a weight of 300. Therefore, there is a stronger reward incentive to stake to MIR pool as they confer 3 times the reward when staked relative to mAssets.
 
 Within each mAsset's staking pool, MIR tokens are distributed to LP and sLP stakers, where sLP tokens reward weight can increase up to 40%, based on the current price premium between Terraswap and Oracle [price](mirrored-assets-massets.md#price). When enough short positions are created to lower the price premium, sLP reward weight will decrease, which automatically increases LP reward weight up to 100%. Below is the table of short reward distribution based on price premium: 
 
