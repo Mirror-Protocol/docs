@@ -58,7 +58,7 @@ If you do not hold an amount greater than or equal to `Burn Amount` displayed on
 
 ## Manage Position
 
-Users are warned when their CDP is close to liquidation. Borrow / short positions become vulnerable to liquidation when the collateral ratio falls below the `min_collateral_ratio`. Vice versa, borrow / short positions can be over-collateralized when the value of collateral to minted assets increases by a large margin. To avoid liquidation or over-collateralization, the user can borrow more or burn assets, deposit or withdraw collateral or do change both amounts of borrowed and collateral. 
+Users are warned when their CDP is close to liquidation. Borrow / short positions become vulnerable to liquidation when the collateral ratio falls below the `min_collateral_ratio`. Vice versa, borrow / short positions can be over-collateralized when the value of collateral to minted assets increases by a large margin. To avoid liquidation or over-collateralization, the user can borrow more or burn assets, deposit or withdraw collateral or change both amounts of borrowed and collateral. 
 
 1. Navigate to [**My** **Page**](https://terra.mirror.finance/my)\*\*\*\*
 
