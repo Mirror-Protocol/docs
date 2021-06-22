@@ -30,7 +30,7 @@ Mirror v2 presents a new non-tradable token called [sLP tokens](protocol/staking
 
 Assets scheduled to undergo an IPO can be whitelisted and traded on Mirror v2. Any user can specify the details of the underlying asset via governance poll creation. If the poll passes, these assets will be minted \(during a fixed time window\) or traded like any other mAssets before the IPO. Once the IPO happens in the underlying market, [Mirror Oracle](contracts/oracle.md) will begin reporting prices from the market, and the asset will have the same features as any other mAsset. 
 
-**Security Audit** for the underlying Mirror v2 Contracts is done by **Cryptonics** \(TBD\).
+\*\*\*\*[**Security Audit**](https://mirror.finance/Mirror_v2_Audit_Report.pdf) ****for the underlying Mirror v2 Contracts is done by **Cryptonics.**
 
 ## Genesis Parameters
 

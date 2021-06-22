@@ -7,7 +7,7 @@ The security of the Mirror protocol is our highest priority; our development tea
 ## Audits
 
 * [Mirror v1 Smart Contract Audit](https://docsend.com/view/p4es2dgvwadamgqg) by **Cyber Unit**
-* Mirror v2 Smart Contract Audit by **Cryptonics \(TBD\)**
+* [Mirror v2 Smart Contract Audit](https://mirror.finance/Mirror_v2_Audit_Report.pdf) by **Cryptonics**
 
 ## Bug Bounty Program
 
