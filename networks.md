@@ -10,7 +10,7 @@ A web application called [Terra Bridge](user-guide/terra-bridge.md) provides web
 
 Mirror's core contracts are implemented on the [Terra blockchain](https://terra.money).
 
-### Mainnet \(v1\)
+### Mainnet \(v2\)
 
 Network chain ID: `columbus-4`
 
@@ -27,6 +27,9 @@ Network chain ID: `columbus-4`
 | Staking | [terra17f7zu97865jmknk7p2glqvxzhduk78772ezac5](https://finder.terra.money/columbus-4/account/terra17f7zu97865jmknk7p2glqvxzhduk78772ezac5) |
 | Airdrop | [terra1kalp2knjm4cs3f59ukr4hdhuuncp648eqrgshw](https://finder.terra.money/columbus-4/account/terra1kalp2knjm4cs3f59ukr4hdhuuncp648eqrgshw) |
 | Limit Order | [terra1zpr8tq3ts96mthcdkukmqq4y9lhw0ycevsnw89](https://finder.terra.money/columbus-4/address/terra1zpr8tq3ts96mthcdkukmqq4y9lhw0ycevsnw89) |
+| Collateral Oracle | [terra1pmlh0j5gpzh2wsmyd3cuk39cgh2gfwk6h5wy9j](https://finder.terra.money/columbus-4/address/terra1pmlh0j5gpzh2wsmyd3cuk39cgh2gfwk6h5wy9j) |
+| Lock | [terra169urmlm8wcltyjsrn7gedheh7dker69ujmerv2](https://finder.terra.money/columbus-4/address/terra169urmlm8wcltyjsrn7gedheh7dker69ujmerv2) |
+| Short Reward | [terra16mlzdwqq5qs6a23250lq0fftke8v80sapc5kye](https://finder.terra.money/columbus-4/address/terra16mlzdwqq5qs6a23250lq0fftke8v80sapc5kye) |
 
 #### Asset Contracts
 
@@ -67,7 +70,7 @@ Network chain ID: `tequila-0004`
 | Airdrop | [terra1p6nvyw7vz3fgpy4nyh3q3vc09e65sr97ejxn2p](https://finder.terra.money/tequila-0004/account/terra1p6nvyw7vz3fgpy4nyh3q3vc09e65sr97ejxn2p) |
 | Limit Order | [terra1vc4ch0z3n6c23f9uywzy5yqaj2gmpnam8qgge7](https://finder.terra.money/tequila-0004/account/terra1vc4ch0z3n6c23f9uywzy5yqaj2gmpnam8qgge7) |
 | Collateral Oracle | [terra1q3ls6u2glsazdeu7dxggk8d04elnvmsg0ung6n](https://finder.terra.money/tequila-0004/account/terra1q3ls6u2glsazdeu7dxggk8d04elnvmsg0ung6n) |
-| Lock | [terra1pcxghd4dyf950mcs0kmlp7lvnrjsnl6qlfldwj](https://finder.terra.money/tequila-0004/account/terra1pcxghd4dyf950mcs0kmlp7lvnrjsnl6qlfldwj) |
+| Lock | [terra1pcxghd4dyf950mcs0kmlp7lvnrjsnl6qlfldwj](https://finder.terra.money/tequila-0004/address/terra1pcxghd4dyf950mcs0kmlp7lvnrjsnl6qlfldwj) |
 
 #### Asset Contracts
 

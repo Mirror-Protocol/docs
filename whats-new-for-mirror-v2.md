@@ -47,7 +47,7 @@ Mainnet parameters will be announced at the official launch of Mirror v2.
     <tr>
       <th style="text-align:left">Parameter</th>
       <th style="text-align:left">Testnet (v2)</th>
-      <th style="text-align:left">Mainnet (v1)</th>
+      <th style="text-align:left">Mainnet (v2)</th>
     </tr>
   </thead>
   <tbody>
@@ -57,17 +57,17 @@ Mainnet parameters will be announced at the official launch of Mirror v2.
         <p>(Luna, MIR, ANC)</p>
       </td>
       <td style="text-align:left">1.3333334</td>
-      <td style="text-align:left">-</td>
+      <td style="text-align:left">1.3333334</td>
     </tr>
     <tr>
       <td style="text-align:left">aUST Collateral Ratio Multiplier</td>
       <td style="text-align:left">1</td>
-      <td style="text-align:left">-</td>
+      <td style="text-align:left">1</td>
     </tr>
     <tr>
       <td style="text-align:left">UST Lock-up Period</td>
       <td style="text-align:left">600 seconds</td>
-      <td style="text-align:left">-</td>
+      <td style="text-align:left">1,209,600 seconds (2 weeks)</td>
     </tr>
     <tr>
       <td style="text-align:left">Protocol Fee Rate</td>
@@ -79,18 +79,18 @@ Mainnet parameters will be announced at the official launch of Mirror v2.
 
 ### Governance 
 
-| Parameter | Testnet \(v2\) | Mainnet \(v1\) |
+| Parameter | Testnet \(v2\) | Mainnet \(v2\) |
 | :--- | :--- | :--- |
 | Proposal Deposit | 1 MIR | 100 MIR |
 | Quorum | 5% | 10% |
-| Voting Period | 318 seconds | 100,000 Blocks |
-| Snapshot Period | 100 seconds | - |
-| Effective Delay | 331 seconds | 13,000 Blocks |
-| Voter Weight | 50% | - |
+| Voting Period | 318 seconds | 604,800 seconds \(1 week\) |
+| Snapshot Period | 100 seconds | 86,400 seconds \(1 day\) |
+| Effective Delay | 331 seconds | 86,400 secons \(1 day\) |
+| Voter Weight | 50% | 50% |
 
 ### Farming \(Staking\)
 
-| Parameter | Testnet \(v2\) | Mainnet \(v1\) |
+| Parameter | Testnet \(v2\) | Mainnet \(v2\) |
 | :--- | :--- | :--- |
-| Premium Update Interval | 600 seconds | - |
+| Premium Update Interval | 600 seconds | 3600 seconds \(1 hour\) |
 

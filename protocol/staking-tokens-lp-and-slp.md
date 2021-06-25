@@ -74,9 +74,9 @@ If the whole position is closed, the minter immediately receives back locked UST
 
 ### Lock Period
 
-Since minted mAssets are sold immediately after short position creation, amount of UST corresponding to the value of mAsset shorted against the Terraswap pool is returned to the user. But if the user is able to immediately buy back the corresponding amount of mAssets with the UST returned from shorting, the original purpose of sLP tokens reward to eliminate the price premium between Terraswap and Oracle price is likely to fail. 
+Since minted mAssets are sold immediately after short position creation, amount of UST corresponding to the value of mAsset shorted against the Terraswap pool is returned to the user. 
 
-Therefore,  a **`lock_period`** is applied to the returned UST after a short position is created \(set to 15 days at the launch of Mirror v2\). As returned UST is locked for a defined period of time, users must wait  to buy back the corresponding amount of  mAsset to close their short position, which increases the chance to make the premium converge closer to 0% during that period of time. 
+A **`lock_period`** is applied to the returned UST after a short position is created \(set to **2 weeks** at the launch of Mirror v2\). User may choose to close their short position at any time by buying the shorted amount from Terraswap, but the UST from shorting might be within the `lock_period`. To use the UST from shorting to close the position, user must wait until the lock period ends, and claim the corresponding amount. 
 
 ## Staking Rewards
 
