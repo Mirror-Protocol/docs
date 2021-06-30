@@ -159,7 +159,7 @@ If a user wishes to collect all their collateral from their CDP, they must close
 
 ### Protocol Fee
 
-1.5% Mirror **protocol fee** is charged whenever a withdrawal from a CDP is made \(including position closure and liquidation auction\). The protocol fee is calculated based on the value of the collateral at position opening. This fee is then sent to the [Collector](../contracts/collector.md) contract, converted into MIR through Terraswap and distributed to MIR token stakers as a staking reward.
+1.5% Mirror **protocol fee** is charged whenever a withdrawal from a CDP is made \(including position closure and liquidation auction\). The protocol fee is calculated based on the value of the mAsset at position opening. This fee is then sent to the [Collector](../contracts/collector.md) contract, converted into MIR through Terraswap and distributed to MIR token stakers as a staking reward.
 
 ### Margin Call & Auction
 
