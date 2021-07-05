@@ -50,8 +50,6 @@ Whitelisting is approved by [governance](governance/whitelist-procedure.md) and 
 
 In situations where the tracked asset undergoes a corporate event such as a stock split, merger, bankruptcy, etc. and becomes difficult to reflect properly due to inconsistencies, an mAsset can be **delisted**, or discontinued, with the following migration procedure initiated by the oracle feeder:
 
-In situations where the tracked asset undergoes a corporate event such as a stock split, merger, bankruptcy, etc. and becomes difficult to reflect properly due to inconsistencies, an mAsset can be **delisted**, or discontinued, with the following migration procedure initiated by the oracle feeder:
-
 1. New replacement mAsset token, Terraswap pair, and LP tokens contracts are created, and the present values of properties of mAsset will be transferred over
 2. The oracle feeder sets the `end_price` for the mAsset to the latest valid price
 3. The mAsset's min. collateral ratio is set to 100%
