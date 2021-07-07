@@ -4,9 +4,9 @@ Governance proposals on the Mirror Protocol can come in a variety of formats. Th
 
 ![](../../.gitbook/assets/image%20%28190%29.png)
 
-### Asset Listing
+## Asset Listing
 
-#### 1. Suggest Asset Whitelisting
+### 1. Suggest Asset Whitelisting
 
 {% hint style="info" %}
 The full process of getting a new asset to be fully operational on the Mirror Protocol is described [here](whitelist-procedure.md).
@@ -31,16 +31,16 @@ has numerous problems. First, the specific exchange that the price feed should b
 | Information Link | External URL for further information | Optional |
 | Suggested Oracle | Oracle provider or address | Optional |
 
-#### 2. Register Whitelist Parameters
+### 2. Register Whitelist Parameters
 
-If a proposal to whitelist is approved, another poll must be passed to set the parameters of the newly listed asset. The required fields include `Title`, `Description`, `Asset Name`, `Symbol`, `Oracle Feeder` \(address\), `Auction Discount`, and the `Minimum Collateral Ratio`. Again, it is advised to include reference to the passed whitelist poll as well as reasoning for choosing the given oracle address. Given that the Mirror Protocol is in its early stages, it is advisable to keep the parameters equal to existing parameters for already listed assets \(Auction Discount at 20%, and Minimum Collateral Ratio at 150%\).  
-  
+If a proposal to whitelist is approved, another poll must be passed to set the parameters of the newly listed asset. The required fields include `Title`, `Description`, `Asset Name`, `Symbol`, `Oracle Feeder` \(address\), `Auction Discount`, and the `Minimum Collateral Ratio`. Again, it is advised to include reference to the passed whitelist poll as well as reasoning for choosing the given oracle address. Given that the Mirror Protocol is in its early stages, it is advisable to keep the parameters equal to existing parameters for already listed assets \(Auction Discount at 20%, and Minimum Collateral Ratio at 150%\).
+
 The original 13 mAssets utilize Band Protocol’s feeders, so a rough guideline to communicate with Band Protocol to receive the oracle address is provided below. If another oracle address would like to be suggested, please input the address in the Oracle Feeder field.
 
 ![](../../.gitbook/assets/image%20%28177%29.png)
 
 {% hint style="info" %}
-To ensure proper functioning of the price feed, newly whitelisted asset on Mirror Protocol also undergo a 1 week testing period where the prices are still fed by the oracle but no buy/sell, mint, or staking actions can be performed. 
+To ensure proper functioning of the price feed, newly whitelisted asset on Mirror Protocol also undergo a 1 week testing period where the prices are still fed by the oracle but no buy/sell, mint, or staking actions can be performed.
 {% endhint %}
 
 | Field | Description | Type |
@@ -55,11 +55,11 @@ To ensure proper functioning of the price feed, newly whitelisted asset on Mirro
 | Auction Discount | Discount ratio applied during CDP liquidation auction | Required |
 | Minimum Collateral Ratio | Minimum collateral ratio applied when opening a mint position | Required |
 
-#### 3. Suggest Pre-IPO Asset
+### 3. Suggest Pre-IPO Asset
 
 ![](../../.gitbook/assets/image%20%28181%29.png)
 
-The function of this proposal is to start a poll to whitelist an asset which is scheduled to go through an initial public offering \(or IPO\), but is not publicly listed yet. Similar to the "Suggest asset whitelisting" proposal, this is also a text proposal. Fields that need to be filled are `Asset Name`, `Ticker`, `Listed Exchange`, and `Reason for listing`. It is suggested that additional information on the IPO or supporting information to be added using the `Information Link` field. 
+The function of this proposal is to start a poll to whitelist an asset which is scheduled to go through an initial public offering \(or IPO\), but is not publicly listed yet. Similar to the "Suggest asset whitelisting" proposal, this is also a text proposal. Fields that need to be filled are `Asset Name`, `Ticker`, `Listed Exchange`, and `Reason for listing`. It is suggested that additional information on the IPO or supporting information to be added using the `Information Link` field.
 
 | Field | Description | Type |
 | :--- | :--- | :--- |
@@ -71,7 +71,7 @@ The function of this proposal is to start a poll to whitelist an asset which is 
 | Information Link | External URL for further information | Optional |
 | Suggested Oracle | Oracle provider or address | Optional |
 
-#### 4. Register Pre-IPO Parameters
+### 4. Register Pre-IPO Parameters
 
 ![](../../.gitbook/assets/image%20%28155%29.png)
 
@@ -93,7 +93,7 @@ After the proposal to [suggest Pre-IPO asset](proposal-types.md#2-suggest-pre-ip
 | Mint Period | Number of seconds which mint operation will be allowed for Pre-IPO asset | Required |
 | Pre-IPO Price | Fixed price decided by official IPO registration statement, which will be used for Pre-IPO asset | Required |
 
-#### 5. Delist Asset
+### 5. Delist Asset
 
 ![](../../.gitbook/assets/image%20%28173%29.png)
 
@@ -106,15 +106,15 @@ Specific mAsset on Mirror Protocol is delisted upon approval and execution of th
 | Information Link | External URL for further information | Optional |
 | Asset Name | Droplist of mAsset on Mirror Protocol | Required |
 
-### Reward Distribution
+## Reward Distribution
 
 This category allows modification of two types of MIR distribution: 1\) mAsset LP staking reward; 2\) Governance voting reward.
 
-#### 1. Modify mAsset Reward Distribution
+### 1. Modify mAsset Reward Distribution
 
 ![](../../.gitbook/assets/image%20%28203%29.png)
 
-Through this poll, the ratio which newly minted MIR tokens are distributed among LP token stakers, called `weight` parameter can be changed. To learn how `weight` parameter determines the amount of MIR distributed to each mAsset pool refer to [this document](../mirror-token-mir.md#mir-staking-rewards). 
+Through this poll, the ratio which newly minted MIR tokens are distributed among LP token stakers, called `weight` parameter can be changed. To learn how `weight` parameter determines the amount of MIR distributed to each mAsset pool refer to [this document](../mirror-token-mir.md#mir-staking-rewards).
 
 | Field | Description | Type |
 | :--- | :--- | :--- |
@@ -124,11 +124,11 @@ Through this poll, the ratio which newly minted MIR tokens are distributed among
 | Asset | Droplist of mAsset on Mirror Protocol, which to change weight parameter for | Required |
 | Weight | Weight parameter to be applied for LP staking reward distribution | Required |
 
-### Parameter Modification
+## Parameter Modification
 
-This poll category allows modification of mAsset, governance contract, collateral and premium tolerance parameters in Mirror Protocol. 
+This poll category allows modification of mAsset, governance contract, collateral and premium tolerance parameters in Mirror Protocol.
 
-#### 1. Modify mint parameters
+### 1. Modify mint parameters
 
 Through this poll, the existing Mirror Protocol parameters for a specific individual mAsset can be modified. The possible parameters to be updated consist of either the `Auction Discount` and the `Minimum Collateral Ratio`.
 
@@ -143,7 +143,7 @@ Through this poll, the existing Mirror Protocol parameters for a specific indivi
 | Auction Discount | Discount ratio applied during CDP liquidation auction | Required |
 | Minimum Collateral Ratio | Minimum collateral ratio applied when opening a mint position | Required |
 
-#### 2. Modify governance parameters
+### 2. Modify governance parameters
 
 Similar to modifying mint parameters, governance parameters such as the `Quorum`, `Threshold`, `Voting Period`, `Effective Delay`, `Expiration Period`, `Proposal Deposit` and `Voter Weight` can be modified.
 
@@ -162,7 +162,7 @@ Similar to modifying mint parameters, governance parameters such as the `Quorum`
 | Proposal Deposit | Minimum deposit to start a poll \(in units of MIR\) | Optional |
 | Voter Weight | Ratio of rewards to be distributed to governance voting participants | Optional |
 
-#### 3. Modify collateral parameters
+### 3. Modify collateral parameters
 
 ![](../../.gitbook/assets/image%20%28192%29.png)
 
@@ -177,9 +177,9 @@ Through this poll, existing collateral's `multiplier` or `oracle address` can be
 | Multiplier | Number to be `min_collateral_ratio` of the asset being minted | Required |
 | Collateral Oracle Feeder | Address of the collateral oracle used for this asset type | Required |
 
-### Suggestions / Others
+## Suggestions / Others
 
-#### 1. Spend Community Pool
+### 1. Spend Community Pool
 
 Proposals relating to spending the accrued MIR tokens in the community pool can be made under this section. The proposal should ideally specify the reasons for the distribution and identify the recipient and amount to be given.
 
@@ -193,7 +193,7 @@ Proposals relating to spending the accrued MIR tokens in the community pool can 
 | Recipient | Grant recipient address | Required |
 | Amount | Grant amount \(in units of MIR\) | Required |
 
-#### 2. Text Poll
+### 2. Text Poll
 
 The function of the text proposal is to allow proposals that do not fit the defined categories. Given that it is a basic text proposal, simple fields for the `Title`, `Description`, and an `Information Link` for additional information.
 

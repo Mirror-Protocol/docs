@@ -8,7 +8,7 @@ Mirror.js is a client SDK for building applications that can interact with Mirro
 
 You can find a reference of the Mirror.js API [here](https://mirror-protocol.github.io/mirror.js/).
 
-### Getting Mirror.js
+## Getting Mirror.js
 
 Mirror.js is available as a package on NPM and is intended to be used alongside Terra.js.
 
@@ -23,9 +23,9 @@ To your JavaScript project's `package.json` as dependencies using your preferred
 $ npm install -S @terra-money/terra.js @mirror-protocol/mirror.js
 ```
 
-### Usage
+## Usage
 
-#### `Mirror` object
+### `Mirror` object
 
 Mirror.js provides facilities for 2 main use cases:
 
@@ -76,7 +76,7 @@ const mirror = new Mirror({
 });
 ```
 
-#### Query
+### Query
 
 The `Mirror` object contains contract queries for all of the Mirror core contracts, which it will run against the provided `LCDClient.`
 
@@ -90,7 +90,7 @@ main().catch(console.error);
 
 Each contract has various query operations, which you can discover in the reference [API documentation](https://mirror-protocol.github.io/mirror.js/).
 
-#### Executing
+### Executing
 
 The `Mirror` object contains functions for generating proper `MsgExecuteContract` messages to be included in a transaction and broadcasted.
 

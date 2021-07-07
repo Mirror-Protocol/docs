@@ -211,7 +211,7 @@ pub enum Cw20HookMsg {
     "ask_asset": {
         "info": {
             "token": {
-                "contract_address": "terra1..."
+                "contract_addr": "terra1..."
             }
           }
         },

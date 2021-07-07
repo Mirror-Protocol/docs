@@ -8,7 +8,7 @@ The **Mirror API** \(also known as **Mirror Graph**\) is an GraphQL-based data s
 
 ## Endpoints
 
-Since Mirror API is a GraphQL-based data service, it is not accessed like a traditional REST API with many different endpoints. Instead, there is only one endpoint served over HTTP, to which you can submit a POST request containing a GraphQL query. 
+Since Mirror API is a GraphQL-based data service, it is not accessed like a traditional REST API with many different endpoints. Instead, there is only one endpoint served over HTTP, to which you can submit a POST request containing a GraphQL query.
 
 |  | Chain ID | URL |
 | :--- | :--- | :--- |
@@ -23,7 +23,7 @@ You can access Mirror API through a variety of interfaces that support GraphQL. 
 
 Playground: [https://graph.mirror.finance/graphql](https://tequila-graph.mirror.finance/graphql)
 
-An easy way to explore the Mirror API is to use your browser to access the GraphiQL interface  served directly on the endpoint address. GraphiQL is an interactive interface where you can construct queries alongside easy access to the API's schema and documentation. This allows for quick, iterative experimentation as you can directly run your queries and compare results.
+An easy way to explore the Mirror API is to use your browser to access the GraphiQL interface served directly on the endpoint address. GraphiQL is an interactive interface where you can construct queries alongside easy access to the API's schema and documentation. This allows for quick, iterative experimentation as you can directly run your queries and compare results.
 
 ### HTTP
 

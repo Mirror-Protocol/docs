@@ -26,13 +26,13 @@ For a CDP subject to liquidation, describes the discount for which its collatera
 
 The current registered price as reported by its Oracle Feeder. This is mainly used for determining collateral ratio for CDP and does not affect the mAsset's trading price on Terraswap directly.
 
-Prices are only considered valid for 60 seconds. If no new prices are published after the data has expired, Mirror will disable CDP operations like mint, burn, deposit and withdraw until the price feed resumes. 
+Prices are only considered valid for 60 seconds. If no new prices are published after the data has expired, Mirror will disable CDP operations like mint, burn, deposit and withdraw until the price feed resumes.
 
 For instance, the price feed is halted when real-world markets for the asset are closed. The market hour used to track the price of mAssets is based on [Nasdaq trading hours](https://www.nasdaq.com/stock-market-trading-hours-for-nasdaq). This does not affect the ability to trade on the asset's Terraswap pool.
 
 ### Oracle Feeder
 
-The **Oracle Feeder** is a Terra account that can change the registered on-chain price for an mAsset, whitelisted collateral, and staking reward distribution between LP and sLP based on current price premium of mAssets. They are responsible for reporting an accurate and up-to-date price, so that the mAsset's trading value is kept in sync with its reflected asset. Each mAsset has its own dedicated feeder, which can be reassigned through governance. The oracle feeders for the genesis mirrored assets are owned by [Band Protocol](https://www.bandprotocol.com/), but the community can \(re-\)assign oracle feeders to other providers to newly whitelisted assets through governance. 
+The **Oracle Feeder** is a Terra account that can change the registered on-chain price for an mAsset, whitelisted collateral, and staking reward distribution between LP and sLP based on current price premium of mAssets. They are responsible for reporting an accurate and up-to-date price, so that the mAsset's trading value is kept in sync with its reflected asset. Each mAsset has its own dedicated feeder, which can be reassigned through governance. The oracle feeders for the genesis mirrored assets are owned by [Band Protocol](https://www.bandprotocol.com/), but the community can \(re-\)assign oracle feeders to other providers to newly whitelisted assets through governance.
 
 ## Lifecycle
 
@@ -61,9 +61,9 @@ At this stage:
 * Burns will take effect at the fixed `end_price` for withdrawing collateral from any existing mint position. 
 * LP & sLP tokens for the mAsset will stop counting for staking rewards
 
-Delisting will not directly affect the functionality of the mAsset's Terraswap pool and users will still be able to make trades against it, although price is likely to be very unstable \(and the [Web App](../user-guide/getting-started/) will not provide front-end interface for trading of delisted mAsset\). Users are urged to burn the mAsset to recover collateral from any open positions on Mirror Protocol, including their own. 
+Delisting will not directly affect the functionality of the mAsset's Terraswap pool and users will still be able to make trades against it, although price is likely to be very unstable \(and the [Web App](../user-guide/getting-started/) will not provide front-end interface for trading of delisted mAsset\). Users are urged to burn the mAsset to recover collateral from any open positions on Mirror Protocol, including their own.
 
-Since anyone can burn against any open position, CDP holders may end up having no or less amount of "borrowed assets" within their position, but they will still be able to withdraw the remaining amount of collateral by only burning the remaining amount of delisted mAsset. Opening a new CDP / engaging in liquidity provision can be done with the new, replacement mAsset. 
+Since anyone can burn against any open position, CDP holders may end up having no or less amount of "borrowed assets" within their position, but they will still be able to withdraw the remaining amount of collateral by only burning the remaining amount of delisted mAsset. Opening a new CDP / engaging in liquidity provision can be done with the new, replacement mAsset.
 
 The old mAsset will be retired and marked as "**delisted**", only allowing burn, close CDP, withdraw collateral and liquidity, and unstake LP transactions on front-end interfaces.
 
@@ -78,7 +78,7 @@ When an IPO schedule and price quote has been announced, a new mAsset can be whi
 * Assigning a collateral ratio to be only effective during the mint period
 * When mint period ends, pre-IPO assets will no longer be mintable, until the IPO event
 
-When IPO occurs, 
+When IPO occurs,
 
 * [Oracle](../contracts/oracle.md) triggers the IPO event on Mirror Protocol
 * The asset becomes mintable again at the oracle price of the underlying asset
@@ -96,9 +96,9 @@ Mirror Protocol accepts the following types of tokens as collateral:
 * All mAssets
 * Other collateral: LUNA, MIR, ANC, aUST
 
-Each type of asset listed above has a different `multiplier` \($$\zeta$$\) which is multiplied to the minimum collateral ratio of each minted mAsset. 
+Each type of asset listed above has a different `multiplier` \($$\zeta$$\) which is multiplied to the minimum collateral ratio of each minted mAsset.
 
-| Asset  | Multiplier |
+| Asset | Multiplier |
 | :--- | :--- |
 | MIR | 1.3333334 |
 | ANC | 1.3333334 |
@@ -141,7 +141,7 @@ $$
 
 #### Minting / Burning mAssets
 
-In addition to depositing and withdrawal collateral, the user can also mint and burn mAssets against the CDP to adjust the value of their CDP's effective C-ratio. 
+In addition to depositing and withdrawal collateral, the user can also mint and burn mAssets against the CDP to adjust the value of their CDP's effective C-ratio.
 
 Let the quantity of newly minted tokens be $$Q_m'$$\(negative if burned\). The minimum collateral required to keep the CDP position above the mAsset's min. collateral ratio is:
 
@@ -175,7 +175,7 @@ The auction process continues until either the CDP's C-ratio is restored to a le
 
 #### Example
 
-To illustrate, let mXXX be priced at 1 UST, and mYYY at 2 UST. Assume that both assets have a min. collateral ratio of 150% and an auction discount rate of 20%. A user has opened a CDP to mint 100 mXXX at the C-ratio of 150%, depositing 75 mYYY as collateral. 
+To illustrate, let mXXX be priced at 1 UST, and mYYY at 2 UST. Assume that both assets have a min. collateral ratio of 150% and an auction discount rate of 20%. A user has opened a CDP to mint 100 mXXX at the C-ratio of 150%, depositing 75 mYYY as collateral.
 
 If the CDP is being liquidated with the auction participant paying 100 mXXX to totally liquidate the position, one should receive:
 

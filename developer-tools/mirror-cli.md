@@ -85,7 +85,7 @@ By default, `mirrorcli` will use the network setting for `columbus-4` configured
 
 #### Example
 
-```
+```text
 MIRRORCLI_NETWORK=tequila-0004 mirrorcli x mint [deposit ...]
 ```
 
@@ -99,6 +99,4 @@ mirrorcli x mint [deposit ...]
 ## Usage
 
 Usage information can be found on [GitHub](https://github.com/mirror-protocol/mirrorcli).
-
-
 
