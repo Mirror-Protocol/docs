@@ -31,7 +31,7 @@ $$
 To determine the proper value of $$B_{\text{out}}$$ given the trader's offered asset $$A_{in}$$:
 
 $$
-B_{\text{out}} = \frac{XA_{\text{in}}}{Y+A_{\text{in}}}
+B_{\text{out}} = \frac{YA_{\text{in}}}{X+A_{\text{in}}}
 $$
 
 Terraswap is able to execute trades with only the current balances of the pool and the number of incoming tokens. The market price is encoded the number of pool's target tokens divided by the source asset \(also called the pool ratio\). The spread between the executed and the expected trade is:
