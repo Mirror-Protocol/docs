@@ -65,9 +65,7 @@ Delisting will not directly affect the functionality of the mAsset's Terraswap p
 
 Since anyone can burn against any open position, CDP holders may end up having no or less amount of "borrowed assets" within their position, but they will still be able to withdraw the remaining amount of collateral by only burning the remaining amount of delisted mAsset. Opening a new CDP / engaging in liquidity provision can be done with the new, replacement mAsset.
 
-The old mAsset will be retired and marked as "**delisted**", only allowing burn, close CDP, withdraw collateral and liquidity, and unstake LP transactions on front-end interfaces.
-
-Opening a new CDP / engaging in liquidity provision can be done with the new, replacement mAsset. The old mAsset will be retired and marked as `delisted` only allowing burn, close CDP, withdraw collateral and liquidity, and unstake LP transactions on front-end interfaces.
+The old mAsset will be retired and marked as `delisted` only allowing burn, close CDP, withdraw collateral and liquidity, and unstake LP transactions on front-end interfaces.
 
 ### Pre-IPO
 
