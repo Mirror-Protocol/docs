@@ -8,7 +8,7 @@ Terraswap is a [Uniswap](https://uniswap.org)-inspired automated market maker \(
 
 ### Liquidity Pools
 
-Terraswap creates automated markets for pairs of tokens \(or native Terra coins like UST\) called **pools** which enable users to exchange one asset for the other directly on-chain. Pools maintain balances of both assets, to which users can provide liquidity in exchange for reward-bearing LP tokens. A more detailed explanation about LP tokens and their relationship with Mirror can be found [here]().
+Terraswap creates automated markets for pairs of tokens \(or native Terra coins like UST\) called **pools** which enable users to exchange one asset for the other directly on-chain. Pools maintain balances of both assets, to which users can provide liquidity in exchange for reward-bearing LP tokens. A more detailed explanation about LP tokens and their relationship with Mirror can be found [here](terraswap.md).
 
 ### Constant Product
 
@@ -46,7 +46,7 @@ When a pool has large balances of tokens on both sides from liquidity providers,
 
 In order to compensate liquidity providers, Terraswap charges an **LP Commission** on each trade. The fee returns to the pool to serve as a reward for LP token holders and can only be withdrawn by burning LP tokens and reclaiming a portion of the pool.
 
-In Mirror, each liquidity pool for mAssets/MIR has a fixed ****LP commission ****fee of 0.3%. This fee is levied on the trader and is received as mAssets/MIR or UST, depending on the direction of the trade.
+In Mirror, each liquidity pool for mAssets/MIR has a fixed **LP commission** fee of 0.3%. This fee is levied on the trader and is received as mAssets/MIR or UST, depending on the direction of the trade.
 
 {% hint style="info" %}
 Additionally, if the traded asset is a native token such as UST, the Terra network will incur a tax on the transfer \(not controlled by Mirror Protocol\).
