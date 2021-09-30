@@ -12,7 +12,7 @@ Mirror's core contracts are implemented on the [Terra blockchain](https://terra.
 
 ### Mainnet \(v2\)
 
-Network chain ID: `columbus-4`
+Network chain ID: `columbus-5`
 
 #### Core Contracts
 
@@ -54,7 +54,7 @@ Network chain ID: `columbus-4`
 
 ### Testnet \(v2\)
 
-Network chain ID: `tequila-0004`
+Network chain ID: `bombay-12`
 
 #### Core Contracts
 

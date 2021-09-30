@@ -16,7 +16,6 @@ The Gov Contract keeps a balance of MIR tokens, which it uses to reward stakers 
 | `voting_period` | u64 | Number of blocks during which votes can be cast |
 | `proposal_deposit` | Uint128 | Minimum MIR deposit required for a new poll to be submitted |
 | `effective_delay` | u64 | Number of blocks after a poll passes to apply changes |
-| `expiration_period` | u64 | Number of blocks after a poll's voting period during which the poll can be executed. |
 | `voter_weight` | Decimal | Ratio of protocol fee which will be distributed among the governance poll voters |
 | `snapshot_period` | u64 | Minimum number of blocks before the end of voting period which snapshot could be taken to lock the current quorum for a poll |
 
@@ -32,7 +31,6 @@ pub struct InitMsg {
     pub threshold: Decimal,
     pub voting_period: u64,
     pub effective_delay: u64,
-    pub expiration_period: u64,
     pub proposal_deposit: Uint128,
     pub voter_weight: Decimal,
     pub snapshot_period: u64,
@@ -48,7 +46,6 @@ pub struct InitMsg {
     "threshold": "0.5",
     "voting_period": 8,
     "effective_delay": 8,
-    "expiration_period": 8,
     "proposal_deposit": "100000",
     "voter_weight": "0.5",
     "snapshot_period": 8
@@ -519,7 +516,6 @@ pub struct ConfigResponse {
     pub threshold: Decimal,
     pub voting_period: u64,
     pub effective_delay: u64,
-    pub expiration_period: u64,
     pub proposal_deposit: Uint128,
     pub voter_weight: Decimal,
     pub snapshot_period: u64,
@@ -557,7 +553,6 @@ pub struct ConfigResponse {
         "threshold": "0.5",
         "voting_period": 100000,
         "effective_delay": 13000,
-        "expiration_period": 13000,
         "proposal_deposit": "1000000",
         "voter_weight": "0.5",
         "snapshot_period": 1000
@@ -572,7 +567,6 @@ pub struct ConfigResponse {
 | `threshold` | Decimal | Minimum percentage of `yes` votes required for a poll to pass |
 | `voting_period` | u64 | Number of blocks during which votes can be cast |
 | `effective_delay` | u64 | Number of blocks after a poll passes to apply changes |
-| `expiration_period` | u64 | Number of blocks after a poll's voting period during which the poll can be executed |
 | `proposal_deposit` | Uint128 | Minimum MIR deposit required for a new poll to be submitted |
 | `voter_weight` | Decimal | Ratio of protocol fee which will be distributed among the governance poll voters |
 | `snapshot_period` | u64 | Minimum number of blocks before end of voting period which snapshot could be taken to lock the current quorum for a poll |
