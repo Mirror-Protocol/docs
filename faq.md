@@ -26,7 +26,7 @@ All mAssets that are purchased or sold on Mirror were, at one point, minted. Min
 
 Price oracles play an important role in the minting process and are used for two key functions: First, they help determine the amount of collateral required for minting an mAsset. Second, they help determine whether sufficient collateral is backing existing mAssets.
 
-In the below example \(Figure 1\), assume that a minter provided $150 worth of stablecoin to issue an mAsset worth $90 and that the minimum collateral ratio \(MCR\) is 150%. If at time T=2, the asset’s value increases to $101, then the collateral ratio would be 149% \($101/$150\) and would fall below the MCR.
+In the below example \(Figure 1\), assume that a minter provided $150 worth of stablecoin to issue an mAsset worth $90 and that the minimum collateral ratio \(MCR\) is 150%. If at time T=2, the asset’s value increases to $101, then the collateral ratio would be 149% \($150/$101\) and would fall below the MCR.
 
 When this happens, the Mirror protocol will seize a portion of the collateral and initiate an auction for anyone willing to sell the mAsset in exchange. To incentivize this liquidation, the Mirror protocol allows anyone to purchase this seized collateral at a discount until the collateral ratio reaches the MCR again. In the example, using the collateral supplied at T=0, users will be able to send mAsset tokens in exchange for discounted collateral until the collateral ratio reaches 150% again at T=2.01. If, for instance, the asset price increases again at T=3, then the process repeats itself until the collateral ratio reaches 150%.
 
