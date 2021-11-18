@@ -6,7 +6,7 @@ The aim of mAssets is to mimic the price trends of real-world exchange-traded un
 
 #### 2. How are mAssets actually traded?
 
-mAssets are traded through interacting with liquidity pools on Terraswap. For more information about the mechanism of the Terraswap, please see [here](https://terraswap.io/).
+mAssets are traded through interacting with liquidity pools on Terraswap. For more information about the mechanism of the Terraswap, please see [here](https://terraswap.io).
 
 #### 3. Do I have to go through the KYC process?
 
@@ -26,13 +26,13 @@ All mAssets that are purchased or sold on Mirror were, at one point, minted. Min
 
 Price oracles play an important role in the minting process and are used for two key functions: First, they help determine the amount of collateral required for minting an mAsset. Second, they help determine whether sufficient collateral is backing existing mAssets.
 
-In the below example \(Figure 1\), assume that a minter provided $150 worth of stablecoin to issue an mAsset worth $90 and that the minimum collateral ratio \(MCR\) is 150%. If at time T=2, the asset’s value increases to $101, then the collateral ratio would be 149% \($101/$150\) and would fall below the MCR.
+In the below example (Figure 1), assume that a minter provided $150 worth of stablecoin to issue an mAsset worth $90 and that the minimum collateral ratio (MCR) is 150%. If at time T=2, the asset’s value increases to $101, then the collateral ratio would be 149% ($101/$150) and would fall below the MCR.
 
 When this happens, the Mirror protocol will seize a portion of the collateral and initiate an auction for anyone willing to sell the mAsset in exchange. To incentivize this liquidation, the Mirror protocol allows anyone to purchase this seized collateral at a discount until the collateral ratio reaches the MCR again. In the example, using the collateral supplied at T=0, users will be able to send mAsset tokens in exchange for discounted collateral until the collateral ratio reaches 150% again at T=2.01. If, for instance, the asset price increases again at T=3, then the process repeats itself until the collateral ratio reaches 150%.
 
-![Minting Example](https://github.com/wengzilla/docs/raw/master/images/faq_minting_example.png)
+![Minting Example](https://github.com/wengzilla/docs/raw/master/images/faq\_minting\_example.png)
 
-_Figure 1: When the minted asset’s price rises and the collateral ratio falls below the minimum collateral ratio, the protocol will sell collateral to buy back shares of the minted asset to burn. \(_[_Link to calculations_](https://docs.google.com/spreadsheets/d/1RUlBliHX-AnigSieF4jC15xhG_gGSnfTNz7g4mkHV7w/edit#gid=0)_\)_
+_Figure 1: When the minted asset’s price rises and the collateral ratio falls below the minimum collateral ratio, the protocol will sell collateral to buy back shares of the minted asset to burn. (_[_Link to calculations_](https://docs.google.com/spreadsheets/d/1RUlBliHX-AnigSieF4jC15xhG\_gGSnfTNz7g4mkHV7w/edit#gid=0)_)_
 
 #### 7. What hours can I trade and mint mAssets?
 
@@ -46,7 +46,7 @@ mAssets are soft pegged to the oracle price, which means that the Mirror protoco
 
 **Minting Liquidation**
 
-As the price of an asset XXX rises on the NASDAQ, minted mXXX may fall below the minimum collateral ratio \(MCR\) and trigger a liquidation event. When that happens, the Mirror protocol will automatically sell collateral to buy mXXX until the collateral ratio reaches the MCR again. This buying pressure created for mXXX will drive prices higher and will help the price of mXXX converge with the price on the NASDAQ.
+As the price of an asset XXX rises on the NASDAQ, minted mXXX may fall below the minimum collateral ratio (MCR) and trigger a liquidation event. When that happens, the Mirror protocol will automatically sell collateral to buy mXXX until the collateral ratio reaches the MCR again. This buying pressure created for mXXX will drive prices higher and will help the price of mXXX converge with the price on the NASDAQ.
 
 **Arbitrageurs**
 
@@ -58,17 +58,17 @@ Without the trust that mAssets should be pegged to oracle prices, mAsset prices 
 
 #### 9. What are the benefits of providing liquidity?
 
-Providing liquidity for the Mirror Protocol is equivalent to locking up your liquidity in Terraswap. By doing so, you ensure that there is a sufficient supply of assets to be traded at any point in time. As compensation for providing liquidity, you will receive LP tokens which accrue trading commission charged by the protocol. In addition, staking these LP tokens provides inflationary rewards in the form of MIR tokens. To learn more about the specifics, see [here]().
+Providing liquidity for the Mirror Protocol is equivalent to locking up your liquidity in Terraswap. By doing so, you ensure that there is a sufficient supply of assets to be traded at any point in time. As compensation for providing liquidity, you will receive LP tokens which accrue trading commission charged by the protocol. In addition, staking these LP tokens provides inflationary rewards in the form of MIR tokens. To learn more about the specifics, see [here](broken-reference).
 
 #### 10. Is there any risk to providing liquidity to the Terraswap pools?
 
-You are able to remove your liquidity provided at any point in time. While there is no risk of losing any of your liquidity in most circumstances, in the case of large changes in price of the tokens provided, the return on providing liquidity may be less than the absolute price variation \(known as _impermanent loss_\). This is the [same risk](https://uniswap.org/docs/v2/advanced-topics/understanding-returns/) faced by liquidity providers on Uniswap.
+You are able to remove your liquidity provided at any point in time. While there is no risk of losing any of your liquidity in most circumstances, in the case of large changes in price of the tokens provided, the return on providing liquidity may be less than the absolute price variation (known as _impermanent loss_). This is the [same risk](https://uniswap.org/docs/v2/advanced-topics/understanding-returns/) faced by liquidity providers on Uniswap.
 
 #### 11. What can we do with Mirror tokens?
 
 MIR tokens have a variety of functions on the Mirror Protocol. The first and foremost functionality of the token allows holders to participate in [governance](protocol/governance/) on the protocol. In addition, by providing liquidity to the MIR token pool, MIR LP tokens issued can be further staked in order to receive CDP withdrawal fees in the form of MIR tokens. Learn more [here](protocol/mirror-token-mir.md).
 
-#### 12. What is the MIR Token \(MIR\) distribution and vesting schedule?
+#### 12. What is the MIR Token (MIR) distribution and vesting schedule?
 
 See [here](protocol/mirror-token-mir.md#cumulative-distribution-schedule-in-millions).
 
@@ -78,5 +78,4 @@ Yes, you can find the audits reports [here](security.md#audits).
 
 
 
-_Special thanks to_ [_wengzilla_](https://github.com/wengzilla) _for edits and improvements to the FAQ._
-
+_Special thanks to _[_wengzilla_](https://github.com/wengzilla)_ for edits and improvements to the FAQ._

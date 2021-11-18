@@ -1,8 +1,8 @@
 # Limit Order
 
-Limit Order allows submission, updates, and execution of buy and sell orders at a limit price specified by the users. Once the limit order is submitted and the limit price is reached, market-making agents can read the orders from the Limit Order contract and execute them when it provides an arbitrage opportunity.  
-  
-To create a market-making bot for arbitrage opportunity, refer to this [Github link](https://github.com/Mirror-Protocol/mirror-contracts/tree/master/contracts/mirror_limit_order).
+Limit Order allows submission, updates, and execution of buy and sell orders at a limit price specified by the users. Once the limit order is submitted and the limit price is reached, market-making agents can read the orders from the Limit Order contract and execute them when it provides an arbitrage opportunity.\
+\
+To create a market-making bot for arbitrage opportunity, refer to this [Github link](https://github.com/Mirror-Protocol/mirror-contracts/tree/master/contracts/mirror\_limit\_order).
 
 ## InitMsg
 
@@ -49,18 +49,18 @@ pub enum HandleMsg {
 {% endtab %}
 {% endtabs %}
 
-| Key | Type | Description |
-| :--- | :--- | :--- |
-| `amount` | Uint128 | Token amount received |
-| `sender` | HumanAddr | Sender of token transaction |
-| `msg` | Binary | Base64-encoded string of JSON of [Receive Hook](https://docs.mirror.finance/contracts/limit-order#receive-hooks) |
+| Key      | Type      | Description                                                                                                      |
+| -------- | --------- | ---------------------------------------------------------------------------------------------------------------- |
+| `amount` | Uint128   | Token amount received                                                                                            |
+| `sender` | HumanAddr | Sender of token transaction                                                                                      |
+| `msg`    | Binary    | Base64-encoded string of JSON of [Receive Hook](https://docs.mirror.finance/contracts/limit-order#receive-hooks) |
 
 ### `SubmitOrder`
 
-Creates a new Limit Order with a types and amount of tokens to be traded, specified by the user. `offer_asset` is locked until the order is executed or canceled by the creator.   
+Creates a new Limit Order with a types and amount of tokens to be traded, specified by the user. `offer_asset` is locked until the order is executed or canceled by the creator. \
 
 
-When tokens other than native tokens are sent \(such as CW20\), it a [Receive Hook](https://docs.mirror.finance/contracts/limit-order#receive-hooks) must be sent to submit the order. 
+When tokens other than native tokens are sent (such as CW20), it a [Receive Hook](https://docs.mirror.finance/contracts/limit-order#receive-hooks) must be sent to submit the order.&#x20;
 
 {% tabs %}
 {% tab title="Rust" %}
@@ -101,14 +101,14 @@ pub enum HandleMsg {
 {% endtab %}
 {% endtabs %}
 
-| Key | Type | Description |
-| :--- | :--- | :--- |
-| `offer_asset` | Asset | Asset to be submitted to Limit Order |
-| `ask_asset` | Asset | Asset to receive when order is executed |
+| Key           | Type  | Description                             |
+| ------------- | ----- | --------------------------------------- |
+| `offer_asset` | Asset | Asset to be submitted to Limit Order    |
+| `ask_asset`   | Asset | Asset to receive when order is executed |
 
 ### `CancelOrder`
 
-Order is canceled by the creator. `offer_asset` locked in this order is released and returned to the owner. 
+Order is canceled by the creator. `offer_asset` locked in this order is released and returned to the owner.&#x20;
 
 {% tabs %}
 {% tab title="Rust" %}
@@ -134,13 +134,13 @@ pub enum HandleMsg {
 {% endtab %}
 {% endtabs %}
 
-| Key | Type | Description |
-| :--- | :--- | :--- |
-| `order_id` | u64 | Order ID |
+| Key        | Type | Description |
+| ---------- | ---- | ----------- |
+| `order_id` | u64  | Order ID    |
 
 ### `ExecuteOrder`
 
-Executes order against an existing limit order. You cannot submit more than the amount defined by `ask_asset - filled_asset_amounnt` in a specific order. 
+Executes order against an existing limit order. You cannot submit more than the amount defined by `ask_asset - filled_asset_amounnt` in a specific order.&#x20;
 
 {% tabs %}
 {% tab title="Rust" %}
@@ -174,10 +174,10 @@ pub enum HandleMsg {
 {% endtab %}
 {% endtabs %}
 
-| Key | Type | Description |
-| :--- | :--- | :--- |
+| Key             | Type  | Description                           |
+| --------------- | ----- | ------------------------------------- |
 | `execute_asset` | Asset | Asset to be executed from Limit Order |
-| `order_id` | u64 | Order ID |
+| `order_id`      | u64   | Order ID                              |
 
 ## Receive Hooks
 
@@ -187,9 +187,9 @@ If you send tokens to the Limit Order contract without issuing this hook, they w
 
 ### `SubmitOrder`
 
-Issued when user sends CW20 tokens to Limit Order contract. 
+Issued when user sends CW20 tokens to Limit Order contract.&#x20;
 
-Locks the sent amount to create a new order. 
+Locks the sent amount to create a new order.&#x20;
 
 {% tabs %}
 {% tab title="Rust" %}
@@ -222,15 +222,15 @@ pub enum Cw20HookMsg {
 {% endtab %}
 {% endtabs %}
 
-| Key | Type | Description |
-| :--- | :--- | :--- |
+| Key         | Type  | Description                           |
+| ----------- | ----- | ------------------------------------- |
 | `ask_asset` | Asset | Asset to be executed from Limit Order |
 
 ### `ExecuteOrder`
 
-Issued when arbitrageur sends and fulfills the amount of `ask_asset` to a specific limit order.   
-  
-Reduces the balance of the `ask_asset` and `offer_asset` of the specified `order_id`. If all outstanding `ask_asset` has been filled, then the order is completed. 
+Issued when arbitrageur sends and fulfills the amount of `ask_asset` to a specific limit order. \
+\
+Reduces the balance of the `ask_asset` and `offer_asset` of the specified `order_id`. If all outstanding `ask_asset` has been filled, then the order is completed.&#x20;
 
 {% tabs %}
 {% tab title="Rust" %}
@@ -256,9 +256,9 @@ pub enum Cw20HookMsg {
 {% endtab %}
 {% endtabs %}
 
-| Key | Type | Description |
-| :--- | :--- | :--- |
-| `order_id` | u64 | Order ID |
+| Key        | Type | Description |
+| ---------- | ---- | ----------- |
+| `order_id` | u64  | Order ID    |
 
 ## QueryMsg
 
@@ -278,9 +278,9 @@ pub enum QueryMsg {
 }
 ```
 
-| Key | Type | Description |
-| :--- | :--- | :--- |
-| `order_id` | u64 | Order ID |
+| Key        | Type | Description |
+| ---------- | ---- | ----------- |
+| `order_id` | u64  | Order ID    |
 
 #### Response
 
@@ -295,14 +295,14 @@ pub struct OrderResponse {
     pub filled_ask_amount: Uint128,
 ```
 
-| Key | Type | Description |
-| :--- | :--- | :--- |
-| `order_id` | u64 | Order ID |
-| `bidder_addr` | HumanAddr | Address of bidder |
-| `offer_asset` | Asset | Amount of asset offered in order |
-| `ask_asset` | Asset | Amount of asset asked in order |
-| `filled_offer_amount` | Uint128 | Amount of offer asset already executed |
-| `filled_ask_amount` | Uint128 | Amount of ask asset already executed |
+| Key                   | Type      | Description                            |
+| --------------------- | --------- | -------------------------------------- |
+| `order_id`            | u64       | Order ID                               |
+| `bidder_addr`         | HumanAddr | Address of bidder                      |
+| `offer_asset`         | Asset     | Amount of asset offered in order       |
+| `ask_asset`           | Asset     | Amount of asset asked in order         |
+| `filled_offer_amount` | Uint128   | Amount of offer asset already executed |
+| `filled_ask_amount`   | Uint128   | Amount of ask asset already executed   |
 {% endtab %}
 
 {% tab title="JSON" %}
@@ -314,9 +314,9 @@ pub struct OrderResponse {
 }
 ```
 
-| Key | Type | Description |
-| :--- | :--- | :--- |
-| `order_id` | u64 | Order ID |
+| Key        | Type | Description |
+| ---------- | ---- | ----------- |
+| `order_id` | u64  | Order ID    |
 
 #### Response
 
@@ -347,14 +347,14 @@ pub struct OrderResponse {
 }
 ```
 
-| Key | Type | Description |
-| :--- | :--- | :--- |
-| `order_id` | u64 | Order ID |
-| `bidder_addr` | HumanAddr | Address of bidder |
-| `offer_asset` | Asset | Amount of asset offered in order |
-| `ask_asset` | Asset | Amount of asset asked in order |
-| `filled_offer_amount` | Uint128 | Amount of offer asset already executed |
-| `filled_ask_amount` | Uint128 | Amount of ask asset already executed |
+| Key                   | Type      | Description                            |
+| --------------------- | --------- | -------------------------------------- |
+| `order_id`            | u64       | Order ID                               |
+| `bidder_addr`         | HumanAddr | Address of bidder                      |
+| `offer_asset`         | Asset     | Amount of asset offered in order       |
+| `ask_asset`           | Asset     | Amount of asset asked in order         |
+| `filled_offer_amount` | Uint128   | Amount of offer asset already executed |
+| `filled_ask_amount`   | Uint128   | Amount of ask asset already executed   |
 {% endtab %}
 {% endtabs %}
 
@@ -376,12 +376,12 @@ pub enum QueryMsg {
 }
 ```
 
-| Key | Type | Description |
-| :--- | :--- | :--- |
-| `bidder_addr`\* | HumanAddr | Address of the order bidder |
-| `start_after`\* | u64 | Begins search query at specific Order ID |
-| `limit`\* | u32 | Limit of results to fetch |
-| `order_by`\* | OrderBy | Can be ASC or DESC |
+| Key             | Type      | Description                              |
+| --------------- | --------- | ---------------------------------------- |
+| `bidder_addr`\* | HumanAddr | Address of the order bidder              |
+| `start_after`\* | u64       | Begins search query at specific Order ID |
+| `limit`\*       | u32       | Limit of results to fetch                |
+| `order_by`\*    | OrderBy   | Can be ASC or DESC                       |
 
 #### Response
 
@@ -392,18 +392,18 @@ pub struct OrdersResponse {
 }
 ```
 
-| Key | Type | Description |
-| :--- | :--- | :--- |
-| `orders` | Vec&lt;OrderResponse&gt; | Vector of user's order information |
+| Key      | Type                | Description                        |
+| -------- | ------------------- | ---------------------------------- |
+| `orders` | Vec\<OrderResponse> | Vector of user's order information |
 
-| Key | Type | Description |
-| :--- | :--- | :--- |
-| `order_id` | u64 | Order ID |
-| `bidder_addr` | HumanAddr | Address of bidder |
-| `offer_asset` | Asset | Amount of asset offered in order |
-| `ask_asset` | Asset | Amount of asset asked in order |
-| `filled_offer_amount` | Uint128 | Amount of offer asset already executed |
-| `filled_ask_amount` | Uint128 | Amount of ask asset already executed |
+| Key                   | Type      | Description                            |
+| --------------------- | --------- | -------------------------------------- |
+| `order_id`            | u64       | Order ID                               |
+| `bidder_addr`         | HumanAddr | Address of bidder                      |
+| `offer_asset`         | Asset     | Amount of asset offered in order       |
+| `ask_asset`           | Asset     | Amount of asset asked in order         |
+| `filled_offer_amount` | Uint128   | Amount of offer asset already executed |
+| `filled_ask_amount`   | Uint128   | Amount of ask asset already executed   |
 {% endtab %}
 
 {% tab title="JSON" %}
@@ -418,12 +418,12 @@ pub struct OrdersResponse {
 }
 ```
 
-| Key | Type | Description |
-| :--- | :--- | :--- |
-| `bidder_addr`\* | HumanAddr | Address of the order bidder |
-| `start_after`\* | u64 | Begins search query at specific Order ID |
-| `limit`\* | u32 | Limit of results to fetch |
-| `order_by`\* | OrderBy | Can be ASC or DESC |
+| Key             | Type      | Description                              |
+| --------------- | --------- | ---------------------------------------- |
+| `bidder_addr`\* | HumanAddr | Address of the order bidder              |
+| `start_after`\* | u64       | Begins search query at specific Order ID |
+| `limit`\*       | u32       | Limit of results to fetch                |
+| `order_by`\*    | OrderBy   | Can be ASC or DESC                       |
 
 #### Response
 
@@ -479,14 +479,14 @@ pub struct OrdersResponse {
 }
 ```
 
-| Key | Type | Description |
-| :--- | :--- | :--- |
-| `order_id` | u64 | Order ID |
-| `bidder_addr` | HumanAddr | Address of bidder |
-| `offer_asset` | Asset | Amount of asset offered in order |
-| `ask_asset` | Asset | Amount of asset asked in order |
-| `filled_offer_amount` | Uint128 | Amount of offer asset already executed |
-| `filled_ask_amount` | Uint128 | Amount of ask asset already executed |
+| Key                   | Type      | Description                            |
+| --------------------- | --------- | -------------------------------------- |
+| `order_id`            | u64       | Order ID                               |
+| `bidder_addr`         | HumanAddr | Address of bidder                      |
+| `offer_asset`         | Asset     | Amount of asset offered in order       |
+| `ask_asset`           | Asset     | Amount of asset asked in order         |
+| `filled_offer_amount` | Uint128   | Amount of offer asset already executed |
+| `filled_ask_amount`   | Uint128   | Amount of ask asset already executed   |
 {% endtab %}
 {% endtabs %}
 
@@ -515,9 +515,9 @@ pub struct LastOrderIDResponse {
 }
 ```
 
-| Key | Type | Description |
-| :--- | :--- | :--- |
-| `last_order_id` | u64 | Index of the most recent order |
+| Key             | Type | Description                    |
+| --------------- | ---- | ------------------------------ |
+| `last_order_id` | u64  | Index of the most recent order |
 {% endtab %}
 
 {% tab title="JSON" %}
@@ -536,9 +536,8 @@ pub struct LastOrderIDResponse {
 }
 ```
 
-| Key | Type | Description |
-| :--- | :--- | :--- |
-| `last_order_id` | u64 | Index of the most recent order |
+| Key             | Type | Description                    |
+| --------------- | ---- | ------------------------------ |
+| `last_order_id` | u64  | Index of the most recent order |
 {% endtab %}
 {% endtabs %}
-

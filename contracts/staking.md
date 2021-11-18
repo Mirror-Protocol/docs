@@ -35,15 +35,15 @@ pub struct InitMsg {
 {% endtab %}
 {% endtabs %}
 
-| Key | Type | Description |
-| :--- | :--- | :--- |
-| `owner` | HumanAddr | Owner address of Staking contract |
-| `mirror_token` | HumanAddr | Contract address of the Mirror Token \(MIR\) |
-| `mint_contract` | HumanAddr | Contract address of Mirror Mint |
-| `oracle_contract` | HumanAddr | Contract address of Mirror Oracle |
-| `terraswap_factory` | HumanAddr | Contract address of Terraswap Factory |
-| `base_denom` | String | Native token denom for Terraswap pairs \(TerraUSD\) |
-| `premium_min_update_interval` | u64 | Interval of time denominated in number of blocks which the collateral premium information is updated |
+| Key                           | Type      | Description                                                                                          |
+| ----------------------------- | --------- | ---------------------------------------------------------------------------------------------------- |
+| `owner`                       | HumanAddr | Owner address of Staking contract                                                                    |
+| `mirror_token`                | HumanAddr | Contract address of the Mirror Token (MIR)                                                           |
+| `mint_contract`               | HumanAddr | Contract address of Mirror Mint                                                                      |
+| `oracle_contract`             | HumanAddr | Contract address of Mirror Oracle                                                                    |
+| `terraswap_factory`           | HumanAddr | Contract address of Terraswap Factory                                                                |
+| `base_denom`                  | String    | Native token denom for Terraswap pairs (TerraUSD)                                                    |
+| `premium_min_update_interval` | u64       | Interval of time denominated in number of blocks which the collateral premium information is updated |
 
 ## HandleMsg
 
@@ -79,11 +79,11 @@ pub enum HandleMsg {
 {% endtab %}
 {% endtabs %}
 
-| Key | Type | Description |
-| :--- | :--- | :--- |
-| `amount` | Uint128 | Token amount received |
-| `sender` | HumanAddr | Sender of token transaction |
-| `msg`\* | Binary | Base64-encoded JSON of [Receive Hook](staking.md#receive-hooks) message |
+| Key      | Type      | Description                                                             |
+| -------- | --------- | ----------------------------------------------------------------------- |
+| `amount` | Uint128   | Token amount received                                                   |
+| `sender` | HumanAddr | Sender of token transaction                                             |
+| `msg`\*  | Binary    | Base64-encoded JSON of [Receive Hook](staking.md#receive-hooks) message |
 
 \* = optional
 
@@ -117,10 +117,10 @@ pub enum HandleMsg {
 {% endtab %}
 {% endtabs %}
 
-| Name | Type | Description |
-| :--- | :--- | :--- |
-| `owner`\* | HumanAddr | Owner address of Staking contract |
-| `premium_min_update_interval`\* | u64 | Interval of time denominated in number of blocks which the collateral premium information is updated |
+| Name                            | Type      | Description                                                                                          |
+| ------------------------------- | --------- | ---------------------------------------------------------------------------------------------------- |
+| `owner`\*                       | HumanAddr | Owner address of Staking contract                                                                    |
+| `premium_min_update_interval`\* | u64       | Interval of time denominated in number of blocks which the collateral premium information is updated |
 
 \* = optional
 
@@ -154,10 +154,10 @@ pub enum HandleMsg {
 {% endtab %}
 {% endtabs %}
 
-| Key | Type | Description |
-| :--- | :--- | :--- |
-| `asset_token` | HumanAddr | Contract address of mAsset/MIR token \(staking pool identifier\) |
-| `staking_token` | HumanAddr | Contract address of asset's corresponding LP Token |
+| Key             | Type      | Description                                                    |
+| --------------- | --------- | -------------------------------------------------------------- |
+| `asset_token`   | HumanAddr | Contract address of mAsset/MIR token (staking pool identifier) |
+| `staking_token` | HumanAddr | Contract address of asset's corresponding LP Token             |
 
 ### `Unbond`
 
@@ -189,10 +189,10 @@ pub enum HandleMsg {
 {% endtab %}
 {% endtabs %}
 
-| Key | Type | Description |
-| :--- | :--- | :--- |
-| `amount` | Uint128 | Amount of LP tokens to unbond |
-| `asset_token` | HumanAddr | Contract address of mAsset/MIR token \(staking pool identifier\) |
+| Key           | Type      | Description                                                    |
+| ------------- | --------- | -------------------------------------------------------------- |
+| `amount`      | Uint128   | Amount of LP tokens to unbond                                  |
+| `asset_token` | HumanAddr | Contract address of mAsset/MIR token (staking pool identifier) |
 
 ### `Withdraw`
 
@@ -222,9 +222,9 @@ pub enum HandleMsg {
 {% endtab %}
 {% endtabs %}
 
-| Key | Type | Description |
-| :--- | :--- | :--- |
-| `asset_token`\* | HumanAddr | Contract address of asset token \(staking pool identifier\). If empty, withdraws all rewards from all staking pools involved. |
+| Key             | Type      | Description                                                                                                                 |
+| --------------- | --------- | --------------------------------------------------------------------------------------------------------------------------- |
+| `asset_token`\* | HumanAddr | Contract address of asset token (staking pool identifier). If empty, withdraws all rewards from all staking pools involved. |
 
 \* = optional
 
@@ -275,10 +275,10 @@ pub enum HandleMsg {
 {% endtab %}
 {% endtabs %}
 
-| Key | Type | Description |
-| :--- | :--- | :--- |
-| `assets`\* | Array\[Assets\] | Information of assets that are provided into liquidity pool |
-| `slippage_tolerance`\* | Decimal | Maximum price slippage allowed to execute this transaction |
+| Key                    | Type           | Description                                                 |
+| ---------------------- | -------------- | ----------------------------------------------------------- |
+| `assets`\*             | Array\[Assets] | Information of assets that are provided into liquidity pool |
+| `slippage_tolerance`\* | Decimal        | Maximum price slippage allowed to execute this transaction  |
 
 \*= optional
 
@@ -286,7 +286,7 @@ pub enum HandleMsg {
 
 `[INTERNAL]`
 
-Hook to stake the minted LP tokens from providing liquidity. 
+Hook to stake the minted LP tokens from providing liquidity.&#x20;
 
 {% tabs %}
 {% tab title="Rust" %}
@@ -318,16 +318,16 @@ pub enum HandleMsg {
 {% endtab %}
 {% endtabs %}
 
-| Key | Type | Description |
-| :--- | :--- | :--- |
-| `assets_token` | HumanAddr | Contract address of the asset token |
-| `staking_token` | HumanAddr | Contract address of the LP token to be staked |
-| `staker_addr` | HumanAddr | Address of the staker |
-| `prev_staking_token_amount` | Uint128 | LP staking balance of the staker before this transaction |
+| Key                         | Type      | Description                                              |
+| --------------------------- | --------- | -------------------------------------------------------- |
+| `assets_token`              | HumanAddr | Contract address of the asset token                      |
+| `staking_token`             | HumanAddr | Contract address of the LP token to be staked            |
+| `staker_addr`               | HumanAddr | Address of the staker                                    |
+| `prev_staking_token_amount` | Uint128   | LP staking balance of the staker before this transaction |
 
 ### `AdjustPremium`
 
-`[Permission-less operation]`  
+`[Permission-less operation]`\
 Changes the price premium rate for a specified mAsset, can be done by anyone. Message can be sent again after a defined `premium_min_update_interval`.
 
 {% tabs %}
@@ -355,13 +355,13 @@ pub enum HandleMsg {
 {% endtab %}
 {% endtabs %}
 
-| Key | Type | Description |
-| :--- | :--- | :--- |
-| `asset_tokens` | Vec&lt;HumanAddr&gt; | Array of token contract addresses to update new price premium rate |
+| Key            | Type            | Description                                                        |
+| -------------- | --------------- | ------------------------------------------------------------------ |
+| `asset_tokens` | Vec\<HumanAddr> | Array of token contract addresses to update new price premium rate |
 
 ### **`IncreaseShortToken`**
 
-`[Mint contract operation]`  
+`[Mint contract operation]`\
 Increases the total staked supply of `sLP` tokens for a specific staker.
 
 {% tabs %}
@@ -392,16 +392,16 @@ pub enum HandleMsg {
 {% endtab %}
 {% endtabs %}
 
-| Key | Type | Description |
-| :--- | :--- | :--- |
-| `asset_token` | HumanAddr | Token contract address of `sLP` |
-| `staker_addr` | HumanAddr | Address of the `sLP` staker |
-| `amount` | Uint128 | Amount of `sLP` supply to be increased |
+| Key           | Type      | Description                            |
+| ------------- | --------- | -------------------------------------- |
+| `asset_token` | HumanAddr | Token contract address of `sLP`        |
+| `staker_addr` | HumanAddr | Address of the `sLP` staker            |
+| `amount`      | Uint128   | Amount of `sLP` supply to be increased |
 
 ### `DecreaseShortToken`
 
-`[Mint contract operations]`  
-Decreases the total staked supply of `sLP` tokens for a specific staker. 
+`[Mint contract operations]`\
+Decreases the total staked supply of `sLP` tokens for a specific staker.&#x20;
 
 {% tabs %}
 {% tab title="Rust" %}
@@ -430,11 +430,11 @@ pub enum HandleMsg {
 {% endtab %}
 {% endtabs %}
 
-| Key | Type | Description |
-| :--- | :--- | :--- |
-| `asset_token` | HumanAddr | Token contract address of `sLP` |
-| `staker_addr` | HumanAddr | Address of the `sLP` staker |
-| `amount` | Uint128 | Amount of `sLP` supply to be decreased  |
+| Key           | Type      | Description                                                  |
+| ------------- | --------- | ------------------------------------------------------------ |
+| `asset_token` | HumanAddr | Token contract address of `sLP`                              |
+| `staker_addr` | HumanAddr | Address of the `sLP` staker                                  |
+| `amount`      | Uint128   | <p>Amount of <code>sLP</code> supply to be decreased<br></p> |
 
 ## Receive Hooks
 
@@ -472,9 +472,9 @@ pub enum Cw20HookMsg {
 {% endtab %}
 {% endtabs %}
 
-| Key | Type | Description |
-| :--- | :--- | :--- |
-| `asset_token` | HumanAddr | Contract address of asset token \(staking pool identifier\). |
+| Key           | Type      | Description                                                |
+| ------------- | --------- | ---------------------------------------------------------- |
+| `asset_token` | HumanAddr | Contract address of asset token (staking pool identifier). |
 
 ### `DepositReward`
 
@@ -506,9 +506,9 @@ pub enum Cw20HookMsg {
 {% endtab %}
 {% endtabs %}
 
-| Key | Type | Description |
-| :--- | :--- | :--- |
-| `asset_token` | HumanAddr | Contract address of asset token \(staking pool identifier\) |
+| Key           | Type      | Description                                               |
+| ------------- | --------- | --------------------------------------------------------- |
+| `asset_token` | HumanAddr | Contract address of asset token (staking pool identifier) |
 
 ## QueryMsg
 
@@ -539,15 +539,15 @@ pub struct ConfigResponse {
 }
 ```
 
-| Key | Type | Description |
-| :--- | :--- | :--- |
-| `owner` | HumanAddr | Owner address of Staking contract |
-| `mirror_token` | HumanAddr | Contract address of the Mirror Token \(MIR\) |
-| `mint_contract` | HumanAddr | Contract address of Mirror Mint |
-| `oracle_contract` | HumanAddr | Contract address of Mirror Oracle |
-| `terraswap_factory` | HumanAddr | Contract address of Terraswap Factory |
-| `base_denom` | String | Native token denom for Terraswap pairs \(TerraUSD\) |
-| `premium_min_update_interval` | u64 | Interval of time denominated in number of blocks which the collateral premium information is updated |
+| Key                           | Type      | Description                                                                                          |
+| ----------------------------- | --------- | ---------------------------------------------------------------------------------------------------- |
+| `owner`                       | HumanAddr | Owner address of Staking contract                                                                    |
+| `mirror_token`                | HumanAddr | Contract address of the Mirror Token (MIR)                                                           |
+| `mint_contract`               | HumanAddr | Contract address of Mirror Mint                                                                      |
+| `oracle_contract`             | HumanAddr | Contract address of Mirror Oracle                                                                    |
+| `terraswap_factory`           | HumanAddr | Contract address of Terraswap Factory                                                                |
+| `base_denom`                  | String    | Native token denom for Terraswap pairs (TerraUSD)                                                    |
+| `premium_min_update_interval` | u64       | Interval of time denominated in number of blocks which the collateral premium information is updated |
 {% endtab %}
 
 {% tab title="JSON" %}
@@ -573,15 +573,15 @@ pub struct ConfigResponse {
 }
 ```
 
-| Name | Type | Description |
-| :--- | :--- | :--- |
-| `owner` | HumanAddr | Owner address of Staking contract |
-| `mirror_token` | HumanAddr | Contract address of the Mirror Token \(MIR\) |
-| `mint_contract` | HumanAddr | Contract address of Mirror Mint |
-| `oracle_contract` | HumanAddr | Contract address of Mirror Oracle |
-| `terraswap_factory` | HumanAddr | Contract address of Terraswap Factory |
-| `base_denom` | String | Native token denom for Terraswap pairs \(TerraUSD\) |
-| `premium_min_update_interval` | u64 | Interval of time denominated in number of blocks which the collateral premium information is updated |
+| Name                          | Type      | Description                                                                                          |
+| ----------------------------- | --------- | ---------------------------------------------------------------------------------------------------- |
+| `owner`                       | HumanAddr | Owner address of Staking contract                                                                    |
+| `mirror_token`                | HumanAddr | Contract address of the Mirror Token (MIR)                                                           |
+| `mint_contract`               | HumanAddr | Contract address of Mirror Mint                                                                      |
+| `oracle_contract`             | HumanAddr | Contract address of Mirror Oracle                                                                    |
+| `terraswap_factory`           | HumanAddr | Contract address of Terraswap Factory                                                                |
+| `base_denom`                  | String    | Native token denom for Terraswap pairs (TerraUSD)                                                    |
+| `premium_min_update_interval` | u64       | Interval of time denominated in number of blocks which the collateral premium information is updated |
 {% endtab %}
 {% endtabs %}
 
@@ -599,9 +599,9 @@ pub enum QueryMsg {
 }
 ```
 
-| Key | Type | Description |
-| :--- | :--- | :--- |
-| `asset_token` | HumanAddr | Asset token to query \(staking pool identifier\) |
+| Key           | Type      | Description                                    |
+| ------------- | --------- | ---------------------------------------------- |
+| `asset_token` | HumanAddr | Asset token to query (staking pool identifier) |
 
 #### Response
 
@@ -622,19 +622,19 @@ pub struct PoolInfoResponse {
 }
 ```
 
-| Key | Type | Description |
-| :--- | :--- | :--- |
-| `asset_token` | HumanAddr | Contract address of mAsset token |
-| `staking_token` | HumanAddr | Contract address of `LP` or `sLP` token |
-| `total_bond_amount` | Uint128 | Amount of total LP staked |
-| `total_short_amount` | Uint128 | Amount of total sLP staked |
-| `reward_index` | Decimal | Amount of reward distributed per 1 LP token |
-| `short_reward_index` | Decimal | Amount of reward distributed per 1 sLP token |
-| `pending_reward` | Uint128 | Amount of unclaimed rewards by LP stakers |
-| `short_pending_reward` | Uint128 | Amount of unclaimed rewards by sLP stakers |
-| `premium_rate` | Decimal | Current price premium of the asset pool |
-| `short_reward_weight` | Decimal | Current reward weight for sLP staking |
-| `premium_updated_time` | u64 | Block height which the price premium data for this asset is most recently updated |
+| Key                    | Type      | Description                                                                       |
+| ---------------------- | --------- | --------------------------------------------------------------------------------- |
+| `asset_token`          | HumanAddr | Contract address of mAsset token                                                  |
+| `staking_token`        | HumanAddr | Contract address of `LP` or `sLP` token                                           |
+| `total_bond_amount`    | Uint128   | Amount of total LP staked                                                         |
+| `total_short_amount`   | Uint128   | Amount of total sLP staked                                                        |
+| `reward_index`         | Decimal   | Amount of reward distributed per 1 LP token                                       |
+| `short_reward_index`   | Decimal   | Amount of reward distributed per 1 sLP token                                      |
+| `pending_reward`       | Uint128   | Amount of unclaimed rewards by LP stakers                                         |
+| `short_pending_reward` | Uint128   | Amount of unclaimed rewards by sLP stakers                                        |
+| `premium_rate`         | Decimal   | Current price premium of the asset pool                                           |
+| `short_reward_weight`  | Decimal   | Current reward weight for sLP staking                                             |
+| `premium_updated_time` | u64       | Block height which the price premium data for this asset is most recently updated |
 {% endtab %}
 
 {% tab title="JSON" %}
@@ -645,9 +645,9 @@ pub struct PoolInfoResponse {
 Key
 ```
 
-| Type | Description |  |
-| :--- | :--- | :--- |
-| `asset_token` | HumanAddr | Asset token to query \(staking pool identifier\) |
+| Type          | Description |                                                |
+| ------------- | ----------- | ---------------------------------------------- |
+| `asset_token` | HumanAddr   | Asset token to query (staking pool identifier) |
 
 #### Response
 
@@ -669,19 +669,19 @@ Key
 }
 ```
 
-| Key | Type | Description |
-| :--- | :--- | :--- |
-| `asset_token` | HumanAddr | Contract address of mAsset token |
-| `staking_token` | HumanAddr | Contract address of `LP` or `sLP` token |
-| `total_bond_amount` | Uint128 | Amount of total LP staked |
-| `total_short_amount` | Uint128 | Amount of total sLP staked |
-| `reward_index` | Decimal | Amount of reward distributed per 1 LP token |
-| `short_reward_index` | Decimal | Amount of reward distributed per 1 sLP token |
-| `pending_reward` | Uint128 | Amount of unclaimed rewards by LP stakers |
-| `short_pending_reward` | Uint128 | Amount of unclaimed rewards by sLP stakers |
-| `premium_rate` | Decimal | Current price premium of the asset pool |
-| `short_reward_weight` | Decimal | Current reward weight for sLP staking |
-| `premium_updated_time` | u64 | Block height which the price premium data for this asset is most recently updated |
+| Key                    | Type      | Description                                                                       |
+| ---------------------- | --------- | --------------------------------------------------------------------------------- |
+| `asset_token`          | HumanAddr | Contract address of mAsset token                                                  |
+| `staking_token`        | HumanAddr | Contract address of `LP` or `sLP` token                                           |
+| `total_bond_amount`    | Uint128   | Amount of total LP staked                                                         |
+| `total_short_amount`   | Uint128   | Amount of total sLP staked                                                        |
+| `reward_index`         | Decimal   | Amount of reward distributed per 1 LP token                                       |
+| `short_reward_index`   | Decimal   | Amount of reward distributed per 1 sLP token                                      |
+| `pending_reward`       | Uint128   | Amount of unclaimed rewards by LP stakers                                         |
+| `short_pending_reward` | Uint128   | Amount of unclaimed rewards by sLP stakers                                        |
+| `premium_rate`         | Decimal   | Current price premium of the asset pool                                           |
+| `short_reward_weight`  | Decimal   | Current reward weight for sLP staking                                             |
+| `premium_updated_time` | u64       | Block height which the price premium data for this asset is most recently updated |
 {% endtab %}
 {% endtabs %}
 
@@ -700,10 +700,10 @@ pub enum QueryMsg {
 }
 ```
 
-| Key | Type | Description |
-| :--- | :--- | :--- |
+| Key             | Type      | Description                                                         |
+| --------------- | --------- | ------------------------------------------------------------------- |
 | `asset_token`\* | HumanAddr | Asset token to query. If empty, returns info for all staking pools. |
-| `staker` | HumanAddr | Address of staker to query |
+| `staker`        | HumanAddr | Address of staker to query                                          |
 
 \*= optional
 
@@ -719,12 +719,12 @@ pub struct RewardInfoResponseItem {
 }
 ```
 
-| Key | Type | Description |
-| :--- | :--- | :--- |
-| `asset_token` | HumanAddr | Asset token being queried |
-| `bond_amount` | Uint128 | Amount of LP or sLP tokens staked |
-| `pending_reward` | Uint128 | Amount of reward that are not claimed |
-| `is_short` | bool | Identifies of the pool os LP or sLP pool |
+| Key              | Type      | Description                              |
+| ---------------- | --------- | ---------------------------------------- |
+| `asset_token`    | HumanAddr | Asset token being queried                |
+| `bond_amount`    | Uint128   | Amount of LP or sLP tokens staked        |
+| `pending_reward` | Uint128   | Amount of reward that are not claimed    |
+| `is_short`       | bool      | Identifies of the pool os LP or sLP pool |
 {% endtab %}
 
 {% tab title="JSON" %}
@@ -737,10 +737,10 @@ pub struct RewardInfoResponseItem {
 }
 ```
 
-| Key | Type | Description |
-| :--- | :--- | :--- |
+| Key             | Type      | Description                                                         |
+| --------------- | --------- | ------------------------------------------------------------------- |
 | `asset_token`\* | HumanAddr | Asset token to query. If empty, returns info for all staking pools. |
-| `staker` | HumanAddr | Address of staker to query |
+| `staker`        | HumanAddr | Address of staker to query                                          |
 
 \*= optional
 
@@ -757,12 +757,11 @@ pub struct RewardInfoResponseItem {
 }
 ```
 
-| Key | Type | Description |
-| :--- | :--- | :--- |
-| `asset_token` | HumanAddr | Asset token being queried |
-| `bond_amount` | Uint128 | Amount of LP or sLP tokens staked |
-| `pending_reward` | Uint128 | Amount of reward that are not claimed |
-| `is_short` | bool | Identifies of the pool os LP or sLP pool |
+| Key              | Type      | Description                              |
+| ---------------- | --------- | ---------------------------------------- |
+| `asset_token`    | HumanAddr | Asset token being queried                |
+| `bond_amount`    | Uint128   | Amount of LP or sLP tokens staked        |
+| `pending_reward` | Uint128   | Amount of reward that are not claimed    |
+| `is_short`       | bool      | Identifies of the pool os LP or sLP pool |
 {% endtab %}
 {% endtabs %}
-

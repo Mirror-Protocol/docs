@@ -1,6 +1,6 @@
 # Lock
 
-The Lock contract is responsible for locking up UST returned from shorting a mAsset through [Mirror Mint](../user-guide/getting-started/mint-and-burn.md) operation. 
+The Lock contract is responsible for locking up UST returned from shorting a mAsset through [Mirror Mint](../user-guide/getting-started/mint-and-burn.md) operation.&#x20;
 
 ## InitMsg
 
@@ -14,12 +14,12 @@ pub struct InitMsg {
 }
 ```
 
-| Key | Type | Description |
-| :--- | :--- | :--- |
-| `owner` | HumanAddr | Owner address of Mirror Lock |
-| `mint_contract` | HumanAddr | Address of Mirror Mint |
-| `base_denom` | String | Native token denomination for stablecoin \(TerraUSD\) |
-| `lockup_period` | u64 | Length of time in seconds which the UST from shorting will be locked for |
+| Key             | Type      | Description                                                              |
+| --------------- | --------- | ------------------------------------------------------------------------ |
+| `owner`         | HumanAddr | Owner address of Mirror Lock                                             |
+| `mint_contract` | HumanAddr | Address of Mirror Mint                                                   |
+| `base_denom`    | String    | Native token denomination for stablecoin (TerraUSD)                      |
+| `lockup_period` | u64       | Length of time in seconds which the UST from shorting will be locked for |
 
 ## HandleMsg
 
@@ -56,18 +56,18 @@ pub enum HandleMsg {
 {% endtab %}
 {% endtabs %}
 
-| Key | Type | Description |
-| :--- | :--- | :--- |
-| `owner`\* | HumanAddr | Owner address of Mirror Lock |
-| `mint_contract`\* | HumanAddr | Address of Mirror Mint |
-| `base_denom`\* | String | Native token denomination for stablecoin \(TerraUSD\) |
-| `lockup_period`\* | u64 | Length of time in seconds which the UST from shorting witll be locked for |
+| Key               | Type      | Description                                                               |
+| ----------------- | --------- | ------------------------------------------------------------------------- |
+| `owner`\*         | HumanAddr | Owner address of Mirror Lock                                              |
+| `mint_contract`\* | HumanAddr | Address of Mirror Mint                                                    |
+| `base_denom`\*    | String    | Native token denomination for stablecoin (TerraUSD)                       |
+| `lockup_period`\* | u64       | Length of time in seconds which the UST from shorting witll be locked for |
 
 \*= optional
 
 ### `LockPositionFundsHook`
 
-Locks the UST from shorting mAsset when short CDP is successfully created on Mirror Mint. 
+Locks the UST from shorting mAsset when short CDP is successfully created on Mirror Mint.&#x20;
 
 {% tabs %}
 {% tab title="Rust" %}
@@ -94,14 +94,14 @@ pub enum HandleMsg {
 {% endtab %}
 {% endtabs %}
 
-| Key | Type | Description |
-| :--- | :--- | :--- |
-| `position_idx` | Uint128 | ID number of CDP from Mirror Mint |
-| `receiver` | HumanAddr | Creator of CDP, who will receive unlocked funds |
+| Key            | Type      | Description                                     |
+| -------------- | --------- | ----------------------------------------------- |
+| `position_idx` | Uint128   | ID number of CDP from Mirror Mint               |
+| `receiver`     | HumanAddr | Creator of CDP, who will receive unlocked funds |
 
 ### `UnlockPositionFunds`
 
-Locked UST from`LockPositionFundsHook`is unlocked by sending this message after`lockup_period`has passed. Can only be issued by the owner of the position \(`receiver`\).
+Locked UST from`LockPositionFundsHook`is unlocked by sending this message after`lockup_period`has passed. Can only be issued by the owner of the position (`receiver`).
 
 {% tabs %}
 {% tab title="Rust" %}
@@ -126,13 +126,13 @@ pub enum HandleMsg {
 {% endtab %}
 {% endtabs %}
 
-| Key | Type | Description |
-| :--- | :--- | :--- |
+| Key            | Type    | Description                                            |
+| -------------- | ------- | ------------------------------------------------------ |
 | `position_idx` | Uint128 | ID number of CDP from Mirror Mint to unlock funds from |
 
 ### `ReleasePositionFunds`
 
-Locked funds will be released and sent to the CDP creator upon closing of the position. This message unlocks funds even when`lock_period`has not ended yet. Can only be issued by the mint contract when the position is being closed. 
+Locked funds will be released and sent to the CDP creator upon closing of the position. This message unlocks funds even when`lock_period`has not ended yet. Can only be issued by the mint contract when the position is being closed.&#x20;
 
 {% tabs %}
 {% tab title="Rust" %}
@@ -157,15 +157,15 @@ pub enum HandleMsg {
 {% endtab %}
 {% endtabs %}
 
-| Key | Type | Description |
-| :--- | :--- | :--- |
+| Key            | Type    | Description                                            |
+| -------------- | ------- | ------------------------------------------------------ |
 | `position_idx` | Uint128 | ID number of CDP from Mirror Mint to unlock funds from |
 
 ## QueryMsg
 
 ### `Config`
 
-Returns the configuration of Mirror Lock. 
+Returns the configuration of Mirror Lock.&#x20;
 
 {% tabs %}
 {% tab title="Rust" %}
@@ -188,12 +188,12 @@ pub struct ConfigResponse {
 }
 ```
 
-| Key | Type | Description |
-| :--- | :--- | :--- |
-| `owner` | HumanAddr | Owner address of Mirror Lock |
-| `mint_contract` | HumanAddr | Address of Mirror Mint |
-| `base_denom` | String | Native token denomination for stablecoin \(TerraUSD\) |
-| `lockup_period` | u64 | Length of time in seconds which the UST from shorting will be locked for |
+| Key             | Type      | Description                                                              |
+| --------------- | --------- | ------------------------------------------------------------------------ |
+| `owner`         | HumanAddr | Owner address of Mirror Lock                                             |
+| `mint_contract` | HumanAddr | Address of Mirror Mint                                                   |
+| `base_denom`    | String    | Native token denomination for stablecoin (TerraUSD)                      |
+| `lockup_period` | u64       | Length of time in seconds which the UST from shorting will be locked for |
 {% endtab %}
 
 {% tab title="JSON" %}
@@ -218,18 +218,18 @@ pub struct ConfigResponse {
 }
 ```
 
-| Key | Type | Description |
-| :--- | :--- | :--- |
-| `owner` | HumanAddr | Owner address of Mirror Lock |
-| `mint_contract` | HumanAddr | Address of Mirror Mint |
-| `base_denom` | String | Native token denomination for stablecoin \(TerraUSD\) |
-| `lockup_period` | u64 | Number of blocks which the UST from shorting will be locked for |
+| Key             | Type      | Description                                                     |
+| --------------- | --------- | --------------------------------------------------------------- |
+| `owner`         | HumanAddr | Owner address of Mirror Lock                                    |
+| `mint_contract` | HumanAddr | Address of Mirror Mint                                          |
+| `base_denom`    | String    | Native token denomination for stablecoin (TerraUSD)             |
+| `lockup_period` | u64       | Number of blocks which the UST from shorting will be locked for |
 {% endtab %}
 {% endtabs %}
 
 ### `PositionLockInfo`
 
-Returns information about locked funds of a specific CDP. 
+Returns information about locked funds of a specific CDP.&#x20;
 
 {% tabs %}
 {% tab title="Rust" %}
@@ -242,8 +242,8 @@ pub enum QueryMsg {
     }
 ```
 
-| Key | Type | Description |
-| :--- | :--- | :--- |
+| Key            | Type    | Description                                            |
+| -------------- | ------- | ------------------------------------------------------ |
 | `position_idx` | Uint128 | ID number of CDP from Mirror Mint to unlock funds from |
 
 #### Response
@@ -258,12 +258,12 @@ pub struct PositionLockInfoResponse {
 }
 ```
 
-| Key | Type | Description |
-| :--- | :--- | :--- |
-| `idx` | Uint128 | ID number of CDP from Mirror Mint to unlock funds from |
-| `receiver` | HumanAddr | Creator of CDP, who will receive unlocked funds |
-| `locked_amount` | Uint128 | Amount of `base_denom` locked from creating a Short CDP |
-| `unlock_time` | u64 | Time when user is allowed to claim the `locked_amount` |
+| Key             | Type      | Description                                             |
+| --------------- | --------- | ------------------------------------------------------- |
+| `idx`           | Uint128   | ID number of CDP from Mirror Mint to unlock funds from  |
+| `receiver`      | HumanAddr | Creator of CDP, who will receive unlocked funds         |
+| `locked_amount` | Uint128   | Amount of `base_denom` locked from creating a Short CDP |
+| `unlock_time`   | u64       | Time when user is allowed to claim the `locked_amount`  |
 {% endtab %}
 
 {% tab title="JSON" %}
@@ -275,8 +275,8 @@ pub struct PositionLockInfoResponse {
 }
 ```
 
-| Key | Type | Description |
-| :--- | :--- | :--- |
+| Key            | Type    | Description                                            |
+| -------------- | ------- | ------------------------------------------------------ |
 | `position_idx` | Uint128 | ID number of CDP from Mirror Mint to unlock funds from |
 
 #### Response
@@ -293,13 +293,11 @@ pub struct PositionLockInfoResponse {
 }
 ```
 
-| Key | Type | Description |
-| :--- | :--- | :--- |
-| `idx` | Uint128 | ID number of CDP from Mirror Mint to unlock funds from |
-| `receiver` | HumanAddr | Creator of CDP, who will receive unlocked funds |
-| `locked_funds` | Vec&lt;\(u64, Uint128\)&gt; | Description about  1. Block height which the fund was locked at 2. Amount of `base_denom` locked from creating a Short CDP |
+| Key            | Type                | Description                                                                                                                                           |
+| -------------- | ------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `idx`          | Uint128             | ID number of CDP from Mirror Mint to unlock funds from                                                                                                |
+| `receiver`     | HumanAddr           | Creator of CDP, who will receive unlocked funds                                                                                                       |
+| `locked_funds` | Vec<(u64, Uint128)> | <p>Description about <br>1. Block height which the fund was locked at<br>2. Amount of <code>base_denom</code> locked<br>from creating a Short CDP</p> |
 {% endtab %}
 {% endtabs %}
-
-
 

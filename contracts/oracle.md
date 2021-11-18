@@ -2,7 +2,7 @@
 
 The Oracle Contract exposes an interface for accessing the latest reported price for mAssets. Price quotes are kept up-to-date by oracle feeders that are tasked with periodically fetching exchange rates from reputable sources and reporting them to the Oracle contract.
 
-Prices are only considered valid for 60 seconds. If no new prices are published after the data has expired, Mirror will disable CDP operations \(mint, burn, deposit, withdraw\) until the price feed resumes.
+Prices are only considered valid for 60 seconds. If no new prices are published after the data has expired, Mirror will disable CDP operations (mint, burn, deposit, withdraw) until the price feed resumes.
 
 ## InitMsg
 
@@ -14,10 +14,10 @@ pub struct InitMsg {
 }
 ```
 
-| Key | Type | Description |
-| :--- | :--- | :--- |
-| `owner` | HumanAddr | Address of the owner who can register new assets |
-| `base_asset` | String | Asset in which prices will be denominated \(default TerraUSD\) |
+| Key          | Type      | Description                                                  |
+| ------------ | --------- | ------------------------------------------------------------ |
+| `owner`      | HumanAddr | Address of the owner who can register new assets             |
+| `base_asset` | String    | Asset in which prices will be denominated (default TerraUSD) |
 
 ## HandleMsg
 
@@ -49,8 +49,8 @@ pub enum HandleMsg {
 {% endtab %}
 {% endtabs %}
 
-| Key | Type | Description |
-| :--- | :--- | :--- |
+| Key       | Type      | Description          |
+| --------- | --------- | -------------------- |
 | `owner`\* | HumanAddr | Address of new owner |
 
 \* = optional
@@ -85,10 +85,10 @@ pub enum HandleMsg {
 {% endtab %}
 {% endtabs %}
 
-| Key | Type | Description |
-| :--- | :--- | :--- |
-| `asset_token` | HumanAddr | Contract address of asset token |
-| `feeder` | HumanAddr | Address of Oracle Feeder for the asset |
+| Key           | Type      | Description                            |
+| ------------- | --------- | -------------------------------------- |
+| `asset_token` | HumanAddr | Contract address of asset token        |
+| `feeder`      | HumanAddr | Address of Oracle Feeder for the asset |
 
 ### `FeedPrice`
 
@@ -121,9 +121,9 @@ pub enum HandleMsg {
 {% endtab %}
 {% endtabs %}
 
-| Key | Type | Description |
-| :--- | :--- | :--- |
-| `prices` | Vec&lt;\(HumanAddr, Decimal\)&gt; | Price information for assets |
+| Key      | Type                      | Description                  |
+| -------- | ------------------------- | ---------------------------- |
+| `prices` | Vec<(HumanAddr, Decimal)> | Price information for assets |
 
 ## QueryMsg
 
@@ -151,10 +151,10 @@ pub struct ConfigResponse {
 }
 ```
 
-| Key | Type | Description |
-| :--- | :--- | :--- |
-| `owner` | HumanAddr | Owner address |
-| `base_asset` | String/`'uusd'` | Asset in which prices will be denominated \(default TerraUSD\) |
+| Key          | Type            | Description                                                  |
+| ------------ | --------------- | ------------------------------------------------------------ |
+| `owner`      | HumanAddr       | Owner address                                                |
+| `base_asset` | String/`'uusd'` | Asset in which prices will be denominated (default TerraUSD) |
 {% endtab %}
 
 {% tab title="JSON" %}
@@ -175,10 +175,10 @@ pub struct ConfigResponse {
 }
 ```
 
-| Key | Type | Description |
-| :--- | :--- | :--- |
-| `owner` | HumanAddr | Owner address |
-| `base_asset` | String/`'uusd'` | Asset in which prices will be denominated \(default TerraUSD\) |
+| Key          | Type            | Description                                                  |
+| ------------ | --------------- | ------------------------------------------------------------ |
+| `owner`      | HumanAddr       | Owner address                                                |
+| `base_asset` | String/`'uusd'` | Asset in which prices will be denominated (default TerraUSD) |
 {% endtab %}
 {% endtabs %}
 
@@ -198,8 +198,8 @@ pub enum QueryMsg {
 }
 ```
 
-| Key | Type | Description |
-| :--- | :--- | :--- |
+| Key           | Type      | Description                              |
+| ------------- | --------- | ---------------------------------------- |
 | `asset_token` | HumanAddr | Contract address of asset token to query |
 
 #### Response
@@ -212,10 +212,10 @@ pub struct FeederResponse {
 }
 ```
 
-| Key | Type | Description |
-| :--- | :--- | :--- |
+| Key           | Type      | Description                              |
+| ------------- | --------- | ---------------------------------------- |
 | `asset_token` | HumanAddr | Contract address of asset token to query |
-| `feeder` | HumanAddr | Terra address of price feeder |
+| `feeder`      | HumanAddr | Terra address of price feeder            |
 {% endtab %}
 
 {% tab title="JSON" %}
@@ -227,8 +227,8 @@ pub struct FeederResponse {
 }
 ```
 
-| Key | Type | Description |
-| :--- | :--- | :--- |
+| Key           | Type      | Description                              |
+| ------------- | --------- | ---------------------------------------- |
 | `asset_token` | HumanAddr | Contract address of asset token to query |
 
 #### Response
@@ -242,10 +242,10 @@ pub struct FeederResponse {
 }
 ```
 
-| Key | Type | Description |
-| :--- | :--- | :--- |
+| Key           | Type      | Description                              |
+| ------------- | --------- | ---------------------------------------- |
 | `asset_token` | HumanAddr | Contract address of asset token to query |
-| `feeder` | HumanAddr | Terra address of price feeder |
+| `feeder`      | HumanAddr | Terra address of price feeder            |
 {% endtab %}
 {% endtabs %}
 
@@ -266,9 +266,9 @@ pub enum QueryMsg {
 }
 ```
 
-| Key | Type | Description |
-| :--- | :--- | :--- |
-| `base_asset` | HumanAddr | Asset for which to get price |
+| Key           | Type                 | Description                              |
+| ------------- | -------------------- | ---------------------------------------- |
+| `base_asset`  | HumanAddr            | Asset for which to get price             |
 | `quote_asset` | HumanAddr / `'uusd'` | Asset in which price will be denominated |
 
 #### Response
@@ -282,11 +282,11 @@ pub struct PriceResponse {
 }
 ```
 
-| Key | Type | Description |
-| :--- | :--- | :--- |
-| `rate` | HumanAddr | Asset for which to get price |
-| `last_updated_base` | u64 | Block height which the `base_asset` price has been updated at |
-| `last_updated_quote` | u64 | Block height which the `quote_asset` price has been updated at |
+| Key                  | Type      | Description                                                      |
+| -------------------- | --------- | ---------------------------------------------------------------- |
+| `rate`               | HumanAddr | Asset for which to get price                                     |
+| `last_updated_base`  | u64       | Block height which the `base_asset` price has been updated at    |
+| `last_updated_quote` | u64       | Block height which the`  quote_asset  `price has been updated at |
 {% endtab %}
 
 {% tab title="JSON" %}
@@ -299,9 +299,9 @@ pub struct PriceResponse {
 }
 ```
 
-| Key | Type | Description |
-| :--- | :--- | :--- |
-| `base_asset` | HumanAddr | Asset for which to get price |
+| Key           | Type                 | Description                              |
+| ------------- | -------------------- | ---------------------------------------- |
+| `base_asset`  | HumanAddr            | Asset for which to get price             |
 | `quote_asset` | HumanAddr / `'uusd'` | Asset in which price will be denominated |
 
 #### Response
@@ -316,11 +316,11 @@ pub struct PriceResponse {
 }
 ```
 
-| Key | Type | Description |
-| :--- | :--- | :--- |
-| `rate` | HumanAddr | Asset for which to get price |
-| `last_updated_base` | u64 | Block height which the `base_asset` price has been updated at |
-| `last_updated_quote` | u64 | Block height which the `quote_asset` price has been updated at |
+| Key                  | Type      | Description                                                      |
+| -------------------- | --------- | ---------------------------------------------------------------- |
+| `rate`               | HumanAddr | Asset for which to get price                                     |
+| `last_updated_base`  | u64       | Block height which the `base_asset` price has been updated at    |
+| `last_updated_quote` | u64       | Block height which the`  quote_asset  `price has been updated at |
 {% endtab %}
 {% endtabs %}
 
@@ -341,10 +341,10 @@ pub enum QueryMsg {
 }
 ```
 
-| Key | Type | Description |
-| :--- | :--- | :--- |
+| Key             | Type      | Description                          |
+| --------------- | --------- | ------------------------------------ |
 | `start_after`\* | HumanAddr | Contract address to start query from |
-| `limit` | u32 | Max number of results to report |
+| `limit`         | u32       | Max number of results to report      |
 
 #### Response
 
@@ -357,11 +357,11 @@ pub struct PricesResponseElem {
 }
 ```
 
-| Key | Type | Description |
-| :--- | :--- | :--- |
-| `asset_token` | HumanAddr | Contract address to start query from |
-| `price` | Decimal | Current price of the `asset_token`  |
-| `last_updated_time` | u64 | Block height which the`asset_token`price has been updated at |
+| Key                 | Type      | Description                                                  |
+| ------------------- | --------- | ------------------------------------------------------------ |
+| `asset_token`       | HumanAddr | Contract address to start query from                         |
+| `price`             | Decimal   | Current price of the `asset_token`                           |
+| `last_updated_time` | u64       | Block height which the`asset_token`price has been updated at |
 {% endtab %}
 
 {% tab title="JSON" %}
@@ -374,10 +374,10 @@ pub struct PricesResponseElem {
 }
 ```
 
-| Key | Type | Description |
-| :--- | :--- | :--- |
+| Key             | Type      | Description                          |
+| --------------- | --------- | ------------------------------------ |
 | `start_after`\* | HumanAddr | Contract address to start query from |
-| `limit` | u32 | Max number of results to report |
+| `limit`         | u32       | Max number of results to report      |
 
 #### Response
 
@@ -392,11 +392,10 @@ pub struct PricesResponseElem {
 }
 ```
 
-| Key | Type | Description |
-| :--- | :--- | :--- |
-| `asset_token` | HumanAddr | Contract address to start query from |
-| `price` | Decimal | Current price of the `asset_token`  |
-| `last_updated_time` | u64 | Block height which the`asset_token`price has been updated at |
+| Key                 | Type      | Description                                                  |
+| ------------------- | --------- | ------------------------------------------------------------ |
+| `asset_token`       | HumanAddr | Contract address to start query from                         |
+| `price`             | Decimal   | Current price of the `asset_token`                           |
+| `last_updated_time` | u64       | Block height which the`asset_token`price has been updated at |
 {% endtab %}
 {% endtabs %}
-

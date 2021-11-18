@@ -7,7 +7,9 @@ The security of the Mirror protocol is our highest priority; our development tea
 ## Audits
 
 * [Mirror v1 Smart Contract Audit](https://docsend.com/view/p4es2dgvwadamgqg) by **Cyber Unit**
-* [Mirror v2 Smart Contract Audit](https://mirror.finance/Mirror_v2_Audit_Report.pdf) by **Cryptonics**
+* **Mirror v2 Smart Contract Audit** by **Cryptonics**
+
+{% file src=".gitbook/assets/Mirror v2 Audit Report (1).pdf" %}
 
 ## Bug Bounty Program
 
@@ -23,11 +25,11 @@ Mirror offers substantial rewards for discoveries that can prevent the loss of a
 
 The primary scope of the bug bounty program is for vulnerabilities affecting the on-chain Mirror Protocol, deployed to the Terra Mainnet, for contract addresses listed in this developer documentation. This list may change as new contracts are deployed, or as existing contracts are removed from usage.
 
-Vulnerabilities in contracts built on top of the protocol by third-party developers \(such as smart contract wallets\) are not in-scope, nor are vulnerabilities that require ownership of an admin key.
+Vulnerabilities in contracts built on top of the protocol by third-party developers (such as smart contract wallets) are not in-scope, nor are vulnerabilities that require ownership of an admin key.
 
-The secondary scope of the bug bounty program is for vulnerabilities affecting the Mirror interface hosted at [https://terra.mirror.finance](https://terra.mirror.finance) that could conceivably result in the exploitation of user accounts.
+The secondary scope of the bug bounty program is for vulnerabilities affecting the Mirror interface  that could conceivably result in the exploitation of user accounts.
 
-Finally, test contracts \(Tequila and other testnets\) and staging servers are out of scope, unless the discovered vulnerability also affects the Mirror Protocol or Interface, or could otherwise be exploited in a way that risks user funds.
+Finally, test contracts (Tequila and other testnets) and staging servers are out of scope, unless the discovered vulnerability also affects the Mirror Protocol or Interface, or could otherwise be exploited in a way that risks user funds.
 
 **Disclosure**
 
@@ -61,4 +63,3 @@ When working with us according to this program, you can expect us to:
 * Work to remediate discovered vulnerabilities in a timely manner.
 * Recognize your contribution to improving our security if you are the first to report a unique vulnerability, and your report triggers a code or configuration change.
 * All reward determinations, including eligibility and payment amount, are made at Mirror’s sole discretion. Mirror reserves the right to reject submissions and alter the terms and conditions of this program.
-

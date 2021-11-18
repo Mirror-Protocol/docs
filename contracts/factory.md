@@ -1,22 +1,22 @@
 # Factory
 
-The Factory contract is Mirror Protocol's central directory and organizes information related to mAssets and the Mirror Token \(MIR\). It is also responsible for minting new MIR tokens each block and distributing them to the [Staking Contract](staking.md) for rewarding LP &sLP Token stakers.
+The Factory contract is Mirror Protocol's central directory and organizes information related to mAssets and the Mirror Token (MIR). It is also responsible for minting new MIR tokens each block and distributing them to the [Staking Contract](staking.md) for rewarding LP \&sLP Token stakers.
 
 After the initial bootstrapping of Mirror Protocol contracts, the Factory is assigned to be the owner for the Mint, Oracle, Staking, and Collector contracts. The Factory is owned by the [Gov Contract.](gov.md)
 
 ## Config
 
-| Name | Type | Description |
-| :--- | :--- | :--- |
-| `mirror_token` | HumanAddr | Contract address of Mirror Token \(MIR\) |
-| `mint_contract` | HumanAddr | Contract address of [Mirror Mint](mint.md) |
-| `oracle_contract` | HumanAddr | Contract address of [Mirror Oracle](oracle.md) |
-| `terraswap_factory` | HumanAddr | Contract address of Terraswap Factory |
-| `staking_contract` | HumanAddr | Contract address of [Mirror Staking](staking.md) |
+| Name                   | Type      | Description                                          |
+| ---------------------- | --------- | ---------------------------------------------------- |
+| `mirror_token`         | HumanAddr | Contract address of Mirror Token (MIR)               |
+| `mint_contract`        | HumanAddr | Contract address of [Mirror Mint](mint.md)           |
+| `oracle_contract`      | HumanAddr | Contract address of [Mirror Oracle](oracle.md)       |
+| `terraswap_factory`    | HumanAddr | Contract address of Terraswap Factory                |
+| `staking_contract`     | HumanAddr | Contract address of [Mirror Staking](staking.md)     |
 | `commission_collector` | HumanAddr | Contract address of [Mirror Collector](collector.md) |
-| `mint_per_block` | Uint128 | Amount of new MIR tokens to mint per block |
-| `token_code_id` | u64 | Code ID for CW20 contract for generating new mAssets |
-| `base_denom` | String | Native token denom for Terraswap pairs \(TerraUSD\) |
+| `mint_per_block`       | Uint128   | Amount of new MIR tokens to mint per block           |
+| `token_code_id`        | u64       | Code ID for CW20 contract for generating new mAssets |
+| `base_denom`           | String    | Native token denom for Terraswap pairs (TerraUSD)    |
 
 ## InitMsg
 
@@ -46,45 +46,11 @@ pub struct InitMsg {
 {% endtab %}
 {% endtabs %}
 
-<table>
-  <thead>
-    <tr>
-      <th style="text-align:left">Key</th>
-      <th style="text-align:left">Type</th>
-      <th style="text-align:left">Description</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td style="text-align:left"><code>token_code_id</code>
-      </td>
-      <td style="text-align:left">u64</td>
-      <td style="text-align:left">Code ID for CW20 contract for generating new mAssets</td>
-    </tr>
-    <tr>
-      <td style="text-align:left"><code>base_denom</code>
-      </td>
-      <td style="text-align:left">String</td>
-      <td style="text-align:left">Native token denom for Terraswap pairs (TerraUSD)</td>
-    </tr>
-    <tr>
-      <td style="text-align:left"><code>distribution_schedule</code>
-      </td>
-      <td style="text-align:left">Vec</td>
-      <td style="text-align:left">
-        <p>Distribution schedule for the minting of new MIR tokens. Each entry consists
-          of:</p>
-        <ul>
-          <li>start time (seconds)</li>
-          <li>end time (seconds)</li>
-          <li>distribution amount for the interval</li>
-        </ul>
-        <p>Determines the total amount of new MIR tokens minted as rewards for LP
-          stakers over the interval [start time, end time].</p>
-      </td>
-    </tr>
-  </tbody>
-</table>
+| Key                     | Type   | Description                                                                                                                                                                                                                                                                                                                          |
+| ----------------------- | ------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `token_code_id`         | u64    | Code ID for CW20 contract for generating new mAssets                                                                                                                                                                                                                                                                                 |
+| `base_denom`            | String | Native token denom for Terraswap pairs (TerraUSD)                                                                                                                                                                                                                                                                                    |
+| `distribution_schedule` | Vec    | <p>Distribution schedule for the minting of new MIR tokens. Each entry consists of:</p><ul><li>start time (seconds)</li><li>end time (seconds)</li><li>distribution amount for the interval</li></ul><p>Determines the total amount of new MIR tokens minted as rewards for LP stakers over the interval [start time, end time].</p> |
 
 ## HandleMsg
 
@@ -128,15 +94,15 @@ pub enum HandleMsg {
 {% endtab %}
 {% endtabs %}
 
-| Key | Type | Description |
-| :--- | :--- | :--- |
+| Key                    | Type      | Description                                          |
+| ---------------------- | --------- | ---------------------------------------------------- |
 | `commission_collector` | HumanAddr | Contract address of [Mirror Collector](collector.md) |
-| `mint_contract` | HumanAddr | Contract address of [Mirror Mint](mint.md) |
-| `mirror_token` | HumanAddr | Contract address of Mirror Token \(MIR\) |
-| `oracle_contract` | HumanAddr | Contract address of [Mirror Oracle](oracle.md) |
-| `**owner` | HumanAddr | Address of the owner of [Mirror Factory](factory.md) |
-| `staking_contract` | HumanAddr | Contract address of [Mirror Staking](staking.md) |
-| `terraswap_factory` | HumanAddr | Contract address of Terraswap Factory |
+| `mint_contract`        | HumanAddr | Contract address of [Mirror Mint](mint.md)           |
+| `mirror_token`         | HumanAddr | Contract address of Mirror Token (MIR)               |
+| `oracle_contract`      | HumanAddr | Contract address of [Mirror Oracle](oracle.md)       |
+| `**owner`              | HumanAddr | Address of the owner of [Mirror Factory](factory.md) |
+| `staking_contract`     | HumanAddr | Contract address of [Mirror Staking](staking.md)     |
+| `terraswap_factory`    | HumanAddr | Contract address of Terraswap Factory                |
 
 ### `UpdateConfig`
 
@@ -173,17 +139,17 @@ pub enum HandleMsg {
 {% endtab %}
 {% endtabs %}
 
-| Key | Type | Description |
-| :--- | :--- | :--- |
-| `owner`\* | HumanAddr | Address of the owner of [Mirror Factory](factory.md) |
-| `token_code_id`\* | u64 | Code ID for CW20 contract for generating new mAssets |
-| `**distribution_schedule`\* | Vec&lt;\(u64, u64, Uint128\)&gt; | New distribution schedule |
+| Key                         | Type                     | Description                                          |
+| --------------------------- | ------------------------ | ---------------------------------------------------- |
+| `owner`\*                   | HumanAddr                | Address of the owner of [Mirror Factory](factory.md) |
+| `token_code_id`\*           | u64                      | Code ID for CW20 contract for generating new mAssets |
+| `**distribution_schedule`\* | Vec<(u64, u64, Uint128)> | New distribution schedule                            |
 
 \* = optional
 
 ### `UpdateWeight`
 
-Updates the `weight` parameter of a specific token. 
+Updates the `weight` parameter of a specific token.&#x20;
 
 {% tabs %}
 {% tab title="Rust" %}
@@ -210,10 +176,10 @@ pub enum HandleMsg {
 {% endtab %}
 {% endtabs %}
 
-| Name | Type | Description |
-| :--- | :--- | :--- |
-| `asset_token` | HumanAddr | Contract address of mAsset token |
-| `weight` | u32 | Ratio of MIR token reward received by this asset in comparison to other tokens |
+| Name          | Type      | Description                                                                    |
+| ------------- | --------- | ------------------------------------------------------------------------------ |
+| `asset_token` | HumanAddr | Contract address of mAsset token                                               |
+| `weight`      | u32       | Ratio of MIR token reward received by this asset in comparison to other tokens |
 
 ### `Whitelist`
 
@@ -269,25 +235,25 @@ pub struct Params {
 {% endtab %}
 {% endtabs %}
 
-| Key | Type | Description |
-| :--- | :--- | :--- |
-| `name` | String | Name of new asset to be whitelisted |
+| Key             | Type      | Description                         |
+| --------------- | --------- | ----------------------------------- |
+| `name`          | String    | Name of new asset to be whitelisted |
 | `oracle_feeder` | HumanAddr | Address of Oracle Feeder for mAsset |
-| `params` | Params | mAsset parameters to be registered |
-| `symbol` | String | mAsset symbol \(ex: `mAAPL`\) |
+| `params`        | Params    | mAsset parameters to be registered  |
+| `symbol`        | String    | mAsset symbol (ex: `mAAPL`)         |
 
 #### mAsset Params
 
-| Key | Type | Description |
-| :--- | :--- | :--- |
-| `auction_discount` | Decimal | Liquidation discount for purchasing CDP's collateral |
-| `min_collateral_ratio` | Decimal | Minimum C-ratio for CDPs that mint the mAsset |
-| `weight`\* | u32 | Ratio of MIR token reward received by this asset in comparison to other tokens |
-| `mint_period`\* | u64 | Time period after asset creation in which minting is enabled \(Seconds\) |
-| `min_collateral_ratio_after_ipo`\* | Decimal | `min_collateral_ratio` to be applied to this asset after IPO |
-| `pre_ipo_price`\* | Decimal | Fixed price used to mint Pre-IPO asset during `mint_period` |
+| Key                                | Type    | Description                                                                    |
+| ---------------------------------- | ------- | ------------------------------------------------------------------------------ |
+| `auction_discount`                 | Decimal | Liquidation discount for purchasing CDP's collateral                           |
+| `min_collateral_ratio`             | Decimal | Minimum C-ratio for CDPs that mint the mAsset                                  |
+| `weight`\*                         | u32     | Ratio of MIR token reward received by this asset in comparison to other tokens |
+| `mint_period`\*                    | u64     | Time period after asset creation in which minting is enabled (Seconds)         |
+| `min_collateral_ratio_after_ipo`\* | Decimal | `min_collateral_ratio` to be applied to this asset after IPO                   |
+| `pre_ipo_price`\*                  | Decimal | Fixed price used to mint Pre-IPO asset during `mint_period`                    |
 
-\*= optional \(Only added for [Pre-IPO asset whitelisting](../protocol/mirrored-assets-massets.md#pre-ipo)\)
+\*= optional (Only added for [Pre-IPO asset whitelisting](../protocol/mirrored-assets-massets.md#pre-ipo))
 
 ### `TokenCreationHook`
 
@@ -319,8 +285,8 @@ pub enum HandleMsg {
 {% endtab %}
 {% endtabs %}
 
-| Key | Type | Description |
-| :--- | :--- | :--- |
+| Key             | Type      | Description                         |
+| --------------- | --------- | ----------------------------------- |
 | `oracle_feeder` | HumanAddr | Address of Oracle Feeder for mAsset |
 
 ### `TerraswapCreationHook`
@@ -353,8 +319,8 @@ pub struct enum HandleMsg {
 {% endtab %}
 {% endtabs %}
 
-| Key | Type | Description |
-| :--- | :--- | :--- |
+| Key           | Type      | Description                      |
+| ------------- | --------- | -------------------------------- |
 | `asset_token` | HumanAddr | Contract address of mAsset token |
 
 ### `PassCommand`
@@ -387,10 +353,10 @@ pub enum HandleMsg {
 {% endtab %}
 {% endtabs %}
 
-| Key | Type | Description |
-| :--- | :--- | :--- |
+| Key             | Type      | Description                          |
+| --------------- | --------- | ------------------------------------ |
 | `contract_addr` | HumanAddr | Contract address of contract to call |
-| `msg` | Binary | Base64-encoded JSON of ExecuteMsg |
+| `msg`           | Binary    | Base64-encoded JSON of ExecuteMsg    |
 
 ### `Distribute`
 
@@ -420,8 +386,8 @@ pub enum HandleMsg {
 
 ### `RevokeAsset`
 
-`(Feeder Operation)`  
-Used when delisting occurs for a specific mAsset.  
+`(Feeder Operation)`\
+Used when delisting occurs for a specific mAsset. &#x20;
 
 * mAsset is unregistered from MIR reward pool
 * Fixes the oracle price at `end_price` for mint contract operation
@@ -451,10 +417,10 @@ pub enum HandleMsg {
 {% endtab %}
 {% endtabs %}
 
-| Name | Type | Description |
-| :--- | :--- | :--- |
-| `asset_token` | HumanAddr | Contract address of mAsset token |
-| `end_price` | Decimal | Final price to freeze revoked mAsset  |
+| Name          | Type      | Description                                     |
+| ------------- | --------- | ----------------------------------------------- |
+| `asset_token` | HumanAddr | Contract address of mAsset token                |
+| `end_price`   | Decimal   | <p>Final price to freeze revoked mAsset<br></p> |
 
 ### `MigrateAsset`
 
@@ -490,12 +456,12 @@ pub enum HandleMsg {
 {% endtab %}
 {% endtabs %}
 
-| Key | Type | Description |
-| :--- | :--- | :--- |
-| `end_price` | Decimal | Freezes the oracle price of mAsset at this value \(Denominated in UST\) |
-| `from_token` | HumanAddr | Contract address of mAsset to migrate |
-| `name` | String | Name of the new asset post-migration |
-| `symbol` | String | Symbol for the new asset post-migration |
+| Key          | Type      | Description                                                           |
+| ------------ | --------- | --------------------------------------------------------------------- |
+| `end_price`  | Decimal   | Freezes the oracle price of mAsset at this value (Denominated in UST) |
+| `from_token` | HumanAddr | Contract address of mAsset to migrate                                 |
+| `name`       | String    | Name of the new asset post-migration                                  |
+| `symbol`     | String    | Symbol for the new asset post-migration                               |
 
 ## QueryMsg
 
@@ -532,19 +498,19 @@ pub struct ConfigResponse {
 }
 ```
 
-| Key | Type | Description |
-| :--- | :--- | :--- |
-| `owner` | HumanAddr | Contract address of mAsset token |
-| `mirror_token` | HumanAddr | Final price to freeze revoked mAsset |
-| `mint_contract` | HumanAddr | Contract address of Mirror Mint |
-| `staking_contract` | HumanAddr | Contract address of Mirror Oracle |
-| `commission_collector` | HumanAddr | Contract address of Mirror Collector |
-| `oracle_contract` | HumanAddr | Contract address of Mirror Oracle |
-| `terraswap_factory` | HumanAddr | Contract address of Terraswap Factory |
-| `token_code_id` | u64 | Code ID for CW20 contract for generating new mAssets |
-| `base_denom` | String | Native token denom for Terraswaap pairs \(TerraUSD\) |
-| `genesis_time` | u64 | Block height which the Factory contract was instantiated |
-| `distribution_schedule` | Vec&lt;\(u64, u64, Uint128\)&gt; | Distribution schedule for the minting of new MIR tokens. Each entry consists of: - start time \(seconds\) - end time \(seconds\) distribution amount for the interval Determines the total amount of new MIR tokens minted as rewards for LP stakers over the interval \[start time, end time\]. |
+| Key                     | Type                     | Description                                                                                                                                                                                                                                                                                                   |
+| ----------------------- | ------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `owner`                 | HumanAddr                | Contract address of mAsset token                                                                                                                                                                                                                                                                              |
+| `mirror_token`          | HumanAddr                | Final price to freeze revoked mAsset                                                                                                                                                                                                                                                                          |
+| `mint_contract`         | HumanAddr                | Contract address of Mirror Mint                                                                                                                                                                                                                                                                               |
+| `staking_contract`      | HumanAddr                | Contract address of Mirror Oracle                                                                                                                                                                                                                                                                             |
+| `commission_collector`  | HumanAddr                | Contract address of Mirror Collector                                                                                                                                                                                                                                                                          |
+| `oracle_contract`       | HumanAddr                | Contract address of Mirror Oracle                                                                                                                                                                                                                                                                             |
+| `terraswap_factory`     | HumanAddr                | Contract address of Terraswap Factory                                                                                                                                                                                                                                                                         |
+| `token_code_id`         | u64                      | Code ID for CW20 contract for generating new mAssets                                                                                                                                                                                                                                                          |
+| `base_denom`            | String                   | Native token denom for Terraswaap pairs (TerraUSD)                                                                                                                                                                                                                                                            |
+| `genesis_time`          | u64                      | Block height which the Factory contract was instantiated                                                                                                                                                                                                                                                      |
+| `distribution_schedule` | Vec<(u64, u64, Uint128)> | <p>Distribution schedule for the minting of new MIR tokens. Each entry consists of:<br>- start time (seconds)<br>- end time (seconds)<br>distribution amount for the interval<br>Determines the total amount of new MIR tokens minted as rewards for LP stakers over the interval [start time, end time].</p> |
 {% endtab %}
 
 {% tab title="JSON" %}
@@ -577,19 +543,19 @@ pub struct ConfigResponse {
 }  
 ```
 
-| Key | Type | Description |
-| :--- | :--- | :--- |
-| `owner` | HumanAddr | Contract address of mAsset token |
-| `mirror_token` | HumanAddr | Final price to freeze revoked mAsset |
-| `mint_contract` | HumanAddr | Contract address of Mirror Mint |
-| `staking_contract` | HumanAddr | Contract address of Mirror Oracle |
-| `commission_collector` | HumanAddr | Contract address of Mirror Collector |
-| `oracle_contract` | HumanAddr | Contract address of Mirror Oracle |
-| `terraswap_factory` | HumanAddr | Contract address of Terraswap Factory |
-| `token_code_id` | u64 | Code ID for CW20 contract for generating new mAssets |
-| `base_denom` | String | Native token denom for Terraswaap pairs \(TerraUSD\) |
-| `genesis_time` | u64 | Block height which the Factory contract was instantiated |
-| `distribution_schedule` | Vec&lt;\(u64, u64, Uint128\)&gt; | Distribution schedule for the minting of new MIR tokens. Each entry consists of: start time \(seconds\) end time \(seconds\) distribution amount for the interval Determines the total amount of new MIR tokens minted as rewards for LP stakers over the interval \[start time, end time\]. |
+| Key                     | Type                     | Description                                                                                                                                                                                                                                                                                               |
+| ----------------------- | ------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `owner`                 | HumanAddr                | Contract address of mAsset token                                                                                                                                                                                                                                                                          |
+| `mirror_token`          | HumanAddr                | Final price to freeze revoked mAsset                                                                                                                                                                                                                                                                      |
+| `mint_contract`         | HumanAddr                | Contract address of Mirror Mint                                                                                                                                                                                                                                                                           |
+| `staking_contract`      | HumanAddr                | Contract address of Mirror Oracle                                                                                                                                                                                                                                                                         |
+| `commission_collector`  | HumanAddr                | Contract address of Mirror Collector                                                                                                                                                                                                                                                                      |
+| `oracle_contract`       | HumanAddr                | Contract address of Mirror Oracle                                                                                                                                                                                                                                                                         |
+| `terraswap_factory`     | HumanAddr                | Contract address of Terraswap Factory                                                                                                                                                                                                                                                                     |
+| `token_code_id`         | u64                      | Code ID for CW20 contract for generating new mAssets                                                                                                                                                                                                                                                      |
+| `base_denom`            | String                   | Native token denom for Terraswaap pairs (TerraUSD)                                                                                                                                                                                                                                                        |
+| `genesis_time`          | u64                      | Block height which the Factory contract was instantiated                                                                                                                                                                                                                                                  |
+| `distribution_schedule` | Vec<(u64, u64, Uint128)> | <p>Distribution schedule for the minting of new MIR tokens. Each entry consists of:<br>start time (seconds)<br>end time (seconds)<br>distribution amount for the interval<br>Determines the total amount of new MIR tokens minted as rewards for LP stakers over the interval [start time, end time].</p> |
 {% endtab %}
 {% endtabs %}
 
@@ -607,8 +573,8 @@ pub enum QueryMsg {
 }
 ```
 
-| Key | Type | Description |
-| :--- | :--- | :--- |
+| Key           | Type      | Description                     |
+| ------------- | --------- | ------------------------------- |
 | `asset_token` | HumanAddr | Contract address of asset token |
 
 #### Response
@@ -621,10 +587,10 @@ pub struct DistributionInfoResponse {
 }
 ```
 
-| Key | Type | Description |
-| :--- | :--- | :--- |
-| `weights` | Vec&lt;\(HumanAddr, u32\)&gt; | List of reward weight assigned to each mAsset. Each entry consists of: - Token contract address - weight |
-| `last_distributed` | u64 | Block height of the most recent reward distribution |
+| Key                | Type                  | Description                                                                                                           |
+| ------------------ | --------------------- | --------------------------------------------------------------------------------------------------------------------- |
+| `weights`          | Vec<(HumanAddr, u32)> | <p>List of reward weight assigned to each mAsset. Each entry consists of:<br>- Token contract address<br>- weight</p> |
+| `last_distributed` | u64                   | Block height of the most recent reward distribution                                                                   |
 {% endtab %}
 
 {% tab title="JSON" %}
@@ -634,8 +600,8 @@ pub struct DistributionInfoResponse {
 }
 ```
 
-| Key | Type | Description |
-| :--- | :--- | :--- |
+| Key           | Type      | Description                     |
+| ------------- | --------- | ------------------------------- |
 | `asset_token` | HumanAddr | Contract address of asset token |
 
 #### Response
@@ -652,10 +618,9 @@ pub struct DistributionInfoResponse {
 }
 ```
 
-| Key | Type | Description |
-| :--- | :--- | :--- |
-| `weights` | Vec&lt;\(HumanAddr, u32\)&gt; | List of reward weight assigned to each mAsset. Each entry consists of: - Token contract address - weight |
-| `last_distributed` | u64 | Block height of the most recent reward distribution |
+| Key                | Type                  | Description                                                                                                           |
+| ------------------ | --------------------- | --------------------------------------------------------------------------------------------------------------------- |
+| `weights`          | Vec<(HumanAddr, u32)> | <p>List of reward weight assigned to each mAsset. Each entry consists of:<br>- Token contract address<br>- weight</p> |
+| `last_distributed` | u64                   | Block height of the most recent reward distribution                                                                   |
 {% endtab %}
 {% endtabs %}
-
