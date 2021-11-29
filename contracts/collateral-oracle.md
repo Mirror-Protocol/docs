@@ -202,7 +202,7 @@ pub enum HandleMsg {
 {% tab title="JSON" %}
 ```javascript
 {
-    "revote_collateral_asset": {
+    "revoke_collateral_asset": {
         "asset": {
             "token": {
                 "contract_addr": "terra1..."
