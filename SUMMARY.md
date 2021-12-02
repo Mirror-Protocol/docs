@@ -1,7 +1,6 @@
 # Table of contents
 
 * [Home](README.md)
-* [Home](<README (1).md>)
 * [What's new for Mirror v2?](whats-new-for-mirror-v2.md)
 * [Interchain Access](networks.md)
 * [Security](security.md)
