@@ -30,7 +30,7 @@ The Trade interface is directly connected to [Terraswap](../../protocol/terraswa
 
 Limit Order enables users to buy or sell an asset when the price reaches the Bid or Ask price. When user's order is submitted, user's offered mAsset or UST will be locked until the order is executed at Bid/Ask Price or canceled by the user.
 
-1\. On **Buy** or **Sell **page and click on Limit Order toggle.&#x20;
+1\. On **Buy** or **Sell** page and click on Limit Order toggle.&#x20;
 
 ![](<../../.gitbook/assets/image (210).png>)
 
@@ -51,4 +51,4 @@ Limit Order enables users to buy or sell an asset when the price reaches the Bid
 
 Limit Order is visible on **My Page**. Users can select Cancel from Actions column to remove the submitted Limit Order.
 
-_Please note that your Limit Order can be executed when Terraswap price of the mAsset **exceeds** the Limit Price due to slippage cause by size of your transaction against the liquidity pool. _
+_Please note that your Limit Order can be executed when Terraswap price of the mAsset **exceeds** the Limit Price due to slippage cause by size of your transaction against the liquidity pool._&#x20;

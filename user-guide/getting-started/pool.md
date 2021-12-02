@@ -104,7 +104,7 @@ In order to create a short position, you need to lock collateral assets to Mirro
 To close your short position, you must first hold the shorted amount of mAssets. These mAssets will be burned to return your locked collateral.
 {% endhint %}
 
-1 . Navigate to** My Page**, and click on `Manage` button on **Borrowing** by the short position to close.
+1 . Navigate to **My Page**, and click on `Manage` button on **Borrowing** by the short position to close.
 
 ![](<../../.gitbook/assets/image (136).png>)
 

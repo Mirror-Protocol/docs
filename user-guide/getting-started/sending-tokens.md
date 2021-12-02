@@ -1,6 +1,6 @@
 # Sending Tokens
 
-Users can send** **MIR, mAsset and UST tokens to a different wallet. Tokens can be transferred between Terra blockchain wallets and also to Ethereum or Binance Smart Chain (BSC) wallets using a custom bridge that enables cross-chain transfers.&#x20;
+Users can send **** MIR, mAsset and UST tokens to a different wallet. Tokens can be transferred between Terra blockchain wallets and also to Ethereum or Binance Smart Chain (BSC) wallets using a custom bridge that enables cross-chain transfers.&#x20;
 
 ## Send
 

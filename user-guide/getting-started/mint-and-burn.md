@@ -38,7 +38,7 @@ Any user with an open borrow or [short position ](pool.md#short)can always choos
 
 Please note that user cannot close the position if the user holds borrowed asset of any amount lower than the amount minted to open a position. User must first obtain the same or a greater amount of minted assets by buying them on the [Market](trade.md) page or have them sent from a different wallet.
 
-1\. Navigate to **My Page **by clicking on the wallet icon.
+1\. Navigate to **My Page** by clicking on the wallet icon.
 
 ![](<../../.gitbook/assets/image (168).png>)
 
@@ -73,7 +73,7 @@ Users are warned when their CDP is close to liquidation. Borrow / short position
 4\. Users may do the following actions on the page by entering a value greater or less than the default value in:
 
 * `Collateral` field to **deposit** or **withdraw** collateral from the position
-* `Borrowed` field to **borrow more **or **burn** mAssets from the position
+* `Borrowed` field to **borrow more** or **burn** mAssets from the position
 
 or change both fields to manage the position in a more flexible manner. Changing `Collateral Ratio` will only change the value in `Collateral` field.
 

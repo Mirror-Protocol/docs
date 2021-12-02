@@ -73,6 +73,6 @@ MIR tokens that are voted to on-going governance polls will be unstakable when t
 &#x20;For every poll to be passed, they must meet the conditions below:
 
 * Voting quorum must be greater than or equal to `quorum` (initially set to 10% on Mainnet) of the total staked MIR. Regardless of `YES` ratio, the poll will not pass if it does not meet the quorum.&#x20;
-* **YES **votes must be greater than **NO **votes
+* **YES** votes must be greater than **NO** votes
 * Voting period (number of blocks corresponding to 1 week) has ended
 * After the voting period is over and the poll passes, it takes 1 day (number of blocks corresponding to a day) for the poll to become effective in the protocol.

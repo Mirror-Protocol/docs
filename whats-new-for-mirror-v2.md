@@ -2,7 +2,7 @@
 
 ## What’s new for Mirror v2?&#x20;
 
-_The below changes are based on the _[**Mirror V2 Whitepaper**](https://mirror.finance/Mirror\_Protocol\_v2.pdf)**.**
+_The below changes are based on the_ [**Mirror V2 Whitepaper**](https://mirror.finance/Mirror\_Protocol\_v2.pdf)**.**
 
 Coming into Mirror Protocol v2, there are new feature additions which supplement existing mechanisms from v1 so that all classes of users are sufficiently incentivized for their given contributions within the protocol.
 
@@ -30,7 +30,7 @@ Mirror v2 presents a new non-tradable token called [sLP tokens](protocol/staking
 
 Assets scheduled to undergo an IPO can be whitelisted and traded on Mirror v2. Any user can specify the details of the underlying asset via governance poll creation. If the poll passes, these assets will be minted (during a fixed time window) or traded like any other mAssets before the IPO. Once the IPO happens in the underlying market, [Mirror Oracle](contracts/oracle.md) will begin reporting prices from the market, and the asset will have the same features as any other mAsset.&#x20;
 
-**Security Audit **for the underlying Mirror v2 Contracts is done by **Cryptonics.**
+**Security Audit** for the underlying Mirror v2 Contracts is done by **Cryptonics.**
 
 {% file src=".gitbook/assets/Mirror v2 Audit Report (1).pdf" %}
 
