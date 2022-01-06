@@ -2,9 +2,9 @@
 
 Mirror Protocol is an **interchain** DeFi protocol, meaning that it can be accessed and interact with other decentralized applications across multiple blockchains.
 
-Terra blockchain, which Mirror Protocol is built on uses [Shuttle](https://github.com/terra-project/shuttle) bridge to enable interchain transfers between Terra, Ethereum, and Binance Smart Chain. 
+Terra blockchain, which Mirror Protocol is built on uses [Shuttle](https://github.com/terra-project/shuttle) bridge to enable interchain transfers between Terra, Ethereum, and Binance Smart Chain.&#x20;
 
-A web application called [Terra Bridge](user-guide/terra-bridge.md) provides web interface to transfer tokens between different blockchains. 
+A web application called [Terra Bridge](user-guide/terra-bridge.md) provides web interface to transfer tokens between different blockchains.&#x20;
 
 ## Terra
 
@@ -62,6 +62,10 @@ Network chain ID: `columbus-5`
 | mGME   | [terra1m6j6j9gw728n82k78s0j9kq8l5p6ne0xcc820p](https://finder.terra.money/columbus-5/address/terra1m6j6j9gw728n82k78s0j9kq8l5p6ne0xcc820p) |
 | mAMC   | [terra1qelfthdanju7wavc5tq0k5r0rhsyzyyrsn09qy](https://finder.terra.money/columbus-5/address/terra1qelfthdanju7wavc5tq0k5r0rhsyzyyrsn09qy) |
 | mGS    | [terra137drsu8gce5thf6jr5mxlfghw36rpljt3zj73v](networks.md#terra)                                                                          |
+| mKO    | [terra1qsnj5gvq8rgs7yws8x5u02gwd5wvtu4tks0hjm](https://finder.terra.money/mainnet/address/terra1qsnj5gvq8rgs7yws8x5u02gwd5wvtu4tks0hjm)    |
+| mPYPL  | [terra1rh2907984nudl7vh56qjdtvv7947z4dujj92sx](https://finder.terra.money/mainnet/address/terra1rh2907984nudl7vh56qjdtvv7947z4dujj92sx)    |
+| mSBUX  | [terra1246zy658dfgtausf0c4a6ly8sc2e285q4kxqga](https://finder.terra.money/mainnet/address/terra1246zy658dfgtausf0c4a6ly8sc2e285q4kxqga)    |
+| mJNJ   | [terra1ptdxmj3xmmljzx02nr4auwfuelmj0cnkh8egs2](https://finder.terra.money/mainnet/address/terra1ptdxmj3xmmljzx02nr4auwfuelmj0cnkh8egs2)    |
 
 ### Testnet (v2)
 
@@ -236,7 +240,7 @@ Binance Smart Chain Mirror contracts are available on BSC Testnet.
 | mFB    | [0x354CA25cf8eB08537f6047e9daF02Eb02222C1D5](https://testnet.bscscan.com/address/0x354CA25cf8eB08537f6047e9daF02Eb02222C1D5) |
 | mCOIN  | [0x24fE38158A7550bEd9A451CBeA67dA4BdC920E95](https://testnet.bscscan.com/address/0x24fE38158A7550bEd9A451CBeA67dA4BdC920E95) |
 
-##  Related Links
+## &#x20;Related Links
 
 ### User Guides
 
