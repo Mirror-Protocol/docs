@@ -117,6 +117,9 @@ Network chain ID: `bombay-12`
 | mGME   | [terra104tgj4gc3pp5s240a0mzqkhd3jzkn8v0u07hlf](https://finder.terra.money/bombay-12/address/terra104tgj4gc3pp5s240a0mzqkhd3jzkn8v0u07hlf)    |
 | mAMC   | [terra1zeyfhurlrun6sgytqfue555e6vw2ndxt2j7jhd](https://finder.terra.money/bombay-12/address/terra1zeyfhurlrun6sgytqfue555e6vw2ndxt2j7jhd)    |
 | mGS    | [terra13myzfjdmvqkama2tt3v5f7quh75rv78w8kq6u6](https://finder.terra.money/bombay-12/address/terra13myzfjdmvqkama2tt3v5f7quh75rv78w8kq6u6)    |
+| mBTC   | [terra1csr22xvxs6r3gkjsl7pmjkmpt39mwjsrm0e2r8](https://finder.terra.money/testnet/address/terra1csr22xvxs6r3gkjsl7pmjkmpt39mwjsrm0e2r8)      |
+| mETH   | [terra1ys4dwwzaenjg2gy02mslmc96f267xvpsjat7gx](https://finder.terra.money/testnet/address/terra1ys4dwwzaenjg2gy02mslmc96f267xvpsjat7gx)      |
+|        |                                                                                                                                              |
 
 ## Ethereum
 
