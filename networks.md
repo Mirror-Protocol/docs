@@ -66,6 +66,7 @@ Network chain ID: `columbus-5`
 | mPYPL  | [terra1rh2907984nudl7vh56qjdtvv7947z4dujj92sx](https://finder.terra.money/mainnet/address/terra1rh2907984nudl7vh56qjdtvv7947z4dujj92sx)    |
 | mSBUX  | [terra1246zy658dfgtausf0c4a6ly8sc2e285q4kxqga](https://finder.terra.money/mainnet/address/terra1246zy658dfgtausf0c4a6ly8sc2e285q4kxqga)    |
 | mJNJ   | [terra1ptdxmj3xmmljzx02nr4auwfuelmj0cnkh8egs2](https://finder.terra.money/mainnet/address/terra1ptdxmj3xmmljzx02nr4auwfuelmj0cnkh8egs2)    |
+| mNVDA  | [terra1drsjzvzej4h4qlehcfwclxg4w5l3h5tuvd3jd8](https://finder.terra.money/mainnet/address/terra1drsjzvzej4h4qlehcfwclxg4w5l3h5tuvd3jd8)    |
 
 ### Testnet (v2)
 
