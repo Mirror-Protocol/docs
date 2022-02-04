@@ -40,19 +40,19 @@ For a better testing environment, any time-related parameters are shortened for 
 
 ### Borrow (Mint)
 
-| Parameter                                                  | Testnet (v2) | Mainnet (v2)                |
-| ---------------------------------------------------------- | ------------ | --------------------------- |
-| <p>Collateral Ratio Multiplier </p><p>(Luna, MIR, ANC)</p> | 1.3333334    | 1.3333334                   |
-| aUST Collateral Ratio Multiplier                           | 1            | 1                           |
-| UST Lock-up Period                                         | 600 seconds  | 1,209,600 seconds (2 weeks) |
-| Protocol Fee Rate                                          | 1.5%         | 1.5%                        |
+| Parameter                         | Testnet (v2) | Mainnet (v2)                |
+| --------------------------------- | ------------ | --------------------------- |
+| LUNA Collateral Ratio Multiplier  | 1.3333334    | 1.3333334                   |
+| aUST Collateral Ratio Multiplier  | 1            | 1                           |
+| UST Lock-up Period                | 600 seconds  | 1,209,600 seconds (2 weeks) |
+| Protocol Fee Rate                 | 1.5%         | 1.5%                        |
 
 ### Governance&#x20;
 
 | Parameter        | Testnet (v2) | Mainnet (v2)             |
 | ---------------- | ------------ | ------------------------ |
-| Proposal Deposit | 1 MIR        | 100 MIR                  |
-| Quorum           | 5%           | 10%                      |
+| Proposal Deposit | 1 MIR        | 1000 MIR                 |
+| Quorum           | 5%           | 18%                      |
 | Voting Period    | 318 seconds  | 604,800 seconds (1 week) |
 | Snapshot Period  | 100 seconds  | 86,400 seconds (1 day)   |
 | Effective Delay  | 331 seconds  | 86,400 secons (1 day)    |
