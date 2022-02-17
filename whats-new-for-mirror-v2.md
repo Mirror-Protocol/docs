@@ -40,12 +40,12 @@ For a better testing environment, any time-related parameters are shortened for 
 
 ### Borrow (Mint)
 
-| Parameter                         | Testnet (v2) | Mainnet (v2)                |
-| --------------------------------- | ------------ | --------------------------- |
-| LUNA Collateral Ratio Multiplier  | 1.3333334    | 1.3333334                   |
-| aUST Collateral Ratio Multiplier  | 1            | 1                           |
-| UST Lock-up Period                | 600 seconds  | 1,209,600 seconds (2 weeks) |
-| Protocol Fee Rate                 | 1.5%         | 1.5%                        |
+| Parameter                                 | Testnet (v2) | Mainnet (v2)                |
+| ----------------------------------------- | ------------ | --------------------------- |
+| LUNA, LUNA X Collateral Ratio Multiplier  | 1.3333334    | 1.3333334                   |
+| aUST Collateral Ratio Multiplier          | 1            | 1                           |
+| UST Lock-up Period                        | 600 seconds  | 1,209,600 seconds (2 weeks) |
+| Protocol Fee Rate                         | 1.5%         | 1.5%                        |
 
 ### Governance&#x20;
 

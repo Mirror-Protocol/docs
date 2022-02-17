@@ -1,4 +1,4 @@
-# Mirrored Assets \(mAssets\)
+# Mirrored Assets (mAssets)
 
 mAssets are blockchain tokens that behave like "mirror" versions of real-world assets by reflecting the exchange prices on-chain. They give traders the price exposure to real assets while enabling fractional ownership, open access and censorship resistance as any other cryptocurrency.
 
@@ -32,7 +32,7 @@ For instance, the price feed is halted when real-world markets for the asset are
 
 ### Oracle Feeder
 
-The **Oracle Feeder** is a Terra account that can change the registered on-chain price for an mAsset, whitelisted collateral, and staking reward distribution between LP and sLP based on current price premium of mAssets. They are responsible for reporting an accurate and up-to-date price, so that the mAsset's trading value is kept in sync with its reflected asset. Each mAsset has its own dedicated feeder, which can be reassigned through governance. The oracle feeders for the genesis mirrored assets are owned by [Band Protocol](https://www.bandprotocol.com/), but the community can \(re-\)assign oracle feeders to other providers to newly whitelisted assets through governance.
+The **Oracle Feeder** is a Terra account that can change the registered on-chain price for an mAsset, whitelisted collateral, and staking reward distribution between LP and sLP based on current price premium of mAssets. They are responsible for reporting an accurate and up-to-date price, so that the mAsset's trading value is kept in sync with its reflected asset. Each mAsset has its own dedicated feeder, which can be reassigned through governance. The oracle feeders for the genesis mirrored assets are owned by [Band Protocol](https://www.bandprotocol.com), but the community can (re-)assign oracle feeders to other providers to newly whitelisted assets through governance.
 
 ## Lifecycle
 
@@ -58,10 +58,10 @@ At this stage:
 
 * CDPs may no longer mint new tokens of the mAsset
 * Liquidation auctions are disabled for the mAsset
-* Burns will take effect at the fixed `end_price` for withdrawing collateral from any existing mint position. 
+* Burns will take effect at the fixed `end_price` for withdrawing collateral from any existing mint position.&#x20;
 * LP & sLP tokens for the mAsset will stop counting for staking rewards
 
-Delisting will not directly affect the functionality of the mAsset's Terraswap pool and users will still be able to make trades against it, although price is likely to be very unstable \(and the [Web App](../user-guide/getting-started/) will not provide front-end interface for trading of delisted mAsset\). Users are urged to burn the mAsset to recover collateral from any open positions on Mirror Protocol, including their own.
+Delisting will not directly affect the functionality of the mAsset's Terraswap pool and users will still be able to make trades against it, although price is likely to be very unstable (and the [Web App](../user-guide/getting-started/) will not provide front-end interface for trading of delisted mAsset). Users are urged to burn the mAsset to recover collateral from any open positions on Mirror Protocol, including their own.
 
 Since anyone can burn against any open position, CDP holders may end up having no or less amount of "borrowed assets" within their position, but they will still be able to withdraw the remaining amount of collateral by only burning the remaining amount of delisted mAsset. Opening a new CDP / engaging in liquidity provision can be done with the new, replacement mAsset.
 
@@ -69,7 +69,7 @@ The old mAsset will be retired and marked as `delisted` only allowing burn, clos
 
 ### Pre-IPO
 
-When an IPO schedule and price quote has been announced, a new mAsset can be whitelisted as a **pre-IPO** mAsset to be minted and traded on Mirror Protocol upon passing of a [governance poll](governance/pre-ipo-procedure.md). Whitelisting of pre-IPO mAsset is different from a regular whitelisting \(explained above\) operation in the following manner:
+When an IPO schedule and price quote has been announced, a new mAsset can be whitelisted as a **pre-IPO** mAsset to be minted and traded on Mirror Protocol upon passing of a [governance poll](governance/pre-ipo-procedure.md). Whitelisting of pre-IPO mAsset is different from a regular whitelisting (explained above) operation in the following manner:
 
 * Creating the pre-IPO token and assigning a fixed price to be fed during the mint period
 * Assigning a mint period that allows minting of pre-IPO mAssets within its duration
@@ -84,7 +84,7 @@ When IPO occurs,
 
 ## Collateralized Debt Position
 
-New tokens for a listed mAsset can be minted by creating a **collateralized debt position** \(CDP\) with either TerraUSD \(UST\), mAsset or whitelisted collateral tokens as collateral. Also, mAssets can be directly shorted upon opening a CDP to mint sLP tokens. The CDP is essentially a short position against the price movement of the reflected asset, -- i.e. if the stock price of AAPL rises, minters of mAAPL would be pressured to deposit more collateral to maintain the same collateral ratio.
+New tokens for a listed mAsset can be minted by creating a **collateralized debt position** (CDP) with either TerraUSD (UST), mAsset or whitelisted collateral tokens as collateral. Also, mAssets can be directly shorted upon opening a CDP to mint sLP tokens. The CDP is essentially a short position against the price movement of the reflected asset, -- i.e. if the stock price of AAPL rises, minters of mAAPL would be pressured to deposit more collateral to maintain the same collateral ratio.
 
 ### Collateral
 
@@ -92,22 +92,23 @@ Mirror Protocol accepts the following types of tokens as collateral:
 
 * UST
 * All mAssets
-* Other collateral: LUNA, MIR, ANC, aUST
+* Other collateral: LUNA, LUNA X, aUST
 
-Each type of asset listed above has a different `multiplier` \($$\zeta$$\) which is multiplied to the minimum collateral ratio of each minted mAsset.
+Each type of asset listed above has a different `multiplier` ($$\zeta$$) which is multiplied to the minimum collateral ratio of each minted mAsset.
 
-| Asset | Multiplier |
-| :--- | :--- |
-| MIR | 1.3333334 |
-| ANC | 1.3333334 |
-| LUNA | 1.3333334 |
-| aUST | 1 |
+| Asset          | Multiplier |
+| -------------- | ---------- |
+| MIR (Delisted) | 1.3333334  |
+| ANC (Delisted) | 1.3333334  |
+| LUNA           | 1.3333334  |
+| aUST           | 1          |
+| LUNA X         | 1.3333334  |
 
 For example, if LUNA, which has a collateral premium of 1.333334, is used as collateral to mint mAAPL, which has a minimum collateral ratio of 150%, then the minimum tolerated collateral ratio for this position will be $$1.3333334\times150\% \approx 200\%$$. Any price change of either LUNA or mAAPL which causes collateral ratio drop to below 200% will lead to liquidation auction.
 
 ### Collateral Ratio
 
-The **collateral ratio** \(C-ratio\) is simply the ratio of the value of a CDP's locked collateral to the value of its current minted tokens.
+The **collateral ratio** (C-ratio) is simply the ratio of the value of a CDP's locked collateral to the value of its current minted tokens.
 
 The CDP is required to always maintain a C-ratio above the position's minimum, otherwise the protocol will initiate a margin call to liquidate collateral. The protocol is able to determine whether a position is underneath the required threshold by re-denominating all mAsset values into UST via their oracle-reported prices.
 
@@ -141,7 +142,7 @@ $$
 
 In addition to depositing and withdrawal collateral, the user can also mint and burn mAssets against the CDP to adjust the value of their CDP's effective C-ratio.
 
-Let the quantity of newly minted tokens be $$Q_m'$$\(negative if burned\). The minimum collateral required to keep the CDP position above the mAsset's min. collateral ratio is:
+Let the quantity of newly minted tokens be $$Q_m'$$(negative if burned). The minimum collateral required to keep the CDP position above the mAsset's min. collateral ratio is:
 
 $$
 Q_c \ge \frac{\zeta r_\text{min} P_m (Q_m+Q_m')}{P_c}
@@ -151,17 +152,17 @@ Anything above that amount can be withdrawn from the CDP.
 
 #### Closing a position
 
-If a user wishes to collect all their collateral from their CDP, they must close their position by returning the outstanding balance of minted mAssets, which the protocol will burn. A user must first hold the corresponding amount of mAsset to close CDP \(any sLP tokens minted are automatically burned when mAssets are returned\). The user will then be able to withdraw their locked collateral minus the protocol fee.
+If a user wishes to collect all their collateral from their CDP, they must close their position by returning the outstanding balance of minted mAssets, which the protocol will burn. A user must first hold the corresponding amount of mAsset to close CDP (any sLP tokens minted are automatically burned when mAssets are returned). The user will then be able to withdraw their locked collateral minus the protocol fee.
 
 ### Protocol Fee
 
-1.5% Mirror **protocol fee** is charged whenever a withdrawal from a CDP is made \(including position closure and liquidation auction\). The protocol fee is calculated based on the value of the mAsset at the burning of minted asset. This fee is then sent to the [Collector](../contracts/collector.md) contract, converted into MIR through Terraswap and distributed to MIR token stakers as a staking reward.
+1.5% Mirror **protocol fee** is charged whenever a withdrawal from a CDP is made (including position closure and liquidation auction). The protocol fee is calculated based on the value of the mAsset at the burning of minted asset. This fee is then sent to the [Collector](../contracts/collector.md) contract, converted into MIR through Terraswap and distributed to MIR token stakers as a staking reward.
 
 ### Margin Call & Auction
 
 Maintaining a lower C-ratio allows you to mint more mAsset tokens for less collateral, but obviously does not come without its risks. A CDP can be **margin called** when it falls below the min. collateral ratio. At this stage, if the owner does not quickly act and deposit more collateral or burn mAssets to deleverage their position, other users may purchase their CDP's collateral at a discount.
 
-The protocol will try to raise the CDP's C-ratio by burning mAssets it recovers from liquidating its collateral. Let $$a$$ be the amount of the mAssets paid \(up to the amount minted by the CDP\) and $$d$$ be the mAsset's **auction discount rate.** The buyer can expect to receive:
+The protocol will try to raise the CDP's C-ratio by burning mAssets it recovers from liquidating its collateral. Let $$a$$ be the amount of the mAssets paid (up to the amount minted by the CDP) and $$d$$ be the mAsset's **auction discount rate.** The buyer can expect to receive:
 
 $$
 \min\bigg(\frac{a}{1-d}\times\frac{P_m}{P_c},Q_c\bigg)
@@ -185,5 +186,4 @@ Working over the math, one should receive 62.5 mYYY tokens, totaling 125 UST, ma
 
 Note that the owner would still retain his 100 mXXX, meaning along with the 12.5 mYYY they would keep around 125 UST of value out of their initial 150 UST deposit.
 
-To avoid liquidation, users should aim for a C-ratio that factors in the known price dynamics of the reflected asset. A safety buffer of at least 50% above the mAsset's minimum is usually recommended. Users with open positions should actively monitor price activity that threaten the safety of their CDP and respond accordingly either by burning mAssets \(or closing the position altogether\), or deposit more collateral to reduce the possibility of liquidation.
-
+To avoid liquidation, users should aim for a C-ratio that factors in the known price dynamics of the reflected asset. A safety buffer of at least 50% above the mAsset's minimum is usually recommended. Users with open positions should actively monitor price activity that threaten the safety of their CDP and respond accordingly either by burning mAssets (or closing the position altogether), or deposit more collateral to reduce the possibility of liquidation.
