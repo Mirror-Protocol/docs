@@ -20,7 +20,7 @@ A CDP that mints the mAsset cannot have a collateral ratio below **minimum colla
 
 ### Auction Discount Rate
 
-For a CDP subject to liquidation, describes the discount for which its collateral can be purchased.
+For a CDP subject to liquidation, describes the discount for which its collateral can be purchased by paying the minted amount for the position. Auction discount applied during the liquidation process is the lower value between _Minimum collateral ratio - 1, or `auction_discount` parameter._
 
 ### Price
 
