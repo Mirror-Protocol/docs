@@ -20,19 +20,10 @@ Corporate actions are handled through an asset migration process discussed [here
 
 There is a fixed fee called the LP commission is 0.30% which serves as a reward for liquidity providers for Mirror-related pools on Terraswap. More detailed information can be found [here](protocol/terraswap.md).
 
-#### 6. What does it mean to mint an mAsset?
+#### 6. What happens if my Collateral Ratio drops below the minimum?
 
-All mAssets that are purchased or sold on Mirror were, at one point, minted. Minting is the process of providing collateral to issue a “synthetic” mAsset.
-
-Price oracles play an important role in the minting process and are used for two key functions: First, they help determine the amount of collateral required for minting an mAsset. Second, they help determine whether sufficient collateral is backing existing mAssets.
-
-In the below example (Figure 1), assume that a minter provided $150 worth of stablecoin to issue an mAsset worth $90 and that the minimum collateral ratio (MCR) is 150%. If at time T=2, the asset’s value increases to $101, then the collateral ratio would be 149% ($101/$150) and would fall below the MCR.
-
-When this happens, the Mirror protocol will seize a portion of the collateral and initiate an auction for anyone willing to sell the mAsset in exchange. To incentivize this liquidation, the Mirror protocol allows anyone to purchase this seized collateral at a discount until the collateral ratio reaches the MCR again. In the example, using the collateral supplied at T=0, users will be able to send mAsset tokens in exchange for discounted collateral until the collateral ratio reaches 150% again at T=2.01. If, for instance, the asset price increases again at T=3, then the process repeats itself until the collateral ratio reaches 150%.
-
-![Minting Example](https://github.com/wengzilla/docs/raw/master/images/faq\_minting\_example.png)
-
-_Figure 1: When the minted asset’s price rises and the collateral ratio falls below the minimum collateral ratio, the protocol will sell collateral to buy back shares of the minted asset to burn. (_[_Link to calculations_](https://docs.google.com/spreadsheets/d/1RUlBliHX-AnigSieF4jC15xhG\_gGSnfTNz7g4mkHV7w/edit#gid=0)_)_
+Currently the Collateral Ratio 150% meaning your collateral must be worth at least 1.5 times your loan.
+If your position is undercollateralized (you break below the minimum Collateral Ratio) any user may immediately liquidate the entire position.
 
 #### 7. What hours can I trade and mint mAssets?
 
