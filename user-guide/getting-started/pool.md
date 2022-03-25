@@ -116,7 +116,9 @@ To close your short position, you must first hold the shorted amount of mAssets.
 
 ### Claiming Locked UST
 
-After a short position creation, UST from mAssets sold against the Terraswap pool is locked for a defined period called [Lock Period](../../protocol/staking-tokens-lp-and-slp.md#lock-period). When `lock_period` (initially 15 days) is over, users may claim their unlocked UST throug the steps below:&#x20;
+After a short position creation, UST from mAssets sold against the Terraswap pool is locked for a defined period called [Lock Period](../../protocol/staking-tokens-lp-and-slp.md#lock-period). The `lock_period` is initially 15 days.
+
+If a short position is closed before the [Lock Period](../../protocol/staking-tokens-lp-and-slp.md#lock-period) the locked funds are immediately back to your wallet witout register a new transaction, when the `lock_period`  is over the users may claim their unlocked UST throug the steps below:&#x20;
 
 1 . Navigate to **My Page** and go to **Farming** section
 
