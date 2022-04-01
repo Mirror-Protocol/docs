@@ -22,8 +22,9 @@ Network chain ID: `columbus-5`
 | Community         | [terra1x35fvy3sy47drd3qs288sm47fjzjnksuwpyl9k](https://finder.terra.money/columbus-4/account/terra1x35fvy3sy47drd3qs288sm47fjzjnksuwpyl9k) |
 | Factory           | [terra1mzj9nsxx0lxlaxnekleqdy8xnyw2qrh3uz6h8p](https://finder.terra.money/columbus-4/account/terra1mzj9nsxx0lxlaxnekleqdy8xnyw2qrh3uz6h8p) |
 | Gov               | [terra1wh39swv7nq36pnefnupttm2nr96kz7jjddyt2x](https://finder.terra.money/columbus-4/account/terra1wh39swv7nq36pnefnupttm2nr96kz7jjddyt2x) |
+| Admin Manager     | [terra138tljkg697vwlvatzzfc7r5lfyhkxt7n7cudce](https://finder.terra.money/mainnet/address/terra138tljkg697vwlvatzzfc7r5lfyhkxt7n7cudce)    |
 | Mint              | [terra1wfz7h3aqf4cjmjcvc6s8lxdhh7k30nkczyf0mj](https://finder.terra.money/columbus-4/account/terra1wfz7h3aqf4cjmjcvc6s8lxdhh7k30nkczyf0mj) |
-| Oracle            | [terra1t6xe0txzywdg85n6k8c960cuwgh6l8esw6lau9](https://finder.terra.money/columbus-4/account/terra1t6xe0txzywdg85n6k8c960cuwgh6l8esw6lau9) |
+| Oracle Hub        | [terra1t5k2c2p2kf5as247egz53rj8g8g2x4jw9qte9a](https://finder.terra.money/mainnet/address/terra1t5k2c2p2kf5as247egz53rj8g8g2x4jw9qte9a)    |
 | Staking           | [terra17f7zu97865jmknk7p2glqvxzhduk78772ezac5](https://finder.terra.money/columbus-4/account/terra17f7zu97865jmknk7p2glqvxzhduk78772ezac5) |
 | Airdrop           | [terra1kalp2knjm4cs3f59ukr4hdhuuncp648eqrgshw](https://finder.terra.money/columbus-4/account/terra1kalp2knjm4cs3f59ukr4hdhuuncp648eqrgshw) |
 | Limit Order       | [terra1zpr8tq3ts96mthcdkukmqq4y9lhw0ycevsnw89](https://finder.terra.money/columbus-4/address/terra1zpr8tq3ts96mthcdkukmqq4y9lhw0ycevsnw89) |
@@ -81,8 +82,9 @@ Network chain ID: `bombay-12`
 | Community         | [terra10qm80sfht0zhh3gaeej7sd4f92tswc44fn000q](https://finder.terra.money/tequila-0004/account/terra10qm80sfht0zhh3gaeej7sd4f92tswc44fn000q) |
 | Factory           | [terra10l9xc9eyrpxd5tqjgy6uxrw7dd9cv897cw8wdr](https://finder.terra.money/tequila-0004/account/terra10l9xc9eyrpxd5tqjgy6uxrw7dd9cv897cw8wdr) |
 | Gov               | [terra12r5ghc6ppewcdcs3hkewrz24ey6xl7mmpk478s](https://finder.terra.money/tequila-0004/account/terra12r5ghc6ppewcdcs3hkewrz24ey6xl7mmpk478s) |
+| Admin Manager     | [terra198rvl2eq3pum8skrr97vj0pqtugt3xns0lmdkc](https://finder.terra.money/testnet/address/terra198rvl2eq3pum8skrr97vj0pqtugt3xns0lmdkc)      |
 | Mint              | [terra1s9ehcjv0dqj2gsl72xrpp0ga5fql7fj7y3kq3w](https://finder.terra.money/tequila-0004/account/terra1s9ehcjv0dqj2gsl72xrpp0ga5fql7fj7y3kq3w) |
-| Oracle            | [terra1uvxhec74deupp47enh7z5pk55f3cvcz8nj4ww9](https://finder.terra.money/tequila-0004/account/terra1uvxhec74deupp47enh7z5pk55f3cvcz8nj4ww9) |
+| Oracle Hub        | [terra1sdr3rya4h039f4htfm42q44x3dlaxra7hc7p8e](https://finder.terra.money/testnet/address/terra1sdr3rya4h039f4htfm42q44x3dlaxra7hc7p8e)      |
 | Staking           | [terra1a06dgl27rhujjphsn4drl242ufws267qxypptx](https://finder.terra.money/tequila-0004/account/terra1a06dgl27rhujjphsn4drl242ufws267qxypptx) |
 | Airdrop           | [terra1p6nvyw7vz3fgpy4nyh3q3vc09e65sr97ejxn2p](https://finder.terra.money/tequila-0004/account/terra1p6nvyw7vz3fgpy4nyh3q3vc09e65sr97ejxn2p) |
 | Limit Order       | [terra1vc4ch0z3n6c23f9uywzy5yqaj2gmpnam8qgge7](https://finder.terra.money/tequila-0004/account/terra1vc4ch0z3n6c23f9uywzy5yqaj2gmpnam8qgge7) |

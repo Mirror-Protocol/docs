@@ -1,23 +1,25 @@
 # Gov
 
-The Gov Contract contains logic for holding polls and Mirror Token \(MIR\) staking, and allows the Mirror Protocol to be governed by its users in a decentralized manner. After the initial bootstrapping of Mirror Protocol contracts, the Gov Contract is assigned to be the owner of itself and [Mirror Factory.](factory.md)
+The Gov Contract contains logic for holding polls and Mirror Token (MIR) staking, and allows the Mirror Protocol to be governed by its users in a decentralized manner. After the initial bootstrapping of Mirror Protocol contracts, the Gov Contract is assigned to be the owner of itself and [Mirror Factory.](factory.md)
 
 New proposals for change are submitted as polls, and are voted on by MIR stakers through the [voting procedure](../protocol/governance/). Polls can contain messages that can be executed directly without changing the Mirror Protocol code.
 
-The Gov Contract keeps a balance of MIR tokens, which it uses to reward stakers with funds it receives from trading fees sent by the [Mirror Collector](collector.md) and user deposits from creating new governance polls. This balance is separate from the [Community Pool](../protocol/governance/#community-pool), which is held by the [Community](community.md) contract \(owned by the Gov contract\).
+The Gov Contract keeps a balance of MIR tokens, which it uses to reward stakers with funds it receives from trading fees sent by the [Mirror Collector](collector.md) and user deposits from creating new governance polls. This balance is separate from the [Community Pool](../protocol/governance/#community-pool), which is held by the [Community](community.md) contract (owned by the Gov contract).
 
 ## Config
 
-| Key | Type | Description |
-| :--- | :--- | :--- |
-| `mirror_token` | HumanAddr | Contract address of Mirror Token \(MIR\) |
-| `quorum` | Decimal | Minimum percentage of participation required for a poll to pass |
-| `threshold` | Decimal | Minimum percentage of `yes` votes required for a poll to pass |
-| `voting_period` | u64 | Number of blocks during which votes can be cast |
-| `proposal_deposit` | Uint128 | Minimum MIR deposit required for a new poll to be submitted |
-| `effective_delay` | u64 | Number of blocks after a poll passes to apply changes |
-| `voter_weight` | Decimal | Ratio of protocol fee which will be distributed among the governance poll voters |
-| `snapshot_period` | u64 | Minimum number of blocks before the end of voting period which snapshot could be taken to lock the current quorum for a poll |
+| Key                | Type      | Description                                                                                                                  |
+| ------------------ | --------- | ---------------------------------------------------------------------------------------------------------------------------- |
+| `mirror_token`     | HumanAddr | Contract address of Mirror Token (MIR)                                                                                       |
+| `quorum`           | Decimal   | Minimum percentage of participation required for a poll to pass                                                              |
+| `threshold`        | Decimal   | Minimum percentage of `yes` votes required for a poll to pass                                                                |
+| `voting_period`    | u64       | Number of seconds during which votes can be cast                                                                             |
+| `proposal_deposit` | Uint128   | MIR deposit required for a new poll to be submitted                                                                          |
+| `effective_delay`  | u64       | Number of seconds after a poll passes to apply changes                                                                       |
+| `voter_weight`     | Decimal   | Ratio of protocol fee which will be distributed among the governance poll voters                                             |
+| `snapshot_period`  | u64       | Minimum number of blocks before the end of voting period which snapshot could be taken to lock the current quorum for a poll |
+| `admin_manager`    | String    | Address of the admin manager contract                                                                                        |
+| `poll_gas_limit`   | u64       | Maximum amount of gas which a poll can consume during its execution                                                          |
 
 ## InitMsg
 
@@ -25,15 +27,25 @@ The Gov Contract keeps a balance of MIR tokens, which it uses to reward stakers 
 {% tab title="Rust" %}
 ```rust
 #[derive(Serialize, Deserialize, Clone, Debug, PartialEq, JsonSchema)]
-pub struct InitMsg {
-    pub mirror_token: HumanAddr,
-    pub quorum: Decimal,
-    pub threshold: Decimal,
-    pub voting_period: u64,
+pub struct InstantiateMsg {
+    pub mirror_token: String,
     pub effective_delay: u64,
-    pub proposal_deposit: Uint128,
+    pub default_poll_config: PollConfig,
+    pub migration_poll_config: PollConfig,
+    pub auth_admin_poll_config: PollConfig,
     pub voter_weight: Decimal,
     pub snapshot_period: u64,
+    pub admin_manager: String,
+    pub poll_gas_limit: u64,
+}
+
+#[derive(Serialize, Deserialize, Clone, Debug, PartialEq, JsonSchema)]
+#[serde(rename_all = "snake_case")]
+pub struct PollConfig {
+    pub proposal_deposit: Uint128,
+    pub voting_period: u64,
+    pub quorum: Decimal,
+    pub threshold: Decimal,
 }
 ```
 {% endtab %}
@@ -42,30 +54,57 @@ pub struct InitMsg {
 ```javascript
 {
     "mirror_token": "terra1...",
-    "quorum": "0.1",
-    "threshold": "0.5",
-    "voting_period": 8,
-    "effective_delay": 8,
-    "proposal_deposit": "100000",
+    "effective_delay": 8
+    "default_poll_config": {
+        "quorum": "0.1",
+        "threshold": "0.5",
+        "voting_period": 8
+        "proposal_deposit": "100000000"
+        },
+    "migration_poll_config": {
+        "quorum": "0.1",
+        "threshold": "0.5",
+        "voting_period": 8
+        "proposal_deposit": "100000000"
+        },
+    "auth_admin_poll_config": {
+        "quorum": "0.1",
+        "threshold": "0.5",
+        "voting_period": 8
+        "proposal_deposit": "100000000"
+        },
     "voter_weight": "0.5",
-    "snapshot_period": 8
+    "snapshot_period": 8,
+    "admin_manager": "terra1...",
+    "poll_gas_limit": 8
 } 
 ```
 {% endtab %}
 {% endtabs %}
 
-| Key | Type | Description |
-| :--- | :--- | :--- |
-| `mirror_token` | HumanAddr | Contract address of Mirror Token \(MIR\) |
-| `quorum` | Decimal | Minimum percentage of participation required for a poll to pass |
-| `threshold` | Decimal | Minimum percentage of `yes` votes required for a poll to pass |
-| `voting_period` | u64 | Number of blocks during which votes can be cast |
-| `proposal_deposit` | Uint128 | Minimum MIR deposit required for a new poll to be submitted |
-| `effective_delay` | u64 | Number of blocks after a poll passes to apply changes |
-| `voter_weight` | Decimal | Ratio of protocol fee which will be distributed among the governance poll voters |
-| `snapshot_period` | u64 | Minimum number of blocks before the end of voting period which snapshot could be taken to lock the current quorum for a poll |
+| Key                      | Type       | Description                                                                                                                  |
+| ------------------------ | ---------- | ---------------------------------------------------------------------------------------------------------------------------- |
+| `mirror_token`           | HumanAddr  | Contract address of Mirror Token (MIR)                                                                                       |
+| `effective_delay`        | u64        | Minimum percentage of participation required for a poll to pass                                                              |
+| `default_poll_config`    | PollConfig | `PollConfig` for default poll types                                                                                          |
+| `migration_poll_config`  | PollConfig | `PollConfig` for migration poll types                                                                                        |
+| `auth_admin_poll_config` | PollConfig | `PollConfig` for governance configuration change and admin key transfer polls                                                |
+| `effective_delay`        | u64        | Number of blocks after a poll passes to apply changes                                                                        |
+| `voter_weight`           | Decimal    | Ratio of protocol fee which will be distributed among the governance poll voters                                             |
+| `snapshot_period`        | u64        | Minimum number of blocks before the end of voting period which snapshot could be taken to lock the current quorum for a poll |
+| `admin_manager`          | String     | Address of the admin manager contract                                                                                        |
+| `poll_gas_limit`         | u64        | Maximum amount of gas which a poll can consume during its execution                                                          |
 
-## HandleMsg
+#### PollConfig
+
+| Key                | Type    | Description                                                     |
+| ------------------ | ------- | --------------------------------------------------------------- |
+| `proposal_deposit` | Uint128 | MIR deposit required for new polls to be submitted              |
+| `voting_period`    | u64     | Number of seconds during which votes can be cast                |
+| `quorum`           | Decimal | Minimum percentage of participation required for a poll to pass |
+| `threshold`        | Decimal | Minimum percentage of `yes` votes required for a poll to pass   |
+
+## ExecuteMsg
 
 ### `Receive`
 
@@ -99,11 +138,11 @@ pub enum HandleMsg {
 {% endtab %}
 {% endtabs %}
 
-| Key | Type | Description |
-| :--- | :--- | :--- |
-| `amount` | Uint128 | Amount of tokens received |
-| `sender` | HumanAddr | Sender of token transfer |
-| `msg`\* | Binary | Base64-encoded JSON of [Receive Hook](gov.md#receive-hooks) |
+| Key      | Type      | Description                                                 |
+| -------- | --------- | ----------------------------------------------------------- |
+| `amount` | Uint128   | Amount of tokens received                                   |
+| `sender` | HumanAddr | Sender of token transfer                                    |
+| `msg`\*  | Binary    | Base64-encoded JSON of [Receive Hook](gov.md#receive-hooks) |
 
 \* = optional
 
@@ -152,23 +191,23 @@ pub enum HandleMsg {
 {% endtab %}
 {% endtabs %}
 
-| Key | Type | Description |
-| :--- | :--- | :--- |
-| `owner`\* | HumanAddr | Address of owner of governance contract |
-| `quorum`\* | Decimal | Minimum percentage of participation required for a poll to pass |
-| `threshold`\* | Decimal | Minimum percentage of `yes` votes required for a poll to pass |
-| `voting_period`\* | u64 | Number of blocks during which votes can be cast |
-| `effective_delay`\* | u64 | Number of blocks after a poll passes to apply changes |
-| `expiration_period`\* | u64 | Number of blocks after a poll's voting period during which the poll can be executed |
-| `proposal_deposit`\* | Uint128 | Minimum MIR deposit required for a new poll to be submitted |
-| `voter_weight`\* | Decimal | Ratio of protocol fee which will be distributed among the governance poll voters |
-| `snapshot_period`\* | u64 | Minimum number of blocks before end of voting period which snapshot could be taken to lock the current quorum for a poll |
+| Key                   | Type      | Description                                                                                                              |
+| --------------------- | --------- | ------------------------------------------------------------------------------------------------------------------------ |
+| `owner`\*             | HumanAddr | Address of owner of governance contract                                                                                  |
+| `quorum`\*            | Decimal   | Minimum percentage of participation required for a poll to pass                                                          |
+| `threshold`\*         | Decimal   | Minimum percentage of `yes` votes required for a poll to pass                                                            |
+| `voting_period`\*     | u64       | Number of blocks during which votes can be cast                                                                          |
+| `effective_delay`\*   | u64       | Number of blocks after a poll passes to apply changes                                                                    |
+| `expiration_period`\* | u64       | Number of blocks after a poll's voting period during which the poll can be executed                                      |
+| `proposal_deposit`\*  | Uint128   | Minimum MIR deposit required for a new poll to be submitted                                                              |
+| `voter_weight`\*      | Decimal   | Ratio of protocol fee which will be distributed among the governance poll voters                                         |
+| `snapshot_period`\*   | u64       | Minimum number of blocks before end of voting period which snapshot could be taken to lock the current quorum for a poll |
 
 \* = optional
 
 ### `CastVote`
 
-Submits a user's vote for an active poll. Once a user has voted, they cannot change their vote with subsequent messages \(increasing voting power, changing vote option, cancelling vote, etc.\)
+Submits a user's vote for an active poll. Once a user has voted, they cannot change their vote with subsequent messages (increasing voting power, changing vote option, cancelling vote, etc.)
 
 {% tabs %}
 {% tab title="Rust" %}
@@ -198,11 +237,11 @@ pub enum HandleMsg {
 {% endtab %}
 {% endtabs %}
 
-| Key | Type | Description |
-| :--- | :--- | :--- |
-| `amount` | Uint128 | Amount of voting power \(staked MIR\) to allocate |
-| `poll_id` | u64 | Poll ID |
-| `vote` | VoteOption | Can be `yes`,`no` or `abstain` |
+| Key       | Type       | Description                                     |
+| --------- | ---------- | ----------------------------------------------- |
+| `amount`  | Uint128    | Amount of voting power (staked MIR) to allocate |
+| `poll_id` | u64        | Poll ID                                         |
+| `vote`    | VoteOption | Can be `yes`,`no` or `abstain`                  |
 
 ### `WithdrawVotingTokens`
 
@@ -232,8 +271,8 @@ pub enum HandleMsg {
 {% endtab %}
 {% endtabs %}
 
-| Key | Type | Description |
-| :--- | :--- | :--- |
+| Key        | Type    | Description                                                                      |
+| ---------- | ------- | -------------------------------------------------------------------------------- |
 | `amount`\* | Uint128 | Amount of MIR tokens to withdraw. If empty, all staked MIR tokens are withdrawn. |
 
 \* = optional
@@ -264,7 +303,7 @@ pub enum HandleMsg {
 
 ### `StakeVotingRewards`
 
-Immediately re-stakes user's voting rewards to Gov Contract. 
+Immediately re-stakes user's voting rewards to Gov Contract.&#x20;
 
 {% tabs %}
 {% tab title="Rust" %}
@@ -314,9 +353,9 @@ pub enum HandleMsg {
 {% endtab %}
 {% endtabs %}
 
-| Key | Type | Description |
-| :--- | :--- | :--- |
-| `poll_id` | u64 | Poll ID |
+| Key       | Type | Description |
+| --------- | ---- | ----------- |
+| `poll_id` | u64  | Poll ID     |
 
 ### `ExecutePoll`
 
@@ -346,9 +385,9 @@ pub enum HandleMsg {
 {% endtab %}
 {% endtabs %}
 
-| Key | Type | Description |
-| :--- | :--- | :--- |
-| `poll_id` | u64 | Poll ID |
+| Key       | Type | Description |
+| --------- | ---- | ----------- |
+| `poll_id` | u64  | Poll ID     |
 
 ### `SnapshotPoll`
 
@@ -378,9 +417,9 @@ pub enum HandleMsg {
 {% endtab %}
 {% endtabs %}
 
-| Key | Type | Description |
-| :--- | :--- | :--- |
-| `poll_id` | u64 | Poll ID |
+| Key       | Type | Description |
+| --------- | ---- | ----------- |
+| `poll_id` | u64  | Poll ID     |
 
 ## Receive Hooks
 
@@ -416,26 +455,27 @@ pub enum Cw20HookMsg {
 
 ### `CreatePoll`
 
-Issued when sending MIR tokens to the Gov contract to create a new poll. Will only succeed if the amount of tokens sent meets the configured`proposal_deposit`amount. Contains a generic message to be issued by the Gov contract if it passes \(can invoke messages in other contracts it owns\).
+Issued when sending MIR tokens to the Gov contract to create a new poll. Will only succeed if the amount of tokens sent meets the configured`proposal_deposit`amount. Contains a generic message to be issued by the Gov contract if it passes (can invoke messages in other contracts it owns).
 
 {% tabs %}
 {% tab title="Rust" %}
 ```rust
 #[derive(Serialize, Deserialize, Clone, Debug, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
+#[allow(clippy::large_enum_variant)]
 pub enum Cw20HookMsg {
-    CreatePoll {
-        description: String,
-        execute_msg: Option<ExecuteMsg>,
-        link: Option<String>,
+   CreatePoll {
         title: String,
-    }
-}
+        description: String,
+        link: Option<String>,
+        execute_msg: Option<PollExecuteMsg>,
+        admin_action: Option<PollAdminAction>,
+    },
 
 #[derive(Serialize, Deserialize, Clone, Debug, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
-pub struct ExecuteMsg {
-    pub contract: HumanAddr,
+pub struct PollExecuteMsg {
+    pub contract: String,
     pub msg: Binary,
 }
 ```
@@ -451,25 +491,30 @@ pub struct ExecuteMsg {
       "msg": "eyAiZXhlY3V0ZV9tc2ciOiAiYmxhaCBibGFoIiB9"
     },
     "link": "...",
-    "title": "..."
+    "title": "...",
+    "admin_action": {
+      "contract": "terra1...",
+      "msg": "eyAiZXhlY3V0ZV9tc2ciOiAiYmxhaCBibGFoIiB9"
+    }   
   }
 }
 ```
 {% endtab %}
 {% endtabs %}
 
-| Key | Type | Description |
-| :--- | :--- | :--- |
-| `description` | string | Poll description |
-| `execute_msg`\* | ExecuteMsg | Message to be executed by Gov contract |
-| `link`\* | string | URL to external post about poll \(forum, PDF, etc.\) |
-| `title` | string | Poll title |
+| Key              | Type            | Description                                               |
+| ---------------- | --------------- | --------------------------------------------------------- |
+| `description`    | string          | Poll description                                          |
+| `execute_msg`\*  | ExecuteMsg      | Message to be executed by Gov contract                    |
+| `link`\*         | string          | URL to external post about poll (forum, PDF, etc.)        |
+| `title`          | string          | Poll title                                                |
+| `admin_action`\* | PollAdminAction | Messages to be executed for migration and authorize polls |
 
 \* = optional
 
 ### `DepositReward`
 
-Reward is distributed between MIR stakers and governance poll voters based on `voter_weight` when rewards are sent from [Mirror Collector](collector.md). 
+Reward is distributed between MIR stakers and governance poll voters based on `voter_weight` when rewards are sent from [Mirror Collector](collector.md).&#x20;
 
 {% tabs %}
 {% tab title="Rust" %}
@@ -510,29 +555,31 @@ pub enum QueryMsg {
 ```rust
 #[derive(Serialize, Deserialize, Clone, PartialEq, JsonSchema)]
 pub struct ConfigResponse {
-    pub owner: HumanAddr,
-    pub mirror_token: HumanAddr,
-    pub quorum: Decimal,
-    pub threshold: Decimal,
-    pub voting_period: u64,
+    pub owner: String,
+    pub mirror_token: String,
     pub effective_delay: u64,
-    pub proposal_deposit: Uint128,
+    pub default_poll_config: PollConfig,
+    pub migration_poll_config: PollConfig,
+    pub auth_admin_poll_config: PollConfig,
     pub voter_weight: Decimal,
     pub snapshot_period: u64,
+    pub admin_manager: String,
+    pub poll_gas_limit: u64,
 }
 ```
 
-| Key | Type | Description |
-| :--- | :--- | :--- |
-| `mirror_token` | HumanAddr | Contract address of Mirror Token \(MIR\) |
-| `quorum` | Decimal | Minimum percentage of participation required for a poll to pass |
-| `threshold` | Decimal | Minimum percentage of `yes` votes required for a poll to pass |
-| `voting_period` | u64 | Number of blocks during which votes can be cast |
-| `effective_delay` | u64 | Number of blocks after a poll passes to apply changes |
-| `expiration_period` | u64 | Number of blocks after a poll's voting period during which the poll can be executed |
-| `proposal_deposit` | Uint128 | Minimum MIR deposit required for a new poll to be submitted |
-| `voter_weight` | Decimal | Ratio of protocol fee which will be distributed among the governance poll voters |
-| `snapshot_period` | u64 | Minimum number of blocks before end of voting period which snapshot could be taken to lock the current quorum for a poll |
+| Key                      | Type       | Description                                                                                                              |
+| ------------------------ | ---------- | ------------------------------------------------------------------------------------------------------------------------ |
+| `mirror_token`           | HumanAddr  | Contract address of Mirror Token (MIR)                                                                                   |
+| `default_poll_config`    | PollConfig | `PollConfig` for default polls                                                                                           |
+| `migration_poll_config`  | PollConfig | `PollConfig` for migration polls                                                                                         |
+| `auth_admin_poll_config` | PollConfig | `PollConfig` for Authorize polls                                                                                         |
+| `effective_delay`        | u64        | Number of blocks after a poll passes to apply changes                                                                    |
+| `proposal_deposit`       | Uint128    | Minimum MIR deposit required for a new poll to be submitted                                                              |
+| `voter_weight`           | Decimal    | Ratio of protocol fee which will be distributed among the governance poll voters                                         |
+| `snapshot_period`        | u64        | Minimum number of blocks before end of voting period which snapshot could be taken to lock the current quorum for a poll |
+| `admin_manager`          | String     | Address of admin manager contract                                                                                        |
+| `poll_gas_limit`         | u64        | Maximum amount of gas which a poll can consume during its execution                                                      |
 {% endtab %}
 
 {% tab title="JSON" %}
@@ -546,30 +593,50 @@ pub struct ConfigResponse {
 
 ```javascript
 {
-    "config_response": {
-        "owner": "terra1...",
-        "mirror_token": "terra1...",
+"config_response": {
+    "mirror_token": "terra1...",
+    "effective_delay": 8
+    "default_poll_config": {
         "quorum": "0.1",
         "threshold": "0.5",
-        "voting_period": 100000,
-        "effective_delay": 13000,
-        "proposal_deposit": "1000000",
-        "voter_weight": "0.5",
-        "snapshot_period": 1000
-    }
+        "voting_period": 8
+        "proposal_deposit": "100000000"
+        },
+    "migration_poll_config": {
+        "quorum": "0.1",
+        "threshold": "0.5",
+        "voting_period": 8
+        "proposal_deposit": "100000000"
+        },
+    "auth_admin_poll_config": {
+        "quorum": "0.1",
+        "threshold": "0.5",
+        "voting_period": 8
+        "proposal_deposit": "100000000"
+        },
+    "voter_weight": "0.5",
+    "snapshot_period": 8,
+    "admin_manager": "terra1...",
+    "poll_gas_limit": 8
+} 
 }
 ```
 
-| Key | Type | Description |
-| :--- | :--- | :--- |
-| `mirror_token` | HumanAddr | Contract address of Mirror Token \(MIR\) |
-| `quorum` | Decimal | Minimum percentage of participation required for a poll to pass |
-| `threshold` | Decimal | Minimum percentage of `yes` votes required for a poll to pass |
-| `voting_period` | u64 | Number of blocks during which votes can be cast |
-| `effective_delay` | u64 | Number of blocks after a poll passes to apply changes |
-| `proposal_deposit` | Uint128 | Minimum MIR deposit required for a new poll to be submitted |
-| `voter_weight` | Decimal | Ratio of protocol fee which will be distributed among the governance poll voters |
-| `snapshot_period` | u64 | Minimum number of blocks before end of voting period which snapshot could be taken to lock the current quorum for a poll |
+| Key                      | Type       | Description                                                                                                              |
+| ------------------------ | ---------- | ------------------------------------------------------------------------------------------------------------------------ |
+| `mirror_token`           | HumanAddr  | Contract address of Mirror Token (MIR)                                                                                   |
+| `default_poll_config`    | PollConfig | `PollConfig` of default polls                                                                                            |
+| `migration_poll_config`  | PollConfig | `PollConfig` of migration polls                                                                                          |
+| `auth_admin_poll_config` | PollConfig | `PollConfig` of Authorize polls                                                                                          |
+| `quorum`                 | Decimal    | Minimum percentage of participation required for a poll to pass                                                          |
+| `threshold`              | Decimal    | Minimum percentage of `yes` votes required for a poll to pass                                                            |
+| `voting_period`          | u64        | Number of blocks during which votes can be cast                                                                          |
+| `effective_delay`        | u64        | Number of blocks after a poll passes to apply changes                                                                    |
+| `proposal_deposit`       | Uint128    | Minimum MIR deposit required for a new poll to be submitted                                                              |
+| `voter_weight`           | Decimal    | Ratio of protocol fee which will be distributed among the governance poll voters                                         |
+| `snapshot_period`        | u64        | Minimum number of blocks before end of voting period which snapshot could be taken to lock the current quorum for a poll |
+| `admin_manager`          | String     | Address of admin manager contract                                                                                        |
+| `poll_gas_limit`         | u64        | Maximum amount of gas which a poll can consume during its execution                                                      |
 {% endtab %}
 {% endtabs %}
 
@@ -597,12 +664,12 @@ pub struct StateResponse {
 }
 ```
 
-| Key | Type | Description |
-| :--- | :--- | :--- |
-| `poll_count` | u64 | Total number of polls that have been created on Mirror Protocol |
-| `total_share` | Uint128 | Amount of staked MIR to governance contract |
-| `total_deposit` | Uint128 | Amount of locked MIR to governance polls |
-| `pending_voting_rewards` | Uint128 | Amount of voting rewards that are not claimed yet |
+| Key                      | Type    | Description                                                     |
+| ------------------------ | ------- | --------------------------------------------------------------- |
+| `poll_count`             | u64     | Total number of polls that have been created on Mirror Protocol |
+| `total_share`            | Uint128 | Amount of staked MIR to governance contract                     |
+| `total_deposit`          | Uint128 | Amount of locked MIR to governance polls                        |
+| `pending_voting_rewards` | Uint128 | Amount of voting rewards that are not claimed yet               |
 {% endtab %}
 
 {% tab title="JSON" %}
@@ -625,12 +692,12 @@ pub struct StateResponse {
 }
 ```
 
-| Key | Type | Description |
-| :--- | :--- | :--- |
-| `poll_count` | u64 | Total number of polls that have been created on Mirror Protocol |
-| `total_share` | Uint128 | Amount of staked MIR to governance contract |
-| `total_deposit` | Uint128 | Amount of locked MIR to governance polls |
-| `pending_voting_rewards` | Uint128 | Amount of voting rewards that are not claimed yet |
+| Key                      | Type    | Description                                                     |
+| ------------------------ | ------- | --------------------------------------------------------------- |
+| `poll_count`             | u64     | Total number of polls that have been created on Mirror Protocol |
+| `total_share`            | Uint128 | Amount of staked MIR to governance contract                     |
+| `total_deposit`          | Uint128 | Amount of locked MIR to governance polls                        |
+| `pending_voting_rewards` | Uint128 | Amount of voting rewards that are not claimed yet               |
 {% endtab %}
 {% endtabs %}
 
@@ -648,8 +715,8 @@ pub enum QueryMsg {
 }
 ```
 
-| Key | Type | Description |
-| :--- | :--- | :--- |
+| Key       | Type      | Description       |
+| --------- | --------- | ----------------- |
 | `address` | HumanAddr | Address of staker |
 
 #### Response
@@ -664,12 +731,12 @@ pub struct StakerResponse {
 }
 ```
 
-| Key | Type | Description |
-| :--- | :--- | :--- |
-| `balance` | Uint128 | Amount of MIR staked by the user |
-| `share` | Uint128 | Weight of the user's staked MIR |
-| `locked_balance` | Vec&lt;\(u64, VoterInfo\)&gt; | Total number of staked MIR used as votes, and chosen vote option |
-| `pending_voting_rewards` | u64 | Amount of voting rewards that are not claimed yet |
+| Key                      | Type                  | Description                                                      |
+| ------------------------ | --------------------- | ---------------------------------------------------------------- |
+| `balance`                | Uint128               | Amount of MIR staked by the user                                 |
+| `share`                  | Uint128               | Weight of the user's staked MIR                                  |
+| `locked_balance`         | Vec<(u64, VoterInfo)> | Total number of staked MIR used as votes, and chosen vote option |
+| `pending_voting_rewards` | u64                   | Amount of voting rewards that are not claimed yet                |
 {% endtab %}
 
 {% tab title="JSON" %}
@@ -681,8 +748,8 @@ pub struct StakerResponse {
 }
 ```
 
-| Key | Type | Description |
-| :--- | :--- | :--- |
+| Key       | Type      | Description       |
+| --------- | --------- | ----------------- |
 | `address` | HumanAddr | Address of staker |
 
 #### Response
@@ -701,12 +768,12 @@ pub struct StakerResponse {
 }
 ```
 
-| Key | Type | Description |
-| :--- | :--- | :--- |
-| `balance` | Uint128 | Amount of MIR staked by the user |
-| `share` | Uint128 | Weight of the user's staked MIR |
-| `locked_balance` | Vec&lt;\(u64, VoterInfo\)&gt; | Total number of staked MIR used as votes, and chosen vote option |
-| `pending_voting_rewards` | u64 | Amount of voting rewards that are not claimed yet |
+| Key                      | Type                  | Description                                                      |
+| ------------------------ | --------------------- | ---------------------------------------------------------------- |
+| `balance`                | Uint128               | Amount of MIR staked by the user                                 |
+| `share`                  | Uint128               | Weight of the user's staked MIR                                  |
+| `locked_balance`         | Vec<(u64, VoterInfo)> | Total number of staked MIR used as votes, and chosen vote option |
+| `pending_voting_rewards` | u64                   | Amount of voting rewards that are not claimed yet                |
 {% endtab %}
 {% endtabs %}
 
@@ -724,9 +791,9 @@ pub enum QueryMsg {
 }
 ```
 
-| Key | Type | Description |
-| :--- | :--- | :--- |
-| `poll_id` | u64 | Poll ID |
+| Key       | Type | Description |
+| --------- | ---- | ----------- |
+| `poll_id` | u64  | Poll ID     |
 
 #### Response
 
@@ -751,23 +818,23 @@ pub struct PollResponse {
 }
 ```
 
-| Key | Type | Description |
-| :--- | :--- | :--- |
-| id | u64 | Poll ID |
-| creator | HumanAddr | Address of the poll creator |
-| status | PollStatus | Could be one of "in progress", "rejected", "passed", "executed", "expired" |
-| end\_height | u64 | Amount of voting rewards that are not claimed yet |
-| title | String | Title of the poll |
-| description | String | Description submitted by the creator |
-| link\* | Uint128 | URL link |
-| deposit\_amount | binary | Initial MIR deposit at poll creation |
-| execute\_data\* | ExecuteMsg | Message to be executed by Gov contract |
-| yes\_votes | Uint128 | Amount of yes votes |
-| no\_votes | Uint128 | Amount of no votes |
-| abstain\_votes | Uint128 | Amount of abstain votes |
-| total\_balance\_at\_end\_poll\* | Uint128 | Total balanced used as yes, no, or abstain votes at the end of the poll |
-| voters\_reward | Uint128 | Amount of MIR reward accumulated to be distributed to the voters |
-| staked\_amount\* | Uint128 | Total number of MIR staked on governance contract \(used when Snapshot Poll has been taken\) |
+| Key                             | Type       | Description                                                                                |
+| ------------------------------- | ---------- | ------------------------------------------------------------------------------------------ |
+| id                              | u64        | Poll ID                                                                                    |
+| creator                         | HumanAddr  | Address of the poll creator                                                                |
+| status                          | PollStatus | Could be one of "in progress", "rejected", "passed", "executed", "expired"                 |
+| end\_height                     | u64        | Amount of voting rewards that are not claimed yet                                          |
+| title                           | String     | Title of the poll                                                                          |
+| description                     | String     | Description submitted by the creator                                                       |
+| link\*                          | Uint128    | URL link                                                                                   |
+| deposit\_amount                 | binary     | Initial MIR deposit at poll creation                                                       |
+| execute\_data\*                 | ExecuteMsg | Message to be executed by Gov contract                                                     |
+| yes\_votes                      | Uint128    | Amount of yes votes                                                                        |
+| no\_votes                       | Uint128    | Amount of no votes                                                                         |
+| abstain\_votes                  | Uint128    | Amount of abstain votes                                                                    |
+| total\_balance\_at\_end\_poll\* | Uint128    | Total balanced used as yes, no, or abstain votes at the end of the poll                    |
+| voters\_reward                  | Uint128    | Amount of MIR reward accumulated to be distributed to the voters                           |
+| staked\_amount\*                | Uint128    | Total number of MIR staked on governance contract (used when Snapshot Poll has been taken) |
 {% endtab %}
 
 {% tab title="JSON" %}
@@ -779,9 +846,9 @@ pub struct PollResponse {
 }
 ```
 
-| Key | Type | Description |
-| :--- | :--- | :--- |
-| `poll_id` | u64 | Poll ID |
+| Key       | Type | Description |
+| --------- | ---- | ----------- |
+| `poll_id` | u64  | Poll ID     |
 
 #### Response
 
@@ -807,23 +874,23 @@ pub struct PollResponse {
 }
 ```
 
-| Key | Type | Description |
-| :--- | :--- | :--- |
-| id | u64 | Poll ID |
-| creator | HumanAddr | Address of the poll creator |
-| status | PollStatus | Could be one of "in progress", "rejected", "passed", "executed", "expired" |
-| end\_height | u64 | Amount of voting rewards that are not claimed yet |
-| title | String | Title of the poll |
-| description | String | Description submitted by the creator |
-| link\* | Uint128 | URL link |
-| deposit\_amount | binary | Initial MIR deposit at poll creation |
-| execute\_data\* | ExecuteMsg | Message to be executed by Gov contract |
-| yes\_votes | Uint128 | Amount of yes votes |
-| no\_votes | Uint128 | Amount of no votes |
-| abstain\_votes | Uint128 | Amount of abstain votes |
-| total\_balance\_at\_end\_poll\* | Uint128 | Total balanced used as yes, no, or abstain votes at the end of the poll |
-| voters\_reward | Uint128 | Amount of MIR reward accumulated to be distributed to the voters |
-| staked\_amount\* | Uint128 | Total number of MIR staked on governance contract \(used when Snapshot Poll has been taken\) |
+| Key                             | Type       | Description                                                                                |
+| ------------------------------- | ---------- | ------------------------------------------------------------------------------------------ |
+| id                              | u64        | Poll ID                                                                                    |
+| creator                         | HumanAddr  | Address of the poll creator                                                                |
+| status                          | PollStatus | Could be one of "in progress", "rejected", "passed", "executed", "expired"                 |
+| end\_height                     | u64        | Amount of voting rewards that are not claimed yet                                          |
+| title                           | String     | Title of the poll                                                                          |
+| description                     | String     | Description submitted by the creator                                                       |
+| link\*                          | Uint128    | URL link                                                                                   |
+| deposit\_amount                 | binary     | Initial MIR deposit at poll creation                                                       |
+| execute\_data\*                 | ExecuteMsg | Message to be executed by Gov contract                                                     |
+| yes\_votes                      | Uint128    | Amount of yes votes                                                                        |
+| no\_votes                       | Uint128    | Amount of no votes                                                                         |
+| abstain\_votes                  | Uint128    | Amount of abstain votes                                                                    |
+| total\_balance\_at\_end\_poll\* | Uint128    | Total balanced used as yes, no, or abstain votes at the end of the poll                    |
+| voters\_reward                  | Uint128    | Amount of MIR reward accumulated to be distributed to the voters                           |
+| staked\_amount\*                | Uint128    | Total number of MIR staked on governance contract (used when Snapshot Poll has been taken) |
 {% endtab %}
 {% endtabs %}
 
@@ -843,11 +910,11 @@ pub enum QueryMsg {
 }
 ```
 
-| Key | Type | Description |
-| :--- | :--- | :--- |
-| `filter`\* | PollStatus | Can be `yes` or `no` |
-| `limit`\* | u32 | Limit of results to fetch |
-| `start_after`\* | u64 | Begins search query at specific ID |
+| Key             | Type       | Description                        |
+| --------------- | ---------- | ---------------------------------- |
+| `filter`\*      | PollStatus | Can be `yes` or `no`               |
+| `limit`\*       | u32        | Limit of results to fetch          |
+| `start_after`\* | u64        | Begins search query at specific ID |
 
 \* = optional
 
@@ -860,9 +927,9 @@ pub struct PollsResponse {
 }
 ```
 
-| Key | Type | Description |
-| :--- | :--- | :--- |
-| `polls` | Vec&lt;PollResponse&gt; | Array of poll query responses |
+| Key     | Type               | Description                   |
+| ------- | ------------------ | ----------------------------- |
+| `polls` | Vec\<PollResponse> | Array of poll query responses |
 {% endtab %}
 
 {% tab title="JSON" %}
@@ -876,11 +943,11 @@ pub struct PollsResponse {
 }
 ```
 
-| Key | Type | Description |
-| :--- | :--- | :--- |
-| `filter`\* | PollStatus | Can be `yes` or `no` |
-| `limit`\* | u32 | Limit of results to fetch |
-| `start_after`\* | u64 | Begins search query at specific ID |
+| Key             | Type       | Description                        |
+| --------------- | ---------- | ---------------------------------- |
+| `filter`\*      | PollStatus | Can be `yes` or `no`               |
+| `limit`\*       | u32        | Limit of results to fetch          |
+| `start_after`\* | u64        | Begins search query at specific ID |
 
 \* = optional
 
@@ -913,9 +980,9 @@ pub struct PollsResponse {
 }
 ```
 
-| Key | Type | Description |
-| :--- | :--- | :--- |
-| `polls` | Vec&lt;PollResponse&gt; | Array of poll query responses |
+| Key     | Type               | Description                   |
+| ------- | ------------------ | ----------------------------- |
+| `polls` | Vec\<PollResponse> | Array of poll query responses |
 {% endtab %}
 {% endtabs %}
 
@@ -937,10 +1004,10 @@ pub enum QueryMsg {
 }
 ```
 
-| Key | Type | Description |
-| :--- | :--- | :--- |
-| `limit`\* | u32 | Limit of results to fetch |
-| `poll_id` | u64 | Poll ID |
+| Key             | Type      | Description                     |
+| --------------- | --------- | ------------------------------- |
+| `limit`\*       | u32       | Limit of results to fetch       |
+| `poll_id`       | u64       | Poll ID                         |
 | `start_after`\* | HumanAddr | Begins search query with prefix |
 
 \* = optional
@@ -956,11 +1023,11 @@ pub struct VotersResponseItem {
 }
 ```
 
-| Key | Type | Description |
-| :--- | :--- | :--- |
-| `voter` | HumanAddr | Address of the voter |
-| `vote` | VoteOption | Could be one of `yes`, `no`, `abstain` |
-| `balance` | Uint128 | Amount of staked MIR used for voting |
+| Key       | Type       | Description                            |
+| --------- | ---------- | -------------------------------------- |
+| `voter`   | HumanAddr  | Address of the voter                   |
+| `vote`    | VoteOption | Could be one of `yes`, `no`, `abstain` |
+| `balance` | Uint128    | Amount of staked MIR used for voting   |
 {% endtab %}
 
 {% tab title="JSON" %}
@@ -974,10 +1041,10 @@ pub struct VotersResponseItem {
 }
 ```
 
-| Key | Type | Description |
-| :--- | :--- | :--- |
-| `limit`\* | u32 | Limit of results to fetch |
-| `poll_id` | u64 | Poll ID |
+| Key             | Type      | Description                     |
+| --------------- | --------- | ------------------------------- |
+| `limit`\*       | u32       | Limit of results to fetch       |
+| `poll_id`       | u64       | Poll ID                         |
 | `start_after`\* | HumanAddr | Begins search query with prefix |
 
 \* = optional
@@ -994,11 +1061,10 @@ pub struct VotersResponseItem {
 }
 ```
 
-| Key | Type | Description |
-| :--- | :--- | :--- |
-| `voter` | HumanAddr | Address of the voter |
-| `vote` | VoteOption | Could be one of `yes`, `no`, `abstain` |
-| `balance` | Uint128 | Amount of staked MIR used for voting |
+| Key       | Type       | Description                            |
+| --------- | ---------- | -------------------------------------- |
+| `voter`   | HumanAddr  | Address of the voter                   |
+| `vote`    | VoteOption | Could be one of `yes`, `no`, `abstain` |
+| `balance` | Uint128    | Amount of staked MIR used for voting   |
 {% endtab %}
 {% endtabs %}
-

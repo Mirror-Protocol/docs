@@ -78,7 +78,7 @@ When an IPO schedule and price quote has been announced, a new mAsset can be whi
 
 When IPO occurs,
 
-* [Oracle](../contracts/oracle.md) triggers the IPO event on Mirror Protocol
+* [Oracle](broken-reference) triggers the IPO event on Mirror Protocol
 * The asset becomes mintable again at the oracle price of the underlying asset
 * A new collateral ratio, defined by the Pre-IPO poll proposer is assigned
 

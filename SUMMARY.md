@@ -1,7 +1,7 @@
 # Table of contents
 
 * [Home](README.md)
-* [What's new for Mirror v2?](whats-new-for-mirror-v2.md)
+  * [What's new for Mirror v2?](readme/whats-new-for-mirror-v2.md)
 * [Interchain Access](networks.md)
 * [Security](security.md)
 * [FAQ](faq.md)
@@ -20,7 +20,10 @@
   * [Pre-IPO Procedure](protocol/governance/pre-ipo-procedure.md)
   * [Modify Mint Parameters](protocol/governance/modify-mint-parameters.md)
   * [Modify Gov Parameters](protocol/governance/modify-gov-parameters.md)
+  * [Modify Poll Parameters](protocol/governance/modify-poll-parameters.md)
   * [Community Grants](protocol/governance/community-grants.md)
+  * [Contract Migration Procedure](protocol/governance/contract-migration-procedure.md)
+  * [Oracle Whitelist Procedure](protocol/governance/oracle-whitelist-procedure.md)
   * [Other Proposals](protocol/governance/other-proposals.md)
 
 ## Developers <a href="#developer-tools" id="developer-tools"></a>
@@ -51,9 +54,10 @@
 * [Community](contracts/community.md)
 * [Factory](contracts/factory.md)
 * [Gov](contracts/gov.md)
+* [Admin Manager](contracts/admin-manager.md)
 * [Mint](contracts/mint.md)
 * [Lock](contracts/lock.md)
-* [Oracle](contracts/oracle.md)
+* [TeFi Oracle](contracts/tefi-oracle.md)
 * [Collateral Oracle](contracts/collateral-oracle.md)
 * [Staking](contracts/staking.md)
 * [Limit Order](contracts/limit-order.md)
